@@ -1,0 +1,19 @@
+{
+  "name": "kemis-form",
+  "version": "1.0.0",
+  "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
+  "homepage": "https://github.com/KEMIS-Systems/components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KEMIS-Systems/components.git"
+  },
+  "author": "Nicanor Orlando",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KEMIS-Systems/components/issues"
+  }
+}
