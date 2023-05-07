@@ -21,9 +21,10 @@
   "keywords": [
     "react",
     "components",
-    "kemis"
+    "kemis",
+    "form"
   ],
-  "author": "Nicanor Orlando nicanororlando@gmail.com",
+  "author": "Nicanor Orlando | nicanororlando@gmail.com",
   "license": "ISC",
   "dependencies": {
     "primereact": "^9.2.2",
