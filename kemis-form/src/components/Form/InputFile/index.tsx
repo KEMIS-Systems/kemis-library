@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
   Controller,
   RegisterOptions,
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { classNames } from 'primereact/utils';
-import Dropzone from '~/components/Dropzone';
-import { Accept } from 'react-dropzone';
+} from "react-hook-form";
+import { classNames } from "primereact/utils";
+import Dropzone from "~~~/components/Dropzone";
+import { Accept } from "react-dropzone";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -32,7 +32,7 @@ const InputFile = <T extends object>({
   const [fileChanged, setFileChanged] = React.useState<boolean>(false);
 
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={"mb-5 " + (className !== undefined && className)}>
       {form && (
         <Controller
           name={name}
@@ -45,7 +45,7 @@ const InputFile = <T extends object>({
                 <Dropzone
                   accept={accept}
                   maxFiles={maxFiles}
-                  className={classNames({ 'p-invalid ': fieldState.error })}
+                  className={classNames({ "p-invalid ": fieldState.error })}
                   invalid={!!fieldState.error}
                   {...field}
                   onChange={(e) => {

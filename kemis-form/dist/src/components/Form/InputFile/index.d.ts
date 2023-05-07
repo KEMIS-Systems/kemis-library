@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { RegisterOptions, FieldValues, FieldPath, UseFormReturn } from 'react-hook-form';
-import { Accept } from 'react-dropzone';
+import { RegisterOptions, FieldValues, FieldPath, UseFormReturn } from "react-hook-form";
+import { Accept } from "react-dropzone";
 interface IProps<T extends FieldValues> {
     className?: string;
     name: FieldPath<T>;

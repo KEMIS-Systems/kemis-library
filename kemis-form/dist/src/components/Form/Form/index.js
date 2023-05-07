@@ -36,9 +36,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const Loading_1 = __importDefault(require("~/components/Loading"));
-const api_1 = __importDefault(require("~/services/api"));
-const toast_1 = __importDefault(require("~/utils/toast"));
+const Loading_1 = __importDefault(require("~~~/components/Loading"));
+const api_1 = __importDefault(require("~~~/services/api"));
+const toast_1 = __importDefault(require("~~~/utils/toast"));
 const sweetalert2_1 = __importDefault(require("sweetalert2"));
 const react_router_dom_1 = require("react-router-dom");
 const Form = ({ onHide, dataEdit, url, submit, onRefreshTable, onSubmit, getFormData, form, children, }) => {

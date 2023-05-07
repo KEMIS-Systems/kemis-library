@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const Dialog_1 = __importDefault(require("~/components/Dialog"));
+const Dialog_1 = __importDefault(require("~~~/components/Dialog"));
 const Form_1 = __importDefault(require("../Form"));
 const FormDialog = ({ onHide, dataEdit, url, onRefreshTable, onSubmit, getFormData, form, header, visible, classNameDialog, children, }) => {
     // const { language } = useLanguage();

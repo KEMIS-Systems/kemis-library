@@ -2,9 +2,9 @@ import React, { ReactNode, useCallback, useState } from "react";
 import { DialogProps } from "primereact/dialog";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 
-import Dialog from "~/components/Dialog";
+import Dialog from "~~~/components/Dialog";
 import Form from "../Form";
-// import { useLanguage } from "~/hooks/Language";
+// import { useLanguage } from "~~~/hooks/Language";
 
 type K = {
   id?: number;
