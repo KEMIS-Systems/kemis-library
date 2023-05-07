@@ -1,4 +1,4 @@
-import React from "react";
+/// <reference types="react" />
 import { FieldValues, RegisterOptions, FieldPath, UseFormReturn } from "react-hook-form";
 interface IProps<T extends FieldValues> {
     className?: string;
@@ -10,5 +10,5 @@ interface IProps<T extends FieldValues> {
     form: UseFormReturn<T>;
     rules?: RegisterOptions;
 }
-declare const InputNumber: <T extends object>({ className, name, label, mode, currency, locale, form, rules, }: IProps<T>) => React.JSX.Element;
+declare const InputNumber: <T extends object>({ className, name, label, mode, currency, locale, form, rules, }: IProps<T>) => JSX.Element;
 export default InputNumber;

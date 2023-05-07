@@ -1,6 +1,6 @@
-import React from 'react';
+/// <reference types="react" />
 interface ILoading {
     show?: boolean;
 }
-export default function Loading({ show }: ILoading): React.JSX.Element;
+export default function Loading({ show }: ILoading): JSX.Element;
 export {};

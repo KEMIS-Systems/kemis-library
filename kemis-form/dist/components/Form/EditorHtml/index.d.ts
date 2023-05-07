@@ -1,4 +1,4 @@
-import React from 'react';
+/// <reference types="react" />
 import { RegisterOptions, FieldValues, FieldPath, UseFormReturn } from 'react-hook-form';
 interface IProps<T extends FieldValues> {
     className?: string;
@@ -8,5 +8,5 @@ interface IProps<T extends FieldValues> {
     autoFocus?: boolean;
     form: UseFormReturn<T>;
 }
-declare const EditorHtml: <T extends object>({ className, name, label, rules, autoFocus, form, }: IProps<T>) => React.JSX.Element;
+declare const EditorHtml: <T extends object>({ className, name, label, rules, autoFocus, form, }: IProps<T>) => JSX.Element;
 export default EditorHtml;

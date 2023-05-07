@@ -1,4 +1,4 @@
-import React from "react";
+/// <reference types="react" />
 import { RegisterOptions, FieldValues, FieldPath, UseFormReturn } from "react-hook-form";
 import { Accept } from "react-dropzone";
 interface IProps<T extends FieldValues> {
@@ -10,5 +10,5 @@ interface IProps<T extends FieldValues> {
     rules?: RegisterOptions;
     form: UseFormReturn<T>;
 }
-declare const InputFile: <T extends object>({ className, name, accept, maxFiles, handleChange, rules, form, }: IProps<T>) => React.JSX.Element;
+declare const InputFile: <T extends object>({ className, name, accept, maxFiles, handleChange, rules, form, }: IProps<T>) => JSX.Element;
 export default InputFile;

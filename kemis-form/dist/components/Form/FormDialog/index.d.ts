@@ -17,5 +17,5 @@ interface IProps<T extends FieldValues> {
     classNameDialog?: string;
     children: React.ReactNode;
 }
-declare const FormDialog: <T extends object>({ onHide, dataEdit, url, onRefreshTable, onSubmit, getFormData, form, header, visible, classNameDialog, children, }: IProps<T>) => React.JSX.Element;
+declare const FormDialog: <T extends object>({ onHide, dataEdit, url, onRefreshTable, onSubmit, getFormData, form, header, visible, classNameDialog, children, }: IProps<T>) => JSX.Element;
 export default FormDialog;

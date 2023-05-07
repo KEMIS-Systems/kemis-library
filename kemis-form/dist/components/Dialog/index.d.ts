@@ -8,5 +8,5 @@ interface IProps {
     onHide: () => void;
     children: React.ReactNode;
 }
-declare const Dialog: ({ header, visible, className, footer, onHide, children, }: IProps) => React.JSX.Element;
+declare const Dialog: ({ header, visible, className, footer, onHide, children, }: IProps) => JSX.Element;
 export default Dialog;

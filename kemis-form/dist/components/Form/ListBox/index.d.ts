@@ -14,5 +14,5 @@ interface IProps<T extends FieldValues> {
     optionGroupTemplate?: ReactNode | ((option: any, index: number) => ReactNode);
     listStyle?: React.CSSProperties;
 }
-declare const ListBox: <T extends object>({ className, name, label, form, options, rules, optionGroupLabel, multiple, optionGroupChildren, optionGroupTemplate, listStyle, }: IProps<T>) => React.JSX.Element;
+declare const ListBox: <T extends object>({ className, name, label, form, options, rules, optionGroupLabel, multiple, optionGroupChildren, optionGroupTemplate, listStyle, }: IProps<T>) => JSX.Element;
 export default ListBox;
