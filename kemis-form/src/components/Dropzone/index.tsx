@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Accept, useDropzone } from "react-dropzone";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-// import { useLanguage } from '~~~/hooks/Language';
+// import { useLanguage } from './hooks/Language';
 
 interface IDropzone {
   name?: string;

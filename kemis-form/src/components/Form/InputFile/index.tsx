@@ -7,8 +7,8 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { classNames } from "primereact/utils";
-import Dropzone from "~~~/components/Dropzone";
 import { Accept } from "react-dropzone";
+import Dropzone from "../../Dropzone";
 
 interface IProps<T extends FieldValues> {
   className?: string;

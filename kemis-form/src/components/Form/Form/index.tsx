@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
-import Loading from "~~~/components/Loading";
-import api from "~~~/services/api";
-import Toast from "~~~/utils/toast";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router-dom";
+import Toast from "../../../utils/toast";
+import api from "../../../services/api";
+import Loading from "../../Loading";
 // import { useRouter } from "next/router";
-// import { useLanguage } from '~~~/hooks/Language';
+// import { useLanguage } from './hooks/Language';
 
 type K = {
   id?: number;
