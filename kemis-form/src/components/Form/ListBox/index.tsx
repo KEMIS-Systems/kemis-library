@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from "react";
 import {
   Controller,
   FieldValues,
   RegisterOptions,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import {
-  ListBox as ListBoxPrime,
-  ListBoxOptionGroupTemplateType,
-} from 'primereact/listbox';
-import { classNames } from 'primereact/utils';
-import { SelectItemOptionsType } from 'primereact/selectitem';
+} from "react-hook-form";
+import { ListBox as ListBoxPrime } from "primereact/listbox";
+import { classNames } from "primereact/utils";
+import { SelectItemOptionsType } from "primereact/selectitem";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -23,7 +20,7 @@ interface IProps<T extends FieldValues> {
   multiple?: boolean;
   optionGroupLabel?: string;
   optionGroupChildren?: string;
-  optionGroupTemplate?: ListBoxOptionGroupTemplateType;
+  optionGroupTemplate?: ReactNode | ((option: any, index: number) => ReactNode);
   listStyle?: React.CSSProperties;
 }
 
@@ -41,7 +38,7 @@ const ListBox = <T extends object>({
   listStyle,
 }: IProps<T>) => {
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={"mb-5 " + (className !== undefined && className)}>
       {form && (
         <Controller
           name={name}
@@ -53,7 +50,7 @@ const ListBox = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) + 'block'
+                    classNames({ "text-red-400 ": fieldState.error }) + "block"
                   }
                 >
                   {label}
@@ -65,9 +62,9 @@ const ListBox = <T extends object>({
                   optionGroupLabel={optionGroupLabel}
                   optionGroupChildren={optionGroupChildren}
                   optionGroupTemplate={optionGroupTemplate}
-                  listStyle={listStyle || { maxHeight: '200px' }}
+                  listStyle={listStyle || { maxHeight: "200px" }}
                   className={
-                    classNames({ 'p-invalid ': fieldState.error }) + 'w-full'
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
                   }
                   {...field}
                   ref={ref}

@@ -4,7 +4,8 @@ import Loading from "~/components/Loading";
 import api from "~/services/api";
 import Toast from "~/utils/toast";
 import Swal from "sweetalert2";
-import { useRouter } from "next/router";
+import { useLocation } from "react-router-dom";
+// import { useRouter } from "next/router";
 // import { useLanguage } from '~/hooks/Language';
 
 type K = {
@@ -34,7 +35,7 @@ const Form = <T extends object>({
   form,
   children,
 }: IProps<T>) => {
-  const router = useRouter();
+  const location = useLocation();
   // const { language } = useLanguage();
   const [showLoading, setShowLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -53,14 +54,20 @@ const Form = <T extends object>({
           : data;
         if (dataEdit?.id) {
           formData instanceof FormData
-            ? await api.post(`${url || router.asPath}/${dataEdit.id}`, formData)
-            : await api.put(`${url || router.asPath}/${dataEdit.id}`, formData);
+            ? await api.post(
+                `${url || location.pathname}/${dataEdit.id}`,
+                formData
+              )
+            : await api.put(
+                `${url || location.pathname}/${dataEdit.id}`,
+                formData
+              );
           Toast.fire({
             icon: "success",
             title: "Success",
           });
         } else {
-          await api.post(`${url || router.asPath}`, formData);
+          await api.post(`${url || location.pathname}`, formData);
           Toast.fire({
             icon: "success",
             title: "Success",
@@ -74,7 +81,7 @@ const Form = <T extends object>({
         setShowLoading(false);
       }
     },
-    [dataEdit, url, router, getFormData, handleHide, onRefreshTable]
+    [dataEdit, url, location, getFormData, handleHide, onRefreshTable]
   );
 
   useEffect(() => {

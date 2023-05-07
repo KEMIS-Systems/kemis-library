@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Controller,
   FieldValues,
   RegisterOptions,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { classNames } from 'primereact/utils';
-import { InputNumber as InputNumberPrime } from 'primereact/inputnumber';
-import styled from 'styled-components';
+} from "react-hook-form";
+import { classNames } from "primereact/utils";
+import { InputNumber as InputNumberPrime } from "primereact/inputnumber";
+import styled from "styled-components";
 
 interface IProps<T extends FieldValues> {
   className?: string;
   name: FieldPath<T>;
   label: string;
-  mode?: string;
+  mode?: "decimal" | "currency";
   currency?: string;
   locale?: string;
   form: UseFormReturn<T>;
@@ -42,7 +42,7 @@ const InputNumber = <T extends object>({
   `;
 
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={"mb-5 " + (className !== undefined && className)}>
       {form && (
         <Controller
           name={name}
@@ -54,7 +54,7 @@ const InputNumber = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) + 'block'
+                    classNames({ "text-red-400 ": fieldState.error }) + "block"
                   }
                 >
                   {label}
@@ -62,9 +62,9 @@ const InputNumber = <T extends object>({
                 <InputStyles>
                   <InputNumberPrime
                     id={field.name}
-                    mode={mode || 'currency'}
-                    currency={currency || 'BRL'}
-                    locale={locale || 'pt-BR'}
+                    mode={mode || "currency"}
+                    currency={currency || "BRL"}
+                    locale={locale || "pt-BR"}
                     value={value ? value : field.value}
                     // {...field}
                     ref={ref}

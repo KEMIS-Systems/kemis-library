@@ -3,15 +3,26 @@
   "version": "1.0.0",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "next build",
-    "lint": "next lint"
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint && npm run test",
+    "preversion": "npm run lint && npm run test",
+    "version": "git add package.json && git commit -m 'Bump version'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KEMIS-Systems/components.git"
+    "url": "https://github.com/KEMIS-Systems/components.git"
   },
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
   "author": "Nicanor Orlando",
   "license": "ISC",
   "bugs": {
@@ -29,7 +40,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/node": "^20.0.0",
     "@types/react": "^18.2.5",
+    "@types/styled-components": "^5.1.26",
+    "axios": "^1.4.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.4.1",
     "react-icons": "^4.8.0",
