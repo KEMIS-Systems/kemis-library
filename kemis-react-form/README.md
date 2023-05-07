@@ -1,4 +1,4 @@
-# Steps for Uploading project:
+## Steps for Uploading project:
 
 ### Publish in npm
 
