@@ -1,6 +1,6 @@
-## Steps for Uploading project:
+# Steps for Uploading project:
 
-# Publish in npm
+### Publish in npm
 
 1. Make the changes...
 2. Increment the version
@@ -8,7 +8,7 @@
 4. run `npm pack`
 5. run `npm publish`
 
-# Then to publish in yarn:
+### Then to publish in yarn:
 
 1. Increment the version
 2. run `npm pack`
@@ -16,6 +16,6 @@
 
 ¡Done!
 
-## Author
+# Author
 
 Nicanor Orlando
