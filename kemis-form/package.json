@@ -1,12 +1,12 @@
 {
   "name": "kemis-form",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/src"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",
@@ -21,7 +21,7 @@
   "keywords": [
     "react",
     "components",
-    "ui"
+    "kemis"
   ],
   "author": "Nicanor Orlando nicanororlando@gmail.com",
   "license": "ISC",
