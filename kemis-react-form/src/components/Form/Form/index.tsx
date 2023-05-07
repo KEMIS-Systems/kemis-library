@@ -1,12 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useLocation } from "react-router-dom";
 import Toast from "../../../utils/toast";
 import api from "../../../services/api";
 import Loading from "../../Loading";
-// import { useRouter } from "next/router";
-// import { useLanguage } from './hooks/Language';
 
 type K = {
   id?: number;
@@ -35,8 +32,6 @@ const Form = <T extends object>({
   form,
   children,
 }: IProps<T>) => {
-  const location = useLocation();
-  // const { language } = useLanguage();
   const [showLoading, setShowLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -55,11 +50,11 @@ const Form = <T extends object>({
         if (dataEdit?.id) {
           formData instanceof FormData
             ? await api.post(
-                `${url || location.pathname}/${dataEdit.id}`,
+                `${url || window.location.pathname}/${dataEdit.id}`,
                 formData
               )
             : await api.put(
-                `${url || location.pathname}/${dataEdit.id}`,
+                `${url || window.location.pathname}/${dataEdit.id}`,
                 formData
               );
           Toast.fire({
