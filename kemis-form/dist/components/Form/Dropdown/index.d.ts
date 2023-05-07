@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { FieldValues, RegisterOptions, FieldPath, UseFormReturn } from 'react-hook-form';
 import { SelectItemOptionsType } from 'primereact/selectitem';
 interface IProps<T extends FieldValues> {
@@ -13,5 +13,5 @@ interface IProps<T extends FieldValues> {
     handleAddButton?: (index: number) => void;
     disabled?: boolean;
 }
-declare const Dropdown: <T extends object>({ className, name, label, form, options, selected, rules, autoFocus, handleAddButton, disabled, }: IProps<T>) => JSX.Element;
+declare const Dropdown: <T extends object>({ className, name, label, form, options, selected, rules, autoFocus, handleAddButton, disabled, }: IProps<T>) => React.JSX.Element;
 export default Dropdown;

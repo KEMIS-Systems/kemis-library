@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 import { Accept } from "react-dropzone";
 interface IDropzone {
     name?: string;
@@ -8,5 +8,5 @@ interface IDropzone {
     invalid?: boolean;
     onChange?(files: File[]): void;
 }
-declare const Dropzone: ({ accept, maxFiles, invalid, onChange }: IDropzone) => JSX.Element;
+declare const Dropzone: ({ accept, maxFiles, invalid, onChange }: IDropzone) => React.JSX.Element;
 export default Dropzone;

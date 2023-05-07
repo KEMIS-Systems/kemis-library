@@ -14,5 +14,5 @@ interface IProps<T extends FieldValues> {
     form: UseFormReturn<T>;
     children: React.ReactNode;
 }
-declare const Form: <T extends object>({ onHide, dataEdit, url, submit, onRefreshTable, onSubmit, getFormData, form, children, }: IProps<T>) => JSX.Element;
+declare const Form: <T extends object>({ onHide, dataEdit, url, submit, onRefreshTable, onSubmit, getFormData, form, children, }: IProps<T>) => React.JSX.Element;
 export default Form;

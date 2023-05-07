@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { RegisterOptions, FieldValues, FieldPath, UseFormReturn } from 'react-hook-form';
 import { SelectItemOptionsType } from 'primereact/selectitem';
 interface IProps<T extends FieldValues> {
@@ -13,5 +13,5 @@ interface IProps<T extends FieldValues> {
     autoFocus?: boolean;
     form: UseFormReturn<T>;
 }
-declare const AutoComplete: <T extends object>({ className, name, label, suggestions, handleSearch, rules, autoFocus, form, }: IProps<T>) => JSX.Element;
+declare const AutoComplete: <T extends object>({ className, name, label, suggestions, handleSearch, rules, autoFocus, form, }: IProps<T>) => React.JSX.Element;
 export default AutoComplete;
