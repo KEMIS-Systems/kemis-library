@@ -71,7 +71,16 @@ const Form = <T extends object>({
         onRefreshTable && onRefreshTable(true);
         handleHide();
       } catch (error) {
-        Swal.fire("Opss...", "Error", "error");
+        Swal.fire({
+          title: "Opss...",
+          text: "Error",
+          icon: "error",
+          willOpen: (popup) => {
+            if (popup.parentElement) {
+              popup.parentElement.style.zIndex = "5000";
+            }
+          },
+        });
       } finally {
         setShowLoading(false);
       }

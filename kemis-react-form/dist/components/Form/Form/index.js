@@ -73,7 +73,16 @@ const Form = ({ onHide, dataEdit, url, submit, onRefreshTable, onSubmit, getForm
             handleHide();
         }
         catch (error) {
-            sweetalert2_1.default.fire("Opss...", "Error", "error");
+            sweetalert2_1.default.fire({
+                title: "Opss...",
+                text: "Error",
+                icon: "error",
+                willOpen: (popup) => {
+                    if (popup.parentElement) {
+                        popup.parentElement.style.zIndex = "5000";
+                    }
+                },
+            });
         }
         finally {
             setShowLoading(false);

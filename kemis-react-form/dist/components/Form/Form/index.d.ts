@@ -1,6 +1,6 @@
 import React from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
-declare type K = {
+type K = {
     id?: number;
 };
 interface IProps<T extends FieldValues> {
