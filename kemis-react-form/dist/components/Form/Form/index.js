@@ -55,15 +55,15 @@ const Form = ({ onHide, dataEdit, url, submit, onRefreshTable, onSubmit, getForm
                 : data;
             if (dataEdit === null || dataEdit === void 0 ? void 0 : dataEdit.id) {
                 formData instanceof FormData
-                    ? yield api_1.default.post(`${url || window.location.pathname}/${dataEdit.id}`, formData)
-                    : yield api_1.default.put(`${url || window.location.pathname}/${dataEdit.id}`, formData);
+                    ? yield api_1.default.post(`${url}/${dataEdit.id}`, formData)
+                    : yield api_1.default.put(`${url}/${dataEdit.id}`, formData);
                 toast_1.default.fire({
                     icon: "success",
                     title: "Success",
                 });
             }
             else {
-                yield api_1.default.post(`${url || location.pathname}`, formData);
+                yield api_1.default.post(`${url}`, formData);
                 toast_1.default.fire({
                     icon: "success",
                     title: "Success",

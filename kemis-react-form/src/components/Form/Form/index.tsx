@@ -11,7 +11,7 @@ type K = {
 
 interface IProps<T extends FieldValues> {
   dataEdit?: T & K;
-  url?: string;
+  url: string;
   submit?: boolean;
   onHide?: () => void;
   onRefreshTable?: (refreshTable: boolean) => void;
@@ -49,20 +49,14 @@ const Form = <T extends object>({
           : data;
         if (dataEdit?.id) {
           formData instanceof FormData
-            ? await api.post(
-                `${url || window.location.pathname}/${dataEdit.id}`,
-                formData
-              )
-            : await api.put(
-                `${url || window.location.pathname}/${dataEdit.id}`,
-                formData
-              );
+            ? await api.post(`${url}/${dataEdit.id}`, formData)
+            : await api.put(`${url}/${dataEdit.id}`, formData);
           Toast.fire({
             icon: "success",
             title: "Success",
           });
         } else {
-          await api.post(`${url || location.pathname}`, formData);
+          await api.post(`${url}`, formData);
           Toast.fire({
             icon: "success",
             title: "Success",

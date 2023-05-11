@@ -5,7 +5,7 @@ type K = {
 };
 interface IProps<T extends FieldValues> {
     dataEdit?: T & K;
-    url?: string;
+    url: string;
     submit?: boolean;
     onHide?: () => void;
     onRefreshTable?: (refreshTable: boolean) => void;
