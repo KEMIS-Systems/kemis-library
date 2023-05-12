@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 import { FieldValues, RegisterOptions, FieldPath, UseFormReturn } from "react-hook-form";
 import { InputMaskCompleteEvent } from "primereact/inputmask";
 interface IProps<T extends FieldValues> {
@@ -11,5 +11,5 @@ interface IProps<T extends FieldValues> {
     autoFocus?: boolean;
     onComplete?: (e: InputMaskCompleteEvent) => void;
 }
-declare const InputMask: <T extends object>({ className, name, label, mask, form, rules, autoFocus, onComplete, }: IProps<T>) => JSX.Element;
+declare const InputMask: <T extends object>({ className, name, label, mask, form, rules, autoFocus, onComplete, }: IProps<T>) => React.JSX.Element;
 export default InputMask;

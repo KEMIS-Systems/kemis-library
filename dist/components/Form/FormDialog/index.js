@@ -29,7 +29,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const Form_1 = __importDefault(require("../Form"));
 const Dialog_1 = __importDefault(require("../../Dialog"));
-const FormDialog = ({ onHide, dataEdit, url, onRefreshTable, onSubmit, getFormData, form, header, visible, classNameDialog, children, }) => {
+/**
+ * Displays a form with the specified fields within a modal window. By default when submit it POST/PUT the data in the specified url.
+ *
+ * @children This component Must have a child element (ej: fields)
+ * @param header modal header/title
+ * @param form to control the form data
+ * @param onHide callback to control what happen when you close the modal window
+ * @param visible boolean to control the Modal visibility
+ * @param api (optional) allows to make the POST/PUT request to our service/api
+ * @param path (optional) path to POST/PUT our form data. Previusly you must include the 'api' property and specify your 'base_url' of the service you want to do the request.
+ * @param dataEdit (optional) obj that include initial data to show in fields
+ * @param onSubmit (optional) callback to change what happens on Submit
+ * @param onRefreshTable (optional) callback to refresh data in other site (if needed)
+ * @param getFormData (optional) callback which must returns the form data
+ * @param classNameDialog (optional) to add modal styles
+ */
+const FormDialog = ({ api, onHide, dataEdit, url, onRefreshTable, onSubmit, getFormData, form, header, visible, classNameDialog, children, }) => {
     // const { language } = useLanguage();
     const [submitted, setSubmitted] = (0, react_1.useState)(false);
     const handleHide = (0, react_1.useCallback)(() => {
@@ -47,7 +63,7 @@ const FormDialog = ({ onHide, dataEdit, url, onRefreshTable, onSubmit, getFormDa
                     }, 1000);
                 } }, "Save")))), [handleHide]);
     return (react_1.default.createElement(Dialog_1.default, { header: header, visible: visible, className: `w-full ${classNameDialog}`, footer: footerContent, onHide: handleHide },
-        react_1.default.createElement(Form_1.default, { onHide: handleHide, dataEdit: dataEdit, url: url, submit: submitted, onSubmit: onSubmit, getFormData: getFormData, onRefreshTable: onRefreshTable, form: form }, children)));
+        react_1.default.createElement(Form_1.default, { api: api, onHide: handleHide, dataEdit: dataEdit, path: url, submit: submitted, onSubmit: onSubmit, getFormData: getFormData, onRefreshTable: onRefreshTable, form: form }, children)));
 };
 exports.default = FormDialog;
 //# sourceMappingURL=index.js.map

@@ -1,13 +1,12 @@
 {
   "name": "kemis-react-form",
-  "version": "1.0.19",
+  "version": "1.0.23",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src/styles/*"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",

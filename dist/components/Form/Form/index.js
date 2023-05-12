@@ -38,9 +38,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const sweetalert2_1 = __importDefault(require("sweetalert2"));
 const toast_1 = __importDefault(require("../../../utils/toast"));
-const api_1 = __importDefault(require("../../../services/api"));
 const Loading_1 = __importDefault(require("../../Loading"));
-const Form = ({ onHide, dataEdit, url, submit, onRefreshTable, onSubmit, getFormData, form, children, }) => {
+/**
+ * Displays a form with the specified fields. By default when submit it POST/PUT the data in the specified url.
+ *
+ * @children This component Must have a child element (ej: fields)
+ * @param form to control the form data
+ * @param onHide (optional) callback to control what happen when you close/restart/clean the form
+ * @param api (optional) allows to make the POST/PUT request to our service/api
+ * @param path (optional) path to POST/PUT our form data. Previusly you must include the 'api' property and specify your 'base_url' of the service you want to do the request.
+ * @param dataEdit (optional) obj that include initial data to show in fields
+ * @param onSubmit (optional) callback to change what happens on Submit
+ * @param onRefreshTable (optional) callback to refresh data in other site (if needed)
+ * @param getFormData (optional) callback which must returns the form data
+ */
+const Form = ({ api, onHide, dataEdit, path, submit, onRefreshTable, onSubmit, getFormData, form, children, }) => {
     const [showLoading, setShowLoading] = (0, react_1.useState)(false);
     const [submitted, setSubmitted] = (0, react_1.useState)(false);
     const handleHide = (0, react_1.useCallback)(() => {
@@ -49,45 +61,49 @@ const Form = ({ onHide, dataEdit, url, submit, onRefreshTable, onSubmit, getForm
     }, [onHide, form]);
     const handleSubmitData = (0, react_1.useCallback)((data) => __awaiter(void 0, void 0, void 0, function* () {
         setShowLoading(true);
-        try {
-            const formData = getFormData
-                ? getFormData(data)
-                : data;
-            if (dataEdit === null || dataEdit === void 0 ? void 0 : dataEdit.id) {
-                formData instanceof FormData
-                    ? yield api_1.default.post(`${url}/${dataEdit.id}`, formData)
-                    : yield api_1.default.put(`${url}/${dataEdit.id}`, formData);
-                toast_1.default.fire({
-                    icon: "success",
-                    title: "Success",
+        if (api) {
+            try {
+                const formData = getFormData
+                    ? getFormData(data)
+                    : data;
+                if (dataEdit === null || dataEdit === void 0 ? void 0 : dataEdit.id) {
+                    formData instanceof FormData
+                        ? yield api.post(`${path}/${dataEdit.id}`, formData)
+                        : yield api.put(`${path}/${dataEdit.id}`, formData);
+                    toast_1.default.fire({
+                        icon: "success",
+                        title: "Success",
+                    });
+                }
+                else {
+                    yield api.post(`${path}`, formData);
+                    toast_1.default.fire({
+                        icon: "success",
+                        title: "Success",
+                    });
+                }
+                onRefreshTable && onRefreshTable(true);
+                handleHide();
+            }
+            catch (error) {
+                sweetalert2_1.default.fire({
+                    title: "Opss...",
+                    text: "Error",
+                    icon: "error",
+                    willOpen: (popup) => {
+                        if (popup.parentElement) {
+                            popup.parentElement.style.zIndex = "5000";
+                        }
+                    },
                 });
             }
-            else {
-                yield api_1.default.post(`${url}`, formData);
-                toast_1.default.fire({
-                    icon: "success",
-                    title: "Success",
-                });
+            finally {
+                setShowLoading(false);
             }
-            onRefreshTable && onRefreshTable(true);
-            handleHide();
         }
-        catch (error) {
-            sweetalert2_1.default.fire({
-                title: "Opss...",
-                text: "Error",
-                icon: "error",
-                willOpen: (popup) => {
-                    if (popup.parentElement) {
-                        popup.parentElement.style.zIndex = "5000";
-                    }
-                },
-            });
-        }
-        finally {
-            setShowLoading(false);
-        }
-    }), [dataEdit, url, location, getFormData, handleHide, onRefreshTable]);
+        else
+            console.error("If you want to POST/PUT, you must include the 'api' property in Form component.");
+    }), [dataEdit, path, location, getFormData, handleHide, onRefreshTable]);
     (0, react_1.useEffect)(() => {
         submit && setSubmitted(submit);
     }, [submit]);

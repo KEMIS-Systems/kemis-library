@@ -1,20 +1,17 @@
-## Steps for Uploading project:
-
 ### Code Example (using a form inside a Modal window) in a React TypeScript project:
 
 ```typescript
 import { useCallback, useEffect, useState } from "react";
-import { NextPage } from "next";
-import { SelectItemOptionsType } from "primereact/selectitem";
-import { useForm } from "react-hook-form";
+import { SelectItemOptionsType } from "primereact/selectitem"; // Optional: For Dropdown
+import { useForm } from "react-hook-form"; // Give us access to many form features
 import {
   Dropdown,
   FormDialog,
   InputText,
   InputTextArea,
 } from "kemis-react-form"; // Import the package
-// Optional: our custom model
-import IMEquipment from "~/models/Equipments";
+import IMEquipment from "~/models/Equipments"; // Our custom model
+import axios from 'axios'; // Optional: To create the API instance to send the POST/PUT request
 
 interface IModalProps {
   header: string;
@@ -33,6 +30,10 @@ const ModalForm = ({ header, show, dataEdit, onHide, onRefreshTable }) => {
   const [customers, setCustomers] = useState<SelectItemOptionsType>([
     { id: 1, name: "Nicanor Orlando" },
   ]);
+  // To submit the form and POST/PUT the data in our selected url:
+  const api = axios.create({
+    baseURL: "our-backend-base-url.com,
+  });
 
   // To fetch the data to show in dropdown:
   useEffect(() => {
@@ -68,13 +69,15 @@ const ModalForm = ({ header, show, dataEdit, onHide, onRefreshTable }) => {
 
   return (
     <FormDialog
-      header={header}
-      dataEdit={dataEdit}
-      form={form}
-      visible={show}
-      onHide={handleHide}
-      onRefreshTable={onRefreshTable}
-      classNameDialog="w-5/6 lg:w-3/6"
+      api={api} // Optional: This obj allows to make the POST/PUT request to our service/api
+      url="/example/api/" // Optional: path to POST/PUT our form data
+      header={header} // Modal header
+      dataEdit={dataEdit} // If we want to autocomplete fields
+      form={form} // To control the form data
+      visible={show} // Boolean to show the form
+      onHide={handleHide} // We send our function to control what happen when we close the modal window
+      onRefreshTable={onRefreshTable} // Optional: Function to refresh the table when we close our form
+      classNameDialog="w-5/6 lg:w-3/6" // Optional: Custom className
     >
       // If we want, we can divide the visual in tabs:
       <TabView renderActiveOnly={false}>
@@ -121,8 +124,7 @@ const ModalForm = ({ header, show, dataEdit, onHide, onRefreshTable }) => {
               autoFocus
               name="zip_code"
               label="Zip code"
-              // Specificate the mask to use:
-              mask="99.999-999"
+              mask="99.999-999" // To specificate the mask to use
               form={form}
               onComplete={(e) => console.log("Execute our function if we want")}
             />
@@ -134,14 +136,6 @@ const ModalForm = ({ header, show, dataEdit, onHide, onRefreshTable }) => {
 };
 export default ModalForm;
 ```
-
-### Publish the package
-
-1. Make the changes...
-2. Increment the version
-3. run `npm run build`
-4. run `npm pack`
-5. run `npm publish`
 
 ## Author
 
