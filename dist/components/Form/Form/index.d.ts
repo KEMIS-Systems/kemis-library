@@ -4,7 +4,7 @@ import { AxiosInstance } from "axios";
 type K = {
     id?: number;
 };
-interface IProps<T extends FieldValues> {
+export interface IProps<T extends FieldValues> {
     api?: AxiosInstance;
     dataEdit?: T & K;
     path?: string;

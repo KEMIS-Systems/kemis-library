@@ -9,7 +9,7 @@ type K = {
   id?: number;
 };
 
-export interface IProps<T extends FieldValues> {
+interface IProps<T extends FieldValues> {
   api?: AxiosInstance;
   dataEdit?: T & K;
   path?: string;

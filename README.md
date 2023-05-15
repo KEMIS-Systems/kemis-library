@@ -11,7 +11,7 @@ import {
   InputTextArea,
 } from "kemis-react-form"; // Import the package
 import IMEquipment from "~/models/Equipments"; // Our custom model
-import axios from 'axios'; // Optional: To create the API instance to send the POST/PUT request
+import axios from "axios"; // Optional: To create the API instance to send the POST/PUT request
 
 interface IModalProps {
   header: string;
@@ -20,6 +20,8 @@ interface IModalProps {
   onHide: () => void;
   onRefreshTable: (refreshTable: boolean) => void;
 }
+
+const defaultValues: IMEquipment = {} as IMEquipment;
 
 const ModalForm = ({ header, show, dataEdit, onHide, onRefreshTable }) => {
   // Control the form:
@@ -32,7 +34,7 @@ const ModalForm = ({ header, show, dataEdit, onHide, onRefreshTable }) => {
   ]);
   // To submit the form and POST/PUT the data in our selected url:
   const api = axios.create({
-    baseURL: "our-backend-base-url.com,
+    baseURL: "our-backend-base-url.com",
   });
 
   // To fetch the data to show in dropdown:
