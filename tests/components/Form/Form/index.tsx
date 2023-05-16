@@ -55,52 +55,46 @@ const Form = <T extends object>({
     onHide && onHide();
   }, [onHide, form]);
 
-  const handleSubmitData = useCallback(
-    async (data: FieldValues) => {
-      setShowLoading(true);
-      if (api) {
-        try {
-          const formData: FieldValues | FormData = getFormData
-            ? getFormData(data)
-            : data;
-          if (dataEdit?.id) {
-            formData instanceof FormData
-              ? await api.post(`${path}/${dataEdit.id}`, formData)
-              : await api.put(`${path}/${dataEdit.id}`, formData);
-            Toast.fire({
-              icon: "success",
-              title: "Success",
-            });
-          } else {
-            await api.post(`${path}`, formData);
-            Toast.fire({
-              icon: "success",
-              title: "Success",
-            });
-          }
-          onRefreshTable && onRefreshTable(true);
-          handleHide();
-        } catch (error) {
-          Swal.fire({
-            title: "Opss...",
-            text: "Error",
-            icon: "error",
-            willOpen: (popup) => {
-              if (popup.parentElement) {
-                popup.parentElement.style.zIndex = "5000";
-              }
-            },
-          });
-        } finally {
-          setShowLoading(false);
+  const handleSubmitData = useCallback(async () => {
+    setShowLoading(true);
+    if (api) {
+      try {
+        const formData = getFormData
+          ? getFormData(form.getValues())
+          : form.getValues();
+        if (dataEdit?.id) {
+          formData instanceof FormData
+            ? await api.post(`${path}/${dataEdit.id}`, formData)
+            : await api.put(`${path}/${dataEdit.id}`, formData);
+        } else {
+          await api.post(`${path}`, formData);
         }
-      } else
-        console.error(
-          "If you want to POST/PUT, you must include the 'api' property in Form component."
-        );
-    },
-    [dataEdit, path, getFormData, handleHide, onRefreshTable]
-  );
+        Toast.fire({
+          icon: "success",
+          title: "Success",
+        });
+        onRefreshTable && onRefreshTable(true);
+        handleHide();
+      } catch (error) {
+        Swal.fire({
+          title: "Opss...",
+          text: "Error",
+          icon: "error",
+          willOpen: (popup) => {
+            if (popup.parentElement) {
+              popup.parentElement.style.zIndex = "5000";
+            }
+          },
+        });
+      } finally {
+        setShowLoading(false);
+      }
+    } else {
+      console.error(
+        "If you want to POST/PUT, you must include the 'api' property in Form component."
+      );
+    }
+  }, [dataEdit, path, getFormData, handleHide, onRefreshTable, form, api]);
 
   useEffect(() => {
     submit && setSubmitted(submit);
