@@ -1,3 +1,7 @@
+## Kemis Library
+
+Common components, utils, hooks, ..., etc, used by the Company.
+
 ### Code Example (using a form inside a Modal window) in a React TypeScript project:
 
 ```typescript
