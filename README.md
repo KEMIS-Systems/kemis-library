@@ -1,6 +1,14 @@
 ## Kemis Library
 
-Common components, utils, hooks, ..., etc, used by the Company.
+Here you may fonund common components, utils, hooks, ..., etc, used by the Company.
+
+### How to import:
+
+```typescript
+import { Dropdown, FormDialog, InputText } from "kemis-react-form/components";
+import { Loading } from "kemis-react-form/components";
+import { toast } from "kemis-react-form/utils";
+```
 
 ### Code Example (using a form inside a Modal window) in a React TypeScript project:
 

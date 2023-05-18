@@ -1,7 +1,8 @@
 ### To Update/Publish this package
 
-1. Make the changes...
-2. Increment the version
-3. run `npm run build`
-4. run `npm pack`
-5. run `npm publish`
+1. Go to the \_development folder.
+2. Make the changes.
+3. Increase the version in the Package.json.
+4. Within the \_development folder, run `npm run build`.
+5. go to the root folder: `cd ..`.
+6. run `npm publish`.
