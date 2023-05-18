@@ -24,7 +24,7 @@ describe("Form component", () => {
   const onRefreshTable = jest.fn();
 
   it("it renders the form, fires the onSubmit function, and makes a POST call with the correct arguments", async () => {
-    const mockedHandleSubmit = jest.fn((onSubmit) => (data) => {
+    const mockedHandleSubmit = jest.fn((onSubmit) => () => {
       onSubmit(formData);
     });
 

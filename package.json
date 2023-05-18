@@ -1,13 +1,12 @@
 {
   "name": "kemis-react-form",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "components/**",
-    "services/**",
     "utils/**",
     "index.js",
     "index.js.map",
@@ -55,6 +54,7 @@
     "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
     "axios-mock-adapter": "^1.21.4",
+    "copyfiles": "^2.4.1",
     "eslint": "8.39.0",
     "eslint-config-next": "13.4.1",
     "jsdom": "^22.0.0",
