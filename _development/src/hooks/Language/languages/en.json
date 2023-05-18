@@ -1,0 +1,920 @@
+{
+  "components": {
+    "error": {
+      "message": "An error has occurred. Please try again later."
+    },
+    "dropzone": {
+      "message": "Drop files here to upload or click to select files",
+      "example": "Download example file"
+    },
+    "photo": {
+      "message": "Click here to take a photo"
+    }
+  },
+  "navbar": {
+    "filter": "Filter",
+    "message": {
+      "hello": "Hello"
+    }
+  },
+  "side_navbar": {
+    "span_1": "Profile",
+    "span_2": "Support",
+    "span_3": "Log out"
+  },
+  "input": {
+    "button_accept": "Accept",
+    "button_cancel": "Cancel",
+    "button_save": "Save",
+    "button_clear": "Clear",
+    "button_filter": "Filter",
+    "button_delete": "Delete",
+    "button_edit": "Edit",
+    "placeholder": {
+      "search": "Search"
+    },
+    "password": {
+      "header": "Choose a password",
+      "bottom": {
+        "title": "Suggestions",
+        "rules": {
+          "rule1": "At least one lowercase letter",
+          "rule2": "At least one capital letter",
+          "rule3": "At least one numeric",
+          "rule4": "Minimum of 8 characters"
+        }
+      }
+    }
+  },
+  "booleans": {
+    "yes": "Yes",
+    "no": "No",
+    "ok": "Ok",
+    "noOk": "Not ok"
+  },
+  "default": {
+    "import_message": "The import may take a few minutes. We'll send you an email once it's finished.",
+    "validations": {
+      "cnpj": "The CNPJ entered is not valid.",
+      "cpf": "The CPF entered is not valid."
+    }
+  },
+  "database": {
+    "modules": {
+      "KEMIS": "KEMIS",
+      "Administrative": "Administrative",
+      "Human Resources": "Human Resources",
+      "Training Management": "Training Management",
+      "Equipment Management": "Equipment Management",
+      "Warehouse": "Warehouse",
+      "Equity Controls": "Equity Controls",
+      "DMS": "Document Management System",
+      "Rental": "Rental"
+    },
+    "controllers": {
+      "Clients": "Clients",
+      "Companies": "Companies",
+      "Access groups": "Access groups",
+      "Users": "Users",
+      "Customers": "Customers",
+      "Vendors": "Vendors",
+      "Departments": "Departments",
+      "Contracts": "Contracts",
+      "Files types": "Files types",
+      "Roles": "Roles",
+      "Employees": "Employees",
+      "File manager": "File manager",
+      "Hirings": "Hirings",
+      "Reports": "Reports",
+      "Groups": "Groups",
+      "Courses": "Courses",
+      "Trainings": "Trainings",
+      "External training": "External training",
+      "Certifications": "Certifications",
+      "Models": "Models",
+      "Equipments": "Equipments",
+      "Certification management": "Certification management",
+      "Measurement units": "Measurement Units",
+      "Supplies": "Supplies",
+      "Inventory types": "Inventory Types",
+      "Inventory": "Inventory",
+      "Stock": "Stock",
+      "Shopping request": "Shopping Request",
+      "Shopping": "Shopping",
+      "Assets": "Assets",
+      "Files": "Files",
+      "Pending": "Pending",
+      "Categories": "Categories",
+      "Proposals": "Proposals",
+      "Service orders": "Service Orders",
+      "Loadouts": "Loadouts",
+      "Equipment Inspection Report": "Equipment Inspection Report",
+      "Logistics": "Logistics"
+    },
+    "permissions": {
+      "View only": "View only",
+      "Full access": "Full access",
+      "Advanced access": "Advanced access"
+    },
+    "human_resources": {
+      "employees": {
+        "status": {
+          "Active": "Active",
+          "Fired": "Fired"
+        }
+      },
+      "hirings": {
+        "status": {
+          "Waiting to fill in the data": "Waiting to fill in the data",
+          "Completed data": "Completed data",
+          "Hired": "Hired"
+        }
+      }
+    },
+    "trainings": {
+      "status": {
+        "Scheduled": "Scheduled",
+        "Passed": "Passed",
+        "Failed": "Failed",
+        "Absent": "Absent",
+        "Not completed": "Not completed"
+      }
+    }
+  },
+  "pages": {
+    "message": {
+      "empty": "No data found.",
+      "pages": "Items per page"
+    },
+    "alerts": {
+      "edit": {
+        "success": "Record updated successfully"
+      },
+      "add": {
+        "success": "New record successfully saved!"
+      },
+      "copy": {
+        "success": "Link copied to clipboard"
+      },
+      "error": {
+        "error": "There was an error saving the data",
+        "error_filter": "There was an error filtering the data.",
+        "zip_code_not_found": "Zip code not found"
+      },
+      "delete": {
+        "confirm": "This action is irreversible. Do you want to proceed?",
+        "sucess": "Deleted successfully.",
+        "error": "An error has occurred while deleting the item."
+      }
+    },
+    "auth": {
+      "marketing": {
+        "title": "It's time for you to become a ",
+        "customer": "customer"
+      }
+    },
+    "login": {
+      "title": "Log in",
+      "subTitle": "Enter fields to proceed",
+      "buttons": {
+        "login": "Log in"
+      },
+      "texts": {
+        "dontHaveAccount": "Don't have an account? "
+      },
+      "links": {
+        "forgotPassword": "I forgot my password",
+        "register": "Create an account"
+      },
+      "errors": {
+        "err_acess": "Failed to access the system"
+      }
+    },
+    "forgotPassword": {
+      "title": "I forgot my password",
+      "subTitle": "Enter your email to proceed",
+      "message": {
+        "title": "Success",
+        "subTitle": "Email sent for setting new password"
+      },
+      "buttons": {
+        "forgotPassword": "Submit"
+      },
+      "links": {
+        "login": "Login"
+      },
+      "errors": {
+        "title": "Error",
+        "subTitle": "Failed to send email"
+      }
+    },
+    "resetPassword": {
+      "title": "Set a new password",
+      "subTitle": "Please enter your new password",
+      "buttons": {
+        "resetPassword": "Redefine password"
+      },
+      "message": {
+        "alert": {
+          "title": "Attention",
+          "subTitle": "Passwords do not match, check data"
+        },
+        "success": {
+          "title": "Very good!",
+          "subTitle": "Password has been changed successfully"
+        },
+        "errors": {
+          "err_acess": "There was an error changing the password, please try again"
+        }
+      },
+      "links": {
+        "login": "Login"
+      }
+    },
+    "register": {
+      "title": "Sign Up",
+      "subTitle": "Complete the following fields to register",
+      "buttons": {
+        "previous": "Return",
+        "next": "Continue",
+        "acess": "Get access"
+      },
+      "plans": {
+        "title": "Choose a plan",
+        "subTitle": "Choose the perfect plan type for you",
+        "free": {
+          "descriptions": {
+            "line1": "Get access to the training of your employees carried out at our partners",
+            "line2": "Quickly download the certificate or statement of completion of training for your employees"
+          }
+        },
+        "human_resources": {
+          "descriptions": {
+            "line1": "All features of the Free version",
+            "line2": "Management of all company employees",
+            "line3": "Training matrix",
+            "line4": "Employee files matrix",
+            "line5": "Employee file management"
+          }
+        }
+      }
+    },
+    "kemis": {
+      "clients": {
+        "modalAdd": "Add client",
+        "modalEdit": "Edit client",
+        "table": {
+          "columns": {
+            "name": "Name",
+            "company_name": "Company name",
+            "document": "Document",
+            "email": "Email",
+            "url": "URL",
+            "phonenumber": "Phone number",
+            "zip_code": "Zip code",
+            "street": "Street",
+            "number": "Number",
+            "neighborhood": "Neighborhood",
+            "city": "City",
+            "state": "State",
+            "disk_space": "Disk space",
+            "inactive": "Inactive",
+            "complement": "Complement"
+          }
+        },
+        "home": {
+          "users": {
+            "modalAdd": "Add user",
+            "modalEdit": "Edit user",
+            "table": {
+              "columns": {
+                "access_group": "Access group",
+                "name": "Name",
+                "email": "Email"
+              }
+            }
+          },
+          "pack": {
+            "modalAdd": "Add pack",
+            "modalEdit": "Edit pack",
+            "table": {
+              "columns": {
+                "pack": "Pack",
+                "price": "Price",
+                "expiration_date": "Expiration date"
+              }
+            }
+          }
+        }
+      },
+      "companies": {
+        "modalAdd": "Add companie",
+        "modalEdit": "Edit companie",
+        "table": {
+          "columns": {
+            "name": "Name",
+            "company_name": "Company name",
+            "document": "Document",
+            "email": "Email",
+            "url": "URL",
+            "phonenumber": "Phone number",
+            "zip_code": "Zip code",
+            "street": "Address",
+            "number": "Number",
+            "neighborhood": "Neighborhood",
+            "city": "City",
+            "state": "State",
+            "comments": "Comments",
+            "complement": "Complement"
+          }
+        }
+      }
+    },
+    "administrative": {
+      "users": {
+        "modalAdd": "Add users",
+        "modalEdit": "Edit users",
+        "table": {
+          "columns": {
+            "name": "Name",
+            "email": "Email",
+            "client": "Client",
+            "access_group": "Access group",
+            "inactive": "Inactive",
+            "password": "Password",
+            "department": "Department"
+          }
+        },
+        "modalKey": {
+          "title": "Generate new user API key",
+          "info": "The key will only be available at that time. After that, you will need to generate a new key.",
+          "buttons": {
+            "generate": "Generate",
+            "close": "Close"
+          }
+        }
+      },
+      "access_groups": {
+        "modalAdd": "Add access group",
+        "modalEdit": "Edit access group",
+        "table": {
+          "columns": {
+            "access_group": "Access group"
+          }
+        },
+        "home": {
+          "tabview": {
+            "header": {
+              "controllers": "Controllers"
+            }
+          },
+          "controllers": {
+            "modalEdit": "Edit controller",
+            "modalAdd": "Add controller",
+            "table": {
+              "columns": {
+                "module": "Module",
+                "controller": "Controller",
+                "permission": "Permission"
+              }
+            }
+          }
+        }
+      },
+      "customers": {
+        "modalAdd": "Add customer",
+        "modalEdit": "Edit customer",
+        "table": {
+          "columns": {
+            "name": "Name",
+            "company_name": "Company name",
+            "document": "Document",
+            "email": "Email",
+            "url": "URL",
+            "phonenumber": "Phone number",
+            "zip_code": "Zip code",
+            "street": "Street",
+            "number": "Number",
+            "neighborhood": "Neighborhood",
+            "city": "City",
+            "state": "State",
+            "comments": "Comments"
+          }
+        }
+      },
+      "departments": {
+        "modalAdd": "Add department",
+        "modalEdit": "Edit department",
+        "table": {
+          "columns": {
+            "department": "Departamento",
+            "code": "Code"
+          }
+        }
+      },
+      "cost_centers": {
+        "modalAdd": "Add cost center",
+        "modalEdit": "Edit cost center",
+        "table": {
+          "columns": {
+            "cost_center": "Cost center"
+          }
+        }
+      }
+    },
+    "human_resources": {
+      "contracts": {
+        "modalAdd": "Add contract",
+        "modalEdit": "Edit contract",
+        "table": {
+          "columns": {
+            "contract": "Contract",
+            "customer": "Customer",
+            "start_date": "Start date",
+            "end_date": "End date",
+            "amount": "Amount",
+            "inactive": "Inactive"
+          }
+        },
+        "home": {
+          "workplace": {
+            "title": "Workplace",
+            "modalAdd": "Add workplace",
+            "modalEdit": "Edit workplace",
+            "table": {
+              "columns": {
+                "work_place": "Workplace",
+                "comments": "Comments"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "modalAdd": "Add file type",
+        "modalEdit": "Edit file type",
+        "table": {
+          "columns": {
+            "file_types": "File type",
+            "default": "Default"
+          }
+        },
+        "home": {
+          "tabview": {
+            "header": {
+              "role": "Role"
+            }
+          },
+          "roles": {
+            "modalAdd": "Add roles",
+            "modalEdit": "Edit roles",
+            "table": {
+              "columns": {
+                "role": "Role",
+                "contract": "Contract"
+              }
+            }
+          }
+        }
+      },
+      "roles": {
+        "modalAdd": "Add role",
+        "modalEdit": "Edit role",
+        "table": {
+          "columns": {
+            "role": "Role",
+            "code": "Code"
+          }
+        },
+        "home": {
+          "tabview": {
+            "header": {
+              "courses": "Training matrix",
+              "file_types": "File types"
+            }
+          },
+          "courses": {
+            "modalAdd": "Add course",
+            "modalEdit": "Edit course",
+            "table": {
+              "columns": {
+                "course": "Course",
+                "contract": "Contract"
+              }
+            }
+          },
+          "file_types": {
+            "modalAdd": "Add file type",
+            "modalEdit": "Edit file type",
+            "table": {
+              "columns": {
+                "file_type": "File type",
+                "contract": "Contract"
+              }
+            }
+          }
+        }
+      },
+      "employees": {
+        "modalAdd": "Add employee",
+        "modalEdit": "Edit employee",
+        "tabview": {
+          "header": {
+            "principal_data": "Principal data",
+            "contact_data": "Contact data"
+          }
+        },
+        "table": {
+          "columns": {
+            "company": "Company",
+            "enroll": "Enroll number",
+            "name": "Name",
+            "role": "Position",
+            "document": "Document",
+            "passport": "Passport",
+            "birth_date": "Birth date",
+            "date_admission": "Date of admission",
+            "date_dismissal": "Date of dismissal",
+            "department": "Department",
+            "contract": "Contract",
+            "work_place": "Work place",
+            "phone": "Telephone",
+            "cellphone": "Cell",
+            "email": "Email",
+            "zip_code": "Zip code",
+            "street": "Address",
+            "number": "Number",
+            "complement": "Complement",
+            "neighborhood": "Neighborhood",
+            "city": "City",
+            "state": "State",
+            "status": "Status",
+            "password": "Password"
+          }
+        },
+        "home": {
+          "califications": {
+            "title": "Qualifications",
+            "modalAdd": "Add calification",
+            "modalEdit": "Edit calification",
+            "table": {
+              "columns": {
+                "course": "Course",
+                "completion_date": "Completion date",
+                "validity": "Validity (months)",
+                "expiration_date": "Expiration Date"
+              }
+            }
+          },
+          "files": {
+            "title": "Files",
+            "modal": {
+              "modalAdd": "Register file",
+              "modalEdit": "Edit file"
+            },
+            "table": {
+              "columns": {
+                "type": "File type",
+                "training": "Training",
+                "description": "Description",
+                "expiration_date": "Expiration date"
+              }
+            }
+          }
+        }
+      },
+      "hirings": {
+        "modal": {
+          "modalAdd": "Add hiring",
+          "modalEdit": "Edit hiring",
+          "tabs": {
+            "main": "Main",
+            "personal_data": "Personal data",
+            "complementary_data": "Complementary data"
+          }
+        },
+        "table": {
+          "columns": {
+            "name": "Name",
+            "role": "Role",
+            "birth_date": "Birthdate",
+            "status": "Status",
+            "employee": "Employee",
+            "document": "Document",
+            "passport": "Passport",
+            "phone": "Phone",
+            "cellphone": "Cellphone",
+            "email": "Email",
+            "files": "Files",
+            "zip_code": "Zip code",
+            "street": "Street",
+            "neighborhood": "Neighborhood",
+            "city": "City",
+            "state": "State",
+            "observations": "Observations",
+            "guidelines": "Guidelines",
+            "about_me": "About me"
+          }
+        }
+      },
+      "reports": {
+        "report": "Report",
+        "role": "Role",
+        "department": "Department",
+        "course": "Course",
+        "start_date": "Start date",
+        "end_date": "End date",
+        "msg_alert": "Select a report",
+        "btn_excel": "Excel report",
+        "btn_filter": "Filter",
+        "charts": {
+          "title_percentage": "Percentage of training",
+          "title_quantity": "Amount of training",
+          "due_in_45": "Due in 45 days",
+          "due_in_90": "Due in 90 days",
+          "in_day": "In day",
+          "overdue": "Overdue"
+        }
+      }
+    },
+    "training_management": {
+      "groups": {
+        "modalAdd": "Add group",
+        "modalEdit": "Edit group",
+        "table": {
+          "columns": {
+            "group": "Group"
+          }
+        }
+      },
+      "courses": {
+        "modalAdd": "Add course",
+        "modalEdit": "Edit course",
+        "table": {
+          "columns": {
+            "group": "Group",
+            "course": "Course",
+            "validity": "validity (months)",
+            "workload": "Workload",
+            "code": "Code"
+          }
+        },
+        "home": {
+          "titles": {
+            "roles": "Roles",
+            "syllabus": "Syllabus"
+          },
+          "roles": {
+            "title": "Roles",
+            "modalAdd": "Add roles",
+            "modalEdit": "Edit roles",
+            "table": {
+              "columns": {
+                "role": "Role",
+                "contract": "Contract"
+              }
+            }
+          },
+          "syllabus": {
+            "title": "Syllabus",
+            "modalAdd": "Edit syllabus",
+            "modalEdit": "Add syllabus",
+            "table": {
+              "columns": {
+                "order": "Order",
+                "content": "Content",
+                "content_english": "English content"
+              }
+            }
+          },
+          "instructors": {
+            "title": "Instructors",
+            "modalAdd": "Add instructor",
+            "modalEdit": "Edit instructor",
+            "table": {
+              "columns": {
+                "order": "Order",
+                "name": "Name",
+                "role": "Role",
+                "document": "Document",
+                "upload": "Signature?"
+              }
+            }
+          }
+        }
+      },
+      "trainings": {
+        "modalAdd": "Add student",
+        "modalEdit": "Edit student",
+        "table": {
+          "columns": {
+            "employee": "Employee",
+            "enroll": "Enroll",
+            "course": "Course",
+            "start_date": "Start date",
+            "end_date": "End date",
+            "validity": "validity",
+            "workload": "Workload",
+            "amount": "Amount",
+            "status": "Status",
+            "certificate_number": "Certificate number",
+            "key": "Key",
+            "expiration_date": "Expiration date",
+            "signed": "Signed",
+            "start_expiration": "Start expiration",
+            "end_expiration": "End expiration"
+          }
+        }
+      },
+      "validate_certificate": {
+        "mensages": {
+          "invalid": "Invalid certificate",
+          "valid": "Valid certificate"
+        }
+      }
+    },
+    "equipment_management": {
+      "certifications": {
+        "modalAdd": "Add certification",
+        "modalEdit": "Edit certification",
+        "table": {
+          "columns": {
+            "certification": "Certification",
+            "validity": "Validity (months)"
+          }
+        }
+      },
+      "groups": {
+        "modalAdd": "Add group",
+        "modalEdit": "Edit group",
+        "table": {
+          "columns": {
+            "group": "Group"
+          }
+        },
+        "home": {
+          "certifications": {
+            "title": "Certifications",
+            "modalAdd": "Add certification",
+            "modalEdit": "Edit certification",
+            "table": {
+              "columns": {
+                "group": "Group",
+                "certification": "Certification"
+              }
+            }
+          }
+        }
+      },
+      "models": {
+        "title": "Model",
+        "modalAdd": "Add model",
+        "modalEdit": "Edit model",
+        "table": {
+          "columns": {
+            "group": "Group",
+            "model": "Model",
+            "cost_standart": "Standard cost",
+            "weight": "Weight"
+          }
+        },
+        "home": {
+          "certifications": {
+            "title": "Certifications",
+            "modalAdd": "Add certification",
+            "modalEdit": "Edit certification",
+            "table": {
+              "columns": {
+                "certification": "Certification"
+              }
+            }
+          }
+        }
+      },
+      "equipments": {
+        "tabs": {
+          "general": "General Data",
+          "complement": "Complementary Data"
+        },
+        "title": "Equipment",
+        "modalAdd": "Add equipment",
+        "modalEdit": "Edit equipment",
+        "table": {
+          "columns": {
+            "group": "Group",
+            "model": "Model",
+            "weight": "Weight",
+            "company": "Company",
+            "type": "Type",
+            "details": "Details",
+            "serial_number": "Serial number",
+            "manufacturer": "Manufacturer",
+            "year_of_manufacture": "Year of manufacturer",
+            "dimensions": "Dimensions",
+            "cost_price": "Cost value",
+            "observation": "Observation",
+            "created_at": "Created at"
+          }
+        },
+        "home": {
+          "certifications": {
+            "title": "Certifications",
+            "modalAdd": "Add certification",
+            "modalEdit": "Edit certification",
+            "table": {
+              "columns": {
+                "certification": "Certification",
+                "certification_date": "Certification date",
+                "validity": "Validity (months)",
+                "expiration_date": "Expiration date",
+                "certification_number": "Certification number"
+              }
+            }
+          },
+          "files": {
+            "title": "Files",
+            "modalEdit": "Edit file",
+            "modalAdd": "Add file",
+            "table": {
+              "columns": {
+                "description": "Description"
+              }
+            }
+          }
+        }
+      }
+    },
+    "warehouse": {
+      "measurement_units": {
+        "modalAdd": "Register unit of measurement",
+        "modalEdit": "Edit unit of measurement",
+        "table": {
+          "columns": {
+            "measurement_unit": "Unit of measurement"
+          }
+        }
+      },
+      "inventory_type": {
+        "modalAdd": "Register unit of inventory",
+        "modalEdit": "Edit unit of inventory",
+        "table": {
+          "columns": {
+            "inventory_type": "Inventory unit",
+            "in_out": "Input / Output",
+            "input": "Input",
+            "output": "Output"
+          }
+        }
+      },
+      "inventory": {
+        "modalAdd": "Register unit of inventory",
+        "modalEdit": "Edit unit of inventory",
+        "table": {
+          "columns": {
+            "company": "Company",
+            "inventory_type": "Inventory type",
+            "date": "Date",
+            "concluded": "Concluded"
+          }
+        },
+        "home": {
+          "supplies": {
+            "modalAdd": "Add supply",
+            "modalEdit": "Edit supply",
+            "title": "Supplies",
+            "table": {
+              "columns": {
+                "group": "Group",
+                "details": "Supply",
+                "serial_number": "Serial number",
+                "measurement_unit": "Unit of measurement",
+                "quantity": "Quantity",
+                "cost_price": "Cost value",
+                "total_value": "Total value"
+              }
+            }
+          }
+        }
+      },
+      "supplies": {
+        "modalAdd": "Add supply",
+        "modalEdit": "Edit supply",
+        "table": {
+          "columns": {
+            "group": "Group",
+            "details": "Supply",
+            "serial_number": "Serial number",
+            "measurement_unit": "Unit of measurement",
+            "manufacturer": "Manufacturer",
+            "manufacturer_code": "Manufacturer code",
+            "quantity": "Quantity",
+            "cost_price": "Cost value",
+            "dimensions": "Dimensions",
+            "weight": "Weight",
+            "observation": "Observation"
+          }
+        }
+      }
+    }
+  }
+}

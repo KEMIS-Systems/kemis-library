@@ -1,0 +1,919 @@
+{
+  "components": {
+    "error": {
+      "message": "Ocorreu um erro ao gerar o arquivo, tente novamente."
+    },
+    "dropzone": {
+      "message": "Arraste um arquivo para cá ou clique para selecionar",
+      "example": "Baixar arquivo de exemplo"
+    },
+    "photo": {
+      "message": "Clique aqui para tirar uma foto"
+    }
+  },
+  "navbar": {
+    "filter": "Filtro",
+    "message": {
+      "hello": "Olá"
+    }
+  },
+  "side_navbar": {
+    "span_1": "Perfil",
+    "span_2": "Suporte",
+    "span_3": "Sair"
+  },
+  "input": {
+    "button_accept": "Aceitar",
+    "button_cancel": "Cancelar",
+    "button_save": "Salvar",
+    "button_clear": "Limpar",
+    "button_filter": "Filtrar",
+    "button_delete": "Apagar",
+    "button_edit": "Editar",
+    "placeholder": {
+      "search": "Procurar"
+    },
+    "password": {
+      "header": "Escolha uma senha",
+      "bottom": {
+        "title": "Sugestões",
+        "rules": {
+          "rule1": "Pelo menos uma letra minúscula",
+          "rule2": "Pelo menos uma letra maiúscula",
+          "rule3": "Pelo menos um numérico",
+          "rule4": "Mínimo de 8 caracteres"
+        }
+      }
+    }
+  },
+  "booleans": {
+    "yes": "Sim",
+    "no": "Não",
+    "ok": "Ok",
+    "noOk": "Não ok"
+  },
+  "default": {
+    "import_message": "A importação pode demorar alguns minutos. Enviaremos um e-mail assim que estiver terminado.",
+    "validations": {
+      "cnpj": "O CNPJ informado não é válido.",
+      "cpf": "O CPF informado não é válido."
+    }
+  },
+  "database": {
+    "modules": {
+      "KEMIS": "KEMIS",
+      "Administrative": "Administrativo",
+      "Human Resources": "Recursos Humanos",
+      "Training Management": "Gestão de Treinamentos",
+      "Equipment Management": "Gestão de equipamentos",
+      "Warehouse": "Almoxarifado",
+      "Equity Controls": "Controle patrimonial",
+      "DMS": "Sistema de gestão de documentos",
+      "Rental": "Aluguel"
+    },
+    "controllers": {
+      "Clients": "Clientes",
+      "Companies": "Empresas",
+      "Access groups": "Grupos de acesso",
+      "Users": "Usuários",
+      "Customers": "Clientes",
+      "Vendors": "Fornecedores",
+      "Departments": "Departamentos",
+      "Contracts": "Contratos",
+      "Files types": "Tipos de arquivos",
+      "Roles": "Categorias funcionais",
+      "Employees": "Colaboradores",
+      "File manager": "Gerenciador de arquivos",
+      "Hirings": "Contratações",
+      "Reports": "Relatórios",
+      "Groups": "Grupos",
+      "Courses": "Cursos",
+      "Trainings": "Treinamentos",
+      "External training": "Treinamento externo",
+      "Certifications": "Certificações",
+      "Models": "Modelos",
+      "Equipments": "Equipamentos",
+      "Certification management": "Gestão de certificação",
+      "Measurement units": "Unidades de medida",
+      "Supplies": "Suprimentos",
+      "Inventory types": "Tipos de inventários",
+      "Inventory": "Inventário",
+      "Stock": "Estoque",
+      "Shopping request": "Pedido de compra",
+      "Shopping": "Compras",
+      "Assets": "Ativo",
+      "Files": "Arquivos",
+      "Pending": "Pendente",
+      "Categories": "Categorias",
+      "Proposals": "Propostas",
+      "Service orders": "Ordens de serviço",
+      "Loadouts": "Carregamentos",
+      "Equipment Inspection Report": "Relatório de inspeção de equipamento",
+      "Logistics": "Logística"
+    },
+    "permissions": {
+      "View only": "Somente visualização",
+      "Full access": "Acesso completo",
+      "Advanced access": "Acesso avançado"
+    },
+    "human_resources": {
+      "employees": {
+        "status": {
+          "Active": "Ativo",
+          "Fired": "Demitido"
+        }
+      },
+      "hirings": {
+        "status": {
+          "Waiting to fill in the data": "Aguardando preenchimento dos dados",
+          "Completed data": "Dados completos",
+          "Hired": "Contratado"
+        }
+      }
+    },
+    "trainings": {
+      "status": {
+        "Scheduled": "Agendado",
+        "Passed": "Aprovado",
+        "Failed": "Reprovado",
+        "Absent": "Ausente",
+        "Not completed": "Não concluído"
+      }
+    }
+  },
+  "pages": {
+    "message": {
+      "empty": "Nenhum registro encontrado.",
+      "pages": "Itens por página"
+    },
+    "alerts": {
+      "edit": {
+        "success": "Dados atualizados com sucesso!"
+      },
+      "add": {
+        "success": "Dados salvos com sucesso!"
+      },
+      "copy": {
+        "success": "Link copiado para a área de transferência"
+      },
+      "error": {
+        "error": "Erro ao salvar os dados!",
+        "error_filter": "Erro ao filtrar os dados!",
+        "zip_code_not_found": "CEP não encontrado!"
+      },
+      "delete": {
+        "confirm": "Esta ação é irreversível. Deseja prosseguir?",
+        "sucess": "Registro eliminado con sucesso!",
+        "error": "Não foi possível apagar o registro."
+      }
+    },
+    "auth": {
+      "marketing": {
+        "title": "Chegou a hora de você virar um cliente ",
+        "customer": ""
+      }
+    },
+    "login": {
+      "title": "Entrar",
+      "subTitle": "Insira os campos para prosseguir",
+      "buttons": {
+        "login": "Entrar"
+      },
+      "texts": {
+        "dontHaveAccount": "Não tem conta? "
+      },
+      "links": {
+        "forgotPassword": "Esqueci minha senha",
+        "register": "Criar conta"
+      },
+      "errors": {
+        "err_acess": "Falha ao tentar acessar o sistema"
+      }
+    },
+    "forgotPassword": {
+      "title": "Esqueci minha senha",
+      "subTitle": "Insira seu email para prosseguir",
+      "message": {
+        "title": "Sucesso",
+        "subTitle": "Email enviado para a definição de nova senha"
+      },
+      "buttons": {
+        "forgotPassword": "Enviar"
+      },
+      "links": {
+        "login": "Login"
+      },
+      "errors": {
+        "title": "Erro",
+        "subTitle": "Falha ao enviar email"
+      }
+    },
+    "resetPassword": {
+      "title": "Definir uma nova senha",
+      "subTitle": "Por favor, digite sua nova senha",
+      "buttons": {
+        "resetPassword": "Redefinir senha"
+      },
+      "message": {
+        "alert": {
+          "title": "Atenção",
+          "subTitle": "As senhas não correspondem, verifique os dados"
+        },
+        "success": {
+          "title": "Muito bem!",
+          "subTitle": "A senha foi alterada com sucesso"
+        },
+        "errors": {
+          "err_acess": "Ocorreu um erro ao alterar a senha, tente novamente"
+        }
+      },
+      "links": {
+        "login": "Login"
+      }
+    },
+    "register": {
+      "title": "Cadastrar-se",
+      "subTitle": "Insira os campos para prosseguir",
+      "buttons": {
+        "previous": "Voltar",
+        "next": "Continuar",
+        "acess": "Obter acesso"
+      },
+      "plans": {
+        "title": "Escolha um plano",
+        "subTitle": "Escolha o tipo de plano perfeito para você",
+        "free": {
+          "descriptions": {
+            "line1": "Tenha acesso aos treinamentos de seus empregados realizados em nossos parceiros",
+            "line2": "Baixe de forma rápida o certificado ou declaração de conclusão de treinamento dos seus empregados"
+          }
+        },
+        "human_resources": {
+          "descriptions": {
+            "line1": "Todos os recursos da versão Free",
+            "line2": "Gestão de todos os empregados da empresa",
+            "line3": "Matriz de treinamentos",
+            "line4": "Matriz de arquivos dos empregados",
+            "line5": "Gestão de arquivos dos empregados"
+          }
+        }
+      }
+    },
+    "kemis": {
+      "clients": {
+        "modalAdd": "Cadastrar cliente",
+        "modalEdit": "Editar cliente",
+        "table": {
+          "columns": {
+            "name": "Razão Social",
+            "company_name": "Nome fantasia",
+            "document": "Documento",
+            "email": "Email",
+            "url": "URL",
+            "phonenumber": "Telefone",
+            "zip_code": "CEP",
+            "street": "Endereço",
+            "number": "Número",
+            "complement": "Complemento",
+            "neighborhood": "Bairro",
+            "city": "Cidade",
+            "state": "Estado",
+            "disk_space": "Espaço em disco",
+            "inactive": "Inativo"
+          }
+        },
+        "home": {
+          "users": {
+            "modalAdd": "Cadastrar usuário",
+            "modalEdit": "Editar usuário",
+            "table": {
+              "columns": {
+                "access_group": "Grupo de acesso",
+                "name": "Nome",
+                "email": "Email"
+              }
+            }
+          },
+          "pack": {
+            "modalAdd": "Cadastrar pacote",
+            "modalEdit": "Editar pacote",
+            "table": {
+              "columns": {
+                "pack": "Pacote",
+                "price": "Valor",
+                "expiration_date": "Data de vencimento"
+              }
+            }
+          }
+        }
+      },
+      "companies": {
+        "modalAdd": "Adicionar empresa",
+        "modalEdit": "Editar empresa",
+        "table": {
+          "columns": {
+            "name": "Razão social",
+            "company_name": "Nome fantasia",
+            "document": "CNPJ",
+            "email": "Email",
+            "url": "URL",
+            "phonenumber": "Celular",
+            "zip_code": "CEP",
+            "street": "Endereço",
+            "number": "Número",
+            "neighborhood": "Bairro",
+            "city": "Cidade",
+            "state": "Estado",
+            "comments": "Comentário",
+            "complement": "Complemento"
+          }
+        }
+      }
+    },
+    "administrative": {
+      "users": {
+        "modalAdd": "Cadastrar usuário",
+        "modalEdit": "Editar usuário",
+        "table": {
+          "columns": {
+            "name": "Nome",
+            "email": "Email",
+            "client": "Cliente",
+            "access_group": "Grupo de acesso",
+            "inactive": "Inativo",
+            "password": "Senha",
+            "department": "Departamento"
+          }
+        },
+        "modalKey": {
+          "title": "Gerar chave para API",
+          "info": "A chave estará disponível apenas nesse momento. Após isso, será necessário gerar uma nova chave.",
+          "buttons": {
+            "generate": "Gerar",
+            "close": "Fechar"
+          }
+        }
+      },
+      "access_groups": {
+        "modalAdd": "Cadastrar grupo de acesso",
+        "modalEdit": "Editar grupo de acesso",
+        "table": {
+          "columns": {
+            "access_group": "Grupo de acesso"
+          }
+        },
+        "home": {
+          "tabview": {
+            "header": {
+              "controllers": "Controles de acesso"
+            }
+          },
+          "controllers": {
+            "modalAdd": "Cadastrar página",
+            "modalEdit": "Editar página",
+            "table": {
+              "columns": {
+                "module": "Módulo",
+                "controller": "Página",
+                "permission": "Permissão"
+              }
+            }
+          }
+        }
+      },
+      "customers": {
+        "modalAdd": "Adicionar cliente",
+        "modalEdit": "Editar cliente",
+        "table": {
+          "columns": {
+            "name": "Razão social",
+            "company_name": "Nome fantasia",
+            "document": "CNPJ",
+            "email": "Email",
+            "url": "URL",
+            "phonenumber": "Celular",
+            "zip_code": "CEP",
+            "street": "Endereço",
+            "number": "Número",
+            "neighborhood": "Bairro",
+            "city": "Cidade",
+            "state": "Estado",
+            "comments": "Comentário"
+          }
+        }
+      },
+      "departments": {
+        "modalAdd": "Cadastrar departamento",
+        "modalEdit": "Editar departamento",
+        "table": {
+          "columns": {
+            "department": "Departamento",
+            "code": "Código"
+          }
+        }
+      },
+      "cost_centers": {
+        "modalAdd": "Cadastrar centro de custo",
+        "modalEdit": "Editar centro de custo",
+        "table": {
+          "columns": {
+            "cost_center": "Centro de custo"
+          }
+        }
+      }
+    },
+    "human_resources": {
+      "contracts": {
+        "modalAdd": "Cadastrar contrato",
+        "modalEdit": "Editar contrato",
+        "table": {
+          "columns": {
+            "contract": "Contrato",
+            "customer": "Cliente",
+            "start_date": "Data de início",
+            "end_date": "Data de término",
+            "amount": "Valor",
+            "inactive": "Inativo"
+          }
+        },
+        "home": {
+          "workplace": {
+            "title": "Local de trabalho",
+            "modalAdd": "Cadastrar local de trabalho",
+            "modalEdit": "Editar local de trabalho",
+            "table": {
+              "columns": {
+                "work_place": "Local de trabalho",
+                "comments": "Comentário"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "modalAdd": "Cadastrar tipo de arquivo",
+        "modalEdit": "Editar tipo de arquivo",
+        "table": {
+          "columns": {
+            "file_types": "Tipo de arquivo",
+            "default": "Padrão"
+          }
+        },
+        "home": {
+          "tabview": {
+            "header": {
+              "role": "Categoria funcional"
+            }
+          },
+          "roles": {
+            "modalAdd": "Cadastrar categoria funcional",
+            "modalEdit": "Editar categoria funcional",
+            "table": {
+              "columns": {
+                "role": "Categoria funcional",
+                "contract": "Contrato"
+              }
+            }
+          }
+        }
+      },
+      "roles": {
+        "modalAdd": "Cadastrar categoria funcional",
+        "modalEdit": "Editar categoria funcional",
+        "table": {
+          "columns": {
+            "role": "Categoria funcional",
+            "code": "Código"
+          }
+        },
+        "home": {
+          "tabview": {
+            "header": {
+              "courses": "Matriz de treinamento",
+              "file_types": "Tipos de arquivo"
+            }
+          },
+          "courses": {
+            "modalAdd": "Cadastrar curso",
+            "modalEdit": "Editar curso",
+            "table": {
+              "columns": {
+                "course": "Curso",
+                "contract": "Contrato"
+              }
+            }
+          },
+          "file_types": {
+            "modalAdd": "Cadastrar tipo de arquivo",
+            "modalEdit": "Editar tipo de arquivo",
+            "table": {
+              "columns": {
+                "file_type": "Tipo de arquivo",
+                "contract": "Contrato"
+              }
+            }
+          }
+        }
+      },
+      "employees": {
+        "modalAdd": "Cadastrar colaborador",
+        "modalEdit": "Editar colaborador",
+        "tabview": {
+          "header": {
+            "principal_data": "Dados principais",
+            "contact_data": "Dados de contato"
+          }
+        },
+        "table": {
+          "columns": {
+            "company": "Empresa",
+            "enroll": "Matrícula",
+            "name": "Nome",
+            "role": "Categoria funcional",
+            "document": "Documento",
+            "passport": "Passaporte",
+            "birth_date": "Data de nascimento",
+            "date_admission": "Data de admissão",
+            "date_dismissal": "Data de demissão",
+            "department": "Departamento",
+            "contract": "Contrato",
+            "work_place": "Local de trabalho",
+            "phone": "Telefone",
+            "cellphone": "Celular",
+            "email": "Email",
+            "zip_code": "CEP",
+            "street": "Rua",
+            "number": "Número",
+            "complement": "Complemento",
+            "neighborhood": "Bairro",
+            "city": "Cidade",
+            "state": "Estado",
+            "status": "Status",
+            "password": "Senha"
+          }
+        },
+        "home": {
+          "califications": {
+            "title": "Qualificações",
+            "modalAdd": "Cadastrar treinamento",
+            "modalEdit": "Editar treinamento",
+            "table": {
+              "columns": {
+                "course": "Curso",
+                "completion_date": "Data de conclusão",
+                "validity": "Validade (meses)",
+                "expiration_date": "Data de vencimento"
+              }
+            }
+          },
+          "files": {
+            "title": "Arquivos",
+            "modal": {
+              "modalAdd": "Cadastrar arquivo",
+              "modalEdit": "Editar arquivo"
+            },
+            "table": {
+              "columns": {
+                "type": "Tipo de arquivo",
+                "training": "Treinamento",
+                "description": "Descrição",
+                "expiration_date": "Data de vencimento"
+              }
+            }
+          }
+        }
+      },
+      "hirings": {
+        "modal": {
+          "modalAdd": "Adicionar contratação",
+          "modalEdit": "Editar contratação",
+          "tabs": {
+            "main": "Principal",
+            "personal_data": "Dados pessoais",
+            "complementary_data": "Dados complementares"
+          }
+        },
+        "table": {
+          "columns": {
+            "name": "Nome",
+            "role": "Categoria funcional",
+            "birth_date": "Data de nascimento",
+            "status": "Status",
+            "employee": "Colaborador",
+            "document": "CPF",
+            "passport": "Passaporte",
+            "phone": "Telefone",
+            "cellphone": "Celular",
+            "email": "E-mail",
+            "files": "Arquivos",
+            "zip_code": "CEP",
+            "street": "Rua",
+            "neighborhood": "Bairro",
+            "city": "Cidade",
+            "state": "Estado",
+            "observations": "Observações internas",
+            "guidelines": "Orientações para o colaborador",
+            "about_me": "Sobre mim - descrito pelo colaborador"
+          }
+        }
+      },
+      "reports": {
+        "report": "Relatório",
+        "role": "Função",
+        "department": "Departamento",
+        "course": "Curso",
+        "start_date": "Data de início",
+        "end_date": "Data de término",
+        "msg_alert": "Selecione um relatório",
+        "btn_excel": "Relatório Excel",
+        "btn_filter": "Filtrar",
+        "charts": {
+          "title_percentage": "Porcentagem de treinamento",
+          "title_quantity": "Quantidade de treinamento",
+          "due_in_45": "Vencimento em 45 dias",
+          "due_in_90": "Vencimento em 90 dias",
+          "in_day": "Hoje",
+          "overdue": "Atrasado"
+        }
+      }
+    },
+    "training_management": {
+      "groups": {
+        "modalAdd": "Cadastrar grupo",
+        "modalEdit": "Editar grupo",
+        "table": {
+          "columns": {
+            "group": "Grupo"
+          }
+        }
+      },
+      "courses": {
+        "modalAdd": "Cadastrar curso",
+        "modalEdit": "Editar curso",
+        "table": {
+          "columns": {
+            "group": "Grupo",
+            "course": "Curso",
+            "validity": "Validade (meses)",
+            "workload": "Carga horária",
+            "code": "Código"
+          }
+        },
+        "home": {
+          "titles": {
+            "roles": "Categoria funcional",
+            "syllabus": "Conteúdo programático"
+          },
+          "roles": {
+            "title": "Roles",
+            "modalAdd": "Cadastrar categoria funcional",
+            "modalEdit": "Editar categoria funcional",
+            "table": {
+              "columns": {
+                "role": "Categoria funcional",
+                "contract": "Contrato"
+              }
+            }
+          },
+          "syllabus": {
+            "title": "Conteúdo programático",
+            "modalAdd": "Cadastrar conteúdo programático",
+            "modalEdit": "Editar conteúdo programático",
+            "table": {
+              "columns": {
+                "order": "Ordem",
+                "content": "Conteúdo",
+                "content_english": "Conteúdo em inglês"
+              }
+            }
+          },
+          "instructors": {
+            "title": "Instrutores",
+            "modalAdd": "Cadastrar instrutor",
+            "modalEdit": "Editar instrutor",
+            "table": {
+              "columns": {
+                "order": "Ordem",
+                "name": "Nome",
+                "role": "Role",
+                "document": "Documento",
+                "upload": "Assinatura?"
+              }
+            }
+          }
+        }
+      },
+      "trainings": {
+        "modalAdd": "Cadastrar treinamento",
+        "modalEdit": "Editar treinamento",
+        "table": {
+          "columns": {
+            "employee": "Colaborador",
+            "enroll": "Matrícula",
+            "course": "Curso",
+            "start_date": "Data de início",
+            "end_date": "Data de término",
+            "validity": "Validade",
+            "workload": "Carga horária",
+            "amount": "Valor",
+            "status": "Status",
+            "certificate_number": "Certificado",
+            "key": "Chave",
+            "signed": "Assinado",
+            "start_expiration": "Data de início da validade",
+            "end_expiration": "Data de término da validade",
+            "expiration_date": "Vencimento"
+          }
+        }
+      },
+      "validate_certificate": {
+        "mensages": {
+          "invalid": "Certificado inválido",
+          "valid": "Certificado válido"
+        }
+      }
+    },
+    "equipment_management": {
+      "certifications": {
+        "modalAdd": "Cadastrar certificação",
+        "modalEdit": "Editar certificação",
+        "table": {
+          "columns": {
+            "certification": "Certificação",
+            "validity": "Validade (meses)"
+          }
+        }
+      },
+      "groups": {
+        "modalAdd": "Cadastrar grupo",
+        "modalEdit": "Editar grupo",
+        "table": {
+          "columns": {
+            "group": "Grupo"
+          }
+        },
+        "home": {
+          "certifications": {
+            "title": "Certificações",
+            "modalAdd": "Cadastrar certificação",
+            "modalEdit": "Editar certificação",
+            "table": {
+              "columns": {
+                "group": "Grupo",
+                "certification": "Certificação"
+              }
+            }
+          }
+        }
+      },
+      "models": {
+        "title": "Modelo",
+        "modalAdd": "Cadastrar modelo",
+        "modalEdit": "Editar modelo",
+        "table": {
+          "columns": {
+            "group": "Grupo",
+            "model": "Modelo",
+            "cost_standart": "Custo padrão",
+            "weight": "Peso"
+          }
+        },
+        "home": {
+          "certifications": {
+            "title": "Certificações",
+            "modalAdd": "Cadastrar certificação",
+            "modalEdit": "Editar certificação",
+            "table": {
+              "columns": {
+                "certification": "Certificação"
+              }
+            }
+          }
+        }
+      },
+      "equipments": {
+        "tabs": {
+          "general": "Dados Gerais",
+          "complement": "Dados Complementares"
+        },
+        "modalAdd": "Cadastrar equipamento",
+        "modalEdit": "Editar equipamento",
+        "table": {
+          "columns": {
+            "group": "Grupo",
+            "model": "Modelo",
+            "weight": "Peso",
+            "company": "Empresa",
+            "type": "Tipo",
+            "details": "Equipamento",
+            "serial_number": "Número de série",
+            "manufacturer": "Fabricante",
+            "year_of_manufacture": "Ano de fabricação",
+            "dimensions": "Dimensões",
+            "cost_price": "Valor de custo",
+            "observation": "Observação",
+            "created_at": "Data de cadastro"
+          }
+        },
+        "home": {
+          "certifications": {
+            "title": "Certificações",
+            "modalAdd": "Cadastrar certificação",
+            "modalEdit": "Editar certificação",
+            "table": {
+              "columns": {
+                "certification": "Certificação",
+                "certification_date": "Data da certificação",
+                "validity": "Validade (meses)",
+                "expiration_date": "Data de vencimento",
+                "certification_number": "Número da certificação"
+              }
+            }
+          },
+          "files": {
+            "title": "Arquivos",
+            "modalAdd": "Cadastrar arquivo",
+            "modalEdit": "Editar arquivo",
+            "table": {
+              "columns": {
+                "description": "Descrição"
+              }
+            }
+          }
+        }
+      }
+    },
+    "warehouse": {
+      "measurement_units": {
+        "modalAdd": "Cadastrar unidade de medida",
+        "modalEdit": "Editar unidade de medida",
+        "table": {
+          "columns": {
+            "measurement_unit": "Unidade de medida"
+          }
+        }
+      },
+      "inventory_type": {
+        "modalAdd": "Cadastrar tipo de inventário",
+        "modalEdit": "Editar tipo de inventário",
+        "table": {
+          "columns": {
+            "inventory_type": "Tipo",
+            "in_out": "Entrada / Saída",
+            "input": "Entrada",
+            "output": "Saída"
+          }
+        }
+      },
+      "inventory": {
+        "modalAdd": "Cadastrar inventario",
+        "modalEdit": "Editar unidade de medida",
+        "table": {
+          "columns": {
+            "company": "Empresa",
+            "inventory_type": "Tipo de inventário",
+            "date": "Data",
+            "concluded": "Concluído"
+          }
+        },
+        "home": {
+          "supplies": {
+            "modalAdd": "Cadastrar suprimento",
+            "modalEdit": "Editar suprimento",
+            "title": "Suprimetos",
+            "table": {
+              "columns": {
+                "group": "Grupo",
+                "details": "Suprimento",
+                "serial_number": "Código",
+                "measurement_unit": "Unidade de medida",
+                "quantity": "Quantidade",
+                "cost_price": "Preço de custo",
+                "total_value": "Valor total"
+              }
+            }
+          }
+        }
+      },
+      "supplies": {
+        "modalAdd": "Cadastrar suprimento",
+        "modalEdit": "Editar suprimento",
+        "table": {
+          "columns": {
+            "group": "Grupo",
+            "details": "Suprimento",
+            "serial_number": "Código",
+            "measurement_unit": "Unidade de medida",
+            "manufacturer": "Fabricante",
+            "manufacturer_code": "Código do fabricante",
+            "quantity": "Quantidade",
+            "cost_price": "Preço de custo",
+            "dimensions": "Dimensões",
+            "weight": "Peso",
+            "observation": "Observações"
+          }
+        }
+      }
+    }
+  }
+}
