@@ -13,7 +13,7 @@ import {
   FormDialog,
   InputText,
   InputTextArea,
-} from "kemis-react-form"; // Import the package
+} from "kemis-react-form/components"; // Import the package
 import IMEquipment from "~/models/Equipments"; // Our custom model
 import axios from "axios"; // Optional: To create the API instance to send the POST/PUT request
 

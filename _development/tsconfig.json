@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react",
+    "outDir": "../",
+    "sourceMap": true,
+    "declaration": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "src/setupTests.js",
+    "src/**/__tests__",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ]
+}
+// <root>/components/...
+// <root>/utils/...
+// <root>/index.js
+// <root>/index.js.map
+// <root>/index.d.ts
+// <root>/tsconfig.tsbuildinfo
+// <root>/_development/src/index.tsx // main file
+// <root>/_development/src/components/...
+// <root>/_development/src/utils/...
+// <root>/_development/node_modules/...
+// <root>/_development/package.json
+// <root>/_development/.gitignore
+// <root>/_development/tsconfig.json
+// <root>/_development/UpdateProject.md
+// <root>/_development/jest.config.js
