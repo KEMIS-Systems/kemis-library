@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "react",
-    "outDir": "../",
+    "outDir": "./build",
     "sourceMap": true,
     "declaration": true,
     "allowJs": true,
