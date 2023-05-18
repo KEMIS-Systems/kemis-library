@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "react",
-    "outDir": "dist/",
+    "outDir": "./",
     "sourceMap": true,
     "declaration": true,
     "allowJs": true,
@@ -23,12 +23,3 @@
   "include": ["src"],
   "exclude": ["node_modules"]
 }
-// src/components/Dialog/index.tsx
-// src/components/Form/Form/index.tsx
-// src/components/Form/FormDialog/index.tsx
-// src/components/Form/AutoComplete/index.tsx
-// src/components/Form/InputDate/index.tsx
-// src/services/Api/index.tsx
-// src/services/Fetch/index.tsx
-// src/utils/calculateData.tsx
-// src/utils/calculate.tsx
