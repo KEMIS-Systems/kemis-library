@@ -20,7 +20,11 @@
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/setupTests.js"],
+  "baseUrl": "src",
+  "paths": {
+    "~/*": ["*"]
+  },
   "exclude": [
     "node_modules",
     "src/setupTests.js",

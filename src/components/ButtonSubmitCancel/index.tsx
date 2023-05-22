@@ -19,7 +19,7 @@ export const ButtonSubmitCancel = ({
   onSubmit,
   handleHide,
 }: IModalButtonsProps) => {
-  const { language } = useLanguage();
+  const language = useLanguage();
   return (
     <div className="flex justify-end gap-3">
       <div>

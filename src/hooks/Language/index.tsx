@@ -1,23 +1,16 @@
 import { ILanguage } from "./languages";
 
-interface LanguageContextData {
+export interface LanguageContextData {
   language: ILanguage;
 }
 
-export const Language = {} as LanguageContextData;
+export function useLanguage(): ILanguage {
+  let idiom = "";
+  // TIP: window !== undefined is the same as typeof window !== "undefined"
+  if (window !== undefined) idiom = window.location.pathname.slice(1, 3);
+  if (idiom !== "pt" && idiom !== "en" && idiom !== "es") idiom = "pt";
 
-export const LanguageContextData = () => {
-  const language = () => {
-    let idiom = window.location.pathname.slice(0, 3);
-    if (idiom === null || idiom === undefined || idiom === "") idiom = "pt";
-    return require(`./languages/${idiom}`);
-  };
-
-  return language;
-};
-
-export function useLanguage(): LanguageContextData {
-  const language = Language;
+  const language = require(`./languages/${idiom}`);
 
   return language;
 }
