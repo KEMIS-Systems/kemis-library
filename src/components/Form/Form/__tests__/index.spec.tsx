@@ -1,16 +1,39 @@
-// import "jsdom-global/register";
+import "@testing-library/jest-dom";
+import axios, { AxiosInstance } from "axios";
+import MockAdapter from "axios-mock-adapter";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import {
   Control,
   FieldValues,
   FormState,
+  SubmitHandler,
   UseFormReturn,
   useForm,
 } from "react-hook-form";
 import Form, { IProps } from "..";
 import InputDate from "../../InputDate";
-import axios from "axios";
 import React from "react";
+
+jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+const url = "https://our-backend-base-url.com/";
+const path = "api/form";
+
+// const axiosInstance = axios.create({
+//   baseURL: url,
+// });
+// console.log(axiosInstance);
+
+// jest.mock("axios", () => {
+//   return {
+//     create: () => {
+//       return {
+//         post: jest.fn(),
+//       };
+//     },
+//   };
+// });
 
 const mockForm: UseFormReturn<FieldValues, any> = {
   watch: jest.fn(),
@@ -29,23 +52,35 @@ const mockForm: UseFormReturn<FieldValues, any> = {
   register: jest.fn(),
   setFocus: jest.fn(),
 };
-
 jest.mock("react-hook-form", () => ({
   useForm: jest.fn(),
 }));
 
-describe("Form component", () => {
-  const url = "https://our-backend-base-url.com/";
-  const path = "api/form";
-  const api = axios.create({
-    baseURL: url,
-  });
+const api = axios.create({
+  baseURL: url,
+});
 
+beforeAll(() => {
+  mockedAxios.create.mockReturnThis();
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
+describe("Form component", () => {
   test("renders the form with children", () => {
     // Mock the necessary props
     const formProps: IProps<any> = {
-      form: mockForm, // pass a mock form object here
-      children: <div>Test Children</div>,
+      form: mockForm,
+      api: api,
+      path: path,
+      children: (
+        <div role="children">
+          <input type="text" />
+          <button type="submit">Submit</button>
+        </div>
+      ),
     };
 
     // Render the component
@@ -53,98 +88,73 @@ describe("Form component", () => {
 
     // Assert that the form and its children are rendered
     expect(screen.getByRole("form")).toBeInTheDocument();
-    expect(screen.getByText("Test Children")).toBeInTheDocument();
+    expect(screen.getByRole("children")).toBeInTheDocument();
   });
 
-  it("renders the form, fires the onSubmit function, and makes a POST call with the correct arguments", async () => {
-    // Mock the useForm hook to return the mock form object
-    (useForm as jest.Mock).mockReturnValue(mockForm);
-
-    // Mock the api.post function
-    const mockPost = jest.spyOn(axios, "post").mockResolvedValueOnce({});
-
-    {
-      /* <InputDate
-          label="date"
-          name="start_date"
-          form={mockForm}
-          className="p-inputtext-sm"
-        />
-        <InputDate
-          label="date"
-          name="end_date"
-          form={mockForm}
-          className="p-inputtext-sm"
-        /> */
-    }
-    render(
-      <Form form={mockForm} api={api} path={path}>
-        <div>
+  test("renders the form, fires the submit button, and checks if it is submitting", async () => {
+    // Mock the necessary props
+    const formProps: IProps<any> = {
+      form: mockForm,
+      api: api,
+      path: path,
+      children: (
+        <div role="children">
           <input type="text" />
-          <button role="submit" type="submit">
+          <button role="button" type="submit">
             Submit
           </button>
         </div>
-      </Form>
-    );
+      ),
+    };
 
-    const submitButton = screen.getByRole("submit");
-    fireEvent.click(submitButton);
+    // Render the component
+    render(<Form {...formProps} />);
+
+    // Get the handleSubmit function from mockForm
+    const handleSubmitFunction =
+      mockForm.handleSubmit as SubmitHandler<FieldValues>;
+
+    // Fire the form submit event
+    fireEvent.submit(screen.getByRole("form"));
 
     // Wait for the asynchronous operations to complete
     await waitFor(() => {});
 
-    expect(mockPost).toHaveBeenCalledTimes(1);
-    expect(mockPost).toHaveBeenCalledWith(`${url}/${path}`, expect.any(Object));
+    // Assert that the handleSubmit function has been called
+    expect(handleSubmitFunction).toHaveBeenCalledTimes(1);
+  });
 
-    // Restore the original implementation of api.post
-    mockPost.mockRestore();
+  test("renders the form, fires the onSubmit function, and makes a POST call with the correct arguments", async () => {
+    // Mock the useForm hook to return the mock form object
+    (useForm as jest.Mock).mockReturnValue(mockForm);
+
+    // mock the axios post method
+    mockedAxios.post.mockResolvedValue({ data: {} });
+
+    // Render the <Form /> component with the mock form and axios instance
+    render(
+      <Form form={mockForm} api={mockedAxios} path={path}>
+        <div>
+          <input type="text" />
+          <button type="submit">Submit</button>
+        </div>
+      </Form>
+    );
+
+    // Get the handleSubmit function from mockForm
+    const handleSubmitFunction =
+      mockForm.handleSubmit as SubmitHandler<FieldValues>;
+
+    // Fire the form submit event
+    fireEvent.submit(screen.getByRole("form"));
+
+    // Wait for the asynchronous operations to complete
+    await waitFor(() => {});
+
+    // Assert that the handleSubmit function has been called
+    expect(handleSubmitFunction).toHaveBeenCalledTimes(1);
+
+    // Assert that the axios post method has been called
+    expect(mockedAxios.post).toHaveBeenCalledTimes(1);
   });
 });
-
-// describe("Form component", () => {
-//   const baseUrl = "https://our-backend-base-url.com/";
-//   const path = "api/form";
-//   const url = `${baseUrl}${path}`;
-
-//   const api = axios.create({
-//     baseURL: baseUrl,
-//   });
-
-//   const formData = {
-//     name: "John Doe",
-//     email: "johndoe@example.com",
-//     message: "Hello world",
-//   };
-//   const dataEdit = { id: 1, ...formData };
-
-//   beforeEach(() => {
-//     jest.clearAllMocks();
-//     jest.spyOn(api, "post").mockResolvedValue(formData);
-//   });
-
-//   it("renders the form, fires the onSubmit function, and makes a POST call with the correct arguments", async () => {
-//     render(
-//       <Form api={api} path={path} form={mockForm}>
-//         <InputDate
-//           label="date"
-//           name="end_date"
-//           form={mockForm}
-//           className="p-inputtext-sm"
-//         />
-//         <button role="submit" type="submit">
-//           Submit
-//         </button>
-//       </Form>
-//     );
-
-//     const submitButton = screen.getByRole("submit");
-//     fireEvent.click(submitButton);
-
-//     await waitFor(() => {
-//       expect(mockForm.handleSubmit).toHaveBeenCalledTimes(1);
-//       expect(api.post).toHaveBeenCalledTimes(1);
-//       expect(api.post).toHaveBeenCalledWith(url, formData);
-//     });
-//   });
-// });

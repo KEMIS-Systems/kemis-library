@@ -15,6 +15,7 @@ describe("useLanguage hook", () => {
       /* Checks if the property exists in the original window object.
       If it doesn't, it means the property was added during the test. */
       if (!(key in originalWindow)) {
+        // Cleans up modified properties.
         delete window[key];
       }
     }

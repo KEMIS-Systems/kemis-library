@@ -57,6 +57,7 @@ const Form = <T extends object>({
 
   const handleSubmitData = useCallback(
     async (data: FieldValues) => {
+      console.log("handleSubmit called with data:", data);
       setShowLoading(true);
       if (api) {
         try {
