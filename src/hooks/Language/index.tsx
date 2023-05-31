@@ -4,7 +4,7 @@ export interface LanguageContextData {
   language: ILanguage;
 }
 
-export function useLanguage(): ILanguage {
+export function useLanguage(): { language: ILanguage } {
   let idiom = "";
   // TIP: window !== undefined is the same as typeof window !== "undefined"
   if (window !== undefined) idiom = window.location.pathname.slice(1, 3);
@@ -12,5 +12,5 @@ export function useLanguage(): ILanguage {
 
   const language = require(`./languages/${idiom}`);
 
-  return language;
+  return { language };
 }

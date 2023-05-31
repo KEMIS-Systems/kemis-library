@@ -28,7 +28,7 @@ describe("useLanguage hook", () => {
       location: { pathname: "/en/path" },
     }));
 
-    const language = useLanguage();
+    const { language } = useLanguage();
     expect(language).toEqual(enTranslations);
 
     windowSpy.mockRestore();
@@ -41,14 +41,14 @@ describe("useLanguage hook", () => {
       location: { pathname: "/es/path" },
     }));
 
-    const language = useLanguage();
+    const { language } = useLanguage();
     expect(language).toEqual(esTranslations);
 
     windowSpy.mockRestore();
   });
 
   it("should return default language (pt) when window object is not defined", () => {
-    const language = useLanguage();
+    const { language } = useLanguage();
     expect(language).toEqual(ptTranslations);
   });
 });

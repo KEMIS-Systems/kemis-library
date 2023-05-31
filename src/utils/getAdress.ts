@@ -7,7 +7,9 @@ interface IMCep {
   state: string;
 }
 
-export const getAdress = async (value: string) => {
+const getAdress = async (value: string) => {
   const adress: IMCep = await cep(value);
   return adress;
 };
+
+export default getAdress;

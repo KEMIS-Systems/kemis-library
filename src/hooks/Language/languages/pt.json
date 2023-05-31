@@ -9,6 +9,36 @@
     },
     "photo": {
       "message": "Clique aqui para tirar uma foto"
+    },
+    "signature": {
+      "title": "Assinatura",
+      "title_new": "Adicionar",
+      "title_update": "Alterar",
+      "msg_1": "Nenhuma assinatura cadastrada",
+      "err_1": "Erro ao enviar",
+      "header_draw": {
+        "title": "Desenhar",
+        "btn_redo": "Refazer",
+        "btn_not_like": "Não gostei. Assinar novamente",
+        "btn_visualize": "Visualizar",
+        "success": "Assinatura Salva!",
+        "error": "Erro ao salvar a assinatura!"
+      },
+      "header_write": {
+        "title": "Escrever",
+        "lbl_drop": "Escolha o tipo de letra",
+        "btn_not_like": "Não gostei. Escrever novamente",
+        "btn_visualize": "Visualizar"
+      },
+      "header_uploading": {
+        "title": "Carregar",
+        "btn_not_like": " Não gostei. Enviar nova imagem",
+        "btn_visualize": "Visualizar",
+        "msg_1": "Insira uma imagem"
+      },
+      "terms": {
+        "header": "Termo de autorização"
+      }
     }
   },
   "input": {

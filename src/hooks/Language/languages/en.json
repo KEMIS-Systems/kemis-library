@@ -9,6 +9,36 @@
     },
     "photo": {
       "message": "Click here to take a photo"
+    },
+    "signature": {
+      "title": "Signature",
+      "title_new": "Add",
+      "title_update": "Update",
+      "msg_1": "No signature registered",
+      "err_1": "Error sending",
+      "header_draw": {
+        "title": "Design",
+        "btn_redo": "Redo",
+        "btn_not_like": "Did not like. Resubscribe",
+        "btn_visualize": "View",
+        "success": "Signature Saved!",
+        "error": "Error saving signature!"
+      },
+      "header_write": {
+        "title": "Write",
+        "lbl_drop": "Choose font",
+        "btn_not_like": "Did not like. Write again",
+        "btn_visualize": "View"
+      },
+      "header_uploading": {
+        "title": "Upload",
+        "btn_not_like": "Did not like. Send new image",
+        "btn_visualize": "View",
+        "msg_1": "Insert an image"
+      },
+      "terms": {
+        "header": "Term of authorization"
+      }
     }
   },
   "input": {

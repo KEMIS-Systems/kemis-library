@@ -10,6 +10,36 @@ export interface ILanguage {
     photo: {
       message: string;
     };
+    signature: {
+      title: string;
+      title_new: string;
+      title_update: string;
+      msg_1: string;
+      err_1: string;
+      header_draw: {
+        title: string;
+        btn_redo: string;
+        btn_not_like: string;
+        btn_visualize: string;
+        success: string;
+        error: string;
+      };
+      header_write: {
+        title: string;
+        lbl_drop: string;
+        btn_not_like: string;
+        btn_visualize: string;
+      };
+      header_uploading: {
+        title: string;
+        btn_not_like: string;
+        btn_visualize: string;
+        msg_1: string;
+      };
+      terms: {
+        header: string;
+      };
+    };
   };
   input: {
     button_accept: string;

@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import Cropper from "react-cropper";
-import "cropperjs/dist/cropper.css";
+// import "cropperjs/dist/cropper.css";
 import dataUrlToFile from "../../utils/dataUrlToFile";
 
 interface ICropImage {
