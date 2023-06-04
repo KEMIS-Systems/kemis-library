@@ -70,7 +70,7 @@ const WriteSignature = ({ onChange, text }: IProps) => {
   }, [drawText]);
 
   useEffect(() => {
-    fonts.find((font) => {
+    fonts.forEach((font) => {
       if (font.value === fontTypeSelected) {
         setFontType(font.script.style.fontFamily);
         drawText();
@@ -170,9 +170,7 @@ const WriteSignature = ({ onChange, text }: IProps) => {
                 </canvas>
               </div>
             ) : (
-              <>
                 <CropImage image={signatureUrl} onChange={handleImageCopped} />
-              </>
             )}
           </div>
         </div>

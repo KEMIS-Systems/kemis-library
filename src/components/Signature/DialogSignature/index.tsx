@@ -1,11 +1,10 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { TabPanel, TabView } from "primereact/tabview";
 
 // import { useLanguage } from '~/hooks/Language';
 import DrawSignature from "../DrawSignature";
 import WriteSignature from "../WriteSignature";
 import UploadSignature from "../UploadSignature";
-import React from "react";
 import Dialog from "../../Dialog";
 
 interface IModalProps {
@@ -39,7 +38,7 @@ const DialogSignature = ({
             Cancel
           </button>
         </div>
-        {fileData.size ? (
+        {fileData?.size ? (
           <div>
             <button
               type="submit"
