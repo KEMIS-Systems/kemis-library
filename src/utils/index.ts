@@ -3,7 +3,7 @@ export { default as blobToFile } from "./blobToFile";
 export { default as canvasPreview } from "./canvasPreview";
 // export { default as cnpj } from "./cnpj";
 export { default as dataUrlToFile } from "./dataUrlToFile";
-export { default as fontsGoogle } from "./fontsGoogle";
+export { default as returnFontsArray } from "./fontsGoogle";
 // export { default as format } from "./format";
 export { default as formatCurrency } from "./formatCurrency";
 export { default as generateUrlBlob } from "./generateUrlBlob";
