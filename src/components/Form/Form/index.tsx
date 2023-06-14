@@ -57,7 +57,6 @@ const Form = <T extends object>({
 
   const handleSubmitData = useCallback(
     async (data: FieldValues) => {
-      console.log("handleSubmit called with data:", data);
       setShowLoading(true);
       if (api) {
         try {
@@ -68,13 +67,13 @@ const Form = <T extends object>({
             formData instanceof FormData
               ? await api.post(`${path}/${dataEdit.id}`, formData)
               : await api.put(`${path}/${dataEdit.id}`, formData);
-            Toast.fire({
+            await Toast.fire({
               icon: "success",
               title: "Success",
             });
           } else {
             await api.post(`${path}`, formData);
-            Toast.fire({
+            await Toast.fire({
               icon: "success",
               title: "Success",
             });
@@ -82,7 +81,7 @@ const Form = <T extends object>({
           onRefreshTable && onRefreshTable(true);
           handleHide();
         } catch (error) {
-          Swal.fire({
+          await Swal.fire({
             title: "Opss...",
             text: "Error",
             icon: "error",
