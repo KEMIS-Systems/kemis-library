@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import Cropper from "react-cropper";
-// import "cropperjs/dist/cropper.css";
 import dataUrlToFile from "../../utils/dataUrlToFile";
+import { CropperStyles } from "./styles";
 
 interface ICropImage {
   image: string;
@@ -24,14 +24,16 @@ const CropImage = ({ image, onChange }: ICropImage) => {
   }, [onChange]);
 
   return (
-    <Cropper
-      src={image}
-      className="w-full h-full"
-      initialAspectRatio={16 / 9}
-      guides={false}
-      crop={onCrop}
-      ref={cropperRef}
-    />
+    <CropperStyles>
+      <Cropper
+        src={image}
+        className="w-full h-full"
+        initialAspectRatio={16 / 9}
+        guides={false}
+        crop={onCrop}
+        ref={cropperRef}
+      />
+    </CropperStyles>
   );
 };
 

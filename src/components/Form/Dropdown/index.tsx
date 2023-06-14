@@ -1,18 +1,18 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from "react";
 import {
   Controller,
   FieldValues,
   RegisterOptions,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { Dropdown as DropdownPrime } from 'primereact/dropdown';
-import { classNames } from 'primereact/utils';
-import { SelectItemOptionsType } from 'primereact/selectitem';
-import { Button as ButtonPrime } from 'primereact/button';
+} from "react-hook-form";
+import { Dropdown as DropdownPrime } from "primereact/dropdown";
+import { classNames } from "primereact/utils";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { Button as ButtonPrime } from "primereact/button";
 
 interface IProps<T extends FieldValues> {
-  className?: string;
   name: FieldPath<T>;
   label: string;
   options: SelectItemOptionsType;
@@ -25,7 +25,6 @@ interface IProps<T extends FieldValues> {
 }
 
 const Dropdown = <T extends object>({
-  className,
   name,
   label,
   form,
@@ -37,7 +36,7 @@ const Dropdown = <T extends object>({
   disabled,
 }: IProps<T>) => {
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div>
       {form && (
         <Controller
           name={name}
@@ -50,12 +49,12 @@ const Dropdown = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) + 'block'
+                    classNames({ "text-red-400 ": fieldState.error }) + "block"
                   }
                 >
                   {label}
                 </label>
-                <div className={`${handleAddButton && 'p-inputgroup'}`}>
+                <div className={`${handleAddButton && "p-inputgroup"}`}>
                   <DropdownPrime
                     id={field.name}
                     options={options}
@@ -63,12 +62,20 @@ const Dropdown = <T extends object>({
                     showClear
                     filter
                     className={
-                      classNames({ 'p-invalid ': fieldState.error }) + 'w-full '
+                      classNames({ "p-invalid ": fieldState.error }) + "w-full "
                     }
                     placeholder={selected}
                     {...field}
                     // ref={ref}
                     onChange={(event) => field.onChange(event.target.value)}
+                    onShow={() => {
+                      let styleDropdown: any =
+                        document.getElementsByClassName("p-dropdown-panel");
+                      styleDropdown = Array.prototype.slice.call(styleDropdown);
+                      styleDropdown.forEach(function (element: any) {
+                        element.style.zIndex = 9999;
+                      });
+                    }}
                   />
                   {handleAddButton && (
                     <ButtonPrime

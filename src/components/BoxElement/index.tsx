@@ -1,13 +1,33 @@
-import React from 'react';
+import React from "react";
 
 interface IContainerElementProps {
   children: React.ReactNode;
+  className?: string;
+  classNameChild?: string;
 }
 
-const BoxElement = ({ children }: IContainerElementProps) => {
+const BoxElement = ({
+  className,
+  classNameChild,
+  children,
+}: IContainerElementProps) => {
   return (
-    <div className="bg-white rounded-2xl w-full py-5 px-1 sm:px-5">
-      <div className="flex px-5 flex-col">{children}</div>
+    <div
+      className={
+        className
+          ? "bg-white rounded-2xl w-full py-5 px-1 sm:px-5"
+          : `bg-white rounded-2xl w-full py-5 px-1 sm:px-5 ${className}`
+      }
+    >
+      <div
+        className={
+          classNameChild
+            ? "flex px-5 flex-col"
+            : `flex px-5 flex-col ${classNameChild}`
+        }
+      >
+        {children}
+      </div>
     </div>
   );
 };

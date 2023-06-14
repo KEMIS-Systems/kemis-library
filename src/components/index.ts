@@ -49,3 +49,6 @@ export { default as DialogSignature } from "./Signature/DialogSignature";
 export { default as DrawSignature } from "./Signature/DrawSignature";
 export { default as UploadSignature } from "./Signature/UploadSignature";
 export { default as WriteSignature } from "./Signature/WriteSignature";
+
+// UploadPhoto:
+export { default as UploadPhoto } from "./UploadPhoto";
