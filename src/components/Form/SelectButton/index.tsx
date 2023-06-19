@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
   Controller,
   RegisterOptions,
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { SelectButton as SelectButtonPrime } from 'primereact/selectbutton';
-import { SelectItemOptionsType } from 'primereact/selectitem';
-import { classNames } from 'primereact/utils';
+} from "react-hook-form";
+import { SelectButton as SelectButtonPrime } from "primereact/selectbutton";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { classNames } from "primereact/utils";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -36,7 +36,7 @@ const SelectButton = <T extends object>({
             <label
               htmlFor="name"
               className={
-                classNames({ 'text-red-400 ': fieldState.error }) + 'block '
+                classNames({ "text-red-400 ": fieldState.error }) + "block "
               }
             >
               {label}

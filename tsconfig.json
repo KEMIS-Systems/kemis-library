@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ESNext",
+    "module": "CommonJS",
+    "lib": ["dom", "dom.iterable", "ESNext"],
     "jsx": "react",
     "outDir": "./build",
     "sourceMap": true,
@@ -20,7 +20,7 @@
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/setupTests.js"],
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "src/setupTests.js",
@@ -29,18 +29,15 @@
     "**/*.spec.*"
   ]
 }
-// <root>/components/...
-// <root>/utils/...
-// <root>/index.js
-// <root>/index.js.map
-// <root>/index.d.ts
-// <root>/tsconfig.tsbuildinfo
-// <root>/_development/src/index.tsx // main file
-// <root>/_development/src/components/...
-// <root>/_development/src/utils/...
-// <root>/_development/node_modules/...
-// <root>/_development/package.json
-// <root>/_development/.gitignore
-// <root>/_development/tsconfig.json
-// <root>/_development/UpdateProject.md
-// <root>/_development/jest.config.js
+// <root>/build/...
+// <root>/src/components/index.ts
+// <root>/src/components/...
+// <root>/src/utils/index.ts
+// <root>/src/utils/...
+// <root>/src/hooks/index.ts
+// <root>/src/hooks/...
+// <root>/node_modules/...
+// <root>/package.json
+// <root>/.gitignore
+// <root>/tsconfig.json
+// <root>/webpack.config.js

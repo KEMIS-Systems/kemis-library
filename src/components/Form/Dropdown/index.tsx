@@ -22,6 +22,7 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   handleAddButton?: (index: number) => void;
   disabled?: boolean;
+  className?: string;
 }
 
 const Dropdown = <T extends object>({
@@ -34,9 +35,10 @@ const Dropdown = <T extends object>({
   autoFocus,
   handleAddButton,
   disabled,
+  className,
 }: IProps<T>) => {
   return (
-    <div>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}

@@ -16,7 +16,7 @@ const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
   // const { language } = useLanguage();
   const webcamRef = useRef<Webcam>(null);
   const [showTakePhoto, setShowTakePhoto] = useState<boolean>(show || false);
-  const [imagePreview, setImagePreview] = useState("");
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [fileData, setFileData] = useState<File[]>([] as File[]);
 
   const handleClose = useCallback(() => {

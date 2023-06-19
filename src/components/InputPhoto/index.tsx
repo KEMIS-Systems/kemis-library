@@ -13,8 +13,8 @@ interface IInputPhoto {
 const InputPhoto = ({ onChange }: IInputPhoto) => {
   const { language } = useLanguage();
   const webcamRef = useRef<Webcam>(null);
-  const [showTakePhoto, setShowTakePhoto] = useState(false);
-  const [imagePreview, setImagePreview] = useState("");
+  const [showTakePhoto, setShowTakePhoto] = useState<boolean>(false);
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [fileData, setFileData] = useState<File>({} as File);
 
   const handleClose = useCallback(() => {

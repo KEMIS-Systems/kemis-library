@@ -34,7 +34,7 @@ const InputMask = <T extends object>({
   onComplete,
 }: IProps<T>) => {
   return (
-    <div className={"mb-5 " + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}

@@ -28,6 +28,7 @@ export { default as InputFile } from "./Form/InputFile";
 export { default as InputImage } from "./Form/InputImage";
 export { default as InputMask } from "./Form/InputMask";
 export { default as InputNumber } from "./Form/InputNumber";
+export { default as InputSwitch } from "./Form/InputSwitch";
 export { default as InputText } from "./Form/InputText";
 export { default as InputTextArea } from "./Form/InputTextArea";
 export { default as ListBox } from "./Form/ListBox";

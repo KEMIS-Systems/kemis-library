@@ -15,9 +15,9 @@ interface IModalProps {
 
 const DrawSignature = ({ onChange }: IModalProps) => {
   const canvasRef = useRef<CanvasDraw>(null);
-  const [canvasSteps, setCanvasSteps] = useState(1);
-  const [signatureUrl, setSignatureUrl] = useState("");
-  const [colorDraw, setColorDraw] = useState("");
+  const [canvasSteps, setCanvasSteps] = useState<number>(1);
+  const [signatureUrl, setSignatureUrl] = useState<string>("");
+  const [colorDraw, setColorDraw] = useState<string>("");
 
   useEffect(() => {
     setColorDraw("#000000");

@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import {
   Controller,
   FieldValues,
   RegisterOptions,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { MultiSelect as MultiSelectPrime } from 'primereact/multiselect';
-import { classNames } from 'primereact/utils';
-import { SelectItemOptionsType } from 'primereact/selectitem';
-import { Button as ButtonPrime } from 'primereact/button';
+} from "react-hook-form";
+import { MultiSelect as MultiSelectPrime } from "primereact/multiselect";
+import { classNames } from "primereact/utils";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { Button as ButtonPrime } from "primereact/button";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -22,6 +22,7 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   handleAddButton?: (index: number) => void;
   disabled?: boolean;
+  className?: string;
 }
 
 const MultiSelect = <T extends object>({
@@ -35,56 +36,59 @@ const MultiSelect = <T extends object>({
   autoFocus,
   handleAddButton,
   disabled,
+  className,
 }: IProps<T>) => {
   return (
-    <Controller
-      name={name}
-      control={form?.control}
-      rules={rules}
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      render={({ field: { ref, ...field }, fieldState }) => {
-        return (
-          <>
-            <label
-              htmlFor={field.name}
-              className={
-                classNames({ 'text-red-400 ': fieldState.error }) + 'block'
-              }
-            >
-              {label}
-            </label>
-            <div className={`${handleAddButton && 'p-inputgroup'}`}>
-              <MultiSelectPrime
-                id={field.name}
-                options={options}
-                optionLabel={optionLabel || 'label'}
-                optionValue={optionValue || 'value'}
-                autoFocus={autoFocus}
-                showClear
-                filter
-                disabled={disabled}
-                display="chip"
+    <div className={className ?? ""}>
+      <Controller
+        name={name}
+        control={form?.control}
+        rules={rules}
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        render={({ field: { ref, ...field }, fieldState }) => {
+          return (
+            <>
+              <label
+                htmlFor={field.name}
                 className={
-                  classNames({ 'p-invalid ': fieldState.error }) + 'w-full '
+                  classNames({ "text-red-400 ": fieldState.error }) + "block"
                 }
-                {...field}
-                ref={ref}
-                onChange={(event) => field.onChange(event.target.value)}
-              />
-              {handleAddButton && (
-                <ButtonPrime
-                  type="button"
-                  icon="pi pi-plus"
-                  className="p-button-success"
+              >
+                {label}
+              </label>
+              <div className={`${handleAddButton && "p-inputgroup"}`}>
+                <MultiSelectPrime
+                  id={field.name}
+                  options={options}
+                  optionLabel={optionLabel || "label"}
+                  optionValue={optionValue || "value"}
+                  autoFocus={autoFocus}
+                  showClear
+                  filter
                   disabled={disabled}
-                  onClick={() => handleAddButton(4)}
+                  display="chip"
+                  className={
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full "
+                  }
+                  {...field}
+                  ref={ref}
+                  onChange={(event) => field.onChange(event.target.value)}
                 />
-              )}
-            </div>
-          </>
-        );
-      }}
-    />
+                {handleAddButton && (
+                  <ButtonPrime
+                    type="button"
+                    icon="pi pi-plus"
+                    className="p-button-success"
+                    disabled={disabled}
+                    onClick={() => handleAddButton(4)}
+                  />
+                )}
+              </div>
+            </>
+          );
+        }}
+      />
+    </div>
   );
 };
 

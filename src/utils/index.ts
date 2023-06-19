@@ -1,7 +1,7 @@
 export { default as abbreviate } from "./abbreviate";
 export { default as blobToFile } from "./blobToFile";
 export { default as canvasPreview } from "./canvasPreview";
-export { default as cnpj } from "./cnpj";
+export { cnpj } from "./cnpj";
 export { default as dataUrlToFile } from "./dataUrlToFile";
 export { default as returnFontsArray } from "./fontsGoogle";
 export { format } from "./format";

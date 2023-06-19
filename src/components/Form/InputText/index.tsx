@@ -1,21 +1,19 @@
-import React from 'react';
-import { InputText as InputTextPrime } from 'primereact/inputtext';
+import React from "react";
+import { InputText as InputTextPrime } from "primereact/inputtext";
 import {
   Controller,
   RegisterOptions,
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { classNames } from 'primereact/utils';
+} from "react-hook-form";
+import { classNames } from "primereact/utils";
 
 interface IProps<T extends FieldValues> {
   className?: string;
-  classNameLabel?: string;
-  classNameInput?: string;
   name: FieldPath<T>;
   label: string;
-  type?: 'text' | 'email' | 'number' | 'password' | 'date';
+  type?: "text" | "email" | "number" | "password" | "date";
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
@@ -24,8 +22,6 @@ interface IProps<T extends FieldValues> {
 
 const InputText = <T extends object>({
   className,
-  classNameLabel,
-  classNameInput,
   name,
   label,
   type,
@@ -35,7 +31,7 @@ const InputText = <T extends object>({
   placeholder,
 }: IProps<T>) => {
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}
@@ -47,21 +43,17 @@ const InputText = <T extends object>({
                 <label
                   htmlFor="name"
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) +
-                    'block ' +
-                    (classNameLabel !== undefined && classNameLabel)
+                    classNames({ "text-red-400 ": fieldState.error }) + "block"
                   }
                 >
                   {label}
                 </label>
                 <InputTextPrime
                   id={field.name}
-                  type={type || 'text'}
+                  type={type || "text"}
                   autoFocus={autoFocus}
                   className={
-                    classNames({ 'p-invalid ': fieldState.error }) +
-                    'w-full ' +
-                    (classNameInput !== undefined && classNameInput)
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
                   }
                   ref={ref}
                   {...field}

@@ -1,5 +1,5 @@
-import React from 'react';
-import { InputTextarea as InputTextareaPrime } from 'primereact/inputtextarea';
+import React from "react";
+import { InputTextarea as InputTextareaPrime } from "primereact/inputtextarea";
 
 import {
   Controller,
@@ -7,8 +7,8 @@ import {
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { classNames } from 'primereact/utils';
+} from "react-hook-form";
+import { classNames } from "primereact/utils";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -28,7 +28,7 @@ const InputTextArea = <T extends object>({
   form,
 }: IProps<T>) => {
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}
@@ -41,8 +41,8 @@ const InputTextArea = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) +
-                    'block ' +
+                    classNames({ "text-red-400 ": fieldState.error }) +
+                    "block " +
                     (classNameLabel !== undefined && classNameLabel)
                   }
                 >

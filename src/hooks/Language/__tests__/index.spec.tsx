@@ -1,7 +1,7 @@
 import { useLanguage } from "../index";
-import enTranslations from "../languages/en.json";
-import esTranslations from "../languages/es.json";
-import ptTranslations from "../languages/pt.json";
+import enTranslations from "../languages/en";
+import esTranslations from "../languages/es";
+import ptTranslations from "../languages/pt";
 
 describe("useLanguage hook", () => {
   let originalWindow: any;

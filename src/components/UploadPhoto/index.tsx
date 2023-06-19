@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from "react";
 
-import Dropzone from '../Dropzone';
-import InputPhoto from '../InputPhoto';
-import CropImage from '../CropImage';
-import { FaTrashAlt } from 'react-icons/fa';
+import Dropzone from "../Dropzone";
+import InputPhoto from "../InputPhoto";
+import CropImage from "../CropImage";
+import { FaTrashAlt } from "react-icons/fa";
 
 interface IPhoto {
   image?: string;
@@ -11,7 +11,7 @@ interface IPhoto {
 }
 
 const UploadPhoto = ({ image, onChange }: IPhoto) => {
-  const [imagePreview, setImagePreview] = useState('');
+  const [imagePreview, setImagePreview] = useState<string>("");
 
   useEffect(() => {
     if (image) setImagePreview(image);
@@ -28,7 +28,7 @@ const UploadPhoto = ({ image, onChange }: IPhoto) => {
   }, []);
 
   const handleClickRemoveFile = useCallback(() => {
-    setImagePreview('');
+    setImagePreview("");
   }, []);
 
   const handleImageCopped = useCallback(
@@ -45,8 +45,8 @@ const UploadPhoto = ({ image, onChange }: IPhoto) => {
           <div className="mb-2 w-1/2">
             <Dropzone
               accept={{
-                'image/jpeg': ['.jpg', '.jpeg'],
-                'image/png': ['.png'],
+                "image/jpeg": [".jpg", ".jpeg"],
+                "image/png": [".png"],
               }}
               maxFiles={1}
               onChange={(f) => handleFileSelected(f)}

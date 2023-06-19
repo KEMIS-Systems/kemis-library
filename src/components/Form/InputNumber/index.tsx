@@ -42,7 +42,7 @@ const InputNumber = <T extends object>({
   `;
 
   return (
-    <div className={"mb-5 " + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}

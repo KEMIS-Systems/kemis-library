@@ -1,13 +1,13 @@
-import React from 'react';
-import { Checkbox as CheckboxPrime } from 'primereact/checkbox';
+import React from "react";
+import { Checkbox as CheckboxPrime } from "primereact/checkbox";
 import {
   Controller,
   RegisterOptions,
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { classNames } from 'primereact/utils';
+} from "react-hook-form";
+import { classNames } from "primereact/utils";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -37,7 +37,7 @@ const CheckBox = <T extends object>({
   onChange,
 }: IProps<T>) => {
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}
@@ -49,8 +49,8 @@ const CheckBox = <T extends object>({
                 <label
                   htmlFor="name"
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) +
-                    'block ' +
+                    classNames({ "text-red-400 ": fieldState.error }) +
+                    "block " +
                     (classNameLabel !== undefined && classNameLabel)
                   }
                 >
@@ -60,8 +60,8 @@ const CheckBox = <T extends object>({
                   id={field.name}
                   autoFocus={autoFocus}
                   className={
-                    classNames({ 'p-invalid ': fieldState.error }) +
-                    'w-full ' +
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    "w-full " +
                     (classNameCheckbox !== undefined && classNameCheckbox)
                   }
                   ref={ref}

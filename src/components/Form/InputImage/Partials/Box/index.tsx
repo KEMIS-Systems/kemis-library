@@ -14,7 +14,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
   const [fileChanged, setFileChanged] = useState<boolean>(false);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [takePhoto, setTakePhoto] = useState<boolean>(false);
-  const [fileDataUrl, setFileDataUrl] = useState("");
+  const [fileDataUrl, setFileDataUrl] = useState<string>("");
   const [fileData, setFileData] = useState<File>({} as File);
 
   const handleReturnURL = useCallback((file: File) => {

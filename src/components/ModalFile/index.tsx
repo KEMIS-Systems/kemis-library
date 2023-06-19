@@ -20,9 +20,9 @@ interface IModalProps {
 }
 
 const ModalFile = ({ api, url, header, show, onHide }: IModalProps) => {
-  const [showLoading, setShowLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
-  const [pdfUrl, setPdfUrl] = useState("");
+  const [showLoading, setShowLoading] = useState<boolean>(false);
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [pdfUrl, setPdfUrl] = useState<string>("");
 
   const handleHide = useCallback(() => {
     onHide();

@@ -1,14 +1,14 @@
-import React from 'react';
-import { AutoComplete as AutoCompletePrime } from 'primereact/autocomplete';
+import React from "react";
+import { AutoComplete as AutoCompletePrime } from "primereact/autocomplete";
 import {
   Controller,
   RegisterOptions,
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { classNames } from 'primereact/utils';
-import { SelectItemOptionsType } from 'primereact/selectitem';
+} from "react-hook-form";
+import { classNames } from "primereact/utils";
+import { SelectItemOptionsType } from "primereact/selectitem";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -32,7 +32,7 @@ const AutoComplete = <T extends object>({
   form,
 }: IProps<T>) => {
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}
@@ -44,7 +44,7 @@ const AutoComplete = <T extends object>({
                 <label
                   htmlFor="name"
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) + 'block'
+                    classNames({ "text-red-400 ": fieldState.error }) + "block"
                   }
                 >
                   {label}
@@ -61,7 +61,7 @@ const AutoComplete = <T extends object>({
                   showEmptyMessage
                   emptyMessage="No results found"
                   className={
-                    classNames({ 'p-invalid ': fieldState.error }) + 'w-full'
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
                   }
                   {...field}
                   inputRef={ref}

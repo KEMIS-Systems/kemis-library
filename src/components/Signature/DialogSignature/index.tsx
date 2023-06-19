@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { TabPanel, TabView } from "primereact/tabview";
-
-// import { useLanguage } from '~/hooks/Language';
+import { useLanguage } from "../../../hooks/Language";
 import DrawSignature from "../DrawSignature";
 import WriteSignature from "../WriteSignature";
 import UploadSignature from "../UploadSignature";
@@ -22,7 +21,7 @@ const DialogSignature = ({
   onSubmitted,
   text,
 }: IModalProps) => {
-  // const { language } = useLanguage();
+  const { language } = useLanguage();
   const [fileData, setFileData] = useState<File>({} as File);
 
   const handleFooterDialog = useCallback(() => {
@@ -34,8 +33,7 @@ const DialogSignature = ({
             className="bg-light text-white py-2 px-4 rounded-lg font-bold"
             onClick={() => onHide()}
           >
-            {/* {language.input.button_cancel} */}
-            Cancel
+            {language.input.button_cancel}
           </button>
         </div>
         {fileData?.size ? (
@@ -45,8 +43,7 @@ const DialogSignature = ({
               className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
               onClick={() => onSubmitted(fileData)}
             >
-              {/* {language.input.button_save} */}
-              Save
+              {language.input.button_save}
             </button>
           </div>
         ) : (
@@ -66,19 +63,14 @@ const DialogSignature = ({
         footer={handleFooterDialog}
       >
         <TabView className="col-span-2">
-          <TabPanel
-            // header={language.pages.profile.signature.header_write.title}
-            header={"Write"}
-          >
+          <TabPanel header={language.components.signature.header_write.title}>
             <WriteSignature onChange={setFileData} text={text} />
           </TabPanel>
-          {/* <TabPanel header={language.pages.profile.signature.header_draw.title}> */}
-          <TabPanel header={"Design"}>
+          <TabPanel header={language.components.signature.header_draw.title}>
             <DrawSignature onChange={setFileData} />
           </TabPanel>
           <TabPanel
-            // header={language.pages.profile.signature.header_uploading.title}
-            header={"Upload"}
+            header={language.components.signature.header_uploading.title}
           >
             <UploadSignature onChange={setFileData} />
           </TabPanel>

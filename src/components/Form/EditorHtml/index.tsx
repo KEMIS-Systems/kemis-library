@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   Controller,
   RegisterOptions,
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import { classNames } from 'primereact/utils';
-import { Editor } from 'primereact/editor';
+} from "react-hook-form";
+import { classNames } from "primereact/utils";
+import { Editor } from "primereact/editor";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -27,7 +27,7 @@ const EditorHtml = <T extends object>({
   form,
 }: IProps<T>) => {
   return (
-    <div className={'mb-5 ' + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}
@@ -40,16 +40,16 @@ const EditorHtml = <T extends object>({
                 <label
                   htmlFor="name"
                   className={
-                    classNames({ 'text-red-400 ': fieldState.error }) + 'block'
+                    classNames({ "text-red-400 ": fieldState.error }) + "block"
                   }
                 >
                   {label}
                 </label>
                 <Editor
                   id={field.name}
-                  style={{ height: '120px' }}
+                  style={{ height: "120px" }}
                   className={
-                    classNames({ 'p-invalid ': fieldState.error }) + 'w-full'
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
                   }
                   autoFocus={autoFocus}
                   {...field}

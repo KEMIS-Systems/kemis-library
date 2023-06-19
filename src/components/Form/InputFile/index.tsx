@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Controller,
   RegisterOptions,
@@ -29,10 +29,10 @@ const InputFile = <T extends object>({
   rules,
   form,
 }: IProps<T>) => {
-  const [fileChanged, setFileChanged] = React.useState<boolean>(false);
+  const [fileChanged, setFileChanged] = useState<boolean>(false);
 
   return (
-    <div className={"mb-5 " + (className !== undefined && className)}>
+    <div className={className ?? ""}>
       {form && (
         <Controller
           name={name}

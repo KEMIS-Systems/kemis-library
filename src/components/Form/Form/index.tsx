@@ -47,8 +47,8 @@ const Form = <T extends object>({
   form,
   children,
 }: IProps<T>) => {
-  const [showLoading, setShowLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [showLoading, setShowLoading] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleHide = useCallback(() => {
     form.reset();

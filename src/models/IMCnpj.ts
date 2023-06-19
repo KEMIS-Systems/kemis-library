@@ -1,3 +1,18 @@
+interface MainActivity {
+  code: string;
+  text: string;
+}
+
+interface BoardOfMembersAndAdministrators {
+  name: string;
+  qual: string;
+}
+
+interface Billing {
+  free: boolean;
+  database: boolean;
+}
+
 export default interface IMCnpj {
   status: "OK" | "ERROR";
   message?: string;

@@ -25,10 +25,10 @@ const defaultValues: IWriteSignature = {} as IWriteSignature;
 const WriteSignature = ({ onChange, text }: IProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const form = useForm({ defaultValues });
-  const [colorDraw, setColorDraw] = useState("#000000");
+  const [colorDraw, setColorDraw] = useState<string>("#000000");
   const [showImage, setShowImage] = useState<boolean>(false);
-  const [fontType, setFontType] = useState("");
-  const [signatureUrl, setSignatureUrl] = useState("");
+  const [fontType, setFontType] = useState<string>("");
+  const [signatureUrl, setSignatureUrl] = useState<string>("");
   const fonts = returnFontsArray();
   const fontSizes = [
     { value: 20, label: "20px" },
@@ -170,7 +170,7 @@ const WriteSignature = ({ onChange, text }: IProps) => {
                 </canvas>
               </div>
             ) : (
-                <CropImage image={signatureUrl} onChange={handleImageCopped} />
+              <CropImage image={signatureUrl} onChange={handleImageCopped} />
             )}
           </div>
         </div>

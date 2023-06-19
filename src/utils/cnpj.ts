@@ -3,21 +3,6 @@ import { onlyNumber } from "./format";
 import { cnpj as cnpjValidator } from "cpf-cnpj-validator";
 import IMCnpj from "../models/IMCnpj";
 
-interface MainActivity {
-  code: string;
-  text: string;
-}
-
-interface BoardOfMembersAndAdministrators {
-  name: string;
-  qual: string;
-}
-
-interface Billing {
-  free: boolean;
-  database: boolean;
-}
-
 const isValid = (value: string | null | undefined): boolean => {
   if (!value) return false;
   return cnpjValidator.isValid(onlyNumber(value));
@@ -42,9 +27,7 @@ const getData = async (
   }
 };
 
-const cnpj = {
+export const cnpj = {
   isValid,
   getData,
 };
-
-export default cnpj;

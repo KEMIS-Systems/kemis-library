@@ -57,7 +57,7 @@ const FormDialog = <T extends object>({
   children,
 }: IProps<T>) => {
   // const { language } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleHide = useCallback(() => {
     form.reset();
