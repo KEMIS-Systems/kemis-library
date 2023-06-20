@@ -1,11 +1,10 @@
 import React, { ReactNode, useCallback, useState } from "react";
-import { DialogProps } from "primereact/dialog";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 
 import Form from "../Form";
 import Dialog from "../../Dialog";
 import { AxiosInstance } from "axios";
-// import { useLanguage } from "./hooks/Language";
+import { useLanguage } from "../../../hooks/Language";
 
 type K = {
   id?: number;
@@ -14,16 +13,16 @@ type K = {
 interface IProps<T extends FieldValues> {
   api?: AxiosInstance;
   dataEdit?: T & K;
-  form: UseFormReturn<T>;
   url: string;
-  header: ReactNode | ((props: DialogProps) => ReactNode);
   onHide: () => void;
-  visible: boolean;
-  children: React.ReactNode;
-  onSubmit?: (data: T) => void;
   onRefreshTable?: (refreshTable: boolean) => void;
+  onSubmit?: (data: T) => void;
   getFormData?: (data: FieldValues) => FieldValues | FormData;
+  form: UseFormReturn<T>;
+  header: React.ReactNode;
+  visible: boolean;
   classNameDialog?: string;
+  children: React.ReactNode;
 }
 
 /**
@@ -35,7 +34,7 @@ interface IProps<T extends FieldValues> {
  * @param onHide callback to control what happen when you close the modal window
  * @param visible boolean to control the Modal visibility
  * @param api (optional) allows to make the POST/PUT request to our service/api
- * @param path (optional) path to POST/PUT our form data. Previusly you must include the 'api' property and specify your 'base_url' of the service you want to do the request.
+ * @param url (optional) path to POST/PUT our form data. Previusly you must include the 'api' property and specify your 'base_url' of the service you want to do the request.
  * @param dataEdit (optional) obj that include initial data to show in fields
  * @param onSubmit (optional) callback to change what happens on Submit
  * @param onRefreshTable (optional) callback to refresh data in other site (if needed)
@@ -43,9 +42,9 @@ interface IProps<T extends FieldValues> {
  * @param classNameDialog (optional) to add modal styles
  */
 const FormDialog = <T extends object>({
-  api,
   onHide,
   dataEdit,
+  api,
   url,
   onRefreshTable,
   onSubmit,
@@ -56,45 +55,40 @@ const FormDialog = <T extends object>({
   classNameDialog,
   children,
 }: IProps<T>) => {
-  // const { language } = useLanguage();
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const { language } = useLanguage();
+  const [submitted, setSubmitted] = useState(false);
 
   const handleHide = useCallback(() => {
     form.reset();
     onHide();
   }, [onHide, form]);
 
-  const footerContent = useCallback(
-    () => (
-      <div className="flex justify-end gap-3">
-        <div>
-          <button
-            type="button"
-            className="bg-light text-white py-2 px-4 rounded-lg font-bold"
-            onClick={() => handleHide()}
-          >
-            {/* {language.input.button_cancel} */}
-            Cancel
-          </button>
-        </div>
-        <div>
-          <button
-            type="submit"
-            className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
-            onClick={() => {
-              setSubmitted(true);
-              setTimeout(() => {
-                setSubmitted(false);
-              }, 1000);
-            }}
-          >
-            {/* {language.input.button_save} */}
-            Save
-          </button>
-        </div>
+  const footerContent = (
+    <div className="flex justify-end gap-3">
+      <div>
+        <button
+          type="button"
+          className="bg-light text-white py-2 px-4 rounded-lg font-bold"
+          onClick={() => handleHide()}
+        >
+          {language.input.button_cancel}
+        </button>
       </div>
-    ),
-    [handleHide]
+      <div>
+        <button
+          type="submit"
+          className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
+          onClick={() => {
+            setSubmitted(true);
+            setTimeout(() => {
+              setSubmitted(false);
+            }, 1000);
+          }}
+        >
+          {language.input.button_save}
+        </button>
+      </div>
+    </div>
   );
 
   return (
@@ -109,7 +103,7 @@ const FormDialog = <T extends object>({
         api={api}
         onHide={handleHide}
         dataEdit={dataEdit}
-        path={url}
+        url={url}
         submit={submitted}
         onSubmit={onSubmit}
         getFormData={getFormData}

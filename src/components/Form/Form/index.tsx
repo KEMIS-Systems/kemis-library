@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import Toast from "../../../utils/toast";
 import Loading from "../../Loading";
 import { AxiosInstance } from "axios";
+import { useLanguage } from "../../../hooks/Language";
 
 type K = {
   id?: number;
@@ -12,7 +13,7 @@ type K = {
 export interface IProps<T extends FieldValues> {
   api?: AxiosInstance;
   dataEdit?: T & K;
-  path?: string;
+  url?: string;
   submit?: boolean;
   onHide?: () => void;
   onRefreshTable?: (refreshTable: boolean) => void;
@@ -29,7 +30,7 @@ export interface IProps<T extends FieldValues> {
  * @param form to control the form data
  * @param onHide (optional) callback to control what happen when you close/restart/clean the form
  * @param api (optional) allows to make the POST/PUT request to our service/api
- * @param path (optional) path to POST/PUT our form data. Previusly you must include the 'api' property and specify your 'base_url' of the service you want to do the request.
+ * @param url (optional) path to POST/PUT our form data. Previusly you must include the 'api' property and specify your 'base_url' of the service you want to do the request.
  * @param dataEdit (optional) obj that include initial data to show in fields
  * @param onSubmit (optional) callback to change what happens on Submit
  * @param onRefreshTable (optional) callback to refresh data in other site (if needed)
@@ -39,7 +40,7 @@ const Form = <T extends object>({
   api,
   onHide,
   dataEdit,
-  path,
+  url,
   submit,
   onRefreshTable,
   onSubmit,
@@ -47,8 +48,15 @@ const Form = <T extends object>({
   form,
   children,
 }: IProps<T>) => {
+  const { language } = useLanguage();
   const [showLoading, setShowLoading] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (dataEdit) {
+      form.reset(dataEdit);
+    }
+  }, [dataEdit, form]);
 
   const handleHide = useCallback(() => {
     form.reset();
@@ -65,17 +73,17 @@ const Form = <T extends object>({
             : data;
           if (dataEdit?.id) {
             formData instanceof FormData
-              ? await api.post(`${path}/${dataEdit.id}`, formData)
-              : await api.put(`${path}/${dataEdit.id}`, formData);
+              ? await api.post(`${url}/${dataEdit.id}`, formData)
+              : await api.put(`${url}/${dataEdit.id}`, formData);
             await Toast.fire({
               icon: "success",
-              title: "Success",
+              title: language.pages.alerts.edit.success,
             });
           } else {
-            await api.post(`${path}`, formData);
+            await api.post(`${url}`, formData);
             await Toast.fire({
               icon: "success",
-              title: "Success",
+              title: language.pages.alerts.add.success,
             });
           }
           onRefreshTable && onRefreshTable(true);
@@ -99,7 +107,7 @@ const Form = <T extends object>({
           "If you want to POST/PUT, you must include the 'api' property in Form component."
         );
     },
-    [dataEdit, path, getFormData, handleHide, onRefreshTable]
+    [dataEdit, url, getFormData, handleHide, onRefreshTable]
   );
 
   useEffect(() => {

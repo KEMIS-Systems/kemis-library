@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Accept, useDropzone } from "react-dropzone";
-// import { useLanguage } from "~/hooks/Language";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { useLanguage } from "../../hooks/Language";
 
 interface IDropzone {
   name?: string;
@@ -23,7 +23,7 @@ const Dropzone = ({
   openDialog,
   style,
 }: IDropzone) => {
-  // const { language } = useLanguage();
+  const { language } = useLanguage();
   const { acceptedFiles, getRootProps, getInputProps, open } = useDropzone({
     accept: accept,
     maxFiles: maxFiles,
@@ -53,8 +53,7 @@ const Dropzone = ({
       <input {...getInputProps()} />
       <AiOutlineCloudUpload size="40" />
       <p className="cursor-pointer text-center font-semibold text-gray-500 text-xs">
-        {/* {language.components.dropzone.message} */}
-        Drop files here to upload or click to select files
+        {language.components.dropzone.message}
       </p>
       {acceptedFiles.length > 0 && (
         <div className="flex flex-col gap-2 text-xs mt-5 text-blue-400">

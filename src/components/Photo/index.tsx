@@ -1,11 +1,11 @@
 import React, { useCallback, useRef, useState } from "react";
-// import { useLanguage } from '~/hooks/Language';
 import { MdCameraAlt, MdOutlineAddAPhoto } from "react-icons/md";
 import { Dialog } from "primereact/dialog";
 import Webcam from "react-webcam";
 
 import Image from "next/image";
 import dataUrlToFile from "../../utils/dataUrlToFile";
+import { useLanguage } from "../../hooks/Language";
 
 interface IParams {
   onChange(files: File[]): void;
@@ -13,7 +13,7 @@ interface IParams {
 }
 
 const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
-  // const { language } = useLanguage();
+  const { language } = useLanguage();
   const webcamRef = useRef<Webcam>(null);
   const [showTakePhoto, setShowTakePhoto] = useState<boolean>(show || false);
   const [imagePreview, setImagePreview] = useState<string>("");
@@ -60,8 +60,7 @@ const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
         >
           <MdOutlineAddAPhoto size="35" />
           <p className="cursor-pointer text-center font-semibold text-gray-500 text-xs">
-            {/* {language.components.photo.message} */}
-            Click here to take a photo
+            {language.components.photo.message}
           </p>
         </div>
       )}
@@ -108,8 +107,7 @@ const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
                 className="bg-red-500 text-white py-2 px-4 rounded-lg font-bold"
                 onClick={handleClickRemoveFile}
               >
-                {/* {language.input.button_delete} */}
-                Delete
+                {language.input.button_delete}
               </button>
             )}
           </div>
@@ -120,8 +118,7 @@ const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
                 className="bg-light text-white py-2 px-4 rounded-lg font-bold"
                 onClick={handleClose}
               >
-                {/* {language.input.button_cancel} */}
-                Cancel
+                {language.input.button_cancel}
               </button>
             </div>
             {imagePreview && (
@@ -131,8 +128,7 @@ const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
                   onClick={handleClickSavePhoto}
                   className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
                 >
-                  {/* {language.input.button_save} */}
-                  Save
+                  {language.input.button_save}
                 </button>
               </div>
             )}
