@@ -1,6 +1,6 @@
 {
   "name": "kemis-library",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "index.js",
@@ -25,7 +25,7 @@
     "test:coverage": "jest --coverage",
     "lint": "eslint src",
     "version": "git add package.json && git commit -m 'Bump version'",
-    "publish": "yarn build && cd build && yarn publish --access public"
+    "auto_publish": "yarn build && cd build && yarn publish --access public"
   },
   "repository": {
     "type": "git",
