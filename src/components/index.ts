@@ -4,9 +4,6 @@ export { default as BoxElement } from "./BoxElement";
 // Button:
 export { default as Button } from "./Button";
 
-// ContainerElement:
-export { default as ContainerElement } from "./ContainerElement";
-
 // CropImage:
 export { default as CropImage } from "./CropImage";
 
@@ -28,6 +25,7 @@ export { default as InputFile } from "./Form/InputFile";
 export { default as InputImage } from "./Form/InputImage";
 export { default as InputMask } from "./Form/InputMask";
 export { default as InputNumber } from "./Form/InputNumber";
+export { default as InputPassword } from "./Form/InputPassword";
 export { default as InputSwitch } from "./Form/InputSwitch";
 export { default as InputText } from "./Form/InputText";
 export { default as InputTextArea } from "./Form/InputTextArea";
