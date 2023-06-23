@@ -13,7 +13,7 @@ type K = {
 export interface IProps<T extends FieldValues> {
   api?: AxiosInstance;
   dataEdit?: T & K;
-  url?: string;
+  url: string;
   submit?: boolean;
   onHide?: () => void;
   onRefreshTable?: (refreshTable: boolean) => void;
