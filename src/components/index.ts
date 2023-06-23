@@ -37,10 +37,10 @@ export { default as SelectButton } from "./Form/SelectButton";
 export { default as Loading } from "./Loading";
 
 // ModalFile:
-export { default as ModalFile } from "./ModalFile";
+export { default as DialogFile } from "./DialogFile";
 
 // Photo:
-export { default as InputPhoto } from "./Photo";
+export { default as DialogPhoto } from "./DialogPhoto";
 
 // Signature:
 export { default as ColorPalette } from "./Signature/ColorPalette";

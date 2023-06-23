@@ -2,8 +2,8 @@ import React, { useCallback, useRef, useState } from "react";
 import { MdCameraAlt, MdOutlineAddAPhoto } from "react-icons/md";
 import { Dialog } from "primereact/dialog";
 import Webcam from "react-webcam";
-
 import Image from "next/image";
+
 import dataUrlToFile from "../../utils/dataUrlToFile";
 import { useLanguage } from "../../hooks/Language";
 
@@ -12,7 +12,7 @@ interface IParams {
   show?: boolean;
 }
 
-const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
+const DialogPhoto: React.FC<IParams> = ({ onChange, show }) => {
   const { language } = useLanguage();
   const webcamRef = useRef<Webcam>(null);
   const [showTakePhoto, setShowTakePhoto] = useState<boolean>(show || false);
@@ -139,4 +139,4 @@ const InputPhoto: React.FC<IParams> = ({ onChange, show }) => {
   );
 };
 
-export default InputPhoto;
+export default DialogPhoto;

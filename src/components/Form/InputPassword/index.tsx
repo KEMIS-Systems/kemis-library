@@ -1,32 +1,55 @@
 import React from "react";
-import { InputTextarea as InputTextareaPrime } from "primereact/inputtextarea";
-
 import {
   Controller,
-  RegisterOptions,
   FieldValues,
+  RegisterOptions,
   FieldPath,
   UseFormReturn,
 } from "react-hook-form";
 import { classNames } from "primereact/utils";
+import { Divider } from "primereact/divider";
+import { Password } from "primereact/password";
+
+import { useLanguage } from "../../../hooks/Language";
 
 interface IProps<T extends FieldValues> {
   className?: string;
-  classNameLabel?: string;
   name: FieldPath<T>;
   label: string;
-  rules?: RegisterOptions;
   form: UseFormReturn<T>;
+  rules?: RegisterOptions;
+  autoFocus?: boolean;
+  feedback?: boolean;
+  toggleMask?: boolean;
+  placeholder?: string;
 }
 
-const InputTextArea = <T extends object>({
+const InputPassword = <T extends object>({
   className,
-  classNameLabel,
   name,
   label,
-  rules,
   form,
+  rules,
+  autoFocus,
+  feedback,
+  toggleMask,
+  placeholder,
 }: IProps<T>) => {
+  const { language } = useLanguage();
+  const passwordHeader = <h6>{language.input.password.header}</h6>;
+  const passwordFooter = (
+    <React.Fragment>
+      <Divider />
+      <p className="mt-2">{language.input.password.bottom.title}</p>
+      <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: "1.5" }}>
+        <li>{language.input.password.bottom.rules.rule1}</li>
+        <li>{language.input.password.bottom.rules.rule2}</li>
+        <li>{language.input.password.bottom.rules.rule3}</li>
+        <li>{language.input.password.bottom.rules.rule4}</li>
+      </ul>
+    </React.Fragment>
+  );
+
   return (
     <div className={className ?? ""}>
       {form && (
@@ -34,25 +57,31 @@ const InputTextArea = <T extends object>({
           name={name}
           control={form.control}
           rules={rules}
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           render={({ field: { ref, ...field }, fieldState }) => {
             return (
               <>
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) +
-                    "block " +
-                    (classNameLabel !== undefined && classNameLabel)
+                    classNames({ "text-red-400 ": fieldState.error }) + "block"
                   }
                 >
                   {label}
                 </label>
-                <InputTextareaPrime
+                <Password
                   id={field.name}
+                  autoFocus={autoFocus}
+                  toggleMask={toggleMask ?? true}
+                  header={feedback ? passwordHeader : undefined}
+                  footer={feedback ? passwordFooter : undefined}
+                  feedback={feedback}
+                  placeholder={placeholder ?? "********"}
+                  className={
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                  }
+                  inputClassName="w-full"
                   {...field}
-                  className="w-full"
-                  placeholder={label}
+                  ref={ref}
                 />
               </>
             );
@@ -63,4 +92,4 @@ const InputTextArea = <T extends object>({
   );
 };
 
-export default InputTextArea;
+export default InputPassword;

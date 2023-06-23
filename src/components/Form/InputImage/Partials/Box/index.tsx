@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { IoImageOutline } from "react-icons/io5";
 import { MdOutlineAddAPhoto } from "react-icons/md";
-import InputPhoto from "../../../../Photo";
+import DialogPhoto from "../../../../DialogPhoto";
 import Dropzone from "../../../../Dropzone";
 import CropImage from "../../../../CropImage";
 
@@ -96,7 +96,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
       <div className="border border-gray-300 rounded-b-xl p-1">
         {!fileDataUrl ? (
           <>
-            {takePhoto && <InputPhoto show onChange={handleFileChange} />}
+            {takePhoto && <DialogPhoto show onChange={handleFileChange} />}
             <Dropzone
               accept={{
                 "image/*": [".png", ".jpg", ".jpeg", ".bmp", ".tiff"],

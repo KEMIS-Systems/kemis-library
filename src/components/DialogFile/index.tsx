@@ -19,7 +19,7 @@ interface IModalProps {
   onHide: () => void;
 }
 
-const ModalFile = ({ api, url, header, show, onHide }: IModalProps) => {
+const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
   const [showLoading, setShowLoading] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [pdfUrl, setPdfUrl] = useState<string>("");
@@ -82,4 +82,4 @@ const ModalFile = ({ api, url, header, show, onHide }: IModalProps) => {
   );
 };
 
-export default ModalFile;
+export default DialogFile;

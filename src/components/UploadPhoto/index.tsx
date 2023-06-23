@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import Dropzone from "../Dropzone";
-import InputPhoto from "../InputPhoto";
+import DialogPhoto from "../DialogPhoto";
 import CropImage from "../CropImage";
 import { FaTrashAlt } from "react-icons/fa";
 
@@ -23,8 +23,8 @@ const UploadPhoto = ({ image, onChange }: IPhoto) => {
     }
   }, []);
 
-  const handlePhotoSelected = useCallback((file: File) => {
-    setImagePreview(URL.createObjectURL(file));
+  const handlePhotoSelected = useCallback((file: File[]) => {
+    setImagePreview(URL.createObjectURL(file[0]));
   }, []);
 
   const handleClickRemoveFile = useCallback(() => {
@@ -53,7 +53,7 @@ const UploadPhoto = ({ image, onChange }: IPhoto) => {
             />
           </div>
           <div className="mb-2 w-1/2 flex">
-            <InputPhoto onChange={handlePhotoSelected} />
+            <DialogPhoto onChange={handlePhotoSelected} />
           </div>
         </div>
       ) : (
