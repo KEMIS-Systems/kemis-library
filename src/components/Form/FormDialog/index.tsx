@@ -23,6 +23,7 @@ interface IProps<T extends FieldValues> {
   visible: boolean;
   classNameDialog?: string;
   children: React.ReactNode;
+  hiddenSubmitButton?: boolean;
 }
 
 /**
@@ -40,6 +41,7 @@ interface IProps<T extends FieldValues> {
  * @param onRefreshTable (optional) callback to refresh data in other site (if needed)
  * @param getFormData (optional) callback which must returns the form data
  * @param classNameDialog (optional) to add modal styles
+ * @param hiddenSubmitButton (optional) to hide the submit button
  */
 const FormDialog = <T extends object>({
   onHide,
@@ -54,6 +56,7 @@ const FormDialog = <T extends object>({
   visible,
   classNameDialog,
   children,
+  hiddenSubmitButton,
 }: IProps<T>) => {
   const { language } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
@@ -74,7 +77,8 @@ const FormDialog = <T extends object>({
           {language.input.button_cancel}
         </button>
       </div>
-      <div>
+      {!hiddenSubmitButton && (
+        <div>
         <button
           type="submit"
           className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
@@ -84,10 +88,11 @@ const FormDialog = <T extends object>({
               setSubmitted(false);
             }, 1000);
           }}
-        >
+          >
           {language.input.button_save}
         </button>
       </div>
+      )}
     </div>
   );
 
