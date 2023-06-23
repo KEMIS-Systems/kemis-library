@@ -24,7 +24,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint src",
-    "version": "git add package.json && git commit -m 'Bump version'"
+    "version": "git add package.json && git commit -m 'Bump version'",
+    "publish": "yarn build && cd build && yarn publish --access public"
   },
   "repository": {
     "type": "git",
