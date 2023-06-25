@@ -48,13 +48,13 @@ const InputDate = <T extends object>({
               </label>
               <CalendarPrime
                 id={field.name}
-                dateFormat={dateFormat || "dd/mm/yy"}
+                dateFormat={dateFormat ?? "dd/mm/yy"}
                 mask="99/99/9999"
                 showIcon
                 showButtonBar
                 showOnFocus={false}
                 className={
-                  classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                  classNames({ "p-invalid ": fieldState.error }) + " w-full"
                 }
                 disabled={disabled}
                 {...field}

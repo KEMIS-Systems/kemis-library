@@ -15,7 +15,7 @@ interface IParams {
 const DialogPhoto: React.FC<IParams> = ({ onChange, show }) => {
   const { language } = useLanguage();
   const webcamRef = useRef<Webcam>(null);
-  const [showTakePhoto, setShowTakePhoto] = useState<boolean>(show || false);
+  const [showTakePhoto, setShowTakePhoto] = useState<boolean>(show ?? false);
   const [imagePreview, setImagePreview] = useState<string>("");
   const [fileData, setFileData] = useState<File[]>([] as File[]);
 

@@ -115,7 +115,7 @@ const Form = <T extends object>({
   }, [submit]);
 
   useEffect(() => {
-    submitted && form.handleSubmit(onSubmit || handleSubmitData)();
+    submitted && form.handleSubmit(onSubmit ?? handleSubmitData)();
     setSubmitted(false);
   }, [submitted, form, onSubmit, handleSubmitData]);
 
@@ -123,7 +123,7 @@ const Form = <T extends object>({
     <>
       <form
         role="form"
-        onSubmit={form.handleSubmit(onSubmit || handleSubmitData)}
+        onSubmit={form.handleSubmit(onSubmit ?? handleSubmitData)}
       >
         {children}
       </form>

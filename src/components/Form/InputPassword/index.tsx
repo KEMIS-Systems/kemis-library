@@ -77,9 +77,9 @@ const InputPassword = <T extends object>({
                   feedback={feedback}
                   placeholder={placeholder ?? "********"}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
-                  inputClassName="w-full"
+                  inputClassName=" w-full"
                   {...field}
                   ref={ref}
                 />

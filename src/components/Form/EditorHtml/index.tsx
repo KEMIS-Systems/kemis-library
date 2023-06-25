@@ -49,7 +49,7 @@ const EditorHtml = <T extends object>({
                   id={field.name}
                   style={{ height: "120px" }}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   autoFocus={autoFocus}
                   {...field}

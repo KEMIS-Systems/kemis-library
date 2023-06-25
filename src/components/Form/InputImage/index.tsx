@@ -34,7 +34,7 @@ const InputImage = <T extends object>({
   );
 
   return (
-    <div className="w-full">
+    <div className=" w-full">
       {form && (
         <div>
           <Controller

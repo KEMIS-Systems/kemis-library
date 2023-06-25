@@ -50,14 +50,14 @@ const InputText = <T extends object>({
                 </label>
                 <InputTextPrime
                   id={field.name}
-                  type={type || "text"}
+                  type={type ?? "text"}
                   autoFocus={autoFocus}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   ref={ref}
                   {...field}
-                  placeholder={placeholder && placeholder}
+                  placeholder={placeholder ?? undefined}
                 />
               </>
             );

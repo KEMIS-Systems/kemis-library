@@ -61,7 +61,7 @@ const AutoComplete = <T extends object>({
                   showEmptyMessage
                   emptyMessage="No results found"
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   {...field}
                   inputRef={ref}

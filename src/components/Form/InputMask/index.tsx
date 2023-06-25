@@ -56,7 +56,7 @@ const InputMask = <T extends object>({
                   autoFocus={autoFocus}
                   mask={mask}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   {...field}
                   ref={ref}

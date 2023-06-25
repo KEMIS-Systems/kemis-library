@@ -58,7 +58,7 @@ const DrawSignature = ({ onChange }: IModalProps) => {
 
   return (
     <>
-      <div className="w-full">
+      <div className=" w-full">
         <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2 justify-between">
           <div className="flex gap-2">
             <button

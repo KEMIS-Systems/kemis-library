@@ -25,7 +25,7 @@ const ColorPalette = ({ type, onHandleTakeColor }: IButtonProps) => {
       >
         <button
           onClick={() => handleSelectColor(colorBackground[0])}
-          type={type || "button"}
+          type={type ?? "button"}
           className="flex p-3 rounded-full mx-1"
           style={{ backgroundColor: colorBackground[0] }}
         />
@@ -36,7 +36,7 @@ const ColorPalette = ({ type, onHandleTakeColor }: IButtonProps) => {
       >
         <button
           onClick={() => handleSelectColor(colorBackground[1])}
-          type={type || "button"}
+          type={type ?? "button"}
           className="flex p-3 rounded-full mx-1"
           style={{ backgroundColor: colorBackground[1] }}
         />
@@ -47,7 +47,7 @@ const ColorPalette = ({ type, onHandleTakeColor }: IButtonProps) => {
       >
         <button
           onClick={() => handleSelectColor(colorBackground[2])}
-          type={type || "button"}
+          type={type ?? "button"}
           className="flex p-3 rounded-full mx-1"
           style={{ backgroundColor: colorBackground[2] }}
         />

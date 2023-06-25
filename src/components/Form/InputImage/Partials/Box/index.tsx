@@ -60,7 +60,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
   }, [handleFileSelected]);
 
   return (
-    <div className="w-full">
+    <div className=" w-full">
       <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2">
         {!fileData ? (
           <>

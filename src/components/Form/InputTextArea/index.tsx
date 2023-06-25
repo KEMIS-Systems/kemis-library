@@ -51,7 +51,7 @@ const InputTextArea = <T extends object>({
                 <InputTextareaPrime
                   id={field.name}
                   {...field}
-                  className="w-full"
+                  className=" w-full"
                   placeholder={label}
                 />
               </>

@@ -62,9 +62,9 @@ const ListBox = <T extends object>({
                   optionGroupLabel={optionGroupLabel}
                   optionGroupChildren={optionGroupChildren}
                   optionGroupTemplate={optionGroupTemplate}
-                  listStyle={listStyle || { maxHeight: "200px" }}
+                  listStyle={listStyle ?? { maxHeight: "200px" }}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   {...field}
                   ref={ref}

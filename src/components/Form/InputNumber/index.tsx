@@ -62,12 +62,15 @@ const InputNumber = <T extends object>({
                 <InputStyles>
                   <InputNumberPrime
                     id={field.name}
-                    mode={mode || "currency"}
-                    currency={currency || "BRL"}
-                    locale={locale || "pt-BR"}
-                    value={value ? value : field.value}
-                    // {...field}
+                    mode={mode ?? "currency"}
+                    currency={currency ?? "BRL"}
+                    locale={locale ?? "pt-BR"}
+                    className={
+                      classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                    }
+                    {...field}
                     ref={ref}
+                    value={value ? value : field.value}
                     onChange={(event) => field.onChange(event.value)}
                     onBlur={(event) => setValue(Number(event.target.value))}
                   />

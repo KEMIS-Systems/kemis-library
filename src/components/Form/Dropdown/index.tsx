@@ -63,8 +63,8 @@ const Dropdown = <T extends object>({
               <DropdownPrime
                 id={field.name}
                 options={options}
-                optionLabel={optionLabel || "label"}
-                optionValue={optionValue || "value"}
+                optionLabel={optionLabel ?? "label"}
+                optionValue={optionValue ?? "value"}
                 autoFocus={autoFocus}
                 showClear
                 filter
