@@ -12,6 +12,7 @@ interface IModalProps {
   onHide: () => void;
   onSubmitted: (file: File) => void;
   text: string;
+  classNameDialog?: string;
 }
 
 const DialogSignature = ({
@@ -20,6 +21,7 @@ const DialogSignature = ({
   onHide,
   onSubmitted,
   text,
+  classNameDialog,
 }: IModalProps) => {
   const { language } = useLanguage();
   const [fileData, setFileData] = useState<File>({} as File);
@@ -59,7 +61,7 @@ const DialogSignature = ({
         header={header}
         visible={show}
         onHide={onHide}
-        className="w-full sm:w-1/2 lg:w-1/3"
+        className={classNameDialog ?? ""}
         footer={handleFooterDialog}
       >
         <TabView className="col-span-2">

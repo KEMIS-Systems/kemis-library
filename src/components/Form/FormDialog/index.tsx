@@ -100,7 +100,7 @@ const FormDialog = <T extends object>({
     <Dialog
       header={header}
       visible={visible}
-      className={`w-full ${classNameDialog}`}
+      className={classNameDialog ?? ''}
       footer={footerContent}
       onHide={handleHide}
     >
