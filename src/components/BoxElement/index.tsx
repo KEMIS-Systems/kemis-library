@@ -13,18 +13,10 @@ const BoxElement = ({
 }: IContainerElementProps) => {
   return (
     <div
-      className={
-        className
-          ? "bg-white rounded-2xl w-full py-5 px-1 sm:px-5"
-          : `bg-white rounded-2xl w-full py-5 px-1 sm:px-5 ${className}`
-      }
+      className={`bg-white shadow-xl rounded-xl w-full py-5 px-1 sm:px-5 ${className}`}
     >
       <div
-        className={
-          classNameChild
-            ? "flex px-5 flex-col"
-            : `flex px-5 flex-col ${classNameChild}`
-        }
+        className={`flex flex-col ${classNameChild}`}
       >
         {children}
       </div>
