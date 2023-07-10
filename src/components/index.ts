@@ -10,6 +10,9 @@ export { default as CropImage } from "./CropImage";
 // Dialog:
 export { default as Dialog } from "./Dialog";
 
+// DialogFile:
+export { default as DialogFile } from "./DialogFile";
+
 // Dropzone:
 export { default as Dropzone } from "./Dropzone";
 
@@ -35,9 +38,6 @@ export { default as SelectButton } from "./Form/SelectButton";
 
 // Loading:
 export { default as Loading } from "./Loading";
-
-// ModalFile:
-export { default as DialogFile } from "./DialogFile";
 
 // Photo:
 export { default as DialogPhoto } from "./DialogPhoto";

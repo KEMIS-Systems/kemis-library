@@ -60,7 +60,7 @@ const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
         header={header}
         visible={show}
         onHide={handleHide}
-        className="w-full sm:w-4/5 h-full"
+        className="w-full lg:w-4/5 min-h-screen max-h-screen"
         maximizable
       >
         {imageUrl && (
@@ -69,12 +69,12 @@ const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
               src={imageUrl}
               alt={header}
               className="w-full h-1/3 p-10"
-              layout="fill"
+              fill
             />
           </div>
         )}
         {pdfUrl && (
-          <iframe src={pdfUrl} title={header} className="w-full h-full" />
+          <iframe src={pdfUrl} title={header} className="w-full min-h-screen max-h-screen" />
         )}
       </Dialog>
       <Loading show={showLoading} />

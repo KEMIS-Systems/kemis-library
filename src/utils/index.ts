@@ -8,6 +8,7 @@ export { format } from "./format";
 export { default as formatCurrency } from "./formatCurrency";
 export { default as generateUrlBlob } from "./generateUrlBlob";
 export { default as getAdress } from "./getAdress";
+export { default as getIP } from "./getIP";
 export { default as slug } from "./slug";
 export { default as Toast } from "./toast";
 export { default as toBlob } from "./toBlob";
