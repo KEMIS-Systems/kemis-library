@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from "react";
 
 interface IButtonProps {
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: "button" | "submit" | "reset";
   onHandleTakeColor(value: string): void;
 }
 
 const ColorPalette = ({ type, onHandleTakeColor }: IButtonProps) => {
-  const colorBackground = ["#000000", "#1D64CC", "#CB3533"];
+  const colorBackground = ["#1D64CC", "#000000", "#CB3533"];
   const [currentColor, setCurrentColor] = useState<string>("");
 
   const handleSelectColor = useCallback(

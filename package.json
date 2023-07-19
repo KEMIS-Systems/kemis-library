@@ -1,6 +1,6 @@
 {
   "name": "kemis-library",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "index.js",
@@ -37,7 +37,7 @@
     "kemis",
     "form"
   ],
-  "author": "Nicanor Orlando | nicanororlando@gmail.com",
+  "author": "KEMIS Softwware House | wmachado@kemis.com.br",
   "license": "ISC",
   "dependencies": {
     "next": "^13.4.4",

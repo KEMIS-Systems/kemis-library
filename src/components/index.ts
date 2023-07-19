@@ -39,7 +39,7 @@ export { default as SelectButton } from "./Form/SelectButton";
 // Loading:
 export { default as Loading } from "./Loading";
 
-// Photo:
+// DialogPhoto:
 export { default as DialogPhoto } from "./DialogPhoto";
 
 // Signature:

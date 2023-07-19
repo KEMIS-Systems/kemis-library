@@ -1,12 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 import {
   Controller,
   RegisterOptions,
   FieldValues,
   FieldPath,
   UseFormReturn,
-} from 'react-hook-form';
-import InputImageBox from './Partials/Box';
+} from "react-hook-form";
+import InputImageBox from "./Partials/Box";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -28,7 +28,7 @@ const InputImage = <T extends object>({
       if (!fileChanged && files.length > 0) {
         setFileChanged(true);
       }
-      handleChange && handleChange(files);
+      handleChange(files);
     },
     [handleChange, fileChanged]
   );

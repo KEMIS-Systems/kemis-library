@@ -33,7 +33,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
   const handleFileSelected = useCallback(
     (files: File[]) => {
       setFileData(files[0]);
-      handleChange && handleChange(files);
+      handleChange(files);
     },
     [handleChange]
   );
@@ -65,6 +65,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
         {!fileData ? (
           <>
             <button
+              type="button"
               className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-green-400 bg-transparent hover:text-green-600 hover:border-gray-400"
               onClick={() => {
                 setOpenDialog(true);
@@ -76,6 +77,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
               <IoImageOutline size={20} />
             </button>
             <button
+              type="button"
               className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
               onClick={() => {
                 setTakePhoto(true);
@@ -86,6 +88,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
           </>
         ) : (
           <button
+            type="button"
             className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
             onClick={handleFileDelete}
           >
@@ -96,7 +99,13 @@ const InputImageBox = ({ handleChange }: IProps) => {
       <div className="border border-gray-300 rounded-b-xl p-1">
         {!fileDataUrl ? (
           <>
-            {takePhoto && <DialogPhoto show onChange={handleFileChange} />}
+            {takePhoto && (
+              <DialogPhoto
+                show
+                onChange={handleFileChange}
+                onHide={() => setTakePhoto(false)}
+              />
+            )}
             <Dropzone
               accept={{
                 "image/*": [".png", ".jpg", ".jpeg", ".bmp", ".tiff"],
@@ -106,7 +115,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
                 if (!fileChanged && e.length > 0) {
                   setFileChanged(true);
                 }
-                handleFileChange && handleFileChange(e);
+                handleFileChange(e);
               }}
               openDialog={openDialog}
             />

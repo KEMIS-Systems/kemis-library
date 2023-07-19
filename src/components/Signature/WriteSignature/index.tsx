@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheck2Circle } from "react-icons/bs";
 import { BiTrash } from "react-icons/bi";
 import returnFontsArray from "../../../utils/fontsGoogle";
 import toBlob from "../../../utils/toBlob";
 import blobToFile from "../../../utils/blobToFile";
-import React from "react";
 import ColorPalette from "../ColorPalette";
 import Dropdown from "../../Form/Dropdown";
 import CropImage from "../../CropImage";
@@ -25,9 +24,8 @@ const defaultValues: IWriteSignature = {} as IWriteSignature;
 const WriteSignature = ({ onChange, text }: IProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const form = useForm({ defaultValues });
-  const [colorDraw, setColorDraw] = useState<string>("#000000");
+  const [colorDraw, setColorDraw] = useState<string>("#1D64CC");
   const [showImage, setShowImage] = useState<boolean>(false);
-  const [fontType, setFontType] = useState<string>("");
   const [signatureUrl, setSignatureUrl] = useState<string>("");
   const fonts = returnFontsArray();
   const fontSizes = [
@@ -37,8 +35,11 @@ const WriteSignature = ({ onChange, text }: IProps) => {
     { value: 26, label: "26px" },
     { value: 28, label: "28px" },
     { value: 30, label: "30px" },
+    { value: 34, label: "34px" },
   ];
-
+  const [fontType, setFontType] = useState<string>(
+    fonts[1].script.style.fontFamily
+  );
   const fontTypeSelected = form.watch("font_type");
   const fontSizeSelected = form.watch("font_size");
 

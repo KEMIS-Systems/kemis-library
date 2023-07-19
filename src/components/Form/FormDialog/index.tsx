@@ -66,41 +66,43 @@ const FormDialog = <T extends object>({
     onHide();
   }, [onHide, form]);
 
-  const footerContent = (
-    <div className="flex justify-end gap-3">
-      <div>
-        <button
-          type="button"
-          className="bg-light text-white py-2 px-4 rounded-lg font-bold"
-          onClick={() => handleHide()}
-        >
-          {language.input.button_cancel}
-        </button>
-      </div>
-      {!hiddenSubmitButton && (
+  const footerContent = useCallback(() => {
+    return (
+      <div className="flex justify-end gap-3">
         <div>
-        <button
-          type="submit"
-          className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
-          onClick={() => {
-            setSubmitted(true);
-            setTimeout(() => {
-              setSubmitted(false);
-            }, 1000);
-          }}
+          <button
+            type="button"
+            className="bg-light text-white py-2 px-4 rounded-lg font-bold"
+            onClick={() => handleHide()}
           >
-          {language.input.button_save}
-        </button>
+            {language.input.button_cancel}
+          </button>
+        </div>
+        {!hiddenSubmitButton && (
+          <div>
+            <button
+              type="submit"
+              className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
+              onClick={() => {
+                setSubmitted(true);
+                setTimeout(() => {
+                  setSubmitted(false);
+                }, 1000);
+              }}
+            >
+              {language.input.button_save}
+            </button>
+          </div>
+        )}
       </div>
-      )}
-    </div>
-  );
+    );
+  }, []);
 
   return (
     <Dialog
       header={header}
       visible={visible}
-      className={classNameDialog ?? ''}
+      className={classNameDialog ?? ""}
       footer={footerContent}
       onHide={handleHide}
     >
