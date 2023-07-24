@@ -13,20 +13,30 @@ interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
   label: string;
   dateFormat?: string;
+  mask?: string;
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   disabled?: boolean;
   className?: string;
+  view?: "month" | "date" | "year";
+  showTime?: boolean;
+  timeOnly?: boolean;
+  hourFormat: "24" | "12";
 }
 
 const InputDate = <T extends object>({
   name,
   label,
   dateFormat,
+  mask,
   form,
   rules,
   disabled,
   className,
+  view,
+  showTime,
+  timeOnly,
+  hourFormat,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -49,9 +59,13 @@ const InputDate = <T extends object>({
               <CalendarPrime
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
-                mask="99/99/9999"
+                mask={mask ?? "99/99/9999"}
                 showIcon
                 showButtonBar
+                view={view ?? "date"}
+                showTime={showTime}
+                timeOnly={timeOnly}
+                hourFormat={hourFormat}
                 showOnFocus={false}
                 className={
                   classNames({ "p-invalid ": fieldState.error }) + " w-full"

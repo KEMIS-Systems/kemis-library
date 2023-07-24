@@ -19,6 +19,7 @@ export { default as Dropzone } from "./Dropzone";
 // Form:
 export { default as AutoComplete } from "./Form/AutoComplete";
 export { default as CheckBox } from "./Form/CheckBox";
+export { default as Chips } from "./Form/Chips";
 export { default as Dropdown } from "./Form/Dropdown";
 export { default as EditorHtml } from "./Form/EditorHtml";
 export { default as Form } from "./Form/Form";
