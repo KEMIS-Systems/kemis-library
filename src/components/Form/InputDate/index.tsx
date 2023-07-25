@@ -21,7 +21,7 @@ interface IProps<T extends FieldValues> {
   view?: "month" | "date" | "year";
   showTime?: boolean;
   timeOnly?: boolean;
-  hourFormat: "24" | "12";
+  hourFormat?: "24" | "12";
 }
 
 const InputDate = <T extends object>({
