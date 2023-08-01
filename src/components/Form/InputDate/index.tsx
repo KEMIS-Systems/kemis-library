@@ -17,6 +17,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   disabled?: boolean;
+  autoFocus?: boolean;
   className?: string;
   view?: "month" | "date" | "year";
   showTime?: boolean;
@@ -32,6 +33,7 @@ const InputDate = <T extends object>({
   form,
   rules,
   disabled,
+  autoFocus,
   className,
   view,
   showTime,
@@ -60,6 +62,7 @@ const InputDate = <T extends object>({
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
                 mask={mask ?? "99/99/9999"}
+                autoFocus={autoFocus}
                 showIcon
                 showButtonBar
                 view={view ?? "date"}

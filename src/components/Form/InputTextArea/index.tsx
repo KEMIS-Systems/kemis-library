@@ -17,6 +17,8 @@ interface IProps<T extends FieldValues> {
   label: string;
   rules?: RegisterOptions;
   form: UseFormReturn<T>;
+  disabled?: boolean;
+  autoFocus?: boolean;
 }
 
 const InputTextArea = <T extends object>({
@@ -26,6 +28,8 @@ const InputTextArea = <T extends object>({
   label,
   rules,
   form,
+  disabled,
+  autoFocus,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -51,6 +55,8 @@ const InputTextArea = <T extends object>({
                 <InputTextareaPrime
                   id={field.name}
                   {...field}
+                  disabled={disabled}
+                  autoFocus={autoFocus}
                   className=" w-full"
                   placeholder={label}
                 />

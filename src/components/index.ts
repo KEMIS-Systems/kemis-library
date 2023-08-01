@@ -43,6 +43,9 @@ export { default as Loading } from "./Loading";
 // DialogPhoto:
 export { default as DialogPhoto } from "./DialogPhoto";
 
+// ShowFile:
+export { default as ShowFile } from "./ShowFile";
+
 // Signature:
 export { default as ColorPalette } from "./Signature/ColorPalette";
 export { default as DialogSignature } from "./Signature/DialogSignature";

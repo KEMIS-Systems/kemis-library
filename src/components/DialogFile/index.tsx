@@ -1,10 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback } from "react";
 import { Dialog } from "primereact/dialog";
-import Image from "next/image";
 
-import Loading from "../Loading";
 import { AxiosInstance } from "axios";
-import generateUrlBlob from "../../utils/generateUrlBlob";
+import ShowFile from "../ShowFile";
 
 interface P {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,39 +18,9 @@ interface IModalProps {
 }
 
 const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
-  const [showLoading, setShowLoading] = useState<boolean>(false);
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const [pdfUrl, setPdfUrl] = useState<string>("");
-
   const handleHide = useCallback(() => {
     onHide();
   }, [onHide]);
-
-  useEffect(() => {
-    setImageUrl("");
-    setPdfUrl("");
-    if (url) {
-      setShowLoading(true);
-      api
-        .get(`${url}`, {
-          responseType: "blob",
-        })
-        .then((response) => {
-          if (response.headers["content-type"] === "application/pdf") {
-            setPdfUrl(generateUrlBlob(response));
-          } else {
-            setImageUrl(
-              window.URL.createObjectURL(
-                new Blob([response.data], {
-                  type: response.headers["content-type"],
-                })
-              )
-            );
-          }
-        })
-        .finally(() => setShowLoading(false));
-    }
-  }, [url]);
 
   return (
     <>
@@ -63,21 +31,8 @@ const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
         className="w-full lg:w-4/5 min-h-screen max-h-screen"
         maximizable
       >
-        {imageUrl && (
-          <div className="relative">
-            <Image
-              src={imageUrl}
-              alt={header}
-              className="w-full h-1/3 p-10"
-              fill
-            />
-          </div>
-        )}
-        {pdfUrl && (
-          <iframe src={pdfUrl} title={header} className="w-full min-h-screen max-h-screen" />
-        )}
+        <ShowFile api={api} header={header} url={url} />
       </Dialog>
-      <Loading show={showLoading} />
     </>
   );
 };
