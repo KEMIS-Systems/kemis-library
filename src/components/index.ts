@@ -34,7 +34,7 @@ export { default as InputSwitch } from "./Form/InputSwitch";
 export { default as InputText } from "./Form/InputText";
 export { default as InputTextArea } from "./Form/InputTextArea";
 export { default as ListBox } from "./Form/ListBox";
-export { default as Multiselect } from "./Form/Multiselect";
+export { default as MultiSelect } from "./Form/MultiSelect";
 export { default as SelectButton } from "./Form/SelectButton";
 
 // Loading:

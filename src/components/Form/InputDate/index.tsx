@@ -23,6 +23,8 @@ interface IProps<T extends FieldValues> {
   showTime?: boolean;
   timeOnly?: boolean;
   hourFormat?: "24" | "12";
+  selectionMode?: "single" | "range" | "multiple";
+  readOnlyInput?: boolean;
 }
 
 const InputDate = <T extends object>({
@@ -39,6 +41,8 @@ const InputDate = <T extends object>({
   showTime,
   timeOnly,
   hourFormat,
+  selectionMode,
+  readOnlyInput,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -61,7 +65,7 @@ const InputDate = <T extends object>({
               <CalendarPrime
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
-                mask={mask ?? "99/99/9999"}
+                mask={mask ?? !readOnlyInput ? "99/99/9999" : undefined}
                 autoFocus={autoFocus}
                 showIcon
                 showButtonBar
@@ -70,6 +74,8 @@ const InputDate = <T extends object>({
                 timeOnly={timeOnly}
                 hourFormat={hourFormat}
                 showOnFocus={false}
+                selectionMode={selectionMode}
+                readOnlyInput={readOnlyInput}
                 className={
                   classNames({ "p-invalid ": fieldState.error }) + " w-full"
                 }
