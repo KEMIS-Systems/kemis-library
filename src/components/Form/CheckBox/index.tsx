@@ -21,6 +21,7 @@ interface IProps<T extends FieldValues> {
   style?: React.CSSProperties;
   check: boolean;
   onChange(value: boolean): void;
+  disabled?: boolean;
 }
 
 const CheckBox = <T extends object>({
@@ -35,6 +36,7 @@ const CheckBox = <T extends object>({
   style,
   check,
   onChange,
+  disabled,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -68,6 +70,7 @@ const CheckBox = <T extends object>({
                   {...field}
                   style={style}
                   checked={check}
+                  disabled={disabled}
                   onChange={(event) => onChange(!!event.target.checked)}
                 />
               </>

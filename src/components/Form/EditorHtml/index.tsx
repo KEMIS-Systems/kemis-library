@@ -16,6 +16,7 @@ interface IProps<T extends FieldValues> {
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
+  disabled?: boolean;
 }
 
 const EditorHtml = <T extends object>({
@@ -25,6 +26,7 @@ const EditorHtml = <T extends object>({
   rules,
   autoFocus,
   form,
+  disabled,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -52,6 +54,7 @@ const EditorHtml = <T extends object>({
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   autoFocus={autoFocus}
+                  disabled={disabled}
                   {...field}
                   onTextChange={(e) => {
                     field.onChange(e.htmlValue);

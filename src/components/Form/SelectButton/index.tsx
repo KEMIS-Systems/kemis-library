@@ -16,6 +16,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   label: string;
   options: SelectItemOptionsType;
+  disabled?: boolean;
 }
 
 const SelectButton = <T extends object>({
@@ -24,6 +25,7 @@ const SelectButton = <T extends object>({
   form,
   label,
   options,
+  disabled,
 }: IProps<T>) => {
   return (
     <Controller
@@ -45,6 +47,7 @@ const SelectButton = <T extends object>({
               id={field.name}
               options={options}
               ref={ref}
+              disabled={disabled}
               {...field}
             />
           </>

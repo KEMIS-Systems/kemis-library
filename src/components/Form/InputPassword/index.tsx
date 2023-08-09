@@ -22,6 +22,7 @@ interface IProps<T extends FieldValues> {
   feedback?: boolean;
   toggleMask?: boolean;
   placeholder?: string;
+  disabled?: boolean;
 }
 
 const InputPassword = <T extends object>({
@@ -34,6 +35,7 @@ const InputPassword = <T extends object>({
   feedback,
   toggleMask,
   placeholder,
+  disabled,
 }: IProps<T>) => {
   const { language } = useLanguage();
   const passwordHeader = <h6>{language.input.password.header}</h6>;
@@ -80,6 +82,7 @@ const InputPassword = <T extends object>({
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   inputClassName=" w-full"
+                  disabled={disabled}
                   {...field}
                   ref={ref}
                 />

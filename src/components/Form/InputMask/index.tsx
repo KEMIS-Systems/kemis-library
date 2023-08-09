@@ -21,6 +21,7 @@ interface IProps<T extends FieldValues> {
   rules?: RegisterOptions;
   autoFocus?: boolean;
   onComplete?: (e: InputMaskCompleteEvent) => void;
+  disabled?: boolean;
 }
 
 const InputMask = <T extends object>({
@@ -32,6 +33,7 @@ const InputMask = <T extends object>({
   rules,
   autoFocus,
   onComplete,
+  disabled,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -58,6 +60,7 @@ const InputMask = <T extends object>({
                   className={
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
+                  disabled={disabled}
                   {...field}
                   ref={ref}
                   onChange={(event) => field.onChange(event.value)}

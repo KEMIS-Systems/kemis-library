@@ -19,6 +19,7 @@ interface IProps<T extends FieldValues> {
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
+  disabled?: boolean;
 }
 
 const AutoComplete = <T extends object>({
@@ -30,6 +31,7 @@ const AutoComplete = <T extends object>({
   rules,
   autoFocus,
   form,
+  disabled,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -59,6 +61,7 @@ const AutoComplete = <T extends object>({
                   forceSelection
                   autoHighlight
                   showEmptyMessage
+                  disabled={disabled}
                   emptyMessage="No results found"
                   className={
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"

@@ -19,6 +19,7 @@ interface IProps<T extends FieldValues> {
   locale?: string;
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
+  disabled?: boolean;
 }
 
 const InputNumber = <T extends object>({
@@ -30,6 +31,7 @@ const InputNumber = <T extends object>({
   locale,
   form,
   rules,
+  disabled,
 }: IProps<T>) => {
   const [value, setValue] = useState<number>(0);
 
@@ -68,9 +70,10 @@ const InputNumber = <T extends object>({
                     className={
                       classNames({ "p-invalid ": fieldState.error }) + " w-full"
                     }
+                    disabled={disabled}
                     {...field}
                     ref={ref}
-                    value={value ? value : field.value}
+                    value={value ?? field.value}
                     onChange={(event) => field.onChange(event.value)}
                     onBlur={(event) => setValue(Number(event.target.value))}
                   />

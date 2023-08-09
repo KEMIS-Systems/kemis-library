@@ -16,6 +16,7 @@ interface IProps<T extends FieldValues> {
   label: string;
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
+  disabled?: boolean;
 }
 
 const InputSwitch = <T extends object>({
@@ -24,6 +25,7 @@ const InputSwitch = <T extends object>({
   label,
   form,
   rules,
+  disabled,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -48,6 +50,7 @@ const InputSwitch = <T extends object>({
                   checked={field.value ?? false}
                   ref={ref}
                   defaultChecked={false}
+                  disabled={disabled}
                   {...field}
                   className={classNames({ "p-invalid": fieldState.error })}
                   onChange={(e: any) => field.onChange(e.value)}

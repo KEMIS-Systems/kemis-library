@@ -17,6 +17,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   separator?: string;
+  disabled?: boolean;
 }
 
 const Chips = <T extends object>({
@@ -26,6 +27,7 @@ const Chips = <T extends object>({
   form,
   rules,
   separator,
+  disabled,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -47,9 +49,10 @@ const Chips = <T extends object>({
                 </label>
                 <ChipsPrime
                   id={field.name}
-                  separator={separator || ","}
+                  separator={separator ?? ","}
                   ref={ref}
                   {...field}
+                  disabled={disabled}
                   className={classNames({ "p-invalid": fieldState.error })}
                   onChange={
                     field.onChange as unknown as (

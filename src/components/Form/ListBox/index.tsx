@@ -22,6 +22,7 @@ interface IProps<T extends FieldValues> {
   optionGroupChildren?: string;
   optionGroupTemplate?: ReactNode | ((option: any, index: number) => ReactNode);
   listStyle?: React.CSSProperties;
+  disabled?: boolean;
 }
 
 const ListBox = <T extends object>({
@@ -36,6 +37,7 @@ const ListBox = <T extends object>({
   optionGroupChildren,
   optionGroupTemplate,
   listStyle,
+  disabled,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -66,6 +68,7 @@ const ListBox = <T extends object>({
                   className={
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
+                  disabled={disabled}
                   {...field}
                   ref={ref}
                 />
