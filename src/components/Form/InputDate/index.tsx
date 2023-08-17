@@ -1,13 +1,13 @@
+import { Calendar as CalendarPrime } from "primereact/calendar";
+import { classNames } from "primereact/utils";
 import React from "react";
 import {
   Controller,
+  FieldPath,
   FieldValues,
   RegisterOptions,
-  FieldPath,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
-import { Calendar as CalendarPrime } from "primereact/calendar";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -42,7 +42,7 @@ const InputDate = <T extends object>({
   timeOnly,
   hourFormat,
   selectionMode,
-  readOnlyInput,
+  readOnlyInput = false,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -65,7 +65,7 @@ const InputDate = <T extends object>({
               <CalendarPrime
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
-                mask={mask ?? !readOnlyInput ? "99/99/9999" : undefined}
+                mask={mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : undefined}
                 autoFocus={autoFocus}
                 showIcon
                 showButtonBar

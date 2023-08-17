@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
+import { render, waitFor } from "@testing-library/react";
 import axios, { AxiosInstance } from "axios";
-import MockAdapter from "axios-mock-adapter";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import React from "react";
 import {
   Control,
   FieldValues,
@@ -10,9 +10,7 @@ import {
   UseFormReturn,
   useForm,
 } from "react-hook-form";
-import Form, { IProps } from "..";
-import InputDate from "../../InputDate";
-import React from "react";
+import Form from "..";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;

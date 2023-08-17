@@ -1,45 +1,32 @@
-import React from "react";
-import {
-  Controller,
-  FieldValues,
-  RegisterOptions,
-  FieldPath,
-  UseFormReturn,
-} from "react-hook-form";
-import { classNames } from "primereact/utils";
 import {
   InputMask as InputMaskPrime,
-  InputMaskCompleteEvent,
+  InputMaskProps
 } from "primereact/inputmask";
+import { classNames } from "primereact/utils";
+import React, { InputHTMLAttributes } from "react";
+import {
+  Controller,
+  FieldPath,
+  FieldValues,
+  RegisterOptions,
+  UseFormReturn
+} from "react-hook-form";
 
-interface IProps<T extends FieldValues> {
-  className?: string;
-  name: FieldPath<T>;
-  label: string;
-  mask: string;
-  form: UseFormReturn<T>;
+type TInputMask = Omit<InputHTMLAttributes<HTMLInputElement>, 'disabled' | 'readOnly' | 'onFocus' | 'onBlur' | 'onChange' | 'form'> & Omit<InputMaskProps, 'form'>
+
+interface IInputMaskProps<T extends FieldValues> extends TInputMask {
   rules?: RegisterOptions;
-  autoFocus?: boolean;
-  onComplete?: (e: InputMaskCompleteEvent) => void;
-  disabled?: boolean;
+  form: UseFormReturn<T>;
+  label: string
+  name: string;
 }
 
-const InputMask = <T extends object>({
-  className,
-  name,
-  label,
-  mask,
-  form,
-  rules,
-  autoFocus,
-  onComplete,
-  disabled,
-}: IProps<T>) => {
+function InputMask({ rules, form, name, label, className, ...props }: IInputMaskProps<any>) {
   return (
     <div className={className ?? ""}>
       {form && (
         <Controller
-          name={name}
+          name={name as FieldPath<{}>}
           control={form.control}
           rules={rules}
           render={({ field: { ref, ...field }, fieldState }) => {
@@ -54,17 +41,14 @@ const InputMask = <T extends object>({
                   {label}
                 </label>
                 <InputMaskPrime
+                  {...props}
+
+                  name={field.name}
                   id={field.name}
-                  autoFocus={autoFocus}
-                  mask={mask}
+                  ref={ref}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
-                  disabled={disabled}
-                  {...field}
-                  ref={ref}
-                  onChange={(event) => field.onChange(event.value)}
-                  onComplete={onComplete}
                 />
               </>
             );
@@ -73,6 +57,8 @@ const InputMask = <T extends object>({
       )}
     </div>
   );
-};
+}
+
+{/* <InputMask onChange={(event) => event} form={{} as UseFormReturn} label="Your name" name="first_name" /> */ }
 
 export default InputMask;
