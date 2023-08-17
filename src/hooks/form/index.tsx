@@ -28,7 +28,7 @@ type PDefaultValues = IDefaultValues;
  */
 function useFormIntegration(
   defaultValues: PDefaultValues = {},
-  schemaObject?: TSchemaObject
+  schemaObject?: ISchemaObject
 ) {
   const form = useForm({
     defaultValues: defaultValues,
