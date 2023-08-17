@@ -62,10 +62,12 @@ const InputDate = <T extends object>({
               >
                 {label}
               </label>
+              {/* {'Data'} */}
+              {/* {mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : 'undefined'} */}
               <CalendarPrime
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
-                mask={mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : undefined}
+                // mask={mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : undefined}
                 autoFocus={autoFocus}
                 showIcon
                 showButtonBar

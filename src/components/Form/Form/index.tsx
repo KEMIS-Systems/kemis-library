@@ -1,10 +1,10 @@
+import { AxiosInstance } from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useLanguage } from "../../../hooks/Language";
 import Toast from "../../../utils/toast";
 import Loading from "../../Loading";
-import { AxiosInstance } from "axios";
-import { useLanguage } from "../../../hooks/Language";
 
 type K = {
   id?: number;
@@ -56,56 +56,61 @@ const Form = <T extends object>({
     if (dataEdit) {
       form.reset(dataEdit);
     }
-  }, [dataEdit, form]);
+  }, [dataEdit]);
 
   const handleHide = useCallback(() => {
-    form.reset();
+    form?.reset();
     onHide && onHide();
   }, [onHide, form]);
 
   const handleSubmitData = useCallback(
     async (data: FieldValues) => {
-      setShowLoading(true);
-      if (api) {
-        try {
-          const formData: FieldValues | FormData = getFormData
-            ? getFormData(data)
-            : data;
-          if (dataEdit?.id) {
-            formData instanceof FormData
-              ? await api.post(`${url}/${dataEdit.id}`, formData)
-              : await api.put(`${url}/${dataEdit.id}`, formData);
-            await Toast.fire({
-              icon: "success",
-              title: language.pages.alerts.edit.success,
+      try {
+        console.log('handleSubmitData@data', data)
+        setShowLoading(true);
+        if (api) {
+          try {
+            const formData: FieldValues | FormData = getFormData
+              ? getFormData(data)
+              : data;
+            if (dataEdit?.id) {
+              formData instanceof FormData
+                ? await api.post(`${url}/${dataEdit.id}`, formData)
+                : await api.put(`${url}/${dataEdit.id}`, formData);
+              await Toast.fire({
+                icon: "success",
+                title: language.pages.alerts.edit.success,
+              });
+            } else {
+              await api.post(`${url}`, formData);
+              await Toast.fire({
+                icon: "success",
+                title: language.pages.alerts.add.success,
+              });
+            }
+            onRefreshTable && onRefreshTable(true);
+            handleHide();
+          } catch (error) {
+            await Swal.fire({
+              title: "Opss...",
+              text: "Error",
+              icon: "error",
+              willOpen: (popup) => {
+                if (popup.parentElement) {
+                  popup.parentElement.style.zIndex = "5000";
+                }
+              },
             });
-          } else {
-            await api.post(`${url}`, formData);
-            await Toast.fire({
-              icon: "success",
-              title: language.pages.alerts.add.success,
-            });
+          } finally {
+            setShowLoading(false);
           }
-          onRefreshTable && onRefreshTable(true);
-          handleHide();
-        } catch (error) {
-          await Swal.fire({
-            title: "Opss...",
-            text: "Error",
-            icon: "error",
-            willOpen: (popup) => {
-              if (popup.parentElement) {
-                popup.parentElement.style.zIndex = "5000";
-              }
-            },
-          });
-        } finally {
-          setShowLoading(false);
-        }
-      } else
-        console.error(
-          "If you want to POST/PUT, you must include the 'api' property in Form component."
-        );
+        } else
+          console.error(
+            "If you want to POST/PUT, you must include the 'api' property in Form component."
+          );
+      } catch (error: any) {
+        console.log('handleSubmitData@error', error)
+      }
     },
     [dataEdit, url, getFormData, handleHide, onRefreshTable]
   );
@@ -117,7 +122,7 @@ const Form = <T extends object>({
   useEffect(() => {
     submitted && form.handleSubmit(onSubmit ?? handleSubmitData)();
     setSubmitted(false);
-  }, [submitted, form, onSubmit, handleSubmitData]);
+  }, [submitted]);
 
   return (
     <>
