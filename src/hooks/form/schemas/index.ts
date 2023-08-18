@@ -12,7 +12,7 @@ export const GeneralSchema = Zod.object({
 
     const cleanValue = (value as string).replace(/[^\w\s]/gi, '')
 
-    console.log('document@validation step', value, cleanValue, cleanValue.length)
+    // console.log('document@validation step', value, cleanValue, cleanValue.length)
 
     let isValidDocument = false
 
@@ -92,7 +92,7 @@ export const GeneralSchema = Zod.object({
         // console.log('CPF first digit', firstDigit, splitedDocument[splitedDocument.length - 2])
         // console.log('CPF second digit', secondDigit, splitedDocument[splitedDocument.length - 1])
 
-        console.log('CPF', firstDigit, secondDigit, isValidDocument)
+        // console.log('CPF', firstDigit, secondDigit, isValidDocument)
 
         break;
       case 14:
@@ -156,14 +156,14 @@ export const GeneralSchema = Zod.object({
         // console.log('CNPJ first digit', firstDigitCNPJ, splitedDocumentCNPJ[splitedDocumentCNPJ.length - 2])
         // console.log('CNPJ second digit', secondDigitCNPJ, splitedDocumentCNPJ[splitedDocumentCNPJ.length - 1])
 
-        console.log('CNPJ', firstDigitCNPJ, secondDigitCNPJ, isValidDocument)
+        // console.log('CNPJ', firstDigitCNPJ, secondDigitCNPJ, isValidDocument)
 
         break;
       default:
         isValidDocument = true
     }
 
-    console.log('document@validation finish', isValidDocument)
+    // console.log('document@validation finish', isValidDocument)
 
     return isValidDocument ? cleanValue : false
 
