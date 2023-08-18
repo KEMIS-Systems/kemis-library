@@ -9,6 +9,9 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 
+// Components
+import MessageError from "../MessageError";
+
 interface IProps<T extends FieldValues> {
   className?: string;
   name: FieldPath<T>;
@@ -39,7 +42,7 @@ const InputText = <T extends object>({
           name={name}
           control={form.control}
           rules={rules}
-          render={({ field: { ...field }, fieldState }) => {
+          render={({ field: { ref, ...field }, fieldState }) => {
             return (
               <>
                 <label
@@ -52,7 +55,7 @@ const InputText = <T extends object>({
                 </label>
                 <InputTextPrime
                   {...field}
-
+                  ref={ref}
                   id={field.name}
                   type={type ?? "text"}
                   autoFocus={autoFocus}
@@ -62,6 +65,9 @@ const InputText = <T extends object>({
                   disabled={disabled}
                   placeholder={placeholder ?? undefined}
                 />
+                {
+                  <MessageError fieldState={fieldState} />
+                }
               </>
             );
           }}

@@ -168,8 +168,8 @@ export const GeneralSchema = Zod.object({
     return isValidDocument ? cleanValue : false
 
   },
-    { message: "O documento está inválido" }
+    { message: "O documento possui os digitos verificadores inválidos" }
   )),
 
-  email: Zod.optional(Zod.string().trim().email("Seu e-mail não é válido")),
+  email: Zod.optional(Zod.string().trim().email("Seu e-mail não está no formato válido")),
 });

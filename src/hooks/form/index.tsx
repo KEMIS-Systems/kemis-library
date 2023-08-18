@@ -15,7 +15,6 @@ interface ISchemaObject extends Zod.AnyZodObject {
   [key: string]: any;
 }
 
-type TSchemaObject = ISchemaObject;
 type PDefaultValues = IDefaultValues;
 
 /**
@@ -28,7 +27,7 @@ type PDefaultValues = IDefaultValues;
  */
 function useFormIntegration(
   defaultValues: PDefaultValues = {},
-  schemaObject?: ISchemaObject
+  schemaObject?: Zod.AnyZodObject
 ) {
   const form = useForm({
     defaultValues: defaultValues,

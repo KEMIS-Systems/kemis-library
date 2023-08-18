@@ -12,6 +12,9 @@ import {
   UseFormReturn
 } from "react-hook-form";
 
+// Components
+import MessageError from "../MessageError";
+
 type TInputMask = Omit<InputHTMLAttributes<HTMLInputElement>, 'disabled' | 'readOnly' | 'onFocus' | 'onBlur' | 'onChange' | 'form'> & Omit<InputMaskProps, 'form'>
 
 interface IInputMaskProps<T extends FieldValues> extends TInputMask {
@@ -41,15 +44,19 @@ function InputMask({ rules, form, name, label, className, ...props }: IInputMask
                   {label}
                 </label>
                 <InputMaskPrime
+                  {...field}
                   {...props}
+                  ref={ref}
 
                   name={field.name}
                   id={field.name}
-                  ref={ref}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                 />
+                {
+                  <MessageError fieldState={fieldState} />
+                }
               </>
             );
           }}

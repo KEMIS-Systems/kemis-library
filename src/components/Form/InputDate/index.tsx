@@ -27,6 +27,10 @@ interface IProps<T extends FieldValues> {
   readOnlyInput?: boolean;
 }
 
+// Components
+import MessageError from "../MessageError";
+
+
 const InputDate = <T extends object>({
   name,
   label,
@@ -61,13 +65,10 @@ const InputDate = <T extends object>({
               >
                 {label}
               </label>
-              {/* {'Data'} */}
-              {/* {mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : 'undefined'} */}
               <CalendarPrime
                 {...field}
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
-                // mask={mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : undefined}
                 autoFocus={autoFocus}
                 showIcon
                 showButtonBar
@@ -83,6 +84,10 @@ const InputDate = <T extends object>({
                 }
                 disabled={disabled}
               />
+
+              {
+                <MessageError fieldState={fieldState} />
+              }
             </>
           );
         }}
