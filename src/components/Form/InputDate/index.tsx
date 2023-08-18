@@ -50,8 +50,7 @@ const InputDate = <T extends object>({
         name={name}
         control={form?.control}
         rules={rules}
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        render={({ field: { ref, ...field }, fieldState }) => {
+        render={({ field: { ...field }, fieldState }) => {
           return (
             <>
               <label
@@ -65,6 +64,7 @@ const InputDate = <T extends object>({
               {/* {'Data'} */}
               {/* {mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : 'undefined'} */}
               <CalendarPrime
+                {...field}
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
                 // mask={mask ?? (readOnlyInput && !readOnlyInput) ? "99/99/9999" : undefined}
@@ -82,7 +82,6 @@ const InputDate = <T extends object>({
                   classNames({ "p-invalid ": fieldState.error }) + " w-full"
                 }
                 disabled={disabled}
-                {...field}
               />
             </>
           );

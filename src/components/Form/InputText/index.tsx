@@ -1,13 +1,13 @@
-import React from "react";
 import { InputText as InputTextPrime } from "primereact/inputtext";
+import { classNames } from "primereact/utils";
+import React from "react";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -39,7 +39,7 @@ const InputText = <T extends object>({
           name={name}
           control={form.control}
           rules={rules}
-          render={({ field: { ref, ...field }, fieldState }) => {
+          render={({ field: { ...field }, fieldState }) => {
             return (
               <>
                 <label
@@ -51,15 +51,15 @@ const InputText = <T extends object>({
                   {label}
                 </label>
                 <InputTextPrime
+                  {...field}
+
                   id={field.name}
                   type={type ?? "text"}
                   autoFocus={autoFocus}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
-                  ref={ref}
                   disabled={disabled}
-                  {...field}
                   placeholder={placeholder ?? undefined}
                 />
               </>

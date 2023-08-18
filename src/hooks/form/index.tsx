@@ -35,7 +35,11 @@ function useFormIntegration(
     resolver: zodResolver(
       schemaObject !== undefined
         ? GeneralSchema.merge(schemaObject)
-        : GeneralSchema
+        : GeneralSchema, {
+      async: false
+    }, {
+      raw: true
+    }
     )
   });
 

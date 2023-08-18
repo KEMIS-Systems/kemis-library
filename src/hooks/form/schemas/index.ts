@@ -6,7 +6,9 @@ export const GeneralSchema = Zod.object({
   /** A regra de negócio foi implementada com base no "artigo" de souforce
    * @see https://souforce.cloud/regra-de-validacao-para-cpf-e-cnpj-no-salesforce/
    */
-  document: Zod.optional(Zod.string().refine((value) => {
+  document: Zod.optional(Zod.string({
+    invalid_type_error: "Insira um número correto"
+  }).refine((value) => {
 
     const cleanValue = (value as string).replace(/[^\w\s]/gi, '')
 
@@ -163,7 +165,7 @@ export const GeneralSchema = Zod.object({
 
     console.log('document@validation finish', isValidDocument)
 
-    return isValidDocument
+    return isValidDocument ? cleanValue : false
 
   },
     { message: "O documento está inválido" }
