@@ -1,4 +1,4 @@
-import { Calendar as CalendarPrime } from "primereact/calendar";
+import { Calendar as CalendarPrime, CalendarProps } from "primereact/calendar";
 import { classNames } from "primereact/utils";
 import React from "react";
 import {
@@ -23,7 +23,7 @@ interface IProps<T extends FieldValues> {
   showTime?: boolean;
   timeOnly?: boolean;
   hourFormat?: "24" | "12";
-  selectionMode?: "single" | "range" | "multiple";
+  selectionMode?: Extract<CalendarProps, 'selectionMode'> | undefined;
   readOnlyInput?: boolean;
 }
 
@@ -77,7 +77,7 @@ const InputDate = <T extends object>({
                 timeOnly={timeOnly}
                 hourFormat={hourFormat}
                 showOnFocus={false}
-                selectionMode={selectionMode}
+                selectionMode={selectionMode ?? 'single'}
                 readOnlyInput={readOnlyInput}
                 className={
                   classNames({ "p-invalid ": fieldState.error }) + " w-full"
