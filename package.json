@@ -1,6 +1,6 @@
 {
   "name": "kemis-library",
-  "version": "2.0.0-alpha",
+  "version": "2.0.2-alpha",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "index.js",
