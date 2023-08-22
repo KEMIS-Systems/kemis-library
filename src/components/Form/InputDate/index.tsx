@@ -1,4 +1,4 @@
-import { Calendar as CalendarPrime, CalendarProps } from "primereact/calendar";
+import { Calendar as CalendarPrime } from "primereact/calendar";
 import { classNames } from "primereact/utils";
 import React from "react";
 import {
@@ -23,7 +23,7 @@ interface IProps<T extends FieldValues> {
   showTime?: boolean;
   timeOnly?: boolean;
   hourFormat?: "24" | "12";
-  selectionMode?: Extract<CalendarProps, 'selectionMode'>;
+  selectionMode?: "single" | "multiple" | "range"
   readOnlyInput?: boolean;
 }
 
