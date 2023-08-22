@@ -23,7 +23,7 @@ interface IProps<T extends FieldValues> {
   showTime?: boolean;
   timeOnly?: boolean;
   hourFormat?: "24" | "12";
-  selectionMode?: Extract<CalendarProps, 'selectionMode'> | undefined;
+  selectionMode?: Extract<CalendarProps, 'selectionMode'>;
   readOnlyInput?: boolean;
 }
 
