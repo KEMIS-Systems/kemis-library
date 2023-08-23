@@ -1,14 +1,15 @@
+import { classNames } from "primereact/utils";
 import React, { useState } from "react";
+import { Accept } from "react-dropzone";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
-import { Accept } from "react-dropzone";
 import Dropzone from "../../Dropzone";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -56,9 +57,9 @@ const InputFile = <T extends object>({
                     handleChange && handleChange(e);
                   }}
                 />
-                {fieldState.error && (
-                  <small className="p-error">{fieldState.error.message}</small>
-                )}
+                {
+                  <MessageError fieldState={fieldState} />
+                }
               </>
             );
           }}
