@@ -50,7 +50,6 @@ const Form = <T extends object>({
 }: IProps<T>) => {
   const { language } = useLanguage();
   const [showLoading, setShowLoading] = useState<boolean>(false);
-  const [submitted, setSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     if (dataEdit) {
@@ -114,15 +113,6 @@ const Form = <T extends object>({
     },
     [dataEdit, url, getFormData, handleHide, onRefreshTable]
   );
-
-  // useEffect(() => {
-  //   submit && setSubmitted(submit);
-  // }, [submit]);
-
-  // useEffect(() => {
-  //   submitted && form.handleSubmit(onSubmit ?? handleSubmitData)();
-  //   setSubmitted(false);
-  // }, [submitted]);
 
   return (
     <>
