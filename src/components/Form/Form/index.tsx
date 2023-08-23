@@ -66,7 +66,7 @@ const Form = <T extends object>({
   const handleSubmitData = useCallback(
     async (data: FieldValues) => {
       try {
-        console.log('handleSubmitData@data', data)
+        console.log("handleSubmitData@data", data);
         setShowLoading(true);
         if (api) {
           try {
@@ -77,20 +77,20 @@ const Form = <T extends object>({
               formData instanceof FormData
                 ? await api.post(`${url}/${dataEdit.id}`, formData)
                 : await api.put(`${url}/${dataEdit.id}`, formData);
-              await Toast.fire({
-                icon: "success",
-                title: language.pages.alerts.edit.success,
-              });
             } else {
               await api.post(`${url}`, formData);
-              await Toast.fire({
-                icon: "success",
-                title: language.pages.alerts.add.success,
-              });
             }
-            onRefreshTable && onRefreshTable(true);
+            await Toast.fire({
+              icon: "success",
+              title: dataEdit?.id
+                ? language.pages.alerts.edit.success
+                : language.pages.alerts.add.success,
+            });
+            setShowLoading(false);
             handleHide();
+            onRefreshTable && onRefreshTable(true);
           } catch (error) {
+            setShowLoading(false);
             await Swal.fire({
               title: "Opss...",
               text: "Error",
@@ -101,15 +101,13 @@ const Form = <T extends object>({
                 }
               },
             });
-          } finally {
-            setShowLoading(false);
           }
         } else
           console.error(
             "If you want to POST/PUT, you must include the 'api' property in Form component."
           );
       } catch (error: any) {
-        console.log('handleSubmitData@error', error)
+        console.log("handleSubmitData@error", error);
       }
     },
     [dataEdit, url, getFormData, handleHide, onRefreshTable]
@@ -130,7 +128,7 @@ const Form = <T extends object>({
         id="kemis-library-form"
         name="kemis-library-form"
         role="form"
-        onSubmit={form.handleSubmit((onSubmit || handleSubmitData))}
+        onSubmit={form.handleSubmit(onSubmit ?? handleSubmitData)}
       >
         {children}
       </form>
