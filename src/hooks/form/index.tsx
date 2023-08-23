@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as Zod from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as Zod from "zod";
 
 // Schemas
-import { GeneralSchema } from './schemas';
+import { GeneralSchema } from "./schemas";
 
 interface IDefaultValues {
   [key: string]: any;
@@ -19,9 +19,9 @@ type PDefaultValues = IDefaultValues;
 
 /**
  * Mount the form integrated with Zod validation
- * 
+ *
  * @description This function will mount the hook-forms statement with Zod schema validation integrated
- * @param defaultValues The default values for the input's form 
+ * @param defaultValues The default values for the input's form
  * @param schemaObject An optional schema validation to agregate to validation flux
  * @returns The Hook-Forms Statement
  */
@@ -34,22 +34,18 @@ function useFormIntegration(
     resolver: zodResolver(
       schemaObject !== undefined
         ? GeneralSchema.pick(schemaObject.shape)
-        : GeneralSchema, {
-      async: false
-    }, {
-      raw: true,
-      mode: 'sync'
-    }
-    )
+        : GeneralSchema,
+      {
+        async: false,
+      },
+      {
+        raw: true,
+        mode: "sync",
+      }
+    ),
   });
-
-  // console.log('useFormIntegration', (schemaObject !== undefined
-  //   ? GeneralSchema.extend(schemaObject.shape)
-  //   : GeneralSchema).shape, schemaObject !== undefined
-  //   ? GeneralSchema.pick(schemaObject.shape)
-  //   : GeneralSchema)
 
   return { ...form };
 }
 
-export default useFormIntegration
+export default useFormIntegration;
