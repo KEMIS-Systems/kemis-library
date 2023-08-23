@@ -33,7 +33,7 @@ function useFormIntegration(
     defaultValues: defaultValues,
     resolver: zodResolver(
       schemaObject !== undefined
-        ? GeneralSchema.pick(schemaObject.shape)
+        ? GeneralSchema.extend(schemaObject.shape)
         : GeneralSchema, {
       async: false
     }, {
@@ -43,11 +43,9 @@ function useFormIntegration(
     )
   });
 
-  // console.log('useFormIntegration', (schemaObject !== undefined
-  //   ? GeneralSchema.extend(schemaObject.shape)
-  //   : GeneralSchema).shape, schemaObject !== undefined
-  //   ? GeneralSchema.pick(schemaObject.shape)
-  //   : GeneralSchema)
+  console.log('useFormIntegration', (schemaObject !== undefined
+    ? GeneralSchema.extend(schemaObject.shape)
+    : GeneralSchema).shape)
 
   return { ...form };
 }
