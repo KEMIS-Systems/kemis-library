@@ -82,15 +82,16 @@ const FormDialog = <T extends object>({
           <div>
             <button
               type="submit"
+              form="kemis-library-form"
               className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
-              onClick={() => {
-                setSubmitted(true);
-                setTimeout(() => {
-                  setSubmitted(false);
-                }, 1000);
-              }}
+            // onClick={() => {
+            //   setSubmitted(true);
+            //   setTimeout(() => {
+            //     setSubmitted(false);
+            //   }, 1000);
+            // }}
             >
-              {language.input.button_save}
+              teste de post/put
             </button>
           </div>
         )}

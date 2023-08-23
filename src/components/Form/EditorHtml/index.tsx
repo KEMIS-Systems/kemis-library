@@ -1,13 +1,14 @@
+import { Editor } from "primereact/editor";
+import { classNames } from "primereact/utils";
 import React from "react";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
-import { Editor } from "primereact/editor";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -60,6 +61,9 @@ const EditorHtml = <T extends object>({
                     field.onChange(e.htmlValue);
                   }}
                 />
+                {
+                  <MessageError fieldState={fieldState} />
+                }
               </>
             );
           }}

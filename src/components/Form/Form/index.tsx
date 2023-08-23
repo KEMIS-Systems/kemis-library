@@ -115,20 +115,22 @@ const Form = <T extends object>({
     [dataEdit, url, getFormData, handleHide, onRefreshTable]
   );
 
-  useEffect(() => {
-    submit && setSubmitted(submit);
-  }, [submit]);
+  // useEffect(() => {
+  //   submit && setSubmitted(submit);
+  // }, [submit]);
 
-  useEffect(() => {
-    submitted && form.handleSubmit(onSubmit ?? handleSubmitData)();
-    setSubmitted(false);
-  }, [submitted]);
+  // useEffect(() => {
+  //   submitted && form.handleSubmit(onSubmit ?? handleSubmitData)();
+  //   setSubmitted(false);
+  // }, [submitted]);
 
   return (
     <>
       <form
+        id="kemis-library-form"
+        name="kemis-library-form"
         role="form"
-        onSubmit={form.handleSubmit(onSubmit ?? handleSubmitData)}
+        onSubmit={form.handleSubmit((onSubmit || handleSubmitData))}
       >
         {children}
       </form>

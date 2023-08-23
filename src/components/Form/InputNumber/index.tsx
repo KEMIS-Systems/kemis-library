@@ -1,14 +1,15 @@
+import { InputNumber as InputNumberPrime } from "primereact/inputnumber";
+import { classNames } from "primereact/utils";
 import React, { useState } from "react";
 import {
   Controller,
+  FieldPath,
   FieldValues,
   RegisterOptions,
-  FieldPath,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
-import { InputNumber as InputNumberPrime } from "primereact/inputnumber";
 import styled from "styled-components";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -77,6 +78,9 @@ const InputNumber = <T extends object>({
                     onChange={(event) => field.onChange(event.value)}
                     onBlur={(event) => setValue(Number(event.target.value))}
                   />
+                  {
+                    <MessageError fieldState={fieldState} />
+                  }
                 </InputStyles>
               </>
             );
