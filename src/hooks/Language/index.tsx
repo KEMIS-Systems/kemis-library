@@ -6,7 +6,7 @@ import pt from "./languages/pt.json";
 const languageData: { [key: string]: ILanguage } = {
   en,
   es,
-  pt,
+  pt
 };
 
 export interface LanguageContextData {

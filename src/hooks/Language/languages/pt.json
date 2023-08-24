@@ -1,7 +1,9 @@
 {
   "components": {
     "error": {
-      "message": "Ocorreu um erro ao gerar o arquivo, tente novamente."
+      "message": "Ocorreu um erro ao gerar o arquivo, tente novamente.",
+      "required": "Rellene el campo",
+      "validation": "Rellenar correctamente"
     },
     "dropzone": {
       "message": "Arraste um arquivo para cá ou clique para selecionar",
@@ -63,45 +65,93 @@
           "rule4": "Mínimo de 8 caracteres"
         }
       }
+    },
+    "document": {
+      "required": "Preencha o campo",
+      "validation": "Digitos inválidos"
+    },
+    "email": {
+      "required": "Preencha o campo",
+      "validation": "Não é valido"
+    },
+    "booleans": {
+      "yes": "Sim",
+      "no": "Não",
+      "ok": "Ok",
+      "noOk": "Não ok"
+    },
+    "default": {
+      "import_message": "A importação pode demorar alguns minutos. Enviaremos um e-mail assim que estiver terminado.",
+      "validations": {
+        "cnpj": "O CNPJ informado não é válido.",
+        "cpf": "O CPF informado não é válido."
+      }
+    },
+    "pages": {
+      "message": {
+        "empty": "Nenhum registro encontrado.",
+        "pages": "Itens por página"
+      },
+      "alerts": {
+        "edit": {
+          "success": "Dados atualizados com sucesso!"
+        },
+        "add": {
+          "success": "Dados salvos com sucesso!"
+        },
+        "copy": {
+          "success": "Link copiado para a área de transferência"
+        },
+        "error": {
+          "error": "Erro ao salvar os dados!",
+          "error_filter": "Erro ao filtrar os dados!",
+          "zip_code_not_found": "CEP não encontrado!"
+        },
+        "delete": {
+          "confirm": "Esta ação é irreversível. Deseja prosseguir?",
+          "sucess": "Registro eliminado con sucesso!",
+          "error": "Não foi possível apagar o registro."
+        }
+      }
     }
   },
   "booleans": {
-    "yes": "Sim",
-    "no": "Não",
+    "yes": "Si",
+    "no": "No",
     "ok": "Ok",
-    "noOk": "Não ok"
+    "noOk": "No está bien"
   },
   "default": {
-    "import_message": "A importação pode demorar alguns minutos. Enviaremos um e-mail assim que estiver terminado.",
+    "import_message": "La importación puede tardar unos minutos. Te enviaremos un correo electrónico una vez que haya terminado.",
     "validations": {
-      "cnpj": "O CNPJ informado não é válido.",
-      "cpf": "O CPF informado não é válido."
+      "cnpj": "El CNPJ informado no es valido.",
+      "cpf": "El CPF informado no es valido."
     }
   },
   "pages": {
     "message": {
-      "empty": "Nenhum registro encontrado.",
-      "pages": "Itens por página"
+      "empty": "No se han encontrado datos.",
+      "pages": "Items por página"
     },
     "alerts": {
       "edit": {
-        "success": "Dados atualizados com sucesso!"
+        "success": "¡Cambio realizado con éxito!"
       },
       "add": {
-        "success": "Dados salvos com sucesso!"
+        "success": "¡Registro realizado con éxito!"
       },
       "copy": {
-        "success": "Link copiado para a área de transferência"
+        "success": "Enlace copiado al portapapeles"
       },
       "error": {
-        "error": "Erro ao salvar os dados!",
-        "error_filter": "Erro ao filtrar os dados!",
-        "zip_code_not_found": "CEP não encontrado!"
+        "error": "Hubo un error al guardar los datos, intente nuevamente",
+        "error_filter": "Hubo un error al filtrar los datos.",
+        "zip_code_not_found": "Codigo postal no encontrado!"
       },
       "delete": {
-        "confirm": "Esta ação é irreversível. Deseja prosseguir?",
-        "sucess": "Registro eliminado con sucesso!",
-        "error": "Não foi possível apagar o registro."
+        "confirm": "Esta acción es irreversible. ¿Quieres proceder?",
+        "sucess": "¡Registro eliminado con éxito!",
+        "error": "No se pudo eliminar el registro."
       }
     }
   }

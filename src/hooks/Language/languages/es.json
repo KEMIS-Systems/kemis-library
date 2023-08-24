@@ -1,7 +1,9 @@
 {
   "components": {
     "error": {
-      "message": "Ocurrió un error al exportar los datos, intente nuevamente."
+      "message": "Ocurrió un error al exportar los datos, intente nuevamente.",
+      "required": "Rellene el campo",
+      "validation": "Rellenar correctamente"
     },
     "dropzone": {
       "message": "Arrastre un archivo aquí o haga click para seleccionar",
@@ -63,6 +65,14 @@
           "rule4": "Mínimo de 8 caracteres"
         }
       }
+    },
+    "document": {
+      "required": "El documento necesita ser informado",
+      "validation": "El documento tiene dígitos no válidos"
+    },
+    "email": {
+      "required": "El dirección de correo electrónico necesita ser informado",
+      "validation": "El dirección de correo electrónico tiene dígitos no válidos"
     }
   },
   "booleans": {
