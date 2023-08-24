@@ -2,6 +2,8 @@ export interface ILanguage {
   components: {
     error: {
       message: string;
+      required: string;
+      validation: string;
     };
     dropzone: {
       message: string;
@@ -64,6 +66,10 @@ export interface ILanguage {
         };
       };
     };
+    document: {
+      required: string;
+      validation: string;
+    }
   };
   booleans: {
     yes: string;

@@ -1,7 +1,9 @@
 {
   "components": {
     "error": {
-      "message": "An error has occurred. Please try again later."
+      "message": "An error has occurred. Please try again later.",
+      "required": "Fill in the field",
+      "validation": "Fill in correctly"
     },
     "dropzone": {
       "message": "Drop files here to upload or click to select files",
@@ -63,6 +65,10 @@
           "rule4": "Minimum of 8 characters"
         }
       }
+    },
+    "document": {
+      "required": "The document needs to be informed",
+      "validation": "Document has invalid digits"
     }
   },
   "booleans": {
