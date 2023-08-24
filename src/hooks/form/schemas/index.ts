@@ -70,7 +70,7 @@ export const GeneralSchema = Zod.object({
         }
 
         value.replace("-", ".").split(".").forEach(group => {
-          if (/^(\d)\3+$/.test(group)) isValidDocument = false
+          if (!/^(\d)\3+$/.test(group)) isValidDocument = false
         })
 
         break;
@@ -120,7 +120,7 @@ export const GeneralSchema = Zod.object({
           isValidDocument = true
         }
 
-        if (/^(?!(\d)\1\.\1{3}\.\1{3}\/\1{4}-\1{2}$)\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(value)) isValidDocument = false
+        if (!/^(?!(\d)\1\.\1{3}\.\1{3}\/\1{4}-\1{2}$)\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(value)) isValidDocument = false
 
         break;
       default:
