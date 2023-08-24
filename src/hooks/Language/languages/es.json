@@ -69,6 +69,10 @@
     "document": {
       "required": "El documento necesita ser informado",
       "validation": "El documento tiene dígitos no válidos"
+    },
+    "email": {
+      "required": "El dirección de correo electrónico necesita ser informado",
+      "validation": "El dirección de correo electrónico tiene dígitos no válidos"
     }
   },
   "booleans": {

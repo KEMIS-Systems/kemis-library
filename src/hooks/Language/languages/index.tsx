@@ -69,6 +69,10 @@ export interface ILanguage {
     document: {
       required: string;
       validation: string;
+    },
+    email: {
+      required: string;
+      validation: string;
     }
   };
   booleans: {

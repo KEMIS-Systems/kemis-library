@@ -69,6 +69,10 @@
     "document": {
       "required": "The document needs to be informed",
       "validation": "Document has invalid digits"
+    },
+    "email": {
+      "required": "The email address needs to be informed",
+      "validation": "Email address has invalid digits"
     }
   },
   "booleans": {

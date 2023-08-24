@@ -1,5 +1,7 @@
 import * as Zod from 'zod';
+import { useLanguage } from '../../Language';
 
+const { language } = useLanguage()
 
 // CREATE A GENERIC SCHEMA OBJECT
 export const GeneralSchema = Zod.object({
@@ -10,7 +12,7 @@ export const GeneralSchema = Zod.object({
     invalid_type_error: "Insira um número correto"
   }).refine((value) => {
 
-    const cleanValue = (value as string).replace(/[^\w\s]/gi, '')
+    const cleanValue = (value as string).replace(/[^\w\s]/gi, '').trim()
 
     // console.log('document@validation step', value, cleanValue, cleanValue.length)
 
@@ -22,9 +24,6 @@ export const GeneralSchema = Zod.object({
         const splitedValueRaw = splitedDocument
         const weightsDigitCPF = [10, 9, 8, 7, 6, 5, 4, 3, 2]
         const weightsSecondDigitCPF = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2]
-
-        // splitedValueRaw[splitedValueRaw.length - 2] = `${splitedValueRaw[splitedValueRaw.length - 2]}${splitedValueRaw[splitedValueRaw.length - 1]}`
-
         const splitedValue = splitedValueRaw.slice(0, cleanValue.length - 2)
 
         let firstDigit = null
@@ -55,13 +54,6 @@ export const GeneralSchema = Zod.object({
         // SECOND DIGIT
 
         for (let i = 0; i < splitedValue.length; i++) {
-          // console.log('Second Digit ~ weight', weightsSecondDigitCPF[i])
-          // console.log('Second Digit ~ number', splitedValue[i])
-          // @ts-ignore
-          // console.log('Second Digit ~ calc', splitedValue[i] * weightsSecondDigitCPF[i])
-          // console.log('Second Digit ~ result', multiplyToSecondDigit)
-
-
           // @ts-ignore
           multiplyToSecondDigit += (splitedValue[i] * weightsSecondDigitCPF[i])
         }
@@ -77,22 +69,9 @@ export const GeneralSchema = Zod.object({
           isValidDocument = true
         }
 
-        // console.log('CPF splited', splitedValue)
-
-        // console.log('CPF weigth 1 digit', weightsDigitCPF)
-        // console.log('CPF weigth 2 digit', weightsSecondDigitCPF)
-
-        // console.log('CPF splited with first digit', [...splitedValue, firstDigit])
-        // console.log('CPF splited with second digit', [...splitedValue, secondDigit])
-        // console.log('CPF splited with digits', [...splitedValue, firstDigit, secondDigit])
-
-        // console.log('CPF multiplicacao x1', multiplyToFirstDigit)
-        // console.log('CPF multiplicacao x2', multiplyToSecondDigit)
-
-        // console.log('CPF first digit', firstDigit, splitedDocument[splitedDocument.length - 2])
-        // console.log('CPF second digit', secondDigit, splitedDocument[splitedDocument.length - 1])
-
-        // console.log('CPF', firstDigit, secondDigit, isValidDocument)
+        value.replace("-", ".").split(".").forEach(group => {
+          if (/^(\d)\3+$/.test(group)) isValidDocument = false
+        })
 
         break;
       case 14:
@@ -141,35 +120,20 @@ export const GeneralSchema = Zod.object({
           isValidDocument = true
         }
 
-        // console.log('CNPJ splited', splitedDocumentCNPJ)
-
-        // console.log('CNPJ weigth 1 digit', weightsFirstDigit)
-        // console.log('CNPJ weigth 2 digit', weightsSecondDigit)
-
-        // console.log('CNPJ splited with first digit', [...splitedDocumentCNPJ, firstDigitCNPJ])
-        // console.log('CNPJ splited with second digit', [...splitedDocumentCNPJ, secondDigitCNPJ])
-        // console.log('CNPJ splited with digits', [...splitedDocumentCNPJ, firstDigitCNPJ, secondDigitCNPJ])
-
-        // console.log('CNPJ multiplicacao x1', multiplyToFirstDigitCNPJ)
-        // console.log('CNPJ multiplicacao x2', multiplyToSecondDigitCNPJ)
-
-        // console.log('CNPJ first digit', firstDigitCNPJ, splitedDocumentCNPJ[splitedDocumentCNPJ.length - 2])
-        // console.log('CNPJ second digit', secondDigitCNPJ, splitedDocumentCNPJ[splitedDocumentCNPJ.length - 1])
-
-        // console.log('CNPJ', firstDigitCNPJ, secondDigitCNPJ, isValidDocument)
+        if (/^(?!(\d)\1\.\1{3}\.\1{3}\/\1{4}-\1{2}$)\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(value)) isValidDocument = false
 
         break;
       default:
         isValidDocument = true
     }
 
-    // console.log('document@validation finish', isValidDocument)
-
     return isValidDocument ? cleanValue : false
-
   },
-    { message: "O documento possui os digitos verificadores inválidos" }
+    { message: language.input.document.validation }
   )),
 
-  email: Zod.optional(Zod.string().trim().email("Seu e-mail não está no formato válido")),
+  email: Zod.optional(Zod.string({
+    required_error: language.input.email.required,
+    invalid_type_error: language.input.email.validation,
+  }).trim().email(language.input.email.validation)),
 });
