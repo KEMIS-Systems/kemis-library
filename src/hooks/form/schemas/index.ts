@@ -70,7 +70,7 @@ export const GeneralSchema = Zod.object({
         }
 
         value.replace("-", ".").split(".").forEach(group => {
-          if (!/^(\d)\3+$/.test(group)) isValidDocument = false
+          if (/(\d)\1{2}/g.test(group)) isValidDocument = false
         })
 
         break;
@@ -127,7 +127,7 @@ export const GeneralSchema = Zod.object({
         isValidDocument = true
     }
 
-    return isValidDocument ? cleanValue : false
+    return isValidDocument
   },
     { message: language.input.document.validation }
   )),
