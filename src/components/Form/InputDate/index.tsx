@@ -70,7 +70,7 @@ const InputDate = <T extends object>({
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
                 autoFocus={autoFocus}
-                mask={mask}
+                mask={mask ?? '99/99/9999'}
                 showIcon
                 showButtonBar
                 view={view ?? "date"}
