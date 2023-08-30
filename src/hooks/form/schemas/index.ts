@@ -132,8 +132,10 @@ export const GeneralSchema = Zod.object({
     { message: language.input.document.validation }
   )),
 
-  email: Zod.optional(Zod.string({
-    required_error: language.input.email.required,
-    invalid_type_error: language.input.email.validation,
-  }).trim().email(language.input.email.validation)),
+  email: Zod.any().refine((email: string) => {
+    if (email.trim() === '' || email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    )) return true
+
+    return false
+  }, language.input.email.validation).optional().nullable(),
 });
