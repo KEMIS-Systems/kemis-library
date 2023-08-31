@@ -68,7 +68,8 @@
     },
     "document": {
       "required": "El documento necesita ser informado",
-      "validation": "El documento tiene dígitos no válidos"
+      "validation": "El documento tiene dígitos no válidos",
+      "invalid_type_error": "El tipo de documento no es válido"
     },
     "email": {
       "required": "El dirección de correo electrónico necesita ser informado",

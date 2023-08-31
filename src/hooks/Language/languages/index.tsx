@@ -69,11 +69,12 @@ export interface ILanguage {
     document: {
       required: string;
       validation: string;
-    },
+      invalid_type_error: string;
+    };
     email: {
       required: string;
       validation: string;
-    }
+    };
   };
   booleans: {
     yes: string;

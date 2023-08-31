@@ -68,7 +68,8 @@
     },
     "document": {
       "required": "Preencha o campo",
-      "validation": "Digitos inválidos"
+      "validation": "Digitos inválidos",
+      "invalid_type_error": "Tipo de documento inválido"
     },
     "email": {
       "required": "Preencha o campo",
