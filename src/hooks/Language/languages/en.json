@@ -68,7 +68,8 @@
     },
     "document": {
       "required": "The document needs to be informed",
-      "validation": "Document has invalid digits"
+      "validation": "Document has invalid digits",
+      "invalid_type_error": "Invalid document type"
     },
     "email": {
       "required": "The email address needs to be informed",
