@@ -1,7 +1,7 @@
 import { AxiosInstance } from "axios";
-import { onlyNumber } from "./format";
 import { cnpj as cnpjValidator } from "cpf-cnpj-validator";
 import IMCnpj from "../models/IMCnpj";
+import { onlyNumber } from "./format";
 
 const isValid = (value: string | null | undefined): boolean => {
   if (!value) return false;

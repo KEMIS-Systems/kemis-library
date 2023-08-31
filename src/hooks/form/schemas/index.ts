@@ -1,7 +1,8 @@
 import * as Zod from "zod";
-import { cpf, cnpj } from "cpf-cnpj-validator";
-
 import { useLanguage } from "../../Language";
+
+import { cnpj } from "../../../utils/cnpj";
+import { cpf } from "../../../utils/cpf";
 
 const { language } = useLanguage();
 
@@ -12,14 +13,34 @@ export const GeneralSchema = Zod.object({
    */
   document: Zod.optional(
     Zod.string({
-      invalid_type_error: language.input.document.invalid_type_error,
+      invalid_type_error: "Insira um número correto",
     }).refine(
-      (value: string) => {
-        if (value.trim() === "") return true;
-        const cleanValue = value.replace(/[^\w\s]/gi, "").trim();
-        return cleanValue.length === 11
-          ? cpf.isValid(cleanValue)
-          : cnpj.isValid(cleanValue);
+      (value) => {
+        const cleanValue = (value as string).replace(/[^\w\s]/gi, "").trim();
+
+        let isValidDocument = false;
+
+        switch (cleanValue.length) {
+          case 11:
+            isValidDocument = cpf.isValid(cleanValue);
+
+            break;
+          case 14:
+            isValidDocument = cnpj.isValid(cleanValue);
+
+            break;
+          default:
+            isValidDocument = true;
+        }
+
+        console.log(
+          "DOCUMENT VALIDATION",
+          isValidDocument,
+          `CPF~${cpf.isValid(cleanValue)}`,
+          `CNPJ~${cnpj.isValid(cleanValue)}`
+        );
+
+        return isValidDocument;
       },
       { message: language.input.document.validation }
     )
