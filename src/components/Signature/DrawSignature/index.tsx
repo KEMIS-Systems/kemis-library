@@ -3,7 +3,7 @@ import CanvasDraw from "react-canvas-draw";
 
 import { BsCheck2Circle } from "react-icons/bs";
 import { BiTrash } from "react-icons/bi";
-import toBlob from "../../../utils/toBlob";
+import { toBlob } from "../../../utils/files";
 import blobToFile from "../../../utils/blobToFile";
 import React from "react";
 import ColorPalette from "../ColorPalette";
