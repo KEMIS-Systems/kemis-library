@@ -18,7 +18,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
   const [fileData, setFileData] = useState<File>({} as File);
 
   const handleReturnURL = useCallback((file: File) => {
-    if (file !== undefined) {
+    if (file) {
       const bynaryData = [];
       bynaryData.push(file);
 

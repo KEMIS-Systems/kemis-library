@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox as CheckboxPrime } from "primereact/checkbox";
+import { RadioButton as RadioButtonPrime } from "primereact/radiobutton";
 import {
   Controller,
   RegisterOptions,
@@ -12,29 +12,29 @@ import { classNames } from "primereact/utils";
 interface IProps<T extends FieldValues> {
   className?: string;
   classNameLabel?: string;
-  classNameCheckbox?: string;
+  classNameComponent?: string;
   name: FieldPath<T>;
   label: string;
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   style?: React.CSSProperties;
-  check: boolean;
+  checked?: boolean;
   onChange(value: boolean): void;
   disabled?: boolean;
 }
 
-const CheckBox = <T extends object>({
+const RadioButton = <T extends object>({
   className,
   classNameLabel,
-  classNameCheckbox,
+  classNameComponent,
   name,
   label,
   rules,
   autoFocus,
   form,
   style,
-  check,
+  checked,
   onChange,
   disabled,
 }: IProps<T>) => {
@@ -58,19 +58,19 @@ const CheckBox = <T extends object>({
                 >
                   {label}
                 </label>
-                <CheckboxPrime
+                <RadioButtonPrime
                   id={field.name}
                   autoFocus={autoFocus}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) +
                     "w-full " +
-                    (classNameCheckbox && classNameCheckbox)
+                    (classNameComponent && classNameComponent)
                   }
                   ref={ref}
                   {...field}
                   style={style}
-                  checked={check}
                   disabled={disabled}
+                  checked={checked}
                   onChange={(event) => onChange(!!event.target.checked)}
                 />
               </>
@@ -82,4 +82,4 @@ const CheckBox = <T extends object>({
   );
 };
 
-export default CheckBox;
+export default RadioButton;

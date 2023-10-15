@@ -32,9 +32,7 @@ function useFormIntegration(
   const form = useForm({
     defaultValues: defaultValues,
     resolver: zodResolver(
-      schemaObject !== undefined
-        ? GeneralSchema.extend(schemaObject.shape)
-        : GeneralSchema,
+      schemaObject ? GeneralSchema.extend(schemaObject.shape) : GeneralSchema,
       {
         async: false,
       },
@@ -47,10 +45,8 @@ function useFormIntegration(
 
   console.log(
     "useFormIntegration",
-    (schemaObject !== undefined
-      ? GeneralSchema.extend(schemaObject.shape)
-      : GeneralSchema
-    ).shape
+    (schemaObject ? GeneralSchema.extend(schemaObject.shape) : GeneralSchema)
+      .shape
   );
 
   return { ...form };

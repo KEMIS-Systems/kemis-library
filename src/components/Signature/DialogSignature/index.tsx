@@ -13,6 +13,7 @@ interface IModalProps {
   onSubmitted: (file: File) => void;
   text: string;
   classNameDialog?: string;
+  uploadSignature?: boolean;
 }
 
 const DialogSignature = ({
@@ -22,6 +23,7 @@ const DialogSignature = ({
   onSubmitted,
   text,
   classNameDialog,
+  uploadSignature,
 }: IModalProps) => {
   const { language } = useLanguage();
   const [fileData, setFileData] = useState<File>({} as File);
@@ -71,11 +73,13 @@ const DialogSignature = ({
           <TabPanel header={language.components.signature.header_draw.title}>
             <DrawSignature onChange={setFileData} />
           </TabPanel>
-          <TabPanel
-            header={language.components.signature.header_uploading.title}
-          >
-            <UploadSignature onChange={setFileData} />
-          </TabPanel>
+          {uploadSignature && (
+            <TabPanel
+              header={language.components.signature.header_uploading.title}
+            >
+              <UploadSignature onChange={setFileData} />
+            </TabPanel>
+          )}
         </TabView>
       </Dialog>
     </>
