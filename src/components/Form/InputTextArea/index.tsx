@@ -47,7 +47,7 @@ const InputTextArea = <T extends object>({
                   className={
                     classNames({ "text-red-400 ": fieldState.error }) +
                     "block " +
-                    (classNameLabel && classNameLabel)
+                    (classNameLabel !== undefined && classNameLabel)
                   }
                 >
                   {label}

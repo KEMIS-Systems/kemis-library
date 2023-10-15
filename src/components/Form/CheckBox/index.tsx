@@ -10,6 +10,7 @@ import {
 import { classNames } from "primereact/utils";
 
 interface IProps<T extends FieldValues> {
+  inputId: string;
   className?: string;
   classNameLabel?: string;
   classNameCheckbox?: string;
@@ -25,6 +26,7 @@ interface IProps<T extends FieldValues> {
 }
 
 const CheckBox = <T extends object>({
+  inputId,
   className,
   classNameLabel,
   classNameCheckbox,
@@ -49,22 +51,22 @@ const CheckBox = <T extends object>({
             return (
               <>
                 <label
-                  htmlFor="name"
+                  htmlFor={inputId}
                   className={
                     classNames({ "text-red-400 ": fieldState.error }) +
                     "block " +
-                    (classNameLabel && classNameLabel)
+                    (classNameLabel !== undefined && classNameLabel)
                   }
                 >
                   {label}
                 </label>
                 <CheckboxPrime
-                  id={field.name}
+                  inputId={inputId}
                   autoFocus={autoFocus}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) +
                     "w-full " +
-                    (classNameCheckbox && classNameCheckbox)
+                    (classNameLabel !== undefined && classNameCheckbox)
                   }
                   ref={ref}
                   {...field}
