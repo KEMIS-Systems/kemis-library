@@ -28,7 +28,7 @@ const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
         header={header}
         visible={show}
         onHide={handleHide}
-        className="w-full lg:w-4/5 min-h-screen max-h-screen"
+        className="w-full lg:w-4/5 min-h-full max-h-full"
         maximizable
       >
         <ShowFile api={api} header={header} url={url} />

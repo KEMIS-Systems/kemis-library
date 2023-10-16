@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 
 import Loading from "../Loading";
 import { AxiosInstance } from "axios";
@@ -45,12 +44,11 @@ const ShowFile = ({ api, url, header }: IModalProps) => {
   return (
     <>
       {imageUrl && (
-        <div className="relative">
-          <Image
+        <div className="flex items-center justify-center min-w-full max-w-full min-h-full max-h-full">
+          <img
             src={imageUrl}
             alt={header}
-            className="w-full h-1/3 p-10"
-            fill
+            className="w-full h-full object-scale-down"
           />
         </div>
       )}
