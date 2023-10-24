@@ -69,7 +69,7 @@ const InputNumber = <T extends object>({
                     currency={currency ?? "BRL"}
                     locale={locale ?? "pt-BR"}
                     className={
-                      classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                      classNames({ "p-invalid ": fieldState.error }) + "w-full"
                     }
                     disabled={disabled}
                     {...field}
@@ -78,9 +78,7 @@ const InputNumber = <T extends object>({
                     onChange={(event) => field.onChange(event.value)}
                     onBlur={(event) => setValue(Number(event.target.value))}
                   />
-                  {
-                    <MessageError fieldState={fieldState} />
-                  }
+                  {<MessageError fieldState={fieldState} />}
                 </InputStyles>
               </>
             );

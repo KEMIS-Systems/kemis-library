@@ -1,6 +1,6 @@
 import {
   InputMask as InputMaskPrime,
-  InputMaskProps
+  InputMaskProps,
 } from "primereact/inputmask";
 import { classNames } from "primereact/utils";
 import React, { InputHTMLAttributes } from "react";
@@ -9,22 +9,33 @@ import {
   FieldPath,
   FieldValues,
   RegisterOptions,
-  UseFormReturn
+  UseFormReturn,
 } from "react-hook-form";
 
 // Components
 import MessageError from "../MessageError";
 
-type TInputMask = Omit<InputHTMLAttributes<HTMLInputElement>, 'disabled' | 'readOnly' | 'onFocus' | 'onBlur' | 'onChange' | 'form'> & Omit<InputMaskProps, 'form'>
+type TInputMask = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "disabled" | "readOnly" | "onFocus" | "onBlur" | "onChange" | "form"
+> &
+  Omit<InputMaskProps, "form">;
 
 interface IInputMaskProps<T extends FieldValues> extends TInputMask {
   rules?: RegisterOptions;
   form: UseFormReturn<T>;
-  label: string
+  label: string;
   name: string;
 }
 
-function InputMask({ rules, form, name, label, className, ...props }: IInputMaskProps<any>) {
+function InputMask({
+  rules,
+  form,
+  name,
+  label,
+  className,
+  ...props
+}: IInputMaskProps<any>) {
   return (
     <div className={className ?? ""}>
       {form && (
@@ -47,16 +58,13 @@ function InputMask({ rules, form, name, label, className, ...props }: IInputMask
                   {...field}
                   {...props}
                   ref={ref}
-
                   name={field.name}
                   id={field.name}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
                   }
                 />
-                {
-                  <MessageError fieldState={fieldState} />
-                }
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}
@@ -66,6 +74,8 @@ function InputMask({ rules, form, name, label, className, ...props }: IInputMask
   );
 }
 
-{/* <InputMask onChange={(event) => event} form={{} as UseFormReturn} label="Your name" name="first_name" /> */ }
+{
+  /* <InputMask onChange={(event) => event} form={{} as UseFormReturn} label="Your name" name="first_name" /> */
+}
 
 export default InputMask;
