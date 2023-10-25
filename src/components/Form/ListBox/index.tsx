@@ -52,7 +52,7 @@ const ListBox = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + "block"
+                    classNames({ "text-red-400 ": fieldState.error }) + " block"
                   }
                 >
                   {label}

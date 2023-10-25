@@ -65,7 +65,7 @@ const InputPassword = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + "block"
+                    classNames({ "text-red-400 ": fieldState.error }) + " block"
                   }
                 >
                   {label}
@@ -79,7 +79,7 @@ const InputPassword = <T extends object>({
                   feedback={feedback}
                   placeholder={placeholder ?? "********"}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                   inputClassName=" w-full"
                   disabled={disabled}

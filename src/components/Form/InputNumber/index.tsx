@@ -57,7 +57,7 @@ const InputNumber = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + "block"
+                    classNames({ "text-red-400 ": fieldState.error }) + " block"
                   }
                 >
                   {label}
@@ -69,7 +69,7 @@ const InputNumber = <T extends object>({
                     currency={currency ?? "BRL"}
                     locale={locale ?? "pt-BR"}
                     className={
-                      classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                      classNames({ "p-invalid ": fieldState.error }) + " w-full"
                     }
                     disabled={disabled}
                     {...field}

@@ -51,7 +51,7 @@ const MultiSelect = <T extends object>({
               <label
                 htmlFor={field.name}
                 className={
-                  classNames({ "text-red-400 ": fieldState.error }) + "block"
+                  classNames({ "text-red-400 ": fieldState.error }) + " block"
                 }
               >
                 {label}
@@ -68,7 +68,7 @@ const MultiSelect = <T extends object>({
                   disabled={disabled}
                   display="chip"
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full "
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full "
                   }
                   {...field}
                   ref={ref}

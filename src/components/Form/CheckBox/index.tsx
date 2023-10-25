@@ -54,7 +54,7 @@ const CheckBox = <T extends object>({
                   htmlFor={inputId}
                   className={
                     classNames({ "text-red-400 ": fieldState.error }) +
-                    "block " +
+                    " block " +
                     (classNameLabel !== undefined && classNameLabel)
                   }
                 >
@@ -65,7 +65,7 @@ const CheckBox = <T extends object>({
                   autoFocus={autoFocus}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) +
-                    "w-full " +
+                    " w-full " +
                     (classNameLabel !== undefined && classNameCheckbox)
                   }
                   ref={ref}

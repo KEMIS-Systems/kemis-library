@@ -60,7 +60,7 @@ const RadioButton = <T extends object>({
                   autoFocus={autoFocus}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) +
-                    "w-full " +
+                    " w-full " +
                     (classNameComponent !== undefined && classNameComponent)
                   }
                   ref={ref}
@@ -75,7 +75,7 @@ const RadioButton = <T extends object>({
                   htmlFor={inputId}
                   className={
                     classNames({ "text-red-400 ": fieldState.error }) +
-                    "block cursor-pointer " +
+                    " block cursor-pointer " +
                     (classNameLabel !== undefined && classNameLabel)
                   }
                 >

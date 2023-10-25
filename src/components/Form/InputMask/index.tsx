@@ -49,7 +49,7 @@ function InputMask({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + "block"
+                    classNames({ "text-red-400 ": fieldState.error }) + " block"
                   }
                 >
                   {label}
@@ -61,7 +61,7 @@ function InputMask({
                   name={field.name}
                   id={field.name}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + "w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
                 />
                 {<MessageError fieldState={fieldState} />}
