@@ -67,11 +67,11 @@ const DialogSignature = ({
         footer={handleFooterDialog}
       >
         <TabView className="col-span-2">
-          <TabPanel header={language.components.signature.header_write.title}>
-            <WriteSignature onChange={setFileData} text={text} />
-          </TabPanel>
           <TabPanel header={language.components.signature.header_draw.title}>
             <DrawSignature onChange={setFileData} />
+          </TabPanel>
+          <TabPanel header={language.components.signature.header_write.title}>
+            <WriteSignature onChange={setFileData} text={text} />
           </TabPanel>
           {uploadSignature && (
             <TabPanel
