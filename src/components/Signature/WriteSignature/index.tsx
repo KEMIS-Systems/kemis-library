@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { BsCheck2Circle } from "react-icons/bs";
 import { BiTrash } from "react-icons/bi";
 import returnFontsArray from "../../../utils/fontsGoogle";
-import toBlob from "../../../utils/toBlob";
+import { toBlob } from "../../../utils/files";
 import blobToFile from "../../../utils/blobToFile";
 import ColorPalette from "../ColorPalette";
 import Dropdown from "../../Form/Dropdown";
