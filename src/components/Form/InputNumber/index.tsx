@@ -57,7 +57,7 @@ const InputNumber = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + "block"
+                    classNames({ "text-red-400 ": fieldState.error }) + " block"
                   }
                 >
                   {label}
@@ -78,9 +78,7 @@ const InputNumber = <T extends object>({
                     onChange={(event) => field.onChange(event.value)}
                     onBlur={(event) => setValue(Number(event.target.value))}
                   />
-                  {
-                    <MessageError fieldState={fieldState} />
-                  }
+                  {<MessageError fieldState={fieldState} />}
                 </InputStyles>
               </>
             );

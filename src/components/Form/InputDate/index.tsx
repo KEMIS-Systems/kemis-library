@@ -23,13 +23,12 @@ interface IProps<T extends FieldValues> {
   showTime?: boolean;
   timeOnly?: boolean;
   hourFormat?: "24" | "12";
-  selectionMode?: "single" | "multiple" | "range"
+  selectionMode?: "single" | "multiple" | "range";
   readOnlyInput?: boolean;
 }
 
 // Components
 import MessageError from "../MessageError";
-
 
 const InputDate = <T extends object>({
   name,
@@ -60,7 +59,7 @@ const InputDate = <T extends object>({
               <label
                 htmlFor={field.name}
                 className={
-                  classNames({ "text-red-400 ": fieldState.error }) + "block"
+                  classNames({ "text-red-400 ": fieldState.error }) + " block"
                 }
               >
                 {label}
@@ -70,7 +69,7 @@ const InputDate = <T extends object>({
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
                 autoFocus={autoFocus}
-                mask={mask ?? '99/99/9999'}
+                mask={mask ?? "99/99/9999"}
                 showIcon
                 showButtonBar
                 view={view ?? "date"}
@@ -78,7 +77,7 @@ const InputDate = <T extends object>({
                 timeOnly={timeOnly}
                 hourFormat={hourFormat}
                 showOnFocus={false}
-                selectionMode={selectionMode ?? 'single'}
+                selectionMode={selectionMode ?? "single"}
                 readOnlyInput={readOnlyInput}
                 className={
                   classNames({ "p-invalid ": fieldState.error }) + " w-full"
@@ -86,9 +85,7 @@ const InputDate = <T extends object>({
                 disabled={disabled}
               />
 
-              {
-                <MessageError fieldState={fieldState} />
-              }
+              {<MessageError fieldState={fieldState} />}
             </>
           );
         }}

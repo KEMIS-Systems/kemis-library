@@ -54,7 +54,7 @@ const Dropdown = <T extends object>({
             <label
               htmlFor={field.name}
               className={
-                classNames({ "text-red-400 ": fieldState.error }) + "block"
+                classNames({ "text-red-400 ": fieldState.error }) + " block"
               }
             >
               {label}
@@ -83,7 +83,7 @@ const Dropdown = <T extends object>({
                     document.getElementsByClassName("p-dropdown-panel");
                   styleDropdown = Array.prototype.slice.call(styleDropdown);
                   styleDropdown.forEach(function (element: any) {
-                    element.style.zIndex = 9999;
+                    element.style.zIndex = 2000;
                   });
                 }}
               />

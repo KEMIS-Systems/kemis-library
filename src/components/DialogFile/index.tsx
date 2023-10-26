@@ -5,19 +5,36 @@ import { AxiosInstance } from "axios";
 import ShowFile from "../ShowFile";
 
 interface P {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
+  [key: string]:
+    | string
+    | number
+    | string[]
+    | number[]
+    | Date
+    | Date[]
+    | boolean
+    | undefined;
 }
+
 interface IModalProps {
   api: AxiosInstance;
   url: string;
   header: string;
   show: boolean;
   params?: P;
+  filename?: string;
   onHide: () => void;
 }
 
-const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
+const DialogFile = ({
+  api,
+  url,
+  header,
+  show,
+  params,
+  filename,
+  onHide,
+}: IModalProps) => {
   const handleHide = useCallback(() => {
     onHide();
   }, [onHide]);
@@ -28,10 +45,17 @@ const DialogFile = ({ api, url, header, show, onHide }: IModalProps) => {
         header={header}
         visible={show}
         onHide={handleHide}
-        className="w-full lg:w-4/5 min-h-screen max-h-screen"
+        className="w-full lg:w-4/5 min-h-full max-h-full"
         maximizable
       >
-        <ShowFile api={api} header={header} url={url} />
+        <ShowFile
+          api={api}
+          header={header}
+          url={url}
+          params={params}
+          filename={filename}
+          onHide={handleHide}
+        />
       </Dialog>
     </>
   );

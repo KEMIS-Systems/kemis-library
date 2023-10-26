@@ -1,5 +1,8 @@
 import React from "react";
-import { Checkbox as CheckboxPrime } from "primereact/checkbox";
+import {
+  RadioButtonChangeEvent,
+  RadioButton as RadioButtonPrime,
+} from "primereact/radiobutton";
 import {
   Controller,
   RegisterOptions,
@@ -13,30 +16,32 @@ interface IProps<T extends FieldValues> {
   inputId: string;
   className?: string;
   classNameLabel?: string;
-  classNameCheckbox?: string;
+  classNameComponent?: string;
   name: FieldPath<T>;
   label: string;
+  value?: any;
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   style?: React.CSSProperties;
-  check: boolean;
-  onChange(value: boolean): void;
+  checked?: boolean;
+  onChange(event: RadioButtonChangeEvent): void;
   disabled?: boolean;
 }
 
-const CheckBox = <T extends object>({
+const RadioButton = <T extends object>({
   inputId,
   className,
   classNameLabel,
-  classNameCheckbox,
+  classNameComponent,
   name,
+  value,
   label,
   rules,
   autoFocus,
   form,
   style,
-  check,
+  checked,
   onChange,
   disabled,
 }: IProps<T>) => {
@@ -50,31 +55,32 @@ const CheckBox = <T extends object>({
           render={({ field: { ref, ...field }, fieldState }) => {
             return (
               <>
-                <label
-                  htmlFor={inputId}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) +
-                    " block " +
-                    (classNameLabel !== undefined && classNameLabel)
-                  }
-                >
-                  {label}
-                </label>
-                <CheckboxPrime
+                <RadioButtonPrime
                   inputId={inputId}
                   autoFocus={autoFocus}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) +
                     " w-full " +
-                    (classNameLabel !== undefined && classNameCheckbox)
+                    (classNameComponent !== undefined && classNameComponent)
                   }
                   ref={ref}
                   {...field}
+                  value={value}
                   style={style}
-                  checked={check}
                   disabled={disabled}
-                  onChange={(event) => onChange(!!event.target.checked)}
+                  checked={checked}
+                  onChange={onChange}
                 />
+                <label
+                  htmlFor={inputId}
+                  className={
+                    classNames({ "text-red-400 ": fieldState.error }) +
+                    " block cursor-pointer " +
+                    (classNameLabel !== undefined && classNameLabel)
+                  }
+                >
+                  {label}
+                </label>
               </>
             );
           }}
@@ -84,4 +90,4 @@ const CheckBox = <T extends object>({
   );
 };
 
-export default CheckBox;
+export default RadioButton;

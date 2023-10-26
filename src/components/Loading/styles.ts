@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   position: fixed;
   width: 100%;
   height: 100vh;
-  z-index: 1500;
+  z-index: 3000;
   display: flex;
   flex-direction: column;
   align-items: center;
