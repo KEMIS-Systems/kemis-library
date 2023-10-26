@@ -23,7 +23,7 @@ interface ISchemaObject extends Zod.AnyZodObject {
  * @param schemaObject An optional schema validation to agregate to validation flux
  * @returns The Hook-Forms Statement
  */
-function useFormIntegration<ST>(
+function useFormIntegration<ST = any>(
   defaultValues: IDefaultValues<ST>,
   schemaObject?: Zod.AnyZodObject
 ) {
