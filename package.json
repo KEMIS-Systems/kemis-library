@@ -25,7 +25,8 @@
     "test:coverage": "jest --coverage",
     "lint": "eslint src",
     "version": "git add package.json && git commit -m 'Bump version'",
-    "auto_publish": "rm -Rf build && yarn build && cd build && yarn publish --access public"
+    "merge": "git pull && git push origin v2:master && git checkout master && git pull && git checkout v2",
+    "auto_publish": "yarn merge && rm -Rf build && yarn build && cd build && yarn publish --access public"
   },
   "repository": {
     "type": "git",
