@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Toast } from "primereact/toast";
 
 import Loading from "../Loading";
 import { AxiosInstance } from "axios";
 import { generateUrlBlob, getFileNameOnRequest } from "../../utils/files";
-import Swal from "sweetalert2";
 
 interface P {
   [key: string]:
@@ -34,6 +34,7 @@ const ShowFile = ({
   filename,
   onHide,
 }: IModalProps) => {
+  const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [pdfUrl, setPdfUrl] = useState<string>("");
@@ -74,10 +75,10 @@ const ShowFile = ({
           }
         })
         .catch(() => {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Failed to load file!",
+          toast?.current?.show({
+            severity: "error",
+            summary: "Oops...",
+            detail: "Fail to load file",
           });
           if (onHide) onHide();
         })
@@ -103,6 +104,7 @@ const ShowFile = ({
           className="w-full min-h-screen max-h-screen"
         />
       )}
+      <Toast ref={toast} />
       <Loading show={showLoading} />
     </>
   );

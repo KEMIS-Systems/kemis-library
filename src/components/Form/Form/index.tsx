@@ -1,9 +1,9 @@
-import { AxiosInstance } from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import { AxiosInstance, AxiosError } from "axios";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
-import Swal from "sweetalert2";
+import { Toast } from "primereact/toast";
+
 import { useLanguage } from "../../../hooks/Language";
-import Toast from "../../../utils/toast";
 import Loading from "../../Loading";
 
 type K = {
@@ -47,6 +47,7 @@ const Form = <T extends object>({
   children,
 }: IProps<T>) => {
   const { language } = useLanguage();
+  const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -76,26 +77,45 @@ const Form = <T extends object>({
             } else {
               await api.post(`${url}`, formData);
             }
-            await Toast.fire({
-              icon: "success",
-              title:
-                language.pages.alerts?.[dataEdit?.id ? "edit" : "add"]?.success,
-            });
             setShowLoading(false);
             handleHide?.();
             onRefreshTable?.(true);
-          } catch (error) {
-            setShowLoading(false);
-            await Swal.fire({
-              title: "Opss...",
-              text: "Error",
-              icon: "error",
-              willOpen: (popup) => {
-                if (popup.parentElement) {
-                  popup.parentElement.style.zIndex = "1000";
-                }
-              },
+            toast?.current?.show({
+              severity: "success",
+              summary: "Success",
+              detail:
+                language.pages.alerts?.[dataEdit?.id ? "edit" : "add"]?.success,
             });
+          } catch (error: AxiosError | any) {
+            setShowLoading(false);
+            console.log(
+              error.response?.data?.errors,
+              Object.keys(error.response?.data?.errors).length
+            );
+            if (Object.keys(error.response?.data?.errors).length > 0) {
+              Object.values(error.response?.data?.errors).forEach(
+                (message: unknown) => {
+                  toast?.current?.show({
+                    severity: "error",
+                    summary: "Error",
+                    detail: String(message),
+                  });
+                }
+              );
+            } else if (error.response?.data?.message) {
+              toast?.current?.show({
+                severity: "error",
+                summary: "Error",
+                detail: error.response?.data?.message || "Fail to save data",
+              });
+            } else {
+              console.log(error);
+              toast?.current?.show({
+                severity: "error",
+                summary: "Error",
+                detail: "Fail to save data",
+              });
+            }
           }
         } else
           console.error(
@@ -118,6 +138,7 @@ const Form = <T extends object>({
       >
         {children}
       </form>
+      <Toast ref={toast} />
       <Loading show={showLoading} />
     </>
   );
