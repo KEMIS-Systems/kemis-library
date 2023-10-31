@@ -59,7 +59,6 @@ const FormDialog = <T extends object>({
   hiddenSubmitButton,
 }: IProps<T>) => {
   const { language } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
 
   const handleHide = useCallback(() => {
     form.reset();
@@ -106,7 +105,6 @@ const FormDialog = <T extends object>({
         onHide={handleHide}
         dataEdit={dataEdit}
         url={url}
-        submit={submitted}
         onSubmit={onSubmit}
         getFormData={getFormData}
         onRefreshTable={onRefreshTable}

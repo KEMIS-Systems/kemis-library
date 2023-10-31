@@ -14,7 +14,6 @@ export interface IProps<T extends FieldValues> {
   api?: AxiosInstance;
   dataEdit?: T & K;
   url: string;
-  submit?: boolean;
   onHide?: () => void;
   onRefreshTable?: (refreshTable: boolean) => void;
   onSubmit?: (data: T) => void;
@@ -41,7 +40,6 @@ const Form = <T extends object>({
   onHide,
   dataEdit,
   url,
-  submit,
   onRefreshTable,
   onSubmit,
   getFormData,
@@ -59,13 +57,12 @@ const Form = <T extends object>({
 
   const handleHide = useCallback(() => {
     form?.reset();
-    onHide && onHide();
+    onHide?.();
   }, [onHide, form]);
 
   const handleSubmitData = useCallback(
     async (data: FieldValues) => {
       try {
-        console.log("handleSubmitData@data", data);
         setShowLoading(true);
         if (api) {
           try {
@@ -81,13 +78,12 @@ const Form = <T extends object>({
             }
             await Toast.fire({
               icon: "success",
-              title: dataEdit?.id
-                ? language.pages.alerts.edit.success
-                : language.pages.alerts.add.success,
+              title:
+                language.pages.alerts?.[dataEdit?.id ? "edit" : "add"]?.success,
             });
             setShowLoading(false);
-            handleHide();
-            onRefreshTable && onRefreshTable(true);
+            handleHide?.();
+            onRefreshTable?.(true);
           } catch (error) {
             setShowLoading(false);
             await Swal.fire({

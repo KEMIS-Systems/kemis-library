@@ -33,13 +33,6 @@ export const GeneralSchema = Zod.object({
             isValidDocument = true;
         }
 
-        console.log(
-          "DOCUMENT VALIDATION",
-          isValidDocument,
-          `CPF~${cpf.isValid(cleanValue)}`,
-          `CNPJ~${cnpj.isValid(cleanValue)}`
-        );
-
         return isValidDocument;
       },
       { message: language.input.document.validation }

@@ -76,16 +76,7 @@ const Dropdown = <T extends object>({
                   classNames({ "p-invalid ": fieldState.error }) + " w-full "
                 }
                 {...field}
-                // ref={ref}
                 onChange={(event) => field.onChange(event.target.value)}
-                onShow={() => {
-                  let styleDropdown: any =
-                    document.getElementsByClassName("p-dropdown-panel");
-                  styleDropdown = Array.prototype.slice.call(styleDropdown);
-                  styleDropdown.forEach(function (element: any) {
-                    element.style.zIndex = 2000;
-                  });
-                }}
               />
               {handleAddButton && (
                 <ButtonPrime

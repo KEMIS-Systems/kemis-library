@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { DeepPartial, useForm } from 'react-hook-form';
-import * as Zod from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { DeepPartial, useForm } from "react-hook-form";
+import * as Zod from "zod";
 
 // Schemas
 import { GeneralSchema } from "./schemas";
 
 type IDefaultValues<T> = {
   [key in keyof T]?: DeepPartial<T[key]>;
-}
+};
 
 interface ISchemaObject extends Zod.AnyZodObject {
   [key: string]: any;
@@ -40,12 +40,6 @@ function useFormIntegration<ST = any>(
       }
     ),
   });
-
-  console.log(
-    "useFormIntegration",
-    (schemaObject ? GeneralSchema.extend(schemaObject.shape) : GeneralSchema)
-      .shape
-  );
 
   return { ...form };
 }
