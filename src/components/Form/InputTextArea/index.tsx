@@ -9,6 +9,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { classNames } from "primereact/utils";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -60,6 +61,7 @@ const InputTextArea = <T extends object>({
                   className=" w-full"
                   placeholder={label}
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

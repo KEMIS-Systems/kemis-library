@@ -9,6 +9,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 import { classNames } from "primereact/utils";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -60,6 +61,7 @@ const Chips = <T extends object>({
                     ) => void
                   }
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

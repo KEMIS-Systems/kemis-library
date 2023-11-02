@@ -9,6 +9,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 import { classNames } from "primereact/utils";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -55,6 +56,7 @@ const InputSwitch = <T extends object>({
                   className={classNames({ "p-invalid": fieldState.error })}
                   onChange={(e: any) => field.onChange(e.value)}
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

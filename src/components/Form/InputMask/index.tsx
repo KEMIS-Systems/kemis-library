@@ -74,8 +74,4 @@ function InputMask({
   );
 }
 
-{
-  /* <InputMask onChange={(event) => event} form={{} as UseFormReturn} label="Your name" name="first_name" /> */
-}
-
 export default InputMask;

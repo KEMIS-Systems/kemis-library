@@ -54,12 +54,10 @@ const InputFile = <T extends object>({
                       setFileChanged(true);
                       onChange(e);
                     }
-                    handleChange && handleChange(e);
+                    handleChange?.(e);
                   }}
                 />
-                {
-                  <MessageError fieldState={fieldState} />
-                }
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

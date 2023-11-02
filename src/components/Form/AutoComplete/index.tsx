@@ -9,6 +9,7 @@ import {
 } from "react-hook-form";
 import { classNames } from "primereact/utils";
 import { SelectItemOptionsType } from "primereact/selectitem";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -69,6 +70,7 @@ const AutoComplete = <T extends object>({
                   {...field}
                   inputRef={ref}
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

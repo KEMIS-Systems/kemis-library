@@ -11,6 +11,7 @@ import { Divider } from "primereact/divider";
 import { Password } from "primereact/password";
 
 import { useLanguage } from "../../../hooks/Language";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -86,6 +87,7 @@ const InputPassword = <T extends object>({
                   {...field}
                   ref={ref}
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

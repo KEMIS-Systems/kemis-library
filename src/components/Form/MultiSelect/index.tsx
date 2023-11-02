@@ -10,6 +10,7 @@ import { MultiSelect as MultiSelectPrime } from "primereact/multiselect";
 import { classNames } from "primereact/utils";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { Button as ButtonPrime } from "primereact/button";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -84,6 +85,7 @@ const MultiSelect = <T extends object>({
                   />
                 )}
               </div>
+              {<MessageError fieldState={fieldState} />}
             </>
           );
         }}

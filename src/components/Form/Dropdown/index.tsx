@@ -10,6 +10,7 @@ import { Dropdown as DropdownPrime } from "primereact/dropdown";
 import { classNames } from "primereact/utils";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { Button as ButtonPrime } from "primereact/button";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -88,6 +89,7 @@ const Dropdown = <T extends object>({
                 />
               )}
             </div>
+            {<MessageError fieldState={fieldState} />}
           </>
         );
       }}
