@@ -133,7 +133,6 @@ const Form = <T extends object>({
       <form
         id="kemis-library-form"
         name="kemis-library-form"
-        role="form"
         onSubmit={form.handleSubmit(onSubmit ?? handleSubmitData)}
       >
         {children}
