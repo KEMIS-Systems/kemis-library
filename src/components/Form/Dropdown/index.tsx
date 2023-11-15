@@ -24,7 +24,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   autoFocus?: boolean;
-  handleAddButton?: (index: number) => void;
+  handleAddButton?: () => void;
   disabled?: boolean;
 }
 
@@ -85,7 +85,7 @@ const Dropdown = <T extends object>({
                   icon="pi pi-plus"
                   className="p-button-success"
                   disabled={disabled}
-                  onClick={() => handleAddButton(4)}
+                  onClick={() => handleAddButton()}
                 />
               )}
             </div>
