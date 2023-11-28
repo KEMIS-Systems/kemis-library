@@ -1,7 +1,7 @@
-import { AxiosInstance, AxiosError } from "axios";
+import { AxiosError, AxiosInstance, Method } from "axios";
+import { Toast } from "primereact/toast";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
-import { Toast } from "primereact/toast";
 
 import { useLanguage } from "../../../hooks/Language";
 import Loading from "../../Loading";
@@ -15,7 +15,7 @@ export interface IProps<T extends FieldValues> {
   dataEdit?: T & K;
   url: string;
   onHide?: () => void;
-  onRefreshTable?: (refreshTable: boolean) => void;
+  onRefreshTable?: (refreshTable: boolean, data?: T) => void;
   onSubmit?: (data: T) => void;
   getFormData?: (data: FieldValues) => FieldValues | FormData;
   form: UseFormReturn<T>;
@@ -70,22 +70,25 @@ const Form = <T extends object>({
             const formData: FieldValues | FormData = getFormData
               ? getFormData(data)
               : data;
-            if (dataEdit?.id) {
-              formData instanceof FormData
-                ? await api.post(`${url}/${dataEdit.id}`, formData)
-                : await api.put(`${url}/${dataEdit.id}`, formData);
-            } else {
-              await api.post(`${url}`, formData);
-            }
-            setShowLoading(false);
-            handleHide?.();
-            onRefreshTable?.(true);
-            toast?.current?.show({
-              severity: "success",
-              summary: "Success",
-              detail:
-                language.pages.alerts?.[dataEdit?.id ? "edit" : "add"]?.success,
-            });
+
+            // AUX Variables
+            const REQUEST_METHOD: Method = !dataEdit?.id ? 'post' : 'put'
+            const REQUEST_PATH: string = `${url}${dataEdit?.id ? `/${dataEdit.id}` : ''}`
+
+            await api[REQUEST_METHOD](REQUEST_PATH, formData).then(resolver => {
+              setShowLoading(false);
+              handleHide?.();
+
+              onRefreshTable?.(true, resolver.data);
+
+              toast?.current?.show({
+                severity: "success",
+                summary: "Success",
+                detail:
+                  language.pages.alerts?.[dataEdit?.id ? "edit" : "add"]?.success,
+              });
+            })
+
           } catch (error: AxiosError | any) {
             setShowLoading(false);
             console.log(

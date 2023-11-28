@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 
 import { AxiosInstance } from "axios";
@@ -15,7 +15,7 @@ interface IProps<T extends FieldValues> {
   dataEdit?: T & K;
   url: string;
   onHide: () => void;
-  onRefreshTable?: (refreshTable: boolean) => void;
+  onRefreshTable?: (refreshTable: boolean, data?: T) => void;
   onSubmit?: (data: T) => void;
   getFormData?: (data: FieldValues) => FieldValues | FormData;
   form: UseFormReturn<T>;
