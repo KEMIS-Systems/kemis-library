@@ -1,15 +1,15 @@
+import { Button as ButtonPrime } from "primereact/button";
+import { MultiSelect as MultiSelectPrime } from "primereact/multiselect";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { classNames } from "primereact/utils";
 import React from "react";
 import {
   Controller,
+  FieldPath,
   FieldValues,
   RegisterOptions,
-  FieldPath,
   UseFormReturn,
 } from "react-hook-form";
-import { MultiSelect as MultiSelectPrime } from "primereact/multiselect";
-import { classNames } from "primereact/utils";
-import { SelectItemOptionsType } from "primereact/selectitem";
-import { Button as ButtonPrime } from "primereact/button";
 import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
@@ -69,7 +69,7 @@ const MultiSelect = <T extends object>({
                   disabled={disabled}
                   display="chip"
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full "
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
                   }
                   {...field}
                   ref={ref}

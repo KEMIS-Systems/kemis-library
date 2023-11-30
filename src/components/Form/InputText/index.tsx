@@ -60,7 +60,7 @@ const InputText = <T extends object>({
                   type={type ?? "text"}
                   autoFocus={autoFocus}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + "w-full disabled:bg-slate-100 "
                   }
                   disabled={disabled}
                   placeholder={placeholder ?? undefined}

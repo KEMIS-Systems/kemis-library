@@ -46,7 +46,7 @@ const InputFile = <T extends object>({
                 <Dropzone
                   accept={accept}
                   maxFiles={maxFiles}
-                  className={classNames({ "p-invalid ": fieldState.error })}
+                  className={classNames({ "p-invalid ": fieldState.error }) + " disabled:bg-slate-100"}
                   invalid={!!fieldState.error}
                   {...field}
                   onChange={(e) => {

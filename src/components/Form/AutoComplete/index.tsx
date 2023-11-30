@@ -1,15 +1,15 @@
-import React from "react";
 import { AutoComplete as AutoCompletePrime } from "primereact/autocomplete";
 import { Button as ButtonPrime } from "primereact/button";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { classNames } from "primereact/utils";
+import React from "react";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
-import { SelectItemOptionsType } from "primereact/selectitem";
 import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
@@ -69,8 +69,9 @@ const AutoComplete = <T extends object>({
                     disabled={disabled}
                     emptyMessage="No results found"
                     className={
-                      classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                      classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
                     }
+                    inputClassName="disabled:bg-slate-100"
                     {...field}
                     inputRef={ref}
                   />

@@ -71,6 +71,7 @@ const InputNumber = <T extends object>({
                     className={
                       classNames({ "p-invalid ": fieldState.error }) + " w-full"
                     }
+                    inputClassName="disabled:bg-slate-100"
                     disabled={disabled}
                     {...field}
                     ref={ref}

@@ -1,14 +1,14 @@
-import React from "react";
 import { InputTextarea as InputTextareaPrime } from "primereact/inputtextarea";
+import React from "react";
 
+import { classNames } from "primereact/utils";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
 import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
