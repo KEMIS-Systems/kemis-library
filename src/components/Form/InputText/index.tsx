@@ -6,13 +6,13 @@ import {
   FieldPath,
   FieldValues,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from "react-hook-form";
 
 // Components
 import MessageError from "../MessageError";
 
-interface IProps<T extends FieldValues> {
+interface IProps<T extends FieldValues> extends Partial<Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onInput' | 'ref' | 'value' | 'form'>> {
   className?: string;
   name: FieldPath<T>;
   label: string;
@@ -35,7 +35,8 @@ const InputText = <T extends object>({
   form,
   placeholder,
   disabled,
-  inputStyle
+  inputStyle,  
+  ...rest
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -65,7 +66,8 @@ const InputText = <T extends object>({
                     `${classNames({ "p-invalid ": fieldState.error })} w-full disabled:bg-slate-100 ${inputStyle}`                     
                   }
                   disabled={disabled}
-                  placeholder={placeholder ?? undefined}
+                  placeholder={placeholder ?? undefined}                  
+                  {...rest}
                 />
                 {<MessageError fieldState={fieldState} />}
               </>
