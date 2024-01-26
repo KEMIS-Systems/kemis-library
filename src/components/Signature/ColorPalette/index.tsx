@@ -6,7 +6,7 @@ interface IButtonProps {
 }
 
 const ColorPalette = ({ type, onHandleTakeColor }: IButtonProps) => {
-  const colorBackground = ["#1D64CC", "#000000", "#CB3533"];
+  const colorBackground = ["#000000", "#1D64CC", "#CB3533"];
   const [currentColor, setCurrentColor] = useState<string>("");
 
   const handleSelectColor = useCallback(

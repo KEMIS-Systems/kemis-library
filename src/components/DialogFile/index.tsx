@@ -40,24 +40,22 @@ const DialogFile = ({
   }, [onHide]);
 
   return (
-    <>
-      <Dialog
+    <Dialog
+      header={header}
+      visible={show}
+      onHide={handleHide}
+      className="w-full lg:w-4/5 min-h-full max-h-full"
+      maximizable
+    >
+      <ShowFile
+        api={api}
         header={header}
-        visible={show}
+        url={url}
+        params={params}
+        filename={filename}
         onHide={handleHide}
-        className="w-full lg:w-4/5 min-h-full max-h-full"
-        maximizable
-      >
-        <ShowFile
-          api={api}
-          header={header}
-          url={url}
-          params={params}
-          filename={filename}
-          onHide={handleHide}
-        />
-      </Dialog>
-    </>
+      />
+    </Dialog>
   );
 };
 
