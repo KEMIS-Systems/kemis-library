@@ -13,6 +13,7 @@ interface IModalProps {
   onSubmitted: (file: File) => void;
   text: string;
   classNameDialog?: string;
+  writeSignature?: boolean;
   uploadSignature?: boolean;
 }
 
@@ -23,6 +24,7 @@ const DialogSignature = ({
   onSubmitted,
   text,
   classNameDialog,
+  writeSignature,
   uploadSignature,
 }: IModalProps) => {
   const { language } = useLanguage();
@@ -58,31 +60,31 @@ const DialogSignature = ({
   }, [onHide, onSubmitted, fileData]);
 
   return (
-    <>
-      <Dialog
-        header={header}
-        visible={show}
-        onHide={onHide}
-        className={classNameDialog ?? ""}
-        footer={handleFooterDialog}
-      >
-        <TabView className="col-span-2">
-          <TabPanel header={language.components.signature.header_draw.title}>
-            <DrawSignature onChange={setFileData} />
-          </TabPanel>
+    <Dialog
+      header={header}
+      visible={show}
+      onHide={onHide}
+      className={classNameDialog ?? ""}
+      footer={handleFooterDialog}
+    >
+      <TabView className="col-span-2">
+        <TabPanel header={language.components.signature.header_draw.title}>
+          <DrawSignature onChange={setFileData} />
+        </TabPanel>
+        {writeSignature && (
           <TabPanel header={language.components.signature.header_write.title}>
             <WriteSignature onChange={setFileData} text={text} />
           </TabPanel>
-          {uploadSignature && (
-            <TabPanel
-              header={language.components.signature.header_uploading.title}
-            >
-              <UploadSignature onChange={setFileData} />
-            </TabPanel>
-          )}
-        </TabView>
-      </Dialog>
-    </>
+        )}
+        {uploadSignature && (
+          <TabPanel
+            header={language.components.signature.header_uploading.title}
+          >
+            <UploadSignature onChange={setFileData} />
+          </TabPanel>
+        )}
+      </TabView>
+    </Dialog>
   );
 };
 
