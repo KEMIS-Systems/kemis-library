@@ -2,7 +2,6 @@ import { Toast } from "primereact/toast";
 import React, { useEffect, useRef, useState } from "react";
 
 import { AxiosInstance } from "axios";
-import { generateUrlBlob, getFileNameOnRequest } from "../../utils/files";
 import Loading from "../Loading";
 
 interface P {
@@ -38,53 +37,6 @@ const ShowFile = ({
   const [showLoading, setShowLoading] = useState<boolean>(true);
   const [isFile, setIsFile] = useState(false);
   const [urlFile, setUrlFile] = useState<string | null>(null);
-
-  useEffect(() => {
-    setImageUrl("");
-    setPdfUrl("");
-    if (url) {
-      setShowLoading(true);
-      api
-        .get(`${url}`, {
-          responseType: "blob",
-          params,
-        })
-        .then((response) => {
-          if (response.headers["content-type"] === "application/pdf") {
-            setPdfUrl(generateUrlBlob(response));
-          } else {
-            const fileURL = window.URL.createObjectURL(
-              new Blob([response.data], {
-                type: response.headers["content-type"],
-              })
-            );
-            if (response.headers["content-type"].includes("image")) {
-              setImageUrl(fileURL);
-            } else {
-              const fileName = getFileNameOnRequest(response) ?? filename;
-              const link = document.createElement("a");
-              link.href = fileURL;
-              if (fileName) link.download = fileName;
-              link.click();
-              setTimeout(() => {
-                window.URL.revokeObjectURL(fileURL);
-                link.remove();
-              }, 100);
-              if (onHide) onHide();
-            }
-          }
-        })
-        .catch(() => {
-          toast?.current?.show({
-            severity: "error",
-            summary: "Oops...",
-            detail: "Fail to load file",
-          });
-          if (onHide) onHide();
-        })
-        .finally(() => setShowLoading(false));
-    }
-  }, [url]);
 
   function clearObjectUrl() {
     try {
