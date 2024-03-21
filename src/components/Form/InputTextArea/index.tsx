@@ -58,7 +58,7 @@ const InputTextArea = <T extends object>({
                   {...field}
                   disabled={disabled}
                   autoFocus={autoFocus}
-                  className=" w-full"
+                  className={` w-full ${disabled ? "bg-slate-100" : ""}`}
                   placeholder={label}
                 />
                 {<MessageError fieldState={fieldState} />}

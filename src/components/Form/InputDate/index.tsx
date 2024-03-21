@@ -46,7 +46,7 @@ const InputDate = <T extends object>({
   hourFormat,
   selectionMode,
   readOnlyInput = false,
-}: IProps<T>) => {  
+}: IProps<T>) => {
   return (
     <div className={className ?? ""}>
       <Controller
@@ -65,7 +65,7 @@ const InputDate = <T extends object>({
                 {label}
               </label>
               <CalendarPrime
-                {...field}                
+                {...field}
                 id={field.name}
                 dateFormat={dateFormat ?? "dd/mm/yy"}
                 autoFocus={autoFocus}
@@ -80,10 +80,13 @@ const InputDate = <T extends object>({
                 selectionMode={selectionMode ?? "single"}
                 readOnlyInput={readOnlyInput}
                 className={
-                  classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                  classNames({ "p-invalid ": fieldState.error }) +
+                  ` w-full ${disabled ? "bg-slate-100" : ""}`
                 }
-                inputClassName={`disabled:bg-slate-100 ${fieldState.error ? 'p-invalid' : ''}`}
-                disabled={disabled}                
+                inputClassName={`disabled:bg-slate-100 ${
+                  fieldState.error ? "p-invalid" : ""
+                }`}
+                disabled={disabled}
               />
               {<MessageError fieldState={fieldState} />}
             </>

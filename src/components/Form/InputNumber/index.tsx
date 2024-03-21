@@ -1,4 +1,7 @@
-import { InputNumber as InputNumberPrime, InputNumberProps } from "primereact/inputnumber";
+import {
+  InputNumber as InputNumberPrime,
+  InputNumberProps,
+} from "primereact/inputnumber";
 import { classNames } from "primereact/utils";
 import React, { useState } from "react";
 import {
@@ -21,7 +24,7 @@ interface IProps<T extends FieldValues> extends Partial<InputNumberProps> {
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   disabled?: boolean;
-  defaultMoney?: boolean
+  defaultMoney?: boolean;
 }
 
 const InputNumber = <T extends object>({
@@ -43,9 +46,9 @@ const InputNumber = <T extends object>({
   const moneyInputMode = {
     mode: "currency",
     currency: "BRL",
-    locale: "pt-BR"
-  }
-                    
+    locale: "pt-BR",
+  };
+
   const InputStyles = styled.div`
     .p-inputtext,
     .p-component,
@@ -73,14 +76,13 @@ const InputNumber = <T extends object>({
                   {label}
                 </label>
                 <InputStyles>
-                  { /* @ts-ignore  @ts-nocheck */ }
+                  {/* @ts-ignore  @ts-nocheck */}
                   <InputNumberPrime
                     id={field.name}
-                    {
-                      ...(defaultMoney ? moneyInputMode : {})
-                    }
+                    {...(defaultMoney ? moneyInputMode : {})}
                     className={
-                      classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                      classNames({ "p-invalid ": fieldState.error }) +
+                      ` w-full ${disabled ? "bg-slate-100" : ""}`
                     }
                     inputClassName="disabled:bg-slate-100"
                     disabled={disabled}
