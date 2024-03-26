@@ -21,7 +21,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   header: React.ReactNode;
   visible: boolean;
-  maximizable: boolean;
+  maximizable?: boolean;
   classNameDialog?: string;
   children: React.ReactNode;
   hiddenSubmitButton?: boolean;

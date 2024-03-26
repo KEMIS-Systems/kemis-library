@@ -4,7 +4,7 @@ import { Dialog as DialogPrime, DialogProps } from "primereact/dialog";
 interface IProps {
   header: ReactNode | ((props: DialogProps) => ReactNode);
   visible: boolean;
-  maximizable: boolean;
+  maximizable?: boolean;
   className: string;
   footer?: ReactNode | ((props: DialogProps) => ReactNode);
   onHide: () => void;
