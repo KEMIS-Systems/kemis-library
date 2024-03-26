@@ -21,6 +21,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   header: React.ReactNode;
   visible: boolean;
+  maximizable: boolean;
   classNameDialog?: string;
   children: React.ReactNode;
   hiddenSubmitButton?: boolean;
@@ -54,6 +55,7 @@ const FormDialog = <T extends object>({
   form,
   header,
   visible,
+  maximizable,
   classNameDialog,
   children,
   hiddenSubmitButton,
@@ -99,6 +101,7 @@ const FormDialog = <T extends object>({
       className={classNameDialog ?? ""}
       footer={footerContent}
       onHide={handleHide}
+      maximizable={maximizable}
     >
       <Form
         api={api}
