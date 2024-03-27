@@ -1,5 +1,6 @@
-import { Toast } from "primereact/toast";
 import React, { useEffect, useRef, useState } from "react";
+import { Toast } from "primereact/toast";
+import { saveAs } from "file-saver";
 
 import { AxiosInstance } from "axios";
 import Loading from "../Loading";
@@ -42,45 +43,38 @@ const ShowFile = ({
   useEffect(() => {
     api
       .get<Blob>(url, {
+        params,
         responseType: "blob",
       })
-      .then((resolve) => {
-        if (resolve.status !== 200 || !window) {
+      .then((response) => {
+        if (response.status !== 200 || !window) {
           setShowLoading(false);
           toast?.current?.show({
             severity: "error",
             summary: "Oops...",
             detail: "Não foi possivel carregar o arquivo",
           });
+          onHide?.();
           return;
         }
 
-        if (resolve.headers["Content-Type"]?.toString().includes("pdf")) {
-          setPdfUrl(generateUrlBlob(resolve));
+        if (response.headers["content-type"]?.toString().includes("pdf")) {
+          setPdfUrl(generateUrlBlob(response));
         } else if (
-          resolve.headers["Content-Type"]?.toString().includes("image")
+          response.headers["content-type"]?.toString().includes("image")
         ) {
           setImageUrl(
             window.URL.createObjectURL(
-              new Blob([resolve.data], {
-                type: resolve.headers["Content-Type"]?.toString(),
+              new Blob([response.data], {
+                type: response.headers["content-type"]?.toString(),
               })
             )
           );
         } else {
-          const urlData = window.URL.createObjectURL(new Blob([resolve.data]));
-
-          const link = document.createElement("a");
-          link.href = urlData;
-          link.click();
-          setTimeout(() => {
-            window.URL.revokeObjectURL(urlData);
-            link.remove();
-          }, 100);
+          saveAs(response.data, filename);
         }
-
-        setShowLoading(false);
-      });
+      })
+      .finally(() => setShowLoading(false));
   }, [url]);
 
   return (

@@ -51,7 +51,6 @@ const DialogFile = ({
         api={api}
         header={header}
         url={url}
-        params={params}
         filename={filename}
         onHide={handleHide}
       />
