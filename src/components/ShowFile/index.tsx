@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { AxiosInstance } from "axios";
 import Loading from "../Loading";
+import { generateUrlBlob } from "../../utils";
 
 interface P {
   [key: string]:
@@ -35,80 +36,71 @@ const ShowFile = ({
 }: IModalProps) => {
   const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(true);
-  const [isFile, setIsFile] = useState(false);
-  const [urlFile, setUrlFile] = useState<string | null>(null);
-
-  function clearObjectUrl() {
-    try {
-      const pathObjectUrl = window.sessionStorage.getItem(
-        'mcf_admin@objectUrl'
-      );
-      if (!pathObjectUrl) return;
-      window.URL.revokeObjectURL(pathObjectUrl);
-    } catch (error) {
-      toast?.current?.show({
-        severity: "error",
-        summary: "Oops...",
-        detail: "Não foi possivel carregar o arquivo",
-      });
-      if (onHide) onHide();
-    }
-  }
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [pdfUrl, setPdfUrl] = useState<string>("");
 
   useEffect(() => {
     api
       .get<Blob>(url, {
-        responseType: 'blob',        
+        responseType: "blob",
       })
       .then((resolve) => {
-        if (resolve.status !== 200) {
+        if (resolve.status !== 200 || !window) {
           setShowLoading(false);
+          toast?.current?.show({
+            severity: "error",
+            summary: "Oops...",
+            detail: "Não foi possivel carregar o arquivo",
+          });
           return;
         }
 
-        if (!window) {
-          setShowLoading(false);
-          return;
-        }
-
-        clearObjectUrl();
-
-        const urlCreated = window.URL.createObjectURL(resolve.data);
-
-        if (urlCreated) {
-          setUrlFile(urlCreated);
-          window.sessionStorage.setItem('mcf_admin@objectUrl', urlCreated);
-        }
-
-        if (resolve.headers['Content-Type']?.toString().includes('pdf')) {
-          setIsFile(true);
+        if (resolve.headers["Content-Type"]?.toString().includes("pdf")) {
+          setPdfUrl(generateUrlBlob(resolve));
         } else if (
-          resolve.headers['Content-Type']?.toString().includes('image')
+          resolve.headers["Content-Type"]?.toString().includes("image")
         ) {
-          setIsFile(false);
+          setImageUrl(
+            window.URL.createObjectURL(
+              new Blob([resolve.data], {
+                type: resolve.headers["Content-Type"]?.toString(),
+              })
+            )
+          );
+        } else {
+          const urlData = window.URL.createObjectURL(new Blob([resolve.data]));
+
+          const link = document.createElement("a");
+          link.href = urlData;
+          link.click();
+          setTimeout(() => {
+            window.URL.revokeObjectURL(urlData);
+            link.remove();
+          }, 100);
         }
 
         setShowLoading(false);
       });
   }, [url]);
-  
-  return (
-    <>      
-      <div data-showme={isFile} className="data-[showme=false]:flex hidden items-center justify-center min-w-full max-w-full min-h-full max-h-full">
-        <img
-          src={urlFile || ''}
-          alt={header}
-          className="w-full h-full object-scale-down"
-        />
-      </div>
-      
-      <iframe
-        data-showme={isFile}
-        src={urlFile || ''}
-        title={header}
-        className="data-[showme=true]:flex hidden w-full min-h-screen max-h-screen"
-      /> 
 
+  return (
+    <>
+      {imageUrl && (
+        <div className="flex items-center justify-center min-w-full max-w-full min-h-full max-h-full">
+          <img
+            src={imageUrl}
+            alt={header}
+            className="w-full h-full object-scale-down"
+          />
+        </div>
+      )}
+      {pdfUrl && (
+        <iframe
+          src={pdfUrl}
+          title={header}
+          className="w-full min-h-screen max-h-screen"
+        />
+      )}
       <Toast ref={toast} />
       <Loading show={showLoading} />
     </>
