@@ -23,6 +23,8 @@ interface IProps<T extends FieldValues> {
   handleAddButton?: (index: number) => void;
   disabled?: boolean;
   className?: string;
+  optionGroupLabel?:string;
+  optionGroupChildren?:string;
 }
 
 const MultiSelect = <T extends object>({
@@ -37,6 +39,8 @@ const MultiSelect = <T extends object>({
   handleAddButton,
   disabled,
   className,
+  optionGroupLabel,
+  optionGroupChildren,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -73,6 +77,8 @@ const MultiSelect = <T extends object>({
                   {...field}
                   ref={ref}
                   onChange={(event) => field.onChange(event.target.value)}
+                  optionGroupLabel={optionGroupLabel}
+                  optionGroupChildren={optionGroupChildren}
                 />
                 {handleAddButton && (
                   <ButtonPrime
