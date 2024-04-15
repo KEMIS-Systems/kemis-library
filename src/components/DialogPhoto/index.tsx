@@ -88,45 +88,43 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
   }, [imagePreview]);
 
   return (
-    <>
-      <Dialog
-        visible={show}
-        onHide={handleClose}
-        footer={footerContent}
-        className="w-full sm:w-1/3"
-      >
-        <div>
-          {!imagePreview ? (
-            <>
-              <Webcam
-                audio={false}
-                ref={webcamRef}
-                screenshotFormat="image/jpeg"
-                className="bg-white w-full h-full relative"
-                videoConstraints={{
-                  width: 1280,
-                  height: 720,
-                  facingMode: "environment",
-                }}
-              />
-              <div className="flex justify-center mt-5">
-                <button
-                  type="button"
-                  className="bg-kemis text-white px-2 py-2 rounded-full"
-                  onClick={handleTakePhoto}
-                >
-                  <MdCameraAlt size={30} />
-                </button>
-              </div>
-            </>
-          ) : (
-            <div className="relative aspect-video">
-              <Image src={imagePreview} alt="Foto" fill />
+    <Dialog
+      visible={show}
+      onHide={handleClose}
+      footer={footerContent}
+      className="w-full sm:w-1/3"
+    >
+      <div>
+        {!imagePreview ? (
+          <>
+            <Webcam
+              audio={false}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg"
+              className="bg-white w-full h-full relative"
+              videoConstraints={{
+                width: 1280,
+                height: 720,
+                facingMode: "environment",
+              }}
+            />
+            <div className="flex justify-center mt-5">
+              <button
+                type="button"
+                className="bg-kemis text-white px-2 py-2 rounded-full"
+                onClick={handleTakePhoto}
+              >
+                <MdCameraAlt size={30} />
+              </button>
             </div>
-          )}
-        </div>
-      </Dialog>
-    </>
+          </>
+        ) : (
+          <div className="relative aspect-video">
+            <Image src={imagePreview} alt="Foto" fill />
+          </div>
+        )}
+      </div>
+    </Dialog>
   );
 };
 

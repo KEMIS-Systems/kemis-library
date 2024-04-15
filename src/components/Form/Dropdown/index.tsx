@@ -1,15 +1,16 @@
+import { Button as ButtonPrime } from "primereact/button";
+import { Dropdown as DropdownPrime } from "primereact/dropdown";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { classNames } from "primereact/utils";
 import React from "react";
 import {
   Controller,
+  FieldPath,
   FieldValues,
   RegisterOptions,
-  FieldPath,
   UseFormReturn,
 } from "react-hook-form";
-import { Dropdown as DropdownPrime } from "primereact/dropdown";
-import { classNames } from "primereact/utils";
-import { SelectItemOptionsType } from "primereact/selectitem";
-import { Button as ButtonPrime } from "primereact/button";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -23,7 +24,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   autoFocus?: boolean;
-  handleAddButton?: (index: number) => void;
+  handleAddButton?: () => void;
   disabled?: boolean;
 }
 
@@ -73,19 +74,10 @@ const Dropdown = <T extends object>({
                 optionGroupTemplate={optionGroupTemplate}
                 disabled={disabled}
                 className={
-                  classNames({ "p-invalid ": fieldState.error }) + " w-full "
+                  classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100 "
                 }
                 {...field}
-                // ref={ref}
                 onChange={(event) => field.onChange(event.target.value)}
-                onShow={() => {
-                  let styleDropdown: any =
-                    document.getElementsByClassName("p-dropdown-panel");
-                  styleDropdown = Array.prototype.slice.call(styleDropdown);
-                  styleDropdown.forEach(function (element: any) {
-                    element.style.zIndex = 2000;
-                  });
-                }}
               />
               {handleAddButton && (
                 <ButtonPrime
@@ -93,10 +85,11 @@ const Dropdown = <T extends object>({
                   icon="pi pi-plus"
                   className="p-button-success"
                   disabled={disabled}
-                  onClick={() => handleAddButton(4)}
+                  onClick={() => handleAddButton()}
                 />
               )}
             </div>
+            {<MessageError fieldState={fieldState} />}
           </>
         );
       }}

@@ -1,16 +1,17 @@
+import { Divider } from "primereact/divider";
+import { Password } from "primereact/password";
+import { classNames } from "primereact/utils";
 import React from "react";
 import {
   Controller,
+  FieldPath,
   FieldValues,
   RegisterOptions,
-  FieldPath,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
-import { Divider } from "primereact/divider";
-import { Password } from "primereact/password";
 
 import { useLanguage } from "../../../hooks/Language";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -81,11 +82,12 @@ const InputPassword = <T extends object>({
                   className={
                     classNames({ "p-invalid ": fieldState.error }) + " w-full"
                   }
-                  inputClassName=" w-full"
+                  inputClassName=" w-full disabled:bg-slate-100"
                   disabled={disabled}
                   {...field}
                   ref={ref}
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

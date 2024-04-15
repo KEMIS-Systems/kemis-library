@@ -1,13 +1,13 @@
-import React from "react";
 import { Checkbox as CheckboxPrime } from "primereact/checkbox";
+import { classNames } from "primereact/utils";
+import React from "react";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
 
 interface IProps<T extends FieldValues> {
   inputId: string;
@@ -65,9 +65,10 @@ const CheckBox = <T extends object>({
                   autoFocus={autoFocus}
                   className={
                     classNames({ "p-invalid ": fieldState.error }) +
-                    " w-full " +
+                    " w-full disabled:bg-slate-100" +
                     (classNameLabel !== undefined && classNameCheckbox)
                   }
+
                   ref={ref}
                   {...field}
                   style={style}

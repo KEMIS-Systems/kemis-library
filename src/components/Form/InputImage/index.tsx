@@ -44,9 +44,7 @@ const InputImage = <T extends object>({
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             render={({ field: { ref, onChange, ...field }, fieldState }) => {
               return (
-                <>
-                  <input type="file" {...field} ref={ref} className="hidden" />
-                </>
+                <input type="file" {...field} ref={ref} className="hidden" />
               );
             }}
           />

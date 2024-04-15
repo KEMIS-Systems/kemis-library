@@ -1,44 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Toast } from "primereact/toast";
+import { saveAs } from "file-saver";
 
-import Loading from "../Loading";
 import { AxiosInstance } from "axios";
-import generateUrlBlob from "../../utils/generateUrlBlob";
+import Loading from "../Loading";
+import { generateUrlBlob } from "../../utils";
+
+interface P {
+  [key: string]:
+    | string
+    | number
+    | string[]
+    | number[]
+    | Date
+    | Date[]
+    | boolean
+    | undefined;
+}
 
 interface IModalProps {
   api: AxiosInstance;
   url: string;
   header: string;
+  params?: P;
+  filename?: string;
+  onHide?: () => void;
 }
 
-const ShowFile = ({ api, url, header }: IModalProps) => {
-  const [showLoading, setShowLoading] = useState<boolean>(false);
+const ShowFile = ({
+  api,
+  url,
+  header,
+  params,
+  filename,
+  onHide,
+}: IModalProps) => {
+  const toast = useRef<Toast>(null);
+  const [showLoading, setShowLoading] = useState<boolean>(true);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [pdfUrl, setPdfUrl] = useState<string>("");
 
   useEffect(() => {
-    setImageUrl("");
-    setPdfUrl("");
-    if (url) {
-      setShowLoading(true);
-      api
-        .get(`${url}`, {
-          responseType: "blob",
-        })
-        .then((response) => {
-          if (response.headers["content-type"] === "application/pdf") {
-            setPdfUrl(generateUrlBlob(response));
-          } else {
-            setImageUrl(
-              window.URL.createObjectURL(
-                new Blob([response.data], {
-                  type: response.headers["content-type"],
-                })
-              )
-            );
-          }
-        })
-        .finally(() => setShowLoading(false));
-    }
+    api
+      .get<Blob>(url, {
+        params,
+        responseType: "blob",
+      })
+      .then((response) => {
+        if (response.status !== 200 || !window) {
+          setShowLoading(false);
+          toast?.current?.show({
+            severity: "error",
+            summary: "Oops...",
+            detail: "Não foi possivel carregar o arquivo",
+          });
+          onHide?.();
+          return;
+        }
+
+        if (response.headers["content-type"]?.toString().includes("pdf")) {
+          setPdfUrl(generateUrlBlob(response));
+        } else if (
+          response.headers["content-type"]?.toString().includes("image")
+        ) {
+          setImageUrl(
+            window.URL.createObjectURL(
+              new Blob([response.data], {
+                type: response.headers["content-type"]?.toString(),
+              })
+            )
+          );
+        } else {
+          saveAs(response.data, filename);
+        }
+      })
+      .finally(() => setShowLoading(false));
   }, [url]);
 
   return (
@@ -59,6 +95,7 @@ const ShowFile = ({ api, url, header }: IModalProps) => {
           className="w-full min-h-screen max-h-screen"
         />
       )}
+      <Toast ref={toast} />
       <Loading show={showLoading} />
     </>
   );

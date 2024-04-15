@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
 import { InputSwitch as InputSwitchPrime } from "primereact/inputswitch";
+import { classNames } from "primereact/utils";
+import React from "react";
 import {
   Controller,
-  FieldValues,
   FieldPath,
-  UseFormReturn,
+  FieldValues,
   RegisterOptions,
+  UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -52,9 +53,10 @@ const InputSwitch = <T extends object>({
                   defaultChecked={false}
                   disabled={disabled}
                   {...field}
-                  className={classNames({ "p-invalid": fieldState.error })}
+                  className={classNames({ "p-invalid": fieldState.error }) + " disabled:bg-slate-100"}
                   onChange={(e: any) => field.onChange(e.value)}
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

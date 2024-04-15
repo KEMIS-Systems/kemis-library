@@ -9,6 +9,7 @@ import {
 import { ListBox as ListBoxPrime } from "primereact/listbox";
 import { classNames } from "primereact/utils";
 import { SelectItemOptionsType } from "primereact/selectitem";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -72,6 +73,7 @@ const ListBox = <T extends object>({
                   {...field}
                   ref={ref}
                 />
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

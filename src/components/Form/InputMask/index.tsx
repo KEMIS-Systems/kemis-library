@@ -61,7 +61,7 @@ function InputMask({
                   name={field.name}
                   id={field.name}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
                   }
                 />
                 {<MessageError fieldState={fieldState} />}
@@ -72,10 +72,6 @@ function InputMask({
       )}
     </div>
   );
-}
-
-{
-  /* <InputMask onChange={(event) => event} form={{} as UseFormReturn} label="Your name" name="first_name" /> */
 }
 
 export default InputMask;

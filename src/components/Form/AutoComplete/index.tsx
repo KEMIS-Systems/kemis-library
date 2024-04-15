@@ -1,25 +1,28 @@
-import React from "react";
 import { AutoComplete as AutoCompletePrime } from "primereact/autocomplete";
+import { Button as ButtonPrime } from "primereact/button";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { classNames } from "primereact/utils";
+import React from "react";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
-import { SelectItemOptionsType } from "primereact/selectitem";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   className?: string;
   name: FieldPath<T>;
   label: string;
   suggestions: SelectItemOptionsType;
-  handleSearch: (event: { query: string }) => void;
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   disabled?: boolean;
+  handleSearch: (event: { query: string }) => void;
+  handleAddButton?: () => void;
 }
 
 const AutoComplete = <T extends object>({
@@ -27,11 +30,12 @@ const AutoComplete = <T extends object>({
   name,
   label,
   suggestions,
-  handleSearch,
   rules,
   autoFocus,
   form,
   disabled,
+  handleSearch,
+  handleAddButton,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -51,24 +55,37 @@ const AutoComplete = <T extends object>({
                 >
                   {label}
                 </label>
-                <AutoCompletePrime
-                  id={field.name}
-                  field="label"
-                  suggestions={suggestions}
-                  completeMethod={(e) => handleSearch(e)}
-                  autoFocus={autoFocus}
-                  dropdown
-                  forceSelection
-                  autoHighlight
-                  showEmptyMessage
-                  disabled={disabled}
-                  emptyMessage="No results found"
-                  className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
-                  }
-                  {...field}
-                  inputRef={ref}
-                />
+                <div className={`${handleAddButton && "p-inputgroup"}`}>
+                  <AutoCompletePrime
+                    id={field.name}
+                    field="label"
+                    suggestions={suggestions}
+                    completeMethod={(e) => handleSearch(e)}
+                    autoFocus={autoFocus}
+                    dropdown
+                    forceSelection
+                    autoHighlight
+                    showEmptyMessage
+                    disabled={disabled}
+                    emptyMessage="No results found"
+                    className={
+                      classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
+                    }
+                    inputClassName="disabled:bg-slate-100"
+                    {...field}
+                    inputRef={ref}
+                  />
+                  {handleAddButton && (
+                    <ButtonPrime
+                      type="button"
+                      icon="pi pi-plus"
+                      className="p-button-success"
+                      disabled={disabled}
+                      onClick={() => handleAddButton()}
+                    />
+                  )}
+                </div>
+                {<MessageError fieldState={fieldState} />}
               </>
             );
           }}

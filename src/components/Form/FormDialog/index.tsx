@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 
 import { AxiosInstance } from "axios";
@@ -15,12 +15,13 @@ interface IProps<T extends FieldValues> {
   dataEdit?: T & K;
   url: string;
   onHide: () => void;
-  onRefreshTable?: (refreshTable: boolean) => void;
+  onRefreshTable?: (refreshTable: boolean, data?: T) => void;
   onSubmit?: (data: T) => void;
   getFormData?: (data: FieldValues) => FieldValues | FormData;
   form: UseFormReturn<T>;
   header: React.ReactNode;
   visible: boolean;
+  maximizable?: boolean;
   classNameDialog?: string;
   children: React.ReactNode;
   hiddenSubmitButton?: boolean;
@@ -54,12 +55,12 @@ const FormDialog = <T extends object>({
   form,
   header,
   visible,
+  maximizable,
   classNameDialog,
   children,
   hiddenSubmitButton,
 }: IProps<T>) => {
   const { language } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
 
   const handleHide = useCallback(() => {
     form.reset();
@@ -100,13 +101,13 @@ const FormDialog = <T extends object>({
       className={classNameDialog ?? ""}
       footer={footerContent}
       onHide={handleHide}
+      maximizable={maximizable}
     >
       <Form
         api={api}
         onHide={handleHide}
         dataEdit={dataEdit}
         url={url}
-        submit={submitted}
         onSubmit={onSubmit}
         getFormData={getFormData}
         onRefreshTable={onRefreshTable}

@@ -1,21 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { DeepPartial, useForm } from "react-hook-form";
 import * as Zod from "zod";
 
 // Schemas
 import { GeneralSchema } from "./schemas";
 
-interface IDefaultValues {
-  [key: string]: any;
-}
+type IDefaultValues<T> = {
+  [key in keyof T]?: DeepPartial<T[key]>;
+};
 
 interface ISchemaObject extends Zod.AnyZodObject {
   [key: string]: any;
 }
-
-type PDefaultValues = IDefaultValues;
 
 /**
  * Mount the form integrated with Zod validation
@@ -25,12 +23,12 @@ type PDefaultValues = IDefaultValues;
  * @param schemaObject An optional schema validation to agregate to validation flux
  * @returns The Hook-Forms Statement
  */
-function useFormIntegration(
-  defaultValues: PDefaultValues = {},
+export function useFormIntegration<ST = any>(
+  defaultValues: IDefaultValues<ST>,
   schemaObject?: Zod.AnyZodObject
 ) {
   const form = useForm({
-    defaultValues: defaultValues,
+    defaultValues: defaultValues as unknown as DeepPartial<IDefaultValues<ST>>,
     resolver: zodResolver(
       schemaObject ? GeneralSchema.extend(schemaObject.shape) : GeneralSchema,
       {
@@ -43,13 +41,5 @@ function useFormIntegration(
     ),
   });
 
-  console.log(
-    "useFormIntegration",
-    (schemaObject ? GeneralSchema.extend(schemaObject.shape) : GeneralSchema)
-      .shape
-  );
-
   return { ...form };
 }
-
-export default useFormIntegration;

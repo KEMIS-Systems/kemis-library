@@ -1,9 +1,9 @@
-import { AxiosInstance } from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import { AxiosError, AxiosInstance, Method } from "axios";
+import { Toast } from "primereact/toast";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
-import Swal from "sweetalert2";
+
 import { useLanguage } from "../../../hooks/Language";
-import Toast from "../../../utils/toast";
 import Loading from "../../Loading";
 
 type K = {
@@ -14,9 +14,8 @@ export interface IProps<T extends FieldValues> {
   api?: AxiosInstance;
   dataEdit?: T & K;
   url: string;
-  submit?: boolean;
   onHide?: () => void;
-  onRefreshTable?: (refreshTable: boolean) => void;
+  onRefreshTable?: (refreshTable: boolean, data?: T) => void;
   onSubmit?: (data: T) => void;
   getFormData?: (data: FieldValues) => FieldValues | FormData;
   form: UseFormReturn<T>;
@@ -41,7 +40,6 @@ const Form = <T extends object>({
   onHide,
   dataEdit,
   url,
-  submit,
   onRefreshTable,
   onSubmit,
   getFormData,
@@ -49,6 +47,7 @@ const Form = <T extends object>({
   children,
 }: IProps<T>) => {
   const { language } = useLanguage();
+  const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -59,47 +58,67 @@ const Form = <T extends object>({
 
   const handleHide = useCallback(() => {
     form?.reset();
-    onHide && onHide();
+    onHide?.();
   }, [onHide, form]);
 
   const handleSubmitData = useCallback(
     async (data: FieldValues) => {
       try {
-        console.log("handleSubmitData@data", data);
         setShowLoading(true);
         if (api) {
           try {
             const formData: FieldValues | FormData = getFormData
               ? getFormData(data)
               : data;
-            if (dataEdit?.id) {
-              formData instanceof FormData
-                ? await api.post(`${url}/${dataEdit.id}`, formData)
-                : await api.put(`${url}/${dataEdit.id}`, formData);
-            } else {
-              await api.post(`${url}`, formData);
-            }
-            await Toast.fire({
-              icon: "success",
-              title: dataEdit?.id
-                ? language.pages.alerts.edit.success
-                : language.pages.alerts.add.success,
-            });
+
+            // AUX Variables
+            const REQUEST_METHOD: Method = !dataEdit?.id ? 'post' : 'put'
+            const REQUEST_PATH: string = `${url}${dataEdit?.id ? `/${dataEdit.id}` : ''}`
+
+            await api[REQUEST_METHOD](REQUEST_PATH, formData).then(resolver => {
+              setShowLoading(false);
+              handleHide?.();
+
+              onRefreshTable?.(true, resolver.data);
+
+              toast?.current?.show({
+                severity: "success",
+                summary: "Success",
+                detail:
+                  language.pages.alerts?.[dataEdit?.id ? "edit" : "add"]?.success,
+              });
+            })
+
+          } catch (error: AxiosError | any) {
             setShowLoading(false);
-            handleHide();
-            onRefreshTable && onRefreshTable(true);
-          } catch (error) {
-            setShowLoading(false);
-            await Swal.fire({
-              title: "Opss...",
-              text: "Error",
-              icon: "error",
-              willOpen: (popup) => {
-                if (popup.parentElement) {
-                  popup.parentElement.style.zIndex = "1000";
+            console.log(
+              error.response?.data?.errors,
+              Object.keys(error.response?.data?.errors).length
+            );
+            if (Object.keys(error.response?.data?.errors).length > 0) {
+              Object.values(error.response?.data?.errors).forEach(
+                (message: unknown) => {
+                  toast?.current?.show({
+                    severity: "error",
+                    summary: "Error",
+                    detail: String(message),
+                  });
                 }
-              },
-            });
+              );
+            } else if (error.response?.data?.message) {
+              toast?.current?.show({
+                severity: "error",
+                summary: "Error",
+                detail: error.response?.data?.message || "Fail to save data",
+              });
+            } else {
+              console.log(error);
+              toast?.current?.show({
+                severity: "error",
+                summary: "Error",
+                detail: "Fail to save data",
+              });
+            }
           }
         } else
           console.error(
@@ -117,11 +136,11 @@ const Form = <T extends object>({
       <form
         id="kemis-library-form"
         name="kemis-library-form"
-        role="form"
         onSubmit={form.handleSubmit(onSubmit ?? handleSubmitData)}
       >
         {children}
       </form>
+      <Toast ref={toast} />
       <Loading show={showLoading} />
     </>
   );

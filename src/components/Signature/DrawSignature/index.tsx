@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 
 import { BsCheck2Circle } from "react-icons/bs";
 import { BiTrash } from "react-icons/bi";
-import toBlob from "../../../utils/toBlob";
+import { toBlob } from "../../../utils/files";
 import blobToFile from "../../../utils/blobToFile";
-import React from "react";
 import ColorPalette from "../ColorPalette";
 import CropImage from "../../CropImage";
 
@@ -57,58 +56,54 @@ const DrawSignature = ({ onChange }: IModalProps) => {
   }, []);
 
   return (
-    <>
-      <div className=" w-full">
-        <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2 justify-between">
-          <div className="flex gap-2">
-            <button
-              className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
-              onClick={handleCanvasNextStep}
-            >
-              <BsCheck2Circle size={20} />
-            </button>
-            <button
-              className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
-              onClick={handleCanvasPreviewStep}
-            >
-              <BiTrash size={20} />
-            </button>
-          </div>
-          <div className="flex justify-end grow">
-            <ColorPalette onHandleTakeColor={handleBringColor} />
-          </div>
-        </div>
-        <div className="border border-gray-300 rounded-b-xl p-1">
-          <div
-            className="flex flex-row w-full justify-center items-center mb-5"
-            id="canvasParent"
+    <div className=" w-full">
+      <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2 justify-between">
+        <div className="flex gap-2">
+          <button
+            className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
+            onClick={handleCanvasNextStep}
           >
-            {canvasSteps === 1 ? (
-              <CanvasDraw
-                disabled={canvasSteps !== 1}
-                ref={canvasRef}
-                brushRadius={1}
-                hideGrid
-                hideInterface
-                lazyRadius={1}
-                loadTimeOffset={2}
-                canvasWidth={500}
-                canvasHeight={200}
-                catenaryColor="#0a0302"
-                brushColor={colorDraw}
-                className={`w-full border rounded mt-3 ${
-                  canvasSteps !== 1 ? "hide" : ""
-                }`}
-              />
-            ) : (
-              <>
-                <CropImage image={signatureUrl} onChange={handleImageCopped} />
-              </>
-            )}
-          </div>
+            <BsCheck2Circle size={20} />
+          </button>
+          <button
+            className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
+            onClick={handleCanvasPreviewStep}
+          >
+            <BiTrash size={20} />
+          </button>
+        </div>
+        <div className="flex justify-end grow">
+          <ColorPalette onHandleTakeColor={handleBringColor} />
         </div>
       </div>
-    </>
+      <div className="border border-gray-300 rounded-b-xl p-1">
+        <div
+          className="flex flex-row w-full justify-center items-center mb-5"
+          id="canvasParent"
+        >
+          {canvasSteps === 1 ? (
+            <CanvasDraw
+              disabled={canvasSteps !== 1}
+              ref={canvasRef}
+              brushRadius={1}
+              hideGrid
+              hideInterface
+              lazyRadius={1}
+              loadTimeOffset={2}
+              canvasWidth={500}
+              canvasHeight={200}
+              catenaryColor="#0a0302"
+              brushColor={colorDraw}
+              className={`w-full border rounded mt-3 ${
+                canvasSteps !== 1 ? "hide" : ""
+              }`}
+            />
+          ) : (
+            <CropImage image={signatureUrl} onChange={handleImageCopped} />
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
