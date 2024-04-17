@@ -54,6 +54,7 @@ const AutoComplete = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
                 </label>
                 <div className={`${handleAddButton && "p-inputgroup"}`}>
                   <AutoCompletePrime

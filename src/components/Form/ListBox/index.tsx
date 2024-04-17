@@ -57,6 +57,7 @@ const ListBox = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
                 </label>
                 <ListBoxPrime
                   id={field.name}

@@ -55,6 +55,7 @@ const InputText = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
                 </label>
                 <InputTextPrime
                   {...field}

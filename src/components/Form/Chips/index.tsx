@@ -47,6 +47,7 @@ const Chips = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
                 </label>
                 <ChipsPrime
                   id={field.name}

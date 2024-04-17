@@ -47,6 +47,7 @@ const EditorHtml = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
                 </label>
                 <Editor
                   id={field.name}
