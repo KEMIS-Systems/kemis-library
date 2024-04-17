@@ -63,7 +63,11 @@ const InputDate = <T extends object>({
                 }
               >
                 {label}
-                {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+                {rules?.required ? (
+                  <span className="text-slate-300"> *</span>
+                ) : (
+                  ""
+                )}
               </label>
               <CalendarPrime
                 {...field}

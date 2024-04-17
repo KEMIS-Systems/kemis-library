@@ -59,7 +59,11 @@ const Dropdown = <T extends object>({
               }
             >
               {label}
-              {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+              {rules?.required ? (
+                <span className="text-slate-300"> *</span>
+              ) : (
+                ""
+              )}
             </label>
             <div className={`${handleAddButton && "p-inputgroup"}`}>
               <DropdownPrime
@@ -75,7 +79,8 @@ const Dropdown = <T extends object>({
                 optionGroupTemplate={optionGroupTemplate}
                 disabled={disabled}
                 className={
-                  classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100 "
+                  classNames({ "p-invalid ": fieldState.error }) +
+                  " w-full disabled:bg-slate-100 "
                 }
                 {...field}
                 onChange={(event) => field.onChange(event.target.value)}

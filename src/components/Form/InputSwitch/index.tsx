@@ -45,7 +45,11 @@ const InputSwitch = <T extends object>({
                   }
                 >
                   {label}
-                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <InputSwitchPrime
                   inputId={field.name}
@@ -54,7 +58,10 @@ const InputSwitch = <T extends object>({
                   defaultChecked={false}
                   disabled={disabled}
                   {...field}
-                  className={classNames({ "p-invalid": fieldState.error }) + " disabled:bg-slate-100"}
+                  className={
+                    classNames({ "p-invalid": fieldState.error }) +
+                    " disabled:bg-slate-100"
+                  }
                   onChange={(e: any) => field.onChange(e.value)}
                 />
                 {<MessageError fieldState={fieldState} />}

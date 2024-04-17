@@ -24,8 +24,8 @@ interface IProps<T extends FieldValues> {
   handleAddButton?: (index: number) => void;
   disabled?: boolean;
   className?: string;
-  optionGroupLabel?:string;
-  optionGroupChildren?:string;
+  optionGroupLabel?: string;
+  optionGroupChildren?: string;
 }
 
 const MultiSelect = <T extends object>({
@@ -60,7 +60,11 @@ const MultiSelect = <T extends object>({
                 }
               >
                 {label}
-                {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+                {rules?.required ? (
+                  <span className="text-slate-300"> *</span>
+                ) : (
+                  ""
+                )}
               </label>
               <div className={`${handleAddButton && "p-inputgroup"}`}>
                 <MultiSelectPrime
@@ -74,7 +78,8 @@ const MultiSelect = <T extends object>({
                   disabled={disabled}
                   display="chip"
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    " w-full disabled:bg-slate-100"
                   }
                   {...field}
                   ref={ref}

@@ -44,12 +44,19 @@ const InputFile = <T extends object>({
             return (
               <>
                 <label htmlFor={field.name}>
-                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <Dropzone
                   accept={accept}
                   maxFiles={maxFiles}
-                  className={classNames({ "p-invalid ": fieldState.error }) + " disabled:bg-slate-100"}
+                  className={
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    " disabled:bg-slate-100"
+                  }
                   invalid={!!fieldState.error}
                   {...field}
                   onChange={(e) => {

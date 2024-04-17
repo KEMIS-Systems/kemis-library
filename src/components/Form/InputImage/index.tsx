@@ -49,7 +49,7 @@ const InputImage = <T extends object>({
             }}
           />
           <label htmlFor={name}>
-            {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+            {rules?.required ? <span className="text-slate-300"> *</span> : ""}
           </label>
           <InputImageBox handleChange={handleFileChange} />
         </div>

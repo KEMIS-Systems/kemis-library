@@ -47,13 +47,18 @@ const EditorHtml = <T extends object>({
                   }
                 >
                   {label}
-                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <Editor
                   id={field.name}
                   style={{ height: "120px" }}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    " w-full disabled:bg-slate-100"
                   }
                   autoFocus={autoFocus}
                   disabled={disabled}

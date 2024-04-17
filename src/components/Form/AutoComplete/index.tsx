@@ -54,7 +54,11 @@ const AutoComplete = <T extends object>({
                   }
                 >
                   {label}
-                  {rules?.required ? (<span className="text-slate-300"> * </span>) : ('')}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <div className={`${handleAddButton && "p-inputgroup"}`}>
                   <AutoCompletePrime
@@ -70,7 +74,8 @@ const AutoComplete = <T extends object>({
                     disabled={disabled}
                     emptyMessage="No results found"
                     className={
-                      classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
+                      classNames({ "p-invalid ": fieldState.error }) +
+                      " w-full disabled:bg-slate-100"
                     }
                     inputClassName="disabled:bg-slate-100"
                     {...field}
