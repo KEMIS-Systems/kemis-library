@@ -8,6 +8,7 @@ import Loading from "../../Loading";
 
 type K = {
   id?: number;
+  uuid?: string;
 };
 
 export interface IProps<T extends FieldValues> {
@@ -72,23 +73,31 @@ const Form = <T extends object>({
               : data;
 
             // AUX Variables
-            const REQUEST_METHOD: Method = !dataEdit?.id ? 'post' : 'put'
-            const REQUEST_PATH: string = `${url}${dataEdit?.id ? `/${dataEdit.id}` : ''}`
+            const REQUEST_METHOD: Method =
+              !dataEdit?.uuid && !dataEdit?.id ? "post" : "put";
+            const REQUEST_PATH: string = `${url}${
+              dataEdit?.uuid || dataEdit?.id
+                ? `/${dataEdit.uuid ?? dataEdit.id}`
+                : ""
+            }`;
 
-            await api[REQUEST_METHOD](REQUEST_PATH, formData).then(resolver => {
-              setShowLoading(false);
-              handleHide?.();
+            await api[REQUEST_METHOD](REQUEST_PATH, formData).then(
+              (resolver) => {
+                setShowLoading(false);
+                handleHide?.();
 
-              onRefreshTable?.(true, resolver.data);
+                onRefreshTable?.(true, resolver.data);
 
-              toast?.current?.show({
-                severity: "success",
-                summary: "Success",
-                detail:
-                  language.pages.alerts?.[dataEdit?.id ? "edit" : "add"]?.success,
-              });
-            })
-
+                toast?.current?.show({
+                  severity: "success",
+                  summary: "Success",
+                  detail:
+                    language.pages.alerts?.[
+                      dataEdit?.uuid || dataEdit?.id ? "edit" : "add"
+                    ]?.success,
+                });
+              }
+            );
           } catch (error: AxiosError | any) {
             setShowLoading(false);
             console.log(
