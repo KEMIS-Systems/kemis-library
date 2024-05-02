@@ -14,6 +14,7 @@ import MessageError from "../MessageError";
 interface IProps<T extends FieldValues> {
   className?: string;
   name: FieldPath<T>;
+  label: string;
   accept?: Accept;
   maxFiles?: number;
   handleChange?(files: File[]): void;
@@ -24,6 +25,7 @@ interface IProps<T extends FieldValues> {
 const InputFile = <T extends object>({
   className,
   name,
+  label,
   accept,
   maxFiles,
   handleChange,
@@ -44,6 +46,7 @@ const InputFile = <T extends object>({
             return (
               <>
                 <label htmlFor={field.name}>
+                  {label}
                   {rules?.required ? (
                     <span className="text-slate-300"> *</span>
                   ) : (
