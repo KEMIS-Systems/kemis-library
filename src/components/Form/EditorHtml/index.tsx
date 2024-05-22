@@ -18,6 +18,7 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   disabled?: boolean;
+  headerTemplate?: React.ReactNode;
 }
 
 const EditorHtml = <T extends object>({
@@ -28,6 +29,7 @@ const EditorHtml = <T extends object>({
   autoFocus,
   form,
   disabled,
+  headerTemplate,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -66,6 +68,7 @@ const EditorHtml = <T extends object>({
                   onTextChange={(e) => {
                     field.onChange(e.htmlValue);
                   }}
+                  headerTemplate={headerTemplate}
                 />
                 {<MessageError fieldState={fieldState} />}
               </>
