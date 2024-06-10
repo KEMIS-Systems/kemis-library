@@ -1,3 +1,4 @@
+import { Button as ButtonPrime } from "primereact/button";
 import {
   InputNumber as InputNumberPrime,
   InputNumberProps,
@@ -25,6 +26,8 @@ interface IProps<T extends FieldValues> extends Partial<InputNumberProps> {
   rules?: RegisterOptions;
   disabled?: boolean;
   defaultMoney?: boolean;
+  iconAddButton?: string;
+  handleAddButton?: () => void;
 }
 
 const InputNumber = <T extends object>({
@@ -38,6 +41,8 @@ const InputNumber = <T extends object>({
   form,
   rules,
   disabled,
+  iconAddButton,
+  handleAddButton,
   ...rest
 }: IProps<T>) => {
   const [value, setValue] = useState<number>(0);
@@ -80,6 +85,7 @@ const InputNumber = <T extends object>({
                     ""
                   )}
                 </label>
+                <div className={`${handleAddButton && "p-inputgroup"}`}>
                 <InputStyles>
                   {/* @ts-ignore  @ts-nocheck */}
                   <InputNumberPrime
@@ -97,8 +103,18 @@ const InputNumber = <T extends object>({
                     onBlur={(event) => setValue(Number(event.target.value))}
                     {...rest}
                   />
+                  {handleAddButton && (
+                <ButtonPrime
+                  type="button"
+                  icon={`${iconAddButton ? iconAddButton : 'pi pi-plus' }`}
+                  className="p-button-success"
+                  disabled={disabled}
+                  onClick={() => handleAddButton()}
+                />
+              )}
                   {<MessageError fieldState={fieldState} />}
                 </InputStyles>
+                </div>
               </>
             );
           }}
