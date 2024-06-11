@@ -85,8 +85,8 @@ const InputNumber = <T extends object>({
                     ""
                   )}
                 </label>
-                <div className={`${handleAddButton && "p-inputgroup"}`}>
                 <InputStyles>
+                <div className={`${handleAddButton && "p-inputgroup"}`}>
                   {/* @ts-ignore  @ts-nocheck */}
                   <InputNumberPrime
                     id={field.name}
@@ -112,9 +112,9 @@ const InputNumber = <T extends object>({
                   onClick={() => handleAddButton()}
                 />
               )}
+               </div>
                   {<MessageError fieldState={fieldState} />}
                 </InputStyles>
-                </div>
               </>
             );
           }}
