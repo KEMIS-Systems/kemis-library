@@ -1,4 +1,8 @@
-import { InputNumber as InputNumberPrime } from "primereact/inputnumber";
+import { Button as ButtonPrime } from "primereact/button";
+import {
+  InputNumber as InputNumberPrime,
+  InputNumberProps,
+} from "primereact/inputnumber";
 import { classNames } from "primereact/utils";
 import React, { useState } from "react";
 import {
@@ -11,7 +15,7 @@ import {
 import styled from "styled-components";
 import MessageError from "../MessageError";
 
-interface IProps<T extends FieldValues> {
+interface IProps<T extends FieldValues> extends Partial<InputNumberProps> {
   className?: string;
   name: FieldPath<T>;
   label: string;
@@ -21,20 +25,34 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   disabled?: boolean;
+  defaultMoney?: boolean;
+  iconAddButton?: string;
+  handleAddButton?: () => void;
 }
 
 const InputNumber = <T extends object>({
   className,
   name,
   label,
+  defaultMoney = true,
   mode,
   currency,
   locale,
   form,
   rules,
   disabled,
+  iconAddButton,
+  handleAddButton,
+  ...rest
 }: IProps<T>) => {
   const [value, setValue] = useState<number>(0);
+
+  // AUX Variables
+  const moneyInputMode = {
+    mode: "currency",
+    currency: "BRL",
+    locale: "pt-BR",
+  };
 
   const InputStyles = styled.div`
     .p-inputtext,
@@ -61,23 +79,40 @@ const InputNumber = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <InputStyles>
+                <div className={`${handleAddButton && "p-inputgroup"}`}>
+                  {/* @ts-ignore  @ts-nocheck */}
                   <InputNumberPrime
                     id={field.name}
-                    mode={mode ?? "currency"}
-                    currency={currency ?? "BRL"}
-                    locale={locale ?? "pt-BR"}
+                    {...(defaultMoney ? moneyInputMode : {})}
                     className={
-                      classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                      classNames({ "p-invalid ": fieldState.error }) +
+                      ` w-full ${disabled ? "bg-slate-100" : ""}`
                     }
+                    inputClassName="disabled:bg-slate-100"
                     disabled={disabled}
-                    {...field}
                     ref={ref}
-                    value={value ?? field.value}
+                    {...field}
                     onChange={(event) => field.onChange(event.value)}
                     onBlur={(event) => setValue(Number(event.target.value))}
+                    {...rest}
                   />
+                  {handleAddButton && (
+                <ButtonPrime
+                  type="button"
+                  icon={`${iconAddButton ? iconAddButton : 'pi pi-plus' }`}
+                  className="p-button-success"
+                  disabled={disabled}
+                  onClick={() => handleAddButton()}
+                />
+              )}
+               </div>
                   {<MessageError fieldState={fieldState} />}
                 </InputStyles>
               </>

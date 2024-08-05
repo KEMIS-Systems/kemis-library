@@ -1,15 +1,15 @@
+import { Button as ButtonPrime } from "primereact/button";
+import { Dropdown as DropdownPrime } from "primereact/dropdown";
+import { SelectItemOptionsType } from "primereact/selectitem";
+import { classNames } from "primereact/utils";
 import React from "react";
 import {
   Controller,
+  FieldPath,
   FieldValues,
   RegisterOptions,
-  FieldPath,
   UseFormReturn,
 } from "react-hook-form";
-import { Dropdown as DropdownPrime } from "primereact/dropdown";
-import { classNames } from "primereact/utils";
-import { SelectItemOptionsType } from "primereact/selectitem";
-import { Button as ButtonPrime } from "primereact/button";
 import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
@@ -59,6 +59,11 @@ const Dropdown = <T extends object>({
               }
             >
               {label}
+              {rules?.required ? (
+                <span className="text-slate-300"> *</span>
+              ) : (
+                ""
+              )}
             </label>
             <div className={`${handleAddButton && "p-inputgroup"}`}>
               <DropdownPrime
@@ -74,7 +79,8 @@ const Dropdown = <T extends object>({
                 optionGroupTemplate={optionGroupTemplate}
                 disabled={disabled}
                 className={
-                  classNames({ "p-invalid ": fieldState.error }) + " w-full "
+                  classNames({ "p-invalid ": fieldState.error }) +
+                  " w-full disabled:bg-slate-100 "
                 }
                 {...field}
                 onChange={(event) => field.onChange(event.target.value)}

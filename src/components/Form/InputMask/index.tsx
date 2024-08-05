@@ -53,6 +53,11 @@ function InputMask({
                   }
                 >
                   {label}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <InputMaskPrime
                   {...field}
@@ -61,7 +66,8 @@ function InputMask({
                   name={field.name}
                   id={field.name}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    " w-full disabled:bg-slate-100"
                   }
                 />
                 {<MessageError fieldState={fieldState} />}

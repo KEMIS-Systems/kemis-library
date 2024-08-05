@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Toast } from "primereact/toast";
+import { saveAs } from "file-saver";
 
-import Loading from "../Loading";
 import { AxiosInstance } from "axios";
-import { generateUrlBlob, getFileNameOnRequest } from "../../utils/files";
+import Loading from "../Loading";
+import { generateUrlBlob } from "../../utils";
 
 interface P {
   [key: string]:
@@ -35,55 +36,45 @@ const ShowFile = ({
   onHide,
 }: IModalProps) => {
   const toast = useRef<Toast>(null);
-  const [showLoading, setShowLoading] = useState<boolean>(false);
+  const [showLoading, setShowLoading] = useState<boolean>(true);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [pdfUrl, setPdfUrl] = useState<string>("");
 
   useEffect(() => {
-    setImageUrl("");
-    setPdfUrl("");
-    if (url) {
-      setShowLoading(true);
-      api
-        .get(`${url}`, {
-          responseType: "blob",
-          params,
-        })
-        .then((response) => {
-          if (response.headers["content-type"] === "application/pdf") {
-            setPdfUrl(generateUrlBlob(response));
-          } else {
-            const fileURL = window.URL.createObjectURL(
-              new Blob([response.data], {
-                type: response.headers["content-type"],
-              })
-            );
-            if (response.headers["content-type"].includes("image")) {
-              setImageUrl(fileURL);
-            } else {
-              const fileName = getFileNameOnRequest(response) ?? filename;
-              const link = document.createElement("a");
-              link.href = fileURL;
-              if (fileName) link.download = fileName;
-              link.click();
-              setTimeout(() => {
-                window.URL.revokeObjectURL(fileURL);
-                link.remove();
-              }, 100);
-              if (onHide) onHide();
-            }
-          }
-        })
-        .catch(() => {
+    api
+      .get<Blob>(url, {
+        params,
+        responseType: "blob",
+      })
+      .then((response) => {
+        if (response.status !== 200 || !window) {
+          setShowLoading(false);
           toast?.current?.show({
             severity: "error",
             summary: "Oops...",
-            detail: "Fail to load file",
+            detail: "Não foi possivel carregar o arquivo",
           });
-          if (onHide) onHide();
-        })
-        .finally(() => setShowLoading(false));
-    }
+          onHide?.();
+          return;
+        }
+
+        if (response.headers["content-type"]?.toString().includes("pdf")) {
+          setPdfUrl(generateUrlBlob(response));
+        } else if (
+          response.headers["content-type"]?.toString().includes("image")
+        ) {
+          setImageUrl(
+            window.URL.createObjectURL(
+              new Blob([response.data], {
+                type: response.headers["content-type"]?.toString(),
+              })
+            )
+          );
+        } else {
+          saveAs(response.data, filename);
+        }
+      })
+      .finally(() => setShowLoading(false));
   }, [url]);
 
   return (

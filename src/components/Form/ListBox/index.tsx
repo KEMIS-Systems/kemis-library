@@ -19,6 +19,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   multiple?: boolean;
+  filter?: boolean;
   optionGroupLabel?: string;
   optionGroupChildren?: string;
   optionGroupTemplate?: ReactNode | ((option: any, index: number) => ReactNode);
@@ -35,6 +36,7 @@ const ListBox = <T extends object>({
   rules,
   optionGroupLabel,
   multiple,
+  filter,
   optionGroupChildren,
   optionGroupTemplate,
   listStyle,
@@ -57,10 +59,16 @@ const ListBox = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <ListBoxPrime
                   id={field.name}
                   multiple={multiple}
+                  filter={filter}
                   options={options}
                   optionGroupLabel={optionGroupLabel}
                   optionGroupChildren={optionGroupChildren}

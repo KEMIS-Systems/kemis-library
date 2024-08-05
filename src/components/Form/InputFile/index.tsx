@@ -14,6 +14,7 @@ import MessageError from "../MessageError";
 interface IProps<T extends FieldValues> {
   className?: string;
   name: FieldPath<T>;
+  label: string;
   accept?: Accept;
   maxFiles?: number;
   handleChange?(files: File[]): void;
@@ -24,6 +25,7 @@ interface IProps<T extends FieldValues> {
 const InputFile = <T extends object>({
   className,
   name,
+  label,
   accept,
   maxFiles,
   handleChange,
@@ -43,10 +45,21 @@ const InputFile = <T extends object>({
           render={({ field: { ref, onChange, ...field }, fieldState }) => {
             return (
               <>
+                <label htmlFor={field.name}>
+                  {label}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
+                </label>
                 <Dropzone
                   accept={accept}
                   maxFiles={maxFiles}
-                  className={classNames({ "p-invalid ": fieldState.error })}
+                  className={
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    " disabled:bg-slate-100"
+                  }
                   invalid={!!fieldState.error}
                   {...field}
                   onChange={(e) => {

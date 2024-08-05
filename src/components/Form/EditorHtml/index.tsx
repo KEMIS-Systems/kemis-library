@@ -18,6 +18,7 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   disabled?: boolean;
+  headerTemplate?: React.ReactNode;
 }
 
 const EditorHtml = <T extends object>({
@@ -28,6 +29,7 @@ const EditorHtml = <T extends object>({
   autoFocus,
   form,
   disabled,
+  headerTemplate,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -47,12 +49,18 @@ const EditorHtml = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <Editor
                   id={field.name}
                   style={{ height: "120px" }}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    " w-full disabled:bg-slate-100"
                   }
                   autoFocus={autoFocus}
                   disabled={disabled}
@@ -60,6 +68,7 @@ const EditorHtml = <T extends object>({
                   onTextChange={(e) => {
                     field.onChange(e.htmlValue);
                   }}
+                  headerTemplate={headerTemplate}
                 />
                 {<MessageError fieldState={fieldState} />}
               </>

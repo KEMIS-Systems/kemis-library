@@ -1,14 +1,14 @@
-import React from "react";
 import { InputTextarea as InputTextareaPrime } from "primereact/inputtextarea";
+import React from "react";
 
+import { classNames } from "primereact/utils";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
+  FieldValues,
+  RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import { classNames } from "primereact/utils";
 import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
@@ -52,13 +52,18 @@ const InputTextArea = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <InputTextareaPrime
                   id={field.name}
                   {...field}
                   disabled={disabled}
                   autoFocus={autoFocus}
-                  className=" w-full"
+                  className={` w-full ${disabled ? "bg-slate-100" : ""}`}
                   placeholder={label}
                 />
                 {<MessageError fieldState={fieldState} />}

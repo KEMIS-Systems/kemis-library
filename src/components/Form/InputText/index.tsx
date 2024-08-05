@@ -12,7 +12,16 @@ import {
 // Components
 import MessageError from "../MessageError";
 
-interface IProps<T extends FieldValues> {
+interface IProps<T extends FieldValues>
+  extends Partial<
+    Omit<
+      React.DetailedHTMLProps<
+        React.InputHTMLAttributes<HTMLInputElement>,
+        HTMLInputElement
+      >,
+      "onInput" | "ref" | "value" | "form"
+    >
+  > {
   className?: string;
   name: FieldPath<T>;
   label: string;
@@ -22,6 +31,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   placeholder?: string;
   disabled?: boolean;
+  inputStyle?: string | null;
 }
 
 const InputText = <T extends object>({
@@ -34,6 +44,8 @@ const InputText = <T extends object>({
   form,
   placeholder,
   disabled,
+  inputStyle,
+  ...rest
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -52,6 +64,11 @@ const InputText = <T extends object>({
                   }
                 >
                   {label}
+                  {rules?.required ? (
+                    <span className="text-slate-300"> *</span>
+                  ) : (
+                    ""
+                  )}
                 </label>
                 <InputTextPrime
                   {...field}
@@ -59,11 +76,12 @@ const InputText = <T extends object>({
                   id={field.name}
                   type={type ?? "text"}
                   autoFocus={autoFocus}
-                  className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
-                  }
+                  className={`${classNames({
+                    "p-invalid ": fieldState.error,
+                  })} w-full disabled:bg-slate-100 ${inputStyle}`}
                   disabled={disabled}
                   placeholder={placeholder ?? undefined}
+                  {...rest}
                 />
                 {<MessageError fieldState={fieldState} />}
               </>
