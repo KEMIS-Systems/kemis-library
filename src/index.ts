@@ -31,7 +31,7 @@ import {
     WriteSignature,
 } from './components'
 import * as useLanguage from './hooks/Language'
-import * as useFormIntegration from './hooks/form'
+import { useFormIntegration } from './hooks/form'
 import * as MCnpj from './models/IMCnpj'
 import * as MIP from './models/IP'
 import * as Utils from './utils'
