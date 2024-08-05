@@ -8,11 +8,7 @@
 
 # production
 /build
-<<<<<<< HEAD
 package-lock.*
 package-lock.json
 yarn.*
 yarn-*.*
-=======
-.DS_Store
->>>>>>> e03e29aa06d088a983262b0d9bd7dde400dfbc34
