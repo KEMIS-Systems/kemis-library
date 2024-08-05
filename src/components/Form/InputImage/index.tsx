@@ -2,17 +2,16 @@ import React, { useCallback, useState } from "react";
 import {
   Controller,
   FieldPath,
-  FieldValues,
   RegisterOptions,
-  UseFormReturn,
+  UseFormReturn
 } from "react-hook-form";
 import InputImageBox from "./Partials/Box";
 
-interface IProps<T extends FieldValues> {
-  name: FieldPath<T>;
+interface IProps {
+  name: FieldPath<any>;
   handleChange(files: File[]): void;
   rules?: RegisterOptions;
-  form: UseFormReturn<T>;
+  form: UseFormReturn<any>;
 }
 
 const InputImage = ({
@@ -20,7 +19,7 @@ const InputImage = ({
   handleChange,
   rules,
   form,
-}: IProps<any>) => {
+}: IProps) => {
   const [fileChanged, setFileChanged] = useState<boolean>(false);
 
   const handleFileChange = useCallback(
