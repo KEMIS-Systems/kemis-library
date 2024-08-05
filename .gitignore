@@ -8,3 +8,7 @@
 
 # production
 /build
+package-lock.*
+package-lock.json
+yarn.*
+yarn-*.*
