@@ -4,14 +4,15 @@ import React from "react";
 import {
   Controller,
   FieldPath,
+  FieldValues,
   RegisterOptions,
-  UseFormReturn
+  UseFormReturn,
 } from "react-hook-form";
 
 // Components
 import MessageError from "../MessageError";
 
-interface IProps
+interface IProps<T extends FieldValues>
   extends Partial<
     Omit<
       React.DetailedHTMLProps<
@@ -22,18 +23,18 @@ interface IProps
     >
   > {
   className?: string;
-  name: FieldPath<any>;
+  name: FieldPath<T>;
   label: string;
   type?: "text" | "email" | "number" | "password" | "date";
   rules?: RegisterOptions;
   autoFocus?: boolean;
-  form: UseFormReturn;
+  form: UseFormReturn<T>;
   placeholder?: string;
   disabled?: boolean;
   inputStyle?: string | null;
 }
 
-const InputText = ({
+const InputText = <T extends object>({
   className,
   name,
   label,
@@ -45,7 +46,7 @@ const InputText = ({
   disabled,
   inputStyle,
   ...rest
-}: IProps) => {
+}: IProps<T>) => {
   return (
     <div className={className ?? ""}>
       {form && (
