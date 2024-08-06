@@ -17,11 +17,12 @@ const DrawSignature = ({ onChange }: IModalProps) => {
   const [canvasSteps, setCanvasSteps] = useState<number>(1);
   const [signatureUrl, setSignatureUrl] = useState<string>("");
   const [colorDraw, setColorDraw] = useState<string>("");
+  const [hasContentDrawed, setHasContentDrawed] = useState(false)
 
   // AUX Variables
   const HAS_CONTENT_DRAW = !!(canvasRef.current?.getSaveData())
 
-  console.log('CANVAS DRAW@DATA', canvasRef.current?.getSaveData())
+  console.log('CANVAS DRAW@DATA', canvasRef.current?.getSaveData(), hasContentDrawed)
 
   useEffect(() => {
     setColorDraw("#000000");
@@ -125,7 +126,11 @@ const DrawSignature = ({ onChange }: IModalProps) => {
               canvasHeight={200}
               catenaryColor="#0a0302"
               brushColor={colorDraw}
-              onChange={() => console.log('Hello World!')}
+              onChange={(canvas) => {
+                const CONTENT = !!canvas.getSaveData()
+                setHasContentDrawed(CONTENT)
+                console.log('CANVAS CHANGED EVENT', CONTENT, canvas.getSaveData())
+              }}
 
               className={`w-full border border-gray-400 rounded mt-3 ${
                 canvasSteps !== 1 ? "hide" : ""
