@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 
-import { BsCheck2Circle } from "react-icons/bs";
 import { BiTrash } from "react-icons/bi";
-import { toBlob } from "../../../utils/files";
+import { BsCheck2Circle } from "react-icons/bs";
 import blobToFile from "../../../utils/blobToFile";
-import ColorPalette from "../ColorPalette";
+import { toBlob } from "../../../utils/files";
 import CropImage from "../../CropImage";
+import ColorPalette from "../ColorPalette";
 
 interface IModalProps {
   onChange(files: File): void;
@@ -57,24 +57,44 @@ const DrawSignature = ({ onChange }: IModalProps) => {
 
   return (
     <div className=" w-full">
-      <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2 justify-between">
-        <div className="flex gap-2">
-          <button
-            className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
-            onClick={handleCanvasNextStep}
-          >
-            <BsCheck2Circle size={20} />
-          </button>
-          <button
-            className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
-            onClick={handleCanvasPreviewStep}
-          >
-            <BiTrash size={20} />
-          </button>
+      <div className="border border-gray-300 rounded-t-xl p-2 flex flex-col gap-2">
+        <input type="checkbox" name="show-warning" id="show-warning" className="peer/ShowWarning hidden" />
+
+        <div className="w-full flex gap-2 justify-between">
+          <div className="w-auto flex gap-2">
+            <label
+              htmlFor="show-warning"
+              className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
+              onClick={handleCanvasNextStep}
+            >
+              <BsCheck2Circle size={20} />
+            </label>
+            <label
+              htmlFor="show-warning"
+              className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
+              onClick={handleCanvasPreviewStep}
+            >
+              <BiTrash size={20} />
+            </label>
+          </div>
+          <div className="flex justify-end grow">
+            <ColorPalette onHandleTakeColor={handleBringColor} />
+          </div>
         </div>
-        <div className="flex justify-end grow">
-          <ColorPalette onHandleTakeColor={handleBringColor} />
-        </div>
+
+        <span 
+          data-hasdraw={!!canvasRef.current?.getSaveData()}
+          className="text-sm text-gray-700 font-medium peer-checked/ShowWarning:hidden"
+        >
+          Desenhe sua assinatura no quadro destacado abaixo:
+        </span>
+
+        <span 
+          data-hasdraw={!!canvasRef.current?.getSaveData()}
+          className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:peer-checked/ShowWarning:flex"
+        >
+          Caso deseje, selecione apenas o espaço de sua assinatura.
+        </span>
       </div>
       <div className="border border-gray-300 rounded-b-xl p-1">
         <div
@@ -94,7 +114,9 @@ const DrawSignature = ({ onChange }: IModalProps) => {
               canvasHeight={200}
               catenaryColor="#0a0302"
               brushColor={colorDraw}
-              className={`w-full border rounded mt-3 ${
+              onChange={() => console.log('Hello World!')}
+
+              className={`w-full border border-gray-400 rounded mt-3 ${
                 canvasSteps !== 1 ? "hide" : ""
               }`}
             />
