@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 
 import { BiTrash } from "react-icons/bi";
@@ -19,7 +19,9 @@ const DrawSignature = ({ onChange }: IModalProps) => {
   const [colorDraw, setColorDraw] = useState<string>("");
 
   // AUX Variables
-  const HAS_CONTENT_DRAW = useMemo(() => !!(canvasRef.current?.getSaveData()), [canvasRef])
+  const HAS_CONTENT_DRAW = !!(canvasRef.current?.getSaveData())
+
+  console.log('CANVAS DRAW@DATA', canvasRef.current?.getSaveData())
 
   useEffect(() => {
     setColorDraw("#000000");
@@ -60,14 +62,16 @@ const DrawSignature = ({ onChange }: IModalProps) => {
 
   return (
     <div className=" w-full">
+      <input type="checkbox" name="show-warning" id="show-warning" className="peer/ShowWarning hidden" />
+      
       <div className="border border-gray-300 rounded-t-xl p-2 flex flex-col gap-2">
-        <input type="checkbox" name="show-warning" id="show-warning" className="peer/ShowWarning hidden" />
-
         <div
-          data-hasdraw={HAS_CONTENT_DRAW}
-          className="w-full flex data-[hasdraw=false]:hidden gap-2 justify-between"
+          className="w-full flex gap-2 justify-between"
         >
-          <div className="w-auto flex gap-2">
+          <div
+            data-hasdraw={HAS_CONTENT_DRAW}
+            className="w-auto flex data-[hasdraw=false]:!hidden gap-2"
+          >
             <label
               htmlFor="show-warning"
               className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
@@ -87,21 +91,22 @@ const DrawSignature = ({ onChange }: IModalProps) => {
             <ColorPalette onHandleTakeColor={handleBringColor} />
           </div>
         </div>
-
-        <span 
-          data-hasdraw={HAS_CONTENT_DRAW}
-          className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:flex peer-checked/ShowWarning:hidden"
-        >
-          Desenhe sua assinatura no quadro destacado abaixo:
-        </span>
-
-        <span 
-          data-hasdraw={HAS_CONTENT_DRAW}
-          className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:peer-checked/ShowWarning:flex"
-        >
-          Caso deseje, selecione apenas o espaço de sua assinatura.
-        </span>
       </div>
+
+      <span 
+        data-hasdraw={HAS_CONTENT_DRAW}
+        className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:flex peer-checked/ShowWarning:hidden"
+      >
+        Desenhe sua assinatura no quadro destacado abaixo:
+      </span>
+
+      <span 
+        data-hasdraw={HAS_CONTENT_DRAW}
+        className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:peer-checked/ShowWarning:flex"
+      >
+        Caso deseje, selecione apenas o espaço de sua assinatura.
+      </span>
+
       <div className="border border-gray-300 rounded-b-xl p-1">
         <div
           className="flex flex-row w-full justify-center items-center mb-5"
