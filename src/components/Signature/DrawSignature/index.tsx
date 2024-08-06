@@ -95,16 +95,20 @@ const DrawSignature = ({ onChange }: IModalProps) => {
         </div>
       </div>
 
-      <span
-        className="text-sm text-gray-700 font-medium flex peer-checked/ShowWarning:hidden"
-      >
-        Desenhe sua assinatura no quadro destacado abaixo:
-      </span>
+      {
+        !hasContentDrawed && (
+            <span
+              className="text-sm text-gray-700 font-medium flex peer-checked/ShowWarning:hidden"
+            >
+              Desenhe sua assinatura no quadro destacado abaixo:
+            </span>
+        )
+      }
 
       {
         hasContentDrawed && (
             <span
-              className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:peer-checked/ShowWarning:flex"
+              className="text-sm text-gray-700 font-medium hidden peer-checked/ShowWarning:flex"
             >
               Caso deseje, selecione apenas o espaço de sua assinatura.
             </span>
