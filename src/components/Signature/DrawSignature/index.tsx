@@ -18,8 +18,7 @@ const DrawSignature = ({ onChange }: IModalProps) => {
   const [signatureUrl, setSignatureUrl] = useState<string>("");
   const [colorDraw, setColorDraw] = useState<string>("");
   const [hasContentDrawed, setHasContentDrawed] = useState(false)
-
-  console.log('CANVAS DRAW@DATA', canvasRef.current?.getSaveData(), hasContentDrawed)
+  const [willResize, setWillResize] = useState(false)  
 
   useEffect(() => {
     setColorDraw("#000000");
@@ -30,6 +29,7 @@ const DrawSignature = ({ onChange }: IModalProps) => {
     canvasRef.current?.clear();
     onChange({} as File);
     setHasContentDrawed(false)
+    setWillResize(false)
   }, [onChange]);
 
   const handleCanvasNextStep = useCallback(async () => {
@@ -43,6 +43,8 @@ const DrawSignature = ({ onChange }: IModalProps) => {
         onChange(file);
         setCanvasSteps(2);
       }
+
+      setWillResize(true)
     } catch (error) {
       //
     }
@@ -72,20 +74,20 @@ const DrawSignature = ({ onChange }: IModalProps) => {
               <div
                 className="w-auto flex gap-2"
               >
-                <label
-                  htmlFor="show-warning"
+                <button
+                  type="button"
                   className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
                   onClick={handleCanvasNextStep}
                 >
                   <BsCheck2Circle size={20} />
-                </label>
-                <label
-                  htmlFor="show-warning"
+                </button>
+                <button
+                  type="button"
                   className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
                   onClick={handleCanvasPreviewStep}
                 >
                   <BiTrash size={20} />
-                </label>
+                </button>
               </div>
             )
           }
@@ -106,9 +108,9 @@ const DrawSignature = ({ onChange }: IModalProps) => {
       }
 
       {
-        hasContentDrawed && (
+        (hasContentDrawed && willResize) && (
             <span
-              className="text-sm text-gray-700 font-medium hidden peer-checked/ShowWarning:flex"
+              className="text-sm text-gray-700 font-medium"
             >
               Caso deseje, selecione apenas o espaço de sua assinatura.
             </span>
@@ -136,7 +138,6 @@ const DrawSignature = ({ onChange }: IModalProps) => {
               onChange={(canvas) => {
                 const CONTENT = !!(JSON.parse(canvasRef.current?.getSaveData() || '{}')?.lines?.length)
                 setHasContentDrawed(CONTENT)
-                console.log('CANVAS CHANGED EVENT', CONTENT, canvas.getSaveData())
               }}
 
               className={`w-full border border-gray-400 rounded mt-3 ${
