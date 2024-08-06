@@ -34,16 +34,29 @@ import * as useLanguage from './hooks/Language'
 import { useFormIntegration } from './hooks/form'
 import * as MCnpj from './models/IMCnpj'
 import * as MIP from './models/IP'
-import * as Utils from './utils'
+import {
+    abbreviate,
+    blobToFile,
+    cnpj,
+    dataUrlToFile,
+    format,
+    formatCurrency,
+    generateUrlBlob,
+    getAdress,
+    getFileNameOnRequest,
+    getIP,
+    returnFontsArray,
+    slug,
+    Toast,
+    toBlob
+} from './utils'
 
 export {
-    AutoComplete,
-    CheckBox,
-    Chips, ColorPalette, DialogPhoto, DialogSignature,
+    abbreviate, AutoComplete, blobToFile, CheckBox,
+    Chips, cnpj, ColorPalette, dataUrlToFile, DialogPhoto, DialogSignature,
     DrawSignature, Dropdown, Dropzone, EditorHtml,
-    Form,
-    FormDialog,
-    InputDate,
+    Form, format,
+    formatCurrency, FormDialog, generateUrlBlob, getAdress, getFileNameOnRequest, getIP, InputDate,
     InputFile,
     InputImage,
     InputMask,
@@ -54,8 +67,8 @@ export {
     InputTextArea,
     ListBox, Loading, MCnpj,
     MIP, MultiSelect,
-    RadioButton,
-    SelectButton, ShowFile, UploadPhoto, UploadSignature, useFormIntegration,
-    useLanguage, Utils, WriteSignature
+    RadioButton, returnFontsArray, SelectButton, ShowFile, slug,
+    Toast, toBlob, UploadPhoto, UploadSignature, useFormIntegration,
+    useLanguage, WriteSignature
 }
 
