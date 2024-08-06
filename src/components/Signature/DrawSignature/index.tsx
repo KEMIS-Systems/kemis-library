@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 
 import { BiTrash } from "react-icons/bi";
@@ -17,6 +17,9 @@ const DrawSignature = ({ onChange }: IModalProps) => {
   const [canvasSteps, setCanvasSteps] = useState<number>(1);
   const [signatureUrl, setSignatureUrl] = useState<string>("");
   const [colorDraw, setColorDraw] = useState<string>("");
+
+  // AUX Variables
+  const HAS_CONTENT_DRAW = useMemo(() => !!(canvasRef.current?.getSaveData()), [canvasRef])
 
   useEffect(() => {
     setColorDraw("#000000");
@@ -60,7 +63,10 @@ const DrawSignature = ({ onChange }: IModalProps) => {
       <div className="border border-gray-300 rounded-t-xl p-2 flex flex-col gap-2">
         <input type="checkbox" name="show-warning" id="show-warning" className="peer/ShowWarning hidden" />
 
-        <div className="w-full flex gap-2 justify-between">
+        <div
+          data-hasdraw={HAS_CONTENT_DRAW}
+          className="w-full flex data-[hasdraw=false]:hidden gap-2 justify-between"
+        >
           <div className="w-auto flex gap-2">
             <label
               htmlFor="show-warning"
@@ -83,14 +89,14 @@ const DrawSignature = ({ onChange }: IModalProps) => {
         </div>
 
         <span 
-          data-hasdraw={!!canvasRef.current?.getSaveData()}
-          className="text-sm text-gray-700 font-medium peer-checked/ShowWarning:hidden"
+          data-hasdraw={HAS_CONTENT_DRAW}
+          className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:flex peer-checked/ShowWarning:hidden"
         >
           Desenhe sua assinatura no quadro destacado abaixo:
         </span>
 
         <span 
-          data-hasdraw={!!canvasRef.current?.getSaveData()}
+          data-hasdraw={HAS_CONTENT_DRAW}
           className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:peer-checked/ShowWarning:flex"
         >
           Caso deseje, selecione apenas o espaço de sua assinatura.
