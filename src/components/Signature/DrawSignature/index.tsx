@@ -19,9 +19,6 @@ const DrawSignature = ({ onChange }: IModalProps) => {
   const [colorDraw, setColorDraw] = useState<string>("");
   const [hasContentDrawed, setHasContentDrawed] = useState(false)
 
-  // AUX Variables
-  const HAS_CONTENT_DRAW = !!(canvasRef.current?.getSaveData())
-
   console.log('CANVAS DRAW@DATA', canvasRef.current?.getSaveData(), hasContentDrawed)
 
   useEffect(() => {
@@ -32,6 +29,7 @@ const DrawSignature = ({ onChange }: IModalProps) => {
     setCanvasSteps(1);
     canvasRef.current?.clear();
     onChange({} as File);
+    setHasContentDrawed(false)
   }, [onChange]);
 
   const handleCanvasNextStep = useCallback(async () => {
@@ -69,44 +67,49 @@ const DrawSignature = ({ onChange }: IModalProps) => {
         <div
           className="w-full flex gap-2 justify-between"
         >
-          <div
-            data-hasdraw={HAS_CONTENT_DRAW}
-            className="w-auto flex data-[hasdraw=false]:!hidden gap-2"
-          >
-            <label
-              htmlFor="show-warning"
-              className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
-              onClick={handleCanvasNextStep}
-            >
-              <BsCheck2Circle size={20} />
-            </label>
-            <label
-              htmlFor="show-warning"
-              className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
-              onClick={handleCanvasPreviewStep}
-            >
-              <BiTrash size={20} />
-            </label>
-          </div>
+          {
+            hasContentDrawed && (
+              <div
+                className="w-auto flex gap-2"
+              >
+                <label
+                  htmlFor="show-warning"
+                  className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
+                  onClick={handleCanvasNextStep}
+                >
+                  <BsCheck2Circle size={20} />
+                </label>
+                <label
+                  htmlFor="show-warning"
+                  className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
+                  onClick={handleCanvasPreviewStep}
+                >
+                  <BiTrash size={20} />
+                </label>
+              </div>
+            )
+          }
           <div className="flex justify-end grow">
             <ColorPalette onHandleTakeColor={handleBringColor} />
           </div>
         </div>
       </div>
 
-      <span 
-        data-hasdraw={HAS_CONTENT_DRAW}
-        className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:flex peer-checked/ShowWarning:hidden"
+      <span
+        className="text-sm text-gray-700 font-medium flex peer-checked/ShowWarning:hidden"
       >
         Desenhe sua assinatura no quadro destacado abaixo:
       </span>
 
-      <span 
-        data-hasdraw={HAS_CONTENT_DRAW}
-        className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:peer-checked/ShowWarning:flex"
-      >
-        Caso deseje, selecione apenas o espaço de sua assinatura.
-      </span>
+      {
+        hasContentDrawed && (
+            <span
+              className="text-sm text-gray-700 font-medium hidden data-[hasdraw=true]:peer-checked/ShowWarning:flex"
+            >
+              Caso deseje, selecione apenas o espaço de sua assinatura.
+            </span>
+        )
+      }
 
       <div className="border border-gray-300 rounded-b-xl p-1">
         <div
@@ -127,7 +130,7 @@ const DrawSignature = ({ onChange }: IModalProps) => {
               catenaryColor="#0a0302"
               brushColor={colorDraw}
               onChange={(canvas) => {
-                const CONTENT = !!canvas.getSaveData()
+                const CONTENT = !!(JSON.parse(canvasRef.current?.getSaveData() || '{}')?.lines?.length)
                 setHasContentDrawed(CONTENT)
                 console.log('CANVAS CHANGED EVENT', CONTENT, canvas.getSaveData())
               }}
