@@ -1,10 +1,10 @@
 {
   "name": "kemis-library",
-  "version": "2.3.75",
+  "version": "2.3.76",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://www.npmjs.com/package/kemis-library",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "./",
   "files": [
     "components/**",
     "hooks/**",
