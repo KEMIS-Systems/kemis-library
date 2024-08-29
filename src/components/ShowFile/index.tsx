@@ -61,11 +61,6 @@ const ShowFile = ({
         }
 
         if (!forceDownload) {
-          if (filename) {
-            response.headers[
-              "content-disposition"
-            ] = `attachment; filename=${filename}`;
-          }
           if (response.headers["content-type"]?.toString().includes("pdf")) {
             setPdfUrl(generateUrlBlob(response));
             return;
