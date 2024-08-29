@@ -1,26 +1,25 @@
 import React, { useCallback, useState } from "react";
 import {
   Controller,
-  RegisterOptions,
-  FieldValues,
   FieldPath,
-  UseFormReturn,
+  RegisterOptions,
+  UseFormReturn
 } from "react-hook-form";
 import InputImageBox from "./Partials/Box";
 
-interface IProps<T extends FieldValues> {
-  name: FieldPath<T>;
+interface IProps {
+  name: FieldPath<any>;
   handleChange(files: File[]): void;
   rules?: RegisterOptions;
-  form: UseFormReturn<T>;
+  form: UseFormReturn<any>;
 }
 
-const InputImage = <T extends object>({
+const InputImage = ({
   name,
   handleChange,
   rules,
   form,
-}: IProps<T>) => {
+}: IProps) => {
   const [fileChanged, setFileChanged] = useState<boolean>(false);
 
   const handleFileChange = useCallback(

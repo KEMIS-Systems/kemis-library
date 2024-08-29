@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import { AxiosInstance } from "axios";
 import Loading from "../Loading";
 import { generateUrlBlob } from "../../utils";
+import { exit } from "process";
 
 interface P {
   [key: string]:
@@ -24,6 +25,7 @@ interface IModalProps {
   header: string;
   params?: P;
   filename?: string;
+  forceDownload?: boolean;
   onHide?: () => void;
   forceDownload?: boolean;
 }
@@ -34,6 +36,7 @@ const ShowFile = ({
   header,
   params,
   filename,
+  forceDownload,
   onHide,
   forceDownload,
 }: IModalProps) => {
