@@ -25,6 +25,7 @@ interface IModalProps {
   params?: P;
   filename?: string;
   onHide?: () => void;
+  forceDownload?: boolean;
 }
 
 const ShowFile = ({
@@ -34,6 +35,7 @@ const ShowFile = ({
   params,
   filename,
   onHide,
+  forceDownload,
 }: IModalProps) => {
   const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(true);
@@ -58,21 +60,30 @@ const ShowFile = ({
           return;
         }
 
-        if (response.headers["content-type"]?.toString().includes("pdf")) {
-          setPdfUrl(generateUrlBlob(response));
-        } else if (
-          response.headers["content-type"]?.toString().includes("image")
-        ) {
-          setImageUrl(
-            window.URL.createObjectURL(
-              new Blob([response.data], {
-                type: response.headers["content-type"]?.toString(),
-              })
-            )
-          );
-        } else {
-          saveAs(response.data, filename);
+        if (!forceDownload) {
+          if (filename) {
+            response.headers[
+              "content-disposition"
+            ] = `attachment; filename=${filename}`;
+          }
+          if (response.headers["content-type"]?.toString().includes("pdf")) {
+            setPdfUrl(generateUrlBlob(response));
+            return;
+          } else if (
+            response.headers["content-type"]?.toString().includes("image")
+          ) {
+            setImageUrl(
+              window.URL.createObjectURL(
+                new Blob([response.data], {
+                  type: response.headers["content-type"]?.toString(),
+                })
+              )
+            );
+            return;
+          }
         }
+
+        saveAs(response.data, filename);
       })
       .finally(() => setShowLoading(false));
   }, [url]);
