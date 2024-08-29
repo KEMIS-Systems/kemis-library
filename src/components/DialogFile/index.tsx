@@ -23,6 +23,7 @@ interface IModalProps {
   show: boolean;
   params?: P;
   filename?: string;
+  forceDownload?: boolean;
   onHide: () => void;
 }
 
@@ -31,8 +32,9 @@ const DialogFile = ({
   url,
   header,
   show,
-  params,
   filename,
+  params,
+  forceDownload,
   onHide,
 }: IModalProps) => {
   const handleHide = useCallback(() => {
@@ -53,6 +55,8 @@ const DialogFile = ({
         url={url}
         filename={filename}
         onHide={handleHide}
+        params={params}
+        forceDownload={forceDownload}
       />
     </Dialog>
   );
