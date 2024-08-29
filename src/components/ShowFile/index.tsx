@@ -87,7 +87,7 @@ const ShowFile = ({
 
   return (
     <>
-      {filename ? (
+      {filename && imageUrl ? (
         <div className="flex justify-center">
           <a
             href={imageUrl}
