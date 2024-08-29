@@ -27,7 +27,6 @@ interface IModalProps {
   filename?: string;
   forceDownload?: boolean;
   onHide?: () => void;
-  forceDownload?: boolean;
 }
 
 const ShowFile = ({
@@ -38,7 +37,6 @@ const ShowFile = ({
   filename,
   forceDownload,
   onHide,
-  forceDownload,
 }: IModalProps) => {
   const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(true);
