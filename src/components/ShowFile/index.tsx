@@ -92,7 +92,6 @@ const ShowFile = ({
           <a
             href={imageUrl}
             download={filename}
-            target="_blank"
             rel="noopener"
             className="flex flex-row items-center gap-2 text-blue-500 mb-2 font-bold"
           >
