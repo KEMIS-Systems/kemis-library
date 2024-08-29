@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Toast } from "primereact/toast";
 import { saveAs } from "file-saver";
+import { FaDownload } from "react-icons/fa";
 
 import { AxiosInstance } from "axios";
 import Loading from "../Loading";
@@ -61,31 +62,46 @@ const ShowFile = ({
         }
 
         if (!forceDownload) {
+          setImageUrl(
+            window.URL.createObjectURL(
+              new Blob([response.data], {
+                type: response.headers["content-type"]?.toString(),
+              })
+            )
+          );
           if (response.headers["content-type"]?.toString().includes("pdf")) {
             setPdfUrl(generateUrlBlob(response));
             return;
           } else if (
             response.headers["content-type"]?.toString().includes("image")
           ) {
-            setImageUrl(
-              window.URL.createObjectURL(
-                new Blob([response.data], {
-                  type: response.headers["content-type"]?.toString(),
-                })
-              )
-            );
             return;
           }
         }
 
         saveAs(response.data, filename);
+        onHide?.();
       })
       .finally(() => setShowLoading(false));
   }, [url]);
 
   return (
     <>
-      {imageUrl && (
+      {filename ? (
+        <div className="flex justify-center">
+          <a
+            href={imageUrl}
+            download={filename}
+            target="_blank"
+            rel="noopener"
+            className="flex flex-row items-center gap-2 text-blue-500 mb-2 font-bold"
+          >
+            <FaDownload />
+            <span>Baixe seu arquivo.</span>
+          </a>
+        </div>
+      ) : null}
+      {imageUrl && !pdfUrl && (
         <div className="flex items-center justify-center min-w-full max-w-full min-h-full max-h-full">
           <img
             src={imageUrl}
