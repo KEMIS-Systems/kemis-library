@@ -8,8 +8,4 @@
 
 # production
 /build
-package-lock.*
-package-lock.json
-*.lock.*
-yarn.*
-yarn-*.*
+.DS_Store

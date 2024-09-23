@@ -1,0 +1,119 @@
+{
+  "components": {
+    "error": {
+      "message": "An error has occurred. Please try again later.",
+      "required": "Fill in the field",
+      "validation": "Fill in correctly"
+    },
+    "dropzone": {
+      "message": "Drop files here to upload or click to select files",
+      "example": "Download example file"
+    },
+    "photo": {
+      "message": "Click here to take a photo"
+    },
+    "signature": {
+      "title": "Signature",
+      "title_new": "Add",
+      "title_update": "Update",
+      "msg_1": "No signature registered",
+      "err_1": "Error sending",
+      "header_draw": {
+        "title": "Design",
+        "btn_redo": "Redo",
+        "btn_not_like": "Did not like. Resubscribe",
+        "btn_visualize": "View",
+        "success": "Signature Saved!",
+        "error": "Error saving signature!"
+      },
+      "header_write": {
+        "title": "Write",
+        "lbl_drop": "Choose font",
+        "btn_not_like": "Did not like. Write again",
+        "btn_visualize": "View"
+      },
+      "header_uploading": {
+        "title": "Upload",
+        "btn_not_like": "Did not like. Send new image",
+        "btn_visualize": "View",
+        "msg_1": "Insert an image"
+      },
+      "terms": {
+        "header": "Term of authorization"
+      }
+    }
+  },
+  "input": {
+    "button_accept": "Accept",
+    "button_cancel": "Cancel",
+    "button_save": "Save",
+    "button_clear": "Clear",
+    "button_filter": "Filter",
+    "button_delete": "Delete",
+    "button_edit": "Edit",
+    "placeholder": {
+      "search": "Search"
+    },
+    "password": {
+      "header": "Choose a password",
+      "bottom": {
+        "title": "Suggestions",
+        "rules": {
+          "rule1": "At least one lowercase letter",
+          "rule2": "At least one capital letter",
+          "rule3": "At least one numeric",
+          "rule4": "Minimum of 8 characters"
+        }
+      }
+    },
+    "document": {
+      "required": "The document needs to be informed",
+      "validation": "Document has invalid digits",
+      "invalid_type_error": "Invalid document type"
+    },
+    "email": {
+      "required": "The email address needs to be informed",
+      "validation": "Email address has invalid digits"
+    }
+  },
+  "booleans": {
+    "yes": "Yes",
+    "no": "No",
+    "ok": "Ok",
+    "noOk": "Not ok"
+  },
+  "default": {
+    "import_message": "The import may take a few minutes. We'll send you an email once it's finished.",
+    "validations": {
+      "cnpj": "The CNPJ entered is not valid.",
+      "cpf": "The CPF entered is not valid."
+    }
+  },
+  "pages": {
+    "message": {
+      "empty": "No data found.",
+      "pages": "Items per page"
+    },
+    "alerts": {
+      "edit": {
+        "success": "Record updated successfully"
+      },
+      "add": {
+        "success": "New record successfully saved!"
+      },
+      "copy": {
+        "success": "Link copied to clipboard"
+      },
+      "error": {
+        "error": "There was an error saving the data",
+        "error_filter": "There was an error filtering the data.",
+        "zip_code_not_found": "Zip code not found"
+      },
+      "delete": {
+        "confirm": "This action is irreversible. Do you want to proceed?",
+        "sucess": "Deleted successfully.",
+        "error": "An error has occurred while deleting the item."
+      }
+    }
+  }
+}

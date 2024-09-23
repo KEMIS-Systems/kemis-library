@@ -10,6 +10,5 @@
 /build
 package-lock.*
 package-lock.json
-*.lock.*
 yarn.*
 yarn-*.*

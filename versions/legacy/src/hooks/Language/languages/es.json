@@ -1,0 +1,119 @@
+{
+  "components": {
+    "error": {
+      "message": "Ocurrió un error al exportar los datos, intente nuevamente.",
+      "required": "Rellene el campo",
+      "validation": "Rellenar correctamente"
+    },
+    "dropzone": {
+      "message": "Arrastre un archivo aquí o haga click para seleccionar",
+      "example": "Descargar archivo de ejemplo"
+    },
+    "photo": {
+      "message": "Hace un clique para sacar una foto"
+    },
+    "signature": {
+      "title": "Firma",
+      "title_new": "Agregar",
+      "title_update": "Alterar",
+      "msg_1": "Sin firma registrada",
+      "err_1": "Error al enviar",
+      "header_draw": {
+        "title": "Diseñar",
+        "btn_redo": "Rehacer",
+        "btn_not_like": "No me gustó. Volver a suscribirse",
+        "btn_visualize": "Ver",
+        "success": "Firma guardada!",
+        "error": "Error al guardar la firma!"
+      },
+      "header_write": {
+        "title": "Escribir",
+        "lbl_drop": "Elegir fuente",
+        "btn_not_like": "No me gustó. Escríbelo de nuevo",
+        "btn_visualize": "Ver"
+      },
+      "header_uploading": {
+        "title": "Cargar",
+        "btn_not_like": "No me gustó. Enviar nueva imagen",
+        "btn_visualize": "Ver",
+        "msg_1": "Insertar una imagen"
+      },
+      "terms": {
+        "header": "Plazo de autorización"
+      }
+    }
+  },
+  "input": {
+    "button_accept": "Aceptar",
+    "button_cancel": "Cancelar",
+    "button_save": "Guardar",
+    "button_clear": "Limpiar",
+    "button_filter": "Filtrar",
+    "button_delete": "Borrar",
+    "button_edit": "Editar",
+    "placeholder": {
+      "search": "Buscar"
+    },
+    "password": {
+      "header": "Elije una contraseña",
+      "bottom": {
+        "title": "Sugerencias",
+        "rules": {
+          "rule1": "Al menos una letra minúscula",
+          "rule2": "Al menos una mayúscula",
+          "rule3": "Al menos un número",
+          "rule4": "Mínimo de 8 caracteres"
+        }
+      }
+    },
+    "document": {
+      "required": "El documento necesita ser informado",
+      "validation": "El documento tiene dígitos no válidos",
+      "invalid_type_error": "El tipo de documento no es válido"
+    },
+    "email": {
+      "required": "El dirección de correo electrónico necesita ser informado",
+      "validation": "El dirección de correo electrónico tiene dígitos no válidos"
+    }
+  },
+  "booleans": {
+    "yes": "Si",
+    "no": "No",
+    "ok": "Ok",
+    "noOk": "No está bien"
+  },
+  "default": {
+    "import_message": "La importación puede tardar unos minutos. Te enviaremos un correo electrónico una vez que haya terminado.",
+    "validations": {
+      "cnpj": "El CNPJ informado no es valido.",
+      "cpf": "El CPF informado no es valido."
+    }
+  },
+  "pages": {
+    "message": {
+      "empty": "No se han encontrado datos.",
+      "pages": "Items por página"
+    },
+    "alerts": {
+      "edit": {
+        "success": "¡Cambio realizado con éxito!"
+      },
+      "add": {
+        "success": "¡Registro realizado con éxito!"
+      },
+      "copy": {
+        "success": "Enlace copiado al portapapeles"
+      },
+      "error": {
+        "error": "Hubo un error al guardar los datos, intente nuevamente",
+        "error_filter": "Hubo un error al filtrar los datos.",
+        "zip_code_not_found": "Codigo postal no encontrado!"
+      },
+      "delete": {
+        "confirm": "Esta acción es irreversible. ¿Quieres proceder?",
+        "sucess": "¡Registro eliminado con éxito!",
+        "error": "No se pudo eliminar el registro."
+      }
+    }
+  }
+}
