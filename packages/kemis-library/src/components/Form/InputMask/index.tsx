@@ -13,6 +13,7 @@ import {
 } from "react-hook-form";
 
 // Components
+import { twMerge } from "tailwind-merge";
 import MessageError from "../MessageError";
 
 type TInputMask = Omit<
@@ -47,17 +48,23 @@ function InputMask({
             return (
               <>
                 <label
-                  htmlFor={field.name}
+                  htmlFor={name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
+                    twMerge(classNames({
+                        "text-red-400": fieldState.error,
+                        "block": true,
+                      }), 
+                      ''
+                    )
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  <span 
+                    data-showme={rules?.required && true} 
+                    className="hidden data-[showme=true]:flex text-slate-300"
+                  >
+                    *
+                  </span>
                 </label>
                 <InputMaskPrime
                   {...field}

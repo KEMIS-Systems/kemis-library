@@ -2,39 +2,15 @@ import { InputText as InputTextPrime } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
 import React from "react";
 import {
-  Controller,
-  FieldPath,
-  FieldValues,
-  RegisterOptions,
-  UseFormReturn,
+  Controller
 } from "react-hook-form";
 
 // Components
+import { twMerge } from "tailwind-merge";
+import { IInputProps } from "../../../types/Input";
 import MessageError from "../MessageError";
 
-interface IProps<T extends FieldValues>
-  extends Partial<
-    Omit<
-      React.DetailedHTMLProps<
-        React.InputHTMLAttributes<HTMLInputElement>,
-        HTMLInputElement
-      >,
-      "onInput" | "ref" | "value" | "form"
-    >
-  > {
-  className?: string;
-  name: FieldPath<T>;
-  label: string;
-  type?: "text" | "email" | "number" | "password" | "date";
-  rules?: RegisterOptions;
-  autoFocus?: boolean;
-  form: UseFormReturn<T>;
-  placeholder?: string;
-  disabled?: boolean;
-  inputStyle?: string | null;
-}
-
-const InputText = <T extends object>({
+const InputText = ({
   className,
   name,
   label,
@@ -45,8 +21,10 @@ const InputText = <T extends object>({
   placeholder,
   disabled,
   inputStyle,
+  labelStyle,
+  ref,  
   ...rest
-}: IProps<T>) => {
+}: IInputProps) => {
   return (
     <div className={className ?? ""}>
       {form && (
@@ -60,15 +38,21 @@ const InputText = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
+                    twMerge(classNames({
+                        "text-red-400": fieldState.error,
+                        "block": true,
+                      }), 
+                      labelStyle
+                    )
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  <span 
+                    data-showme={rules?.required && true} 
+                    className="hidden data-[showme=true]:flex text-slate-300"
+                  >
+                    *
+                  </span>
                 </label>
                 <InputTextPrime
                   {...field}
@@ -76,9 +60,15 @@ const InputText = <T extends object>({
                   id={field.name}
                   type={type ?? "text"}
                   autoFocus={autoFocus}
-                  className={`${classNames({
-                    "p-invalid ": fieldState.error,
-                  })} w-full disabled:bg-slate-100 ${inputStyle}`}
+                  className={
+                    twMerge(classNames({
+                        "p-invalid ": fieldState.error,
+                        "w-full": true,
+                        "disabled:bg-slate-100": true
+                      }), 
+                      inputStyle
+                    )
+                  }
                   disabled={disabled}
                   placeholder={placeholder ?? undefined}
                   {...rest}

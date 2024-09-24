@@ -2,27 +2,20 @@ import { classNames } from "primereact/utils";
 import React, { useState } from "react";
 import { Accept } from "react-dropzone";
 import {
-  Controller,
-  FieldPath,
-  FieldValues,
-  RegisterOptions,
-  UseFormReturn,
+  Controller
 } from "react-hook-form";
+import { IInputProps } from "../../../types/Input";
 import Dropzone from "../../Dropzone";
 import MessageError from "../MessageError";
+import { twMerge } from "tailwind-merge";
 
-interface IProps<T extends FieldValues> {
-  className?: string;
-  name: FieldPath<T>;
-  label: string;
+interface D extends Omit<IInputProps, 'onChange' | 'onSelect' | 'value' | 'accept'> {
   accept?: Accept;
   maxFiles?: number;
   handleChange?(files: File[]): void;
-  rules?: RegisterOptions;
-  form: UseFormReturn<T>;
 }
 
-const InputFile = <T extends object>({
+const InputFile = ({
   className,
   name,
   label,
@@ -31,7 +24,9 @@ const InputFile = <T extends object>({
   handleChange,
   rules,
   form,
-}: IProps<T>) => {
+  labelStyle,
+  ...rest
+}:D) => {
   const [fileChanged, setFileChanged] = useState<boolean>(false);
 
   return (
@@ -45,13 +40,24 @@ const InputFile = <T extends object>({
           render={({ field: { ref, onChange, ...field }, fieldState }) => {
             return (
               <>
-                <label htmlFor={field.name}>
+                <label
+                  htmlFor={field.name}
+                  className={
+                    twMerge(classNames({
+                        "text-red-400": fieldState.error,
+                        "block": true,
+                      }), 
+                      labelStyle
+                    )
+                  }
+                >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  <span 
+                    data-showme={rules?.required && true} 
+                    className="hidden data-[showme=true]:flex text-slate-300"
+                  >
+                    *
+                  </span>
                 </label>
                 <Dropzone
                   accept={accept}

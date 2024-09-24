@@ -1,4 +1,4 @@
-import { Calendar as CalendarPrime } from "primereact/calendar";
+import { Calendar as CalendarPrime, CalendarProps } from "primereact/calendar";
 import { classNames } from "primereact/utils";
 import React from "react";
 import {
@@ -28,9 +28,24 @@ interface IProps<T extends FieldValues> {
 }
 
 // Components
+import { twMerge } from "tailwind-merge";
+import { IInputProps } from "../../../types/Input";
 import MessageError from "../MessageError";
 
-const InputDate = <T extends object>({
+function teste<t>({}: Record<string, t>) {
+
+}
+
+teste<Record<string, Function>>({
+  d: {
+    dasds: () => ({})
+  }
+})
+
+interface D extends Omit<CalendarProps, 'inputStyle' | 'name'>, Omit<IInputProps, 'onChange' | 'onSelect' | 'value'> {
+}
+
+const InputDate = ({
   name,
   label,
   dateFormat,
@@ -46,7 +61,10 @@ const InputDate = <T extends object>({
   hourFormat,
   selectionMode,
   readOnlyInput = false,
-}: IProps<T>) => {
+  inputStyle,
+  labelStyle,
+  ...rest
+}: D ) => {
   return (
     <div className={className ?? ""}>
       <Controller
@@ -59,15 +77,21 @@ const InputDate = <T extends object>({
               <label
                 htmlFor={field.name}
                 className={
-                  classNames({ "text-red-400 ": fieldState.error }) + " block"
+                  twMerge(classNames({
+                      "text-red-400": fieldState.error,
+                      "block": true,
+                    }), 
+                    labelStyle
+                  )
                 }
               >
                 {label}
-                {rules?.required ? (
-                  <span className="text-slate-300"> *</span>
-                ) : (
-                  ""
-                )}
+                <span 
+                  data-showme={rules?.required && true} 
+                  className="hidden data-[showme=true]:flex text-slate-300"
+                >
+                  *
+                </span>
               </label>
               <CalendarPrime
                 {...field}
@@ -89,10 +113,16 @@ const InputDate = <T extends object>({
                   classNames({ "p-invalid ": fieldState.error }) +
                   ` w-full ${disabled ? "bg-slate-100" : ""}`
                 }
-                inputClassName={`disabled:bg-slate-100 ${
-                  fieldState.error ? "p-invalid" : ""
-                }`}
+                inputClassName={
+                  twMerge(classNames({
+                    "p-invalid ": fieldState.error,
+                    "disabled:bg-slate-100": true
+                  }), 
+                  inputStyle
+                )}
                 disabled={disabled}
+                
+                {...rest}
               />
               {<MessageError fieldState={fieldState} />}
             </>

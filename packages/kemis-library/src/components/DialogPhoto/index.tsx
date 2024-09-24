@@ -118,7 +118,7 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
             </div>
           </>
         ) : (
-          <div className="relative aspect-video">
+          <div className="relative aspect-video flex items-center justify-center">
             <img src={imagePreview} alt="Foto" className="max-w-full" />
           </div>
         )}
