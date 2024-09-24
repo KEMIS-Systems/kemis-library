@@ -26,7 +26,7 @@
   },
   "include": [
     "src"
-  ],
+, "../ui", "../ui/preview/vite.config.ts"  ],
   "exclude": [
     "node_modules",
     "src/setupTests.js",
