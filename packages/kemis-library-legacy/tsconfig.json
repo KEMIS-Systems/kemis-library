@@ -8,7 +8,7 @@
       "ES6"
     ],
     "jsx": "react",
-    "outDir": "build",
+    "outDir": "../../../erp/erp-app/src/components/build",
     "sourceMap": true,
     "declaration": true,
     "allowJs": true,

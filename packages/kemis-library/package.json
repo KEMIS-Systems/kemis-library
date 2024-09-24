@@ -2,12 +2,7 @@
   "name": "kemis-library",
   "version": "3.0.0",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library",
-  "main": "index.ts",
-  "workspaces": [
-    "./versions/kemis-library",
-    "./versions/kemis-library-legacy"
-  ],
-  "types": "./versions/",
+  "main": "./src/index.ts",
   "files": [
     "versions/*/components/**",
     "versions/*/hooks/**",
@@ -27,8 +22,17 @@
     "form",
     "library"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+ "scripts": {
+    "build": "tsc",
+    "postbuild": "node ./copyFiles.js",
+    "test": "jest --watchAll --detectOpenHandles",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src",
+    "version": "git add package.json && git commit -m 'Bump version'",
+    "merge": "git pull && git push origin v2:master && git checkout master && git pull && git checkout v2",
+    "auto_publish": "yarn merge && rm -Rf build && yarn build && cd build && yarn publish --access public",
+    "send": "npm run build && cd build && npm publish"
   },
   "repository": {
     "type": "git",
@@ -36,10 +40,6 @@
   },
   "author": "KEMIS Softwware House | wmachado@kemis.com.br",
   "license": "CC-BY-NC-ND-4.0",
-  "bugs": {
-    "url": "https://github.com/KEMIS-Systems/kemis-library/issues"
-  },
-  "homepage": "https://github.com/KEMIS-Systems/kemis-library#readme",
   "dependencies": {
     "@hookform/resolvers": "3.2.0",
     "axios": "1.4.0",
