@@ -1,11 +1,10 @@
+import { Dialog } from "primereact/dialog";
 import React, { useCallback, useRef, useState } from "react";
 import { MdCameraAlt } from "react-icons/md";
-import { Dialog } from "primereact/dialog";
 import Webcam from "react-webcam";
-import Image from "next/image";
 
-import dataUrlToFile from "../../utils/dataUrlToFile";
 import { useLanguage } from "../../hooks/Language";
+import dataUrlToFile from "../../utils/dataUrlToFile";
 
 interface IParams {
   show?: boolean;
@@ -119,8 +118,8 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
             </div>
           </>
         ) : (
-          <div className="relative aspect-video">
-            <Image src={imagePreview} alt="Foto" fill />
+          <div className="relative aspect-video flex items-center justify-center">
+            <img src={imagePreview} alt="Foto" className="max-w-full" />
           </div>
         )}
       </div>

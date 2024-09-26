@@ -3,31 +3,25 @@ import { InputSwitch as InputSwitchPrime } from "primereact/inputswitch";
 import { classNames } from "primereact/utils";
 import React from "react";
 import {
-  Controller,
-  FieldPath,
-  FieldValues,
-  RegisterOptions,
-  UseFormReturn,
+  Controller
 } from "react-hook-form";
+
+// Types
+import { IInputProps } from "../../../types/Input";
+
+import { twMerge } from "tailwind-merge";
 import MessageError from "../MessageError";
 
-interface IProps<T extends FieldValues> {
-  className?: string;
-  name: FieldPath<T>;
-  label: string;
-  form: UseFormReturn<T>;
-  rules?: RegisterOptions;
-  disabled?: boolean;
-}
-
-const InputSwitch = <T extends object>({
+const InputSwitch = ({
   className,
   name,
   label,
   form,
   rules,
   disabled,
-}: IProps<T>) => {
+  labelStyle,
+  inputStyle
+}: IInputProps) => {
   return (
     <div className={className ?? ""}>
       {form && (
@@ -41,15 +35,21 @@ const InputSwitch = <T extends object>({
                 <label
                   htmlFor={field.name}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
+                    twMerge(classNames({
+                        "text-red-400": fieldState.error,
+                        "block": true,
+                      }), 
+                      labelStyle
+                    )
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  <span 
+                    data-showme={rules?.required && true} 
+                    className="hidden data-[showme=true]:flex text-slate-300"
+                  >
+                    *
+                  </span>
                 </label>
                 <InputSwitchPrime
                   inputId={field.name}
@@ -58,9 +58,13 @@ const InputSwitch = <T extends object>({
                   defaultChecked={false}
                   disabled={disabled}
                   {...field}
-                  className={
-                    classNames({ "p-invalid": fieldState.error }) +
-                    " disabled:bg-slate-100"
+                   className={
+                    twMerge(classNames({
+                        "p-invalid ": fieldState.error,
+                        "disabled:bg-slate-100": true
+                      }), 
+                      inputStyle
+                    )
                   }
                   onChange={(e: any) => field.onChange(e.value)}
                 />
