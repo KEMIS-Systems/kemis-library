@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import { AxiosInstance } from "axios";
 import Loading from "../Loading";
 import { generateUrlBlob } from "../../utils";
+import { exit } from "process";
 
 interface P {
   [key: string]:
@@ -24,6 +25,7 @@ interface IModalProps {
   header: string;
   params?: P;
   filename?: string;
+  forceDownload?: boolean;
   onHide?: () => void;
 }
 
@@ -33,6 +35,7 @@ const ShowFile = ({
   header,
   params,
   filename,
+  forceDownload,
   onHide,
 }: IModalProps) => {
   const toast = useRef<Toast>(null);
@@ -58,21 +61,30 @@ const ShowFile = ({
           return;
         }
 
-        if (response.headers["content-type"]?.toString().includes("pdf")) {
-          setPdfUrl(generateUrlBlob(response));
-        } else if (
-          response.headers["content-type"]?.toString().includes("image")
-        ) {
-          setImageUrl(
-            window.URL.createObjectURL(
-              new Blob([response.data], {
-                type: response.headers["content-type"]?.toString(),
-              })
-            )
-          );
-        } else {
-          saveAs(response.data, filename);
+        if (!forceDownload) {
+          if (filename) {
+            response.headers[
+              "content-disposition"
+            ] = `attachment; filename=${filename}`;
+          }
+          if (response.headers["content-type"]?.toString().includes("pdf")) {
+            setPdfUrl(generateUrlBlob(response));
+            return;
+          } else if (
+            response.headers["content-type"]?.toString().includes("image")
+          ) {
+            setImageUrl(
+              window.URL.createObjectURL(
+                new Blob([response.data], {
+                  type: response.headers["content-type"]?.toString(),
+                })
+              )
+            );
+            return;
+          }
         }
+
+        saveAs(response.data, filename);
       })
       .finally(() => setShowLoading(false));
   }, [url]);
