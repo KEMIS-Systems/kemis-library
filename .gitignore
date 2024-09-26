@@ -1,0 +1,18 @@
+# dependencies
+node_modules
+node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+package-lock.*
+package-lock.json
+package-*.*
+-*.*
+*.lock.*
+yarn.*
+yarn-*.*
