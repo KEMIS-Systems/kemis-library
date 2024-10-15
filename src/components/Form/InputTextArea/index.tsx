@@ -20,6 +20,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   disabled?: boolean;
   autoFocus?: boolean;
+  placeholder?: boolean;
 }
 
 const InputTextArea = <T extends object>({
@@ -31,6 +32,7 @@ const InputTextArea = <T extends object>({
   form,
   disabled,
   autoFocus,
+  placeholder,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -64,7 +66,7 @@ const InputTextArea = <T extends object>({
                   disabled={disabled}
                   autoFocus={autoFocus}
                   className={` w-full ${disabled ? "bg-slate-100" : ""}`}
-                  placeholder={label}
+                  placeholder={!placeholder ? label: ''}
                 />
                 {<MessageError fieldState={fieldState} />}
               </>
