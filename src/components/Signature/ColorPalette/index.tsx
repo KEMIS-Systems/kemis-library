@@ -6,7 +6,7 @@ interface IButtonProps {
 }
 
 const ColorPalette = ({ type, onHandleTakeColor }: IButtonProps) => {
-  const colorBackground = ["#000000", "#1D64CC", "#CB3533"];
+  const colorBackground = ["#000000", "#1D64CC"];
   const [currentColor, setCurrentColor] = useState<string>("");
 
   const handleSelectColor = useCallback(
@@ -39,17 +39,6 @@ const ColorPalette = ({ type, onHandleTakeColor }: IButtonProps) => {
           type={type ?? "button"}
           className="flex p-3 rounded-full mx-1"
           style={{ backgroundColor: colorBackground[1] }}
-        />
-      </div>
-      <div
-        className="flex border px-1 py-2 rounded-full mx-2"
-        style={{ borderColor: currentColor === "#CB3533" ? "gray" : "" }}
-      >
-        <button
-          onClick={() => handleSelectColor(colorBackground[2])}
-          type={type ?? "button"}
-          className="flex p-3 rounded-full mx-1"
-          style={{ backgroundColor: colorBackground[2] }}
         />
       </div>
     </div>
