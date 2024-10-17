@@ -16,10 +16,9 @@
   },
   "homepage": "https://github.com/KEMIS-Systems/kemis-library#readme",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "cd src/ui/preview && vite",
+    "build": "npx tsc -b && vite build",
+    "lint": "eslint ."    
   },
   "types": "./src/*/**",
   "files": [
