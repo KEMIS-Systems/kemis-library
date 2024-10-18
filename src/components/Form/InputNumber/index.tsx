@@ -74,45 +74,42 @@ const InputNumber = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
+                  data-haserror={fieldState.error && true}
+                  className='block data-[haserror=true]:text-red-500'
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  <span data-isrequired={rules?.required && true} className="hidden data-[isrequired=true]:flex text-slate-300"> *</span>                  
                 </label>
                 <InputStyles>
-                <div className={`${handleAddButton && "p-inputgroup"}`}>
-                  {/* @ts-ignore  @ts-nocheck */}
-                  <InputNumberPrime
-                    id={field.name}
-                    {...(defaultMoney ? moneyInputMode : {})}
-                    className={
-                      classNames({ "p-invalid ": fieldState.error }) +
-                      ` w-full ${disabled ? "bg-slate-100" : ""}`
+                  <div data-hasbutton={handleAddButton && true} className={`${handleAddButton && "p-inputgroup"}`}>
+                    {/* @ts-ignore  @ts-nocheck */}
+                    <InputNumberPrime
+                      id={field.name}
+                      {...(defaultMoney ? moneyInputMode : {})}
+                      className={
+                        classNames({ "p-invalid ": fieldState.error }) +
+                        ` w-full ${disabled ? "bg-slate-100" : ""}`
+                      }
+                      inputClassName="disabled:bg-slate-100"
+                      disabled={disabled}
+                      ref={ref}
+                      {...field}
+                      onChange={(event) => field.onChange(event.value)}
+                      onBlur={(event) => setValue(Number(event.target.value))}
+                      {...rest}
+                    />
+                    {
+                      handleAddButton && (
+                        <ButtonPrime
+                          type="button"
+                          icon={`${iconAddButton ? iconAddButton : 'pi pi-plus' }`}
+                          className="p-button-success"
+                          disabled={disabled}
+                          onClick={() => handleAddButton()}
+                        />
+                      )
                     }
-                    inputClassName="disabled:bg-slate-100"
-                    disabled={disabled}
-                    ref={ref}
-                    {...field}
-                    onChange={(event) => field.onChange(event.value)}
-                    onBlur={(event) => setValue(Number(event.target.value))}
-                    {...rest}
-                  />
-                  {handleAddButton && (
-                <ButtonPrime
-                  type="button"
-                  icon={`${iconAddButton ? iconAddButton : 'pi pi-plus' }`}
-                  className="p-button-success"
-                  disabled={disabled}
-                  onClick={() => handleAddButton()}
-                />
-              )}
-               </div>
+                  </div>
                   {<MessageError fieldState={fieldState} />}
                 </InputStyles>
               </>

@@ -1,32 +1,18 @@
 import {
-  InputMask as InputMaskPrime,
-  InputMaskProps,
+  InputMask as InputMaskPrime
 } from "primereact/inputmask";
 import { classNames } from "primereact/utils";
-import React, { InputHTMLAttributes } from "react";
+import React from "react";
 import {
   Controller,
-  FieldPath,
-  FieldValues,
-  RegisterOptions,
-  UseFormReturn,
+  FieldPath
 } from "react-hook-form";
 
 // Components
 import MessageError from "../MessageError";
 
-type TInputMask = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  "disabled" | "readOnly" | "onFocus" | "onBlur" | "onChange" | "form"
-> &
-  Omit<InputMaskProps, "form">;
-
-interface IInputMaskProps<T extends FieldValues> extends TInputMask {
-  rules?: RegisterOptions;
-  form: UseFormReturn<T>;
-  label: string;
-  name: string;
-}
+// Types
+import { IInputMaskProps } from "./types";
 
 function InputMask({
   rules,
@@ -36,40 +22,48 @@ function InputMask({
   className,
   ...props
 }: IInputMaskProps<any>) {
+
+
+  function onSetDDICode() {
+    try {
+      
+    } catch (error) {
+      // do anything
+    }
+  }
+  
   return (
     <div className={className ?? ""}>
       {form && (
         <Controller
           name={name as FieldPath<{}>}
           control={form.control}
-          rules={rules}
+          rules={rules}          
           render={({ field: { ref, ...field }, fieldState }) => {
             return (
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
+                  data-haserror={fieldState.error && true}
+                  className="block data-[haserror=true]:text-red-500"
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  <span data-isrequred={rules?.required && true} className="hidden data-[isrequired=true]:block text-slate-300"> *</span>
                 </label>
-                <InputMaskPrime
-                  {...field}
-                  {...props}
-                  ref={ref}
-                  name={field.name}
-                  id={field.name}
-                  className={
-                    classNames({ "p-invalid ": fieldState.error }) +
-                    " w-full disabled:bg-slate-100"
-                  }
-                />
+                <span className="flex flex-row items-center justify-start gap-3">
+
+                  <InputMaskPrime
+                    {...field}
+                    {...props}
+                    ref={ref}
+                    name={field.name}
+                    id={field.name}
+                    className={
+                      classNames({ "p-invalid ": fieldState.error }) +
+                      " w-full disabled:bg-slate-100"
+                    }
+                  />
+                </span>
                 {<MessageError fieldState={fieldState} />}
               </>
             );
