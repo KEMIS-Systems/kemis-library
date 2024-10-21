@@ -37,7 +37,6 @@ import { default as ur } from "./ur";
 import { default as vi } from "./vi";
 import { default as zh } from "./zh";
 
-
 export const COUNTRY_TRANSLATIONS: {[index: string]: I18n} = {
     ar,
     bg,

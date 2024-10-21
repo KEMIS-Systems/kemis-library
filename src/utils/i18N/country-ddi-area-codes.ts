@@ -23,28 +23,40 @@ import { Country } from "./types";
 
 // Codes
 import { rawCountryData } from "./codes";
+import { getFlagEmoji } from "./flags";
 
 export function getCountries(origin: string  = 'pt') {
   try {    
     const allCountries: Country[] = [];
+
+    // console.log(rawCountryData)
     
     //* Loop over all of the countries above, restructuring the data to be objects with named keys.
     for (let i = 0; i < rawCountryData.length; i++) {
       const c = rawCountryData[i];
+
+      // console.log(c)
     
-      allCountries[i] = {
+      allCountries.push({
         name: COUNTRY_TRANSLATIONS[origin][c[0]] || 'N/A',
+        nameInLower: COUNTRY_TRANSLATIONS[origin][c[0]]?.toLocaleLowerCase() || 'N/A',
+        searchPlaceholder: COUNTRY_TRANSLATIONS[origin].searchPlaceholder,
         iso2: c[0],
+        iso2InLower: c[0].toLocaleLowerCase(),
         flagEmoji: getFlagEmoji(c[0]),
         dialCode: c[1],
         priority: c[2] || 0,
         areaCodes: c[3] || null,
         nodeById: {},
-      };
+      })
     }
     
+
+    console.log('allCountries',allCountries)
+
     return allCountries;
   } catch (error) {
+    console.log(error)
     // do anything    
   }  
 }

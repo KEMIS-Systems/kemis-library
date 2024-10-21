@@ -1,6 +1,6 @@
 export type I18n = {
   [index: string]: string | undefined;
-  af?: string;
+  af?: string;  
   al?: string;
   dz?: string;
   as?: string;

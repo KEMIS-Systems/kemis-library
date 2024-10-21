@@ -13,4 +13,6 @@ export interface IInputMaskProps<T extends FieldValues> extends TInputMask {
   form: UseFormReturn<T>;
   label: string;
   name: string;
+  i18N?: boolean
+  lang?: string // WILL WORK ONLY IF THE 'i18N' WAS TRUE
 }
