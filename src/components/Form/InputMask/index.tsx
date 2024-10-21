@@ -62,10 +62,7 @@ function InputMask({
 
   useEffect(() => {
     if(countrySelected?.iso2 !== 'br') {
-      const RAW_VALUE = form.getValues()[name]?.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '') || ''
-      const PARSED_INPUT_VALUE = RAW_VALUE?.split(' ')[1] || RAW_VALUE       
-
-      form.setValue(name, `+${countrySelected?.dialCode} ${PARSED_INPUT_VALUE}`)
+      form.setValue(name, `+${countrySelected?.dialCode}`)
     }
   }, [countrySelected])
 
