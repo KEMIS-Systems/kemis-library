@@ -50,7 +50,19 @@ function InputMask({
     return COUNTRIES;
   }, [searchCountry])
   const INPUT_MASK = useMemo(() => {
-    return countrySelected?.iso2 === 'br' ? mask : '+?*?*?*? *?*?*?*?*?*?*?*?*?*?*?*'
+
+    if(countrySelected?.iso2 === 'br') return mask;
+
+    switch(countrySelected?.dialCode.length) {
+      case 3:
+        return '+?*?*?*? *?*?*?*?*?*?*?*?*?*?*?*';
+      case 2:
+        return '+?*?*? *?*?*?*?*?*?*?*?*?*?*?*';
+      case 1:
+        return '+?*? *?*?*?*?*?*?*?*?*?*?*?*';
+      default:
+        return '?*?*?*?*?*?*?*?*?*?*?*?*?*?*?*';
+    }
   }, [countrySelected])
   const DONT_CLEAR = useMemo(() => {
     return countrySelected?.iso2 === 'br' ? true : false
@@ -62,7 +74,7 @@ function InputMask({
 
   useEffect(() => {
     if(countrySelected?.iso2 !== 'br') {
-      form.setValue(name, `+${countrySelected?.dialCode}`)
+      form.setValue(name, `+${countrySelected?.dialCode || '55'}`)
     }
   }, [countrySelected])
 
