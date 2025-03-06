@@ -9,10 +9,12 @@ import { ISplitButtonProps } from "./types";
 
 /**
  * 
- * @param dropListItems  {Element} - Some element, not is necessary a div or ul, just a <></> and your elements items
+ * 
+ * @param buttonName {String} - The unique name to button
+ * @param dropListItems  {Element} - Some element, not is necessary a div or ul, just a <></> (Fragment) and your elements items
  * @param dropListClassName {String} - Tailwind class of your prefer
- * @param dropListLabelClassName {String} - Tailwind class of your prefer
- * @param dropListIcon {Element} - Some element to  apply a exclusive icon
+ * @param buttonLabelClassName {String} - Tailwind class of your prefer
+ * @param dropListIcon {Element} - Some element to apply a exclusive icon
  * @returns 
  */
 export function SplitButton (props: ISplitButtonProps) {
@@ -95,7 +97,7 @@ export function SplitButton (props: ISplitButtonProps) {
 
     return (
         <>
-            <input type="checkbox" name="split-button-list" id="split-button-list" className="peer/DropList hidden" />
+            <input type="checkbox" name={props.buttonName || ''} id={props.buttonName || ''} className="peer/DropList hidden" />
             <button 
                 ref={SPLIT_BUTTON_ELEMENT_REF}
                 type="button" 
@@ -125,7 +127,7 @@ export function SplitButton (props: ISplitButtonProps) {
                 {props.children}
 
                 <label 
-                    htmlFor="split-button-list"
+                    htmlFor={props.buttonName || ''}
                     className={twMerge(
                         `
                             flex-1 
@@ -143,13 +145,14 @@ export function SplitButton (props: ISplitButtonProps) {
 
                             cursor-pointer
                         `,
-                        props.dropListLabelClassName
+                        props.buttonLabelClassName
                     )}
                 >
                     {
                         props.dropListIcon || ( <BsThreeDotsVertical size={24} />)
                     }
                 </label>
+
                 <ul
                     ref={SPLIT_LIST_ELEMENT_REF}
                     data-onleft={false}
@@ -192,7 +195,7 @@ export function SplitButton (props: ISplitButtonProps) {
 
                                 
                             `,
-                            props.dropListClassName
+                            props.dropListClassName || ''
                         )
                     }       
                 >
@@ -204,7 +207,7 @@ export function SplitButton (props: ISplitButtonProps) {
 }
 
 
-/**
+/**a
  * 
  * data-[onbottom=false]:data-[ontop=true]:data-[onright=false]:data-[onleft=true]:left-0
                                 data-[onbottom=false]:data-[ontop=true]:data-[onright=false]:data-[onleft=false]:right-0

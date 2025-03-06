@@ -26,6 +26,7 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   handleAddButton?: () => void;
   disabled?: boolean;
+  filter?: boolean
 }
 
 const Dropdown = <T extends object>({
@@ -42,6 +43,7 @@ const Dropdown = <T extends object>({
   autoFocus,
   handleAddButton,
   disabled,
+  filter= true
 }: IProps<T>) => {
   return (
     <Controller
@@ -73,7 +75,7 @@ const Dropdown = <T extends object>({
                 optionValue={optionValue ?? "value"}
                 autoFocus={autoFocus}
                 showClear
-                filter
+                filter={filter}
                 optionGroupLabel={optionGroupLabel}
                 optionGroupChildren={optionGroupChildren}
                 optionGroupTemplate={optionGroupTemplate}
