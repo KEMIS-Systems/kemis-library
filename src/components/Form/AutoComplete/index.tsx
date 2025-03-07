@@ -1,7 +1,7 @@
 import { AutoComplete as AutoCompletePrime } from "primereact/autocomplete";
 import { Button as ButtonPrime } from "primereact/button";
 import { classNames } from "primereact/utils";
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Controller,
   FieldPath,
@@ -10,16 +10,18 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import MessageError from "../MessageError";
+import { SelectItemOptionsType } from "primereact/selectitem";
 
 interface IProps<T extends FieldValues> {
   className?: string;
   name: FieldPath<T>;
   label: string;
-  suggestions: string[];
+  suggestions: SelectItemOptionsType;
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   disabled?: boolean;
+  itemTemplate?: ReactNode | ((suggestion: any, index: number) => React.ReactNode);
   handleSearch: (event: { query: string }) => void;
   handleAddButton?: () => void;
 }
@@ -33,6 +35,7 @@ const AutoComplete = <T extends object>({
   autoFocus,
   form,
   disabled,
+  itemTemplate,
   handleSearch,
   handleAddButton,
 }: IProps<T>) => {
@@ -78,6 +81,7 @@ const AutoComplete = <T extends object>({
                       " w-full disabled:bg-slate-100"
                     }
                     inputClassName="disabled:bg-slate-100"
+                    itemTemplate={itemTemplate}
                     {...field}
                     inputRef={ref}
                   />

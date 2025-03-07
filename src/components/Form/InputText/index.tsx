@@ -61,17 +61,16 @@ const InputText = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  data-hasdisabled={disabled}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block data-[hasdisabled=true]:text-slate-200"
+                    classNames({ "text-red-400 ": fieldState.error }) + " block"
                   }
-                >
-                  {label}
-                  {rules?.required ? (
+                  >
+                    {label}
+                    {rules?.required ? (
                     <span className="text-slate-300"> *</span>
-                  ) : (
+                    ) : (
                     ""
-                  )}
+                    )}
                 </label>
                 <div className="flex flex-row items-center justify-start gap-2 [&_.p-inputtext]:disabled:bg-slate-100">
                   <InputTextPrime
@@ -80,10 +79,10 @@ const InputText = <T extends object>({
                     id={field.name}
                     type={type ?? "text"}
                     autoFocus={autoFocus}
-                    className={`${classNames({
-                      "p-invalid ": fieldState.error,
-                    })} w-full disabled:bg-slate-100 ${inputStyle}`}
-                    
+                    className={
+                      classNames({ "p-invalid ": fieldState.error }) +
+                      ` w-full ${disabled ? "bg-slate-100" : ""}`
+                    }
                     disabled={disabled}
                     placeholder={placeholder ?? undefined}
                     {...rest}

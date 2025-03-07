@@ -82,7 +82,7 @@ const Dropdown = <T extends object>({
                 disabled={disabled}
                 className={
                   classNames({ "p-invalid ": fieldState.error }) +
-                  " w-full disabled:bg-slate-100 "
+                  ` w-full ${disabled ? "bg-slate-100" : ""}`
                 }
                 {...field}
                 onChange={(event) => field.onChange(event.target.value)}

@@ -78,9 +78,10 @@ const InputNumber = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  data-haserror={fieldState.error && true}
                   data-hasdisabled={disabled}
-                  className='block data-[haserror=true]:text-red-500 data-[hasdisabled=true]:text-slate-200'
+                  className={
+                    classNames({ "text-red-400 ": fieldState.error }) + " block data-[hasdisabled=true]:text-slate-200"
+                  }
                 >
                   {label}
                   {rules?.required ? (
@@ -96,6 +97,7 @@ const InputNumber = <T extends object>({
                   >
                     {/* @ts-ignore  @ts-nocheck */}
                     <InputNumberPrime
+                     {...field}
                       id={field.name}
                       {...(defaultMoney ? moneyInputMode : {})}
                       className={
@@ -105,7 +107,6 @@ const InputNumber = <T extends object>({
                       inputClassName="disabled:bg-slate-100"
                       disabled={disabled}
                       ref={ref}
-                      {...field}
                       onChange={(event) => field.onChange(event.value)}
                       onBlur={(event) => setValue(Number(event.target.value))}
                       {...rest}
