@@ -80,10 +80,12 @@ const AutoComplete = <T extends object>({
                       classNames({ "p-invalid ": fieldState.error }) +
                       " w-full disabled:bg-slate-100"
                     }
+                    optionGroupTemplate
                     inputClassName="disabled:bg-slate-100"
                     itemTemplate={itemTemplate}
                     {...field}
                     inputRef={ref}
+                    onChange={(event) => field.onChange(event.target.value)}
                   />
                   {handleAddButton && (
                     <ButtonPrime
