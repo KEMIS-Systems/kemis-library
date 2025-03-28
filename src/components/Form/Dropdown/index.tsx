@@ -2,7 +2,7 @@ import { Button as ButtonPrime } from "primereact/button";
 import { Dropdown as DropdownPrime } from "primereact/dropdown";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { classNames } from "primereact/utils";
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Controller,
   FieldPath,
@@ -26,7 +26,8 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   handleAddButton?: () => void;
   disabled?: boolean;
-  filter?: boolean
+  filter?: boolean;
+  itemTemplate?: React.ReactNode | ((option: any) => React.ReactNode);
 }
 
 const Dropdown = <T extends object>({
@@ -43,6 +44,7 @@ const Dropdown = <T extends object>({
   autoFocus,
   handleAddButton,
   disabled,
+  itemTemplate,
   filter= true
 }: IProps<T>) => {
   return (
@@ -84,7 +86,9 @@ const Dropdown = <T extends object>({
                   classNames({ "p-invalid ": fieldState.error }) +
                   ` w-full ${disabled ? "bg-slate-100" : ""}`
                 }
+                
                 {...field}
+                itemTemplate={itemTemplate}
                 onChange={(event) => field.onChange(event.target.value)}
               />
               {handleAddButton && (
