@@ -27,7 +27,6 @@ interface IProps<T extends FieldValues> {
   handleAddButton?: () => void;
   disabled?: boolean;
   filter?: boolean;
-  itemTemplate?: React.ReactNode | ((option: any) => React.ReactNode);
 }
 
 const Dropdown = <T extends object>({
@@ -44,7 +43,6 @@ const Dropdown = <T extends object>({
   autoFocus,
   handleAddButton,
   disabled,
-  itemTemplate,
   filter= true
 }: IProps<T>) => {
   return (
@@ -88,7 +86,6 @@ const Dropdown = <T extends object>({
                 }
                 
                 {...field}
-                itemTemplate={itemTemplate}
                 onChange={(event) => field.onChange(event.target.value)}
               />
               {handleAddButton && (

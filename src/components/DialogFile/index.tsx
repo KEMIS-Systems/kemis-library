@@ -24,6 +24,7 @@ interface IModalProps {
   params?: P;
   filename?: string;
   forceDownload?: boolean;
+  classNameDialog?: string;
   onHide: () => void;
 }
 
@@ -35,6 +36,7 @@ const DialogFile = ({
   filename,
   params,
   forceDownload,
+  classNameDialog,
   onHide,
 }: IModalProps) => {
   const handleHide = useCallback(() => {
@@ -46,7 +48,7 @@ const DialogFile = ({
       header={header}
       visible={show}
       onHide={handleHide}
-      className="w-full lg:w-4/5 min-h-full max-h-full"
+      className={classNameDialog ?? "w-full lg:w-4/5 min-h-full max-h-full"}
       maximizable
     >
       <ShowFile
