@@ -43,14 +43,13 @@ const Dropdown = <T extends object>({
   autoFocus,
   handleAddButton,
   disabled,
-  filter= true
+  filter = true,
 }: IProps<T>) => {
   return (
     <Controller
       name={name}
       control={form?.control}
       rules={rules}
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       render={({ field: { ref, ...field }, fieldState }) => {
         return (
           <>
@@ -84,7 +83,6 @@ const Dropdown = <T extends object>({
                   classNames({ "p-invalid ": fieldState.error }) +
                   ` w-full ${disabled ? "bg-slate-100" : ""}`
                 }
-                
                 {...field}
                 onChange={(event) => field.onChange(event.target.value)}
               />

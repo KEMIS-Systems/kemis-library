@@ -21,7 +21,9 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   disabled?: boolean;
-  itemTemplate?: ReactNode | ((suggestion: any, index: number) => React.ReactNode);
+  itemTemplate?:
+    | ReactNode
+    | ((suggestion: any, index: number) => React.ReactNode);
   handleSearch: (event: { query: string }) => void;
   handleAddButton?: () => void;
 }
@@ -53,7 +55,8 @@ const AutoComplete = <T extends object>({
                   htmlFor={field.name}
                   data-hasdisabled={disabled}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block data-[hasdisabled=true]:text-slate-200"
+                    classNames({ "text-red-400 ": fieldState.error }) +
+                    " block data-[hasdisabled=true]:text-slate-200"
                   }
                 >
                   {label}
@@ -70,7 +73,6 @@ const AutoComplete = <T extends object>({
                     suggestions={suggestions}
                     completeMethod={(e) => handleSearch(e)}
                     autoFocus={autoFocus}
-                    dropdown
                     forceSelection
                     autoHighlight
                     showEmptyMessage
@@ -78,7 +80,7 @@ const AutoComplete = <T extends object>({
                     emptyMessage="No results found"
                     className={
                       classNames({ "p-invalid ": fieldState.error }) +
-                      " w-full disabled:bg-slate-100"
+                      ` w-full ${disabled ? "bg-slate-100" : ""}`
                     }
                     optionGroupTemplate
                     inputClassName="disabled:bg-slate-100"
