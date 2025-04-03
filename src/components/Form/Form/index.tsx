@@ -54,7 +54,7 @@ const Form = <T extends object>({
   const [showLoading, setShowLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (dataEdit) {
+    if (dataEdit && Object.keys(dataEdit).length) {
       form.reset(dataEdit);
     }
   }, [dataEdit]);
@@ -99,8 +99,8 @@ const Form = <T extends object>({
                     ]?.success,
                 });
 
-                if(forwardback && typeof forwardback === 'function') {
-                  forwardback(resolver.data)
+                if (forwardback && typeof forwardback === "function") {
+                  forwardback(resolver.data);
                 }
               }
             );
