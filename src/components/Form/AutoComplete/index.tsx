@@ -83,7 +83,7 @@ const AutoComplete = <T extends object>({
                       ` w-full ${disabled ? "bg-slate-100" : ""}`
                     }
                     optionGroupTemplate
-                    inputClassName="disabled:bg-slate-100"
+                    inputClassName="disabled:bg-slate-100 w-full"
                     itemTemplate={itemTemplate}
                     {...field}
                     inputRef={ref}
