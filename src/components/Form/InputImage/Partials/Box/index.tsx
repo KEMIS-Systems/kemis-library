@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { BiTrash } from "react-icons/bi";
-import { IoCropOutline, IoImageOutline } from "react-icons/io5";
+import { IoCrop, IoCropOutline, IoImageOutline } from "react-icons/io5";
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import CropImage from "../../../../CropImage";
 import DialogPhoto from "../../../../DialogPhoto";
@@ -71,12 +71,17 @@ const InputImageBox = ({ handleChange }: IProps) => {
               data-crop={cropFile}
               className="rounded-full h-10 w-10 
                 flex justify-center items-center border border-gray-300 
-                text-fuchsia-400 bg-transparent hover:text-fuchsia-600 hover:border-gray-400
+                bg-transparent  hover:border-gray-400
                 data-[crop=true]:bg-gray-200
               "
               onClick={() => setCropFile(a => !a)}
             >
-              <IoCropOutline size={20} />
+              {
+                cropFile && <IoCrop size={20} color="blue" />
+              }
+              {
+                !cropFile && <IoCropOutline size={20} color="red" />
+              }
             </button>
             <button
               type="button"
