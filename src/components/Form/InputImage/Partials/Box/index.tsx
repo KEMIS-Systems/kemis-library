@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { BiTrash } from "react-icons/bi";
-import { IoImageOutline } from "react-icons/io5";
+import { IoCropOutline, IoImageOutline } from "react-icons/io5";
 import { MdOutlineAddAPhoto } from "react-icons/md";
+import CropImage from "../../../../CropImage";
 import DialogPhoto from "../../../../DialogPhoto";
 import Dropzone from "../../../../Dropzone";
-import CropImage from "../../../../CropImage";
 
 interface IProps {
   handleChange(files: File[]): void;
@@ -12,6 +12,7 @@ interface IProps {
 
 const InputImageBox = ({ handleChange }: IProps) => {
   const [fileChanged, setFileChanged] = useState<boolean>(false);
+  const [cropFile, setCropFile] = useState<boolean>(true);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [takePhoto, setTakePhoto] = useState<boolean>(false);
   const [fileDataUrl, setFileDataUrl] = useState<string>("");
@@ -64,6 +65,19 @@ const InputImageBox = ({ handleChange }: IProps) => {
       <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2">
         {!fileData ? (
           <>
+            <button
+              title="Recortar a imagem"
+              type="button"
+              data-crop={cropFile}
+              className="rounded-full h-10 w-10 
+                flex justify-center items-center border border-gray-300 
+                text-fuchsia-400 bg-transparent hover:text-fuchsia-600 hover:border-gray-400
+                data-[crop=true]:bg-gray-200
+              "
+              onClick={() => setCropFile(a => !a)}
+            >
+              <IoCropOutline size={20} />
+            </button>
             <button
               type="button"
               className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-green-400 bg-transparent hover:text-green-600 hover:border-gray-400"
@@ -120,14 +134,17 @@ const InputImageBox = ({ handleChange }: IProps) => {
               openDialog={openDialog}
             />
           </>
-        ) : (
+        ) : cropFile ? (
           <div>
             <CropImage
               image={fileDataUrl}
               onChange={handleFileSelectedPhotoCrop}
             />
           </div>
-        )}
+        ) : (
+          <img src={fileDataUrl} className="max-w-full h-auto" />
+        )
+        }
       </div>
     </div>
   );
