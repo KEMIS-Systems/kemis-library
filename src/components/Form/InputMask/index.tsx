@@ -1,26 +1,32 @@
 import {
-  InputMask as InputMaskPrime
+  InputMask as InputMaskPrime,
+  InputMaskProps,
 } from "primereact/inputmask";
 import { classNames } from "primereact/utils";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { InputHTMLAttributes } from "react";
 import {
   Controller,
-  FieldPath
+  FieldPath,
+  FieldValues,
+  RegisterOptions,
+  UseFormReturn,
 } from "react-hook-form";
-
-// Icons
-import { MdSearch } from "react-icons/md";
 
 // Components
 import MessageError from "../MessageError";
 
-// Utils
-import { debounce } from "../../../utils/debounce";
-import { getCountries } from "../../../utils/i18N/country-ddi-area-codes";
+type TInputMask = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "disabled" | "readOnly" | "onFocus" | "onBlur" | "onChange" | "form"
+> &
+  Omit<InputMaskProps, "form">;
 
-// Types
-import { Country } from "../../../utils/i18N/types";
-import { IInputMaskProps } from "./types";
+interface IInputMaskProps<T extends FieldValues> extends TInputMask {
+  rules?: RegisterOptions;
+  form: UseFormReturn<T>;
+  label: string;
+  name: string;
+}
 
 function InputMask({
   rules,
@@ -28,78 +34,8 @@ function InputMask({
   name,
   label,
   className,
-  i18N,
-  lang = 'pt',
-  mask,
   ...props
 }: IInputMaskProps<any>) {
-
-  const [countrySelected, setCountrySelected] = useState<Country | null>(null)
-  const [searchCountry, setSearchCountry] = useState<string>('')
-
-  // AUX Variables
-  const COUNTRY_SELECTED_ELEMENT_REF = useRef<any>()
-  const COUNTRIES = useMemo(() => {
-    const SEARCH_VALUE = searchCountry?.trim()?.toLocaleLowerCase() || null
-    const COUNTRIES = getCountries(lang) || []
-
-    if (SEARCH_VALUE) {
-      return COUNTRIES.filter(d => d.dialCode.includes(SEARCH_VALUE) || d.iso2InLower.includes(SEARCH_VALUE) || d.nameInLower.includes(SEARCH_VALUE))
-    }
-
-    return COUNTRIES;
-  }, [searchCountry])
-  const INPUT_MASK = useMemo(() => {
-
-    if (countrySelected?.iso2 === 'br') return mask;
-
-    switch (countrySelected?.dialCode.length) {
-      case 3:
-        return '+?*?*?*? *?*?*?*?*?*?*?*?*?*?*?*';
-      case 2:
-        return '+?*?*? *?*?*?*?*?*?*?*?*?*?*?*';
-      case 1:
-        return '+?*? *?*?*?*?*?*?*?*?*?*?*?*';
-      default:
-        return '?*?*?*?*?*?*?*?*?*?*?*?*?*?*?*';
-    }
-  }, [countrySelected])
-  const DONT_CLEAR = useMemo(() => {
-    return countrySelected?.iso2 === 'br' ? true : false
-  }, [countrySelected])
-
-  useEffect(() => {
-
-    if (!COUNTRIES) return;
-
-    if (lang === 'pt') {
-      setCountrySelected(COUNTRIES?.find(c => c.iso2 === 'br') || null)
-    } else if (lang === "es") {
-      setCountrySelected(COUNTRIES?.find(c => c.iso2 === 'es') || null)
-    } else if (lang === "us") {
-      setCountrySelected(COUNTRIES?.find(c => c.iso2 === 'us') || null)
-    }
-  }, [COUNTRIES, lang])
-
-  useEffect(() => {
-    if (countrySelected?.iso2 !== 'br') {
-      form.setValue(name, `+${countrySelected?.dialCode || '55'}`)
-    }
-  }, [countrySelected])
-
-  function handlerSetCountry(country: Country | null = null) {
-    try {
-      if (!country || !COUNTRY_SELECTED_ELEMENT_REF.current) return;
-
-      // @ts-ignore
-      COUNTRY_SELECTED_ELEMENT_REF.current.click()
-
-      setCountrySelected(country)
-    } catch (error) {
-      // do anything
-    }
-  }
-
   return (
     <div className={className ?? ""}>
       {form && (
@@ -112,141 +48,28 @@ function InputMask({
               <>
                 <label
                   htmlFor={field.name}
-                  data-haserror={fieldState.error && true}
-                  className="block data-[haserror=true]:text-red-500"
+                  className={
+                    classNames({ "text-red-400 ": fieldState.error }) + " block"
+                  }
                 >
                   {label}
                   {rules?.required ? (
-                  <span className="text-slate-300"> *</span>
+                    <span className="text-slate-300"> *</span>
                   ) : (
                     ""
                   )}
                 </label>
-                <span
-                  data-hasI18N={i18N}
-                  className="w-full h-auto flex flex-row items-center justify-start gap-3"
-                >
-                  <span
-                    data-hasI18N={i18N}
-                    className="w-auto h-full
-                      hidden
-                      data-[hasI18N=true]:flex 
-                      flex-row items-center justify-center gap-4
-                      relative
-                    "
-                  >
-                    <input type="checkbox"
-                      ref={COUNTRY_SELECTED_ELEMENT_REF}
-                      name="country-box-select"
-                      id="country-box-select"
-                      className="peer/CountryBox hidden"
-                    />
-
-                    <button
-                      title={countrySelected?.name || ''}
-                      type="button"
-                      onClick={() => COUNTRY_SELECTED_ELEMENT_REF.current.click()}
-                      className="w-10 h-full  
-                        rounded-md 
-                        bg-white
-                        border-[1px] border-slate-300
-                        flex flex-row items-center justify-center px-4 py-2
-                        hover:bg-slate-200
-                        transition-all
-                        duration-[0.3s]
-                        cursor-pointer
-                      "
-                    >
-                      {countrySelected?.flagEmoji}
-                    </button>
-
-                    <div className="min-w-full w-auto h-0
-                        absolute
-                        -top-1
-                        left-0
-                        rounded-xl
-                        border-[1px]
-                        border-slate-300
-                        bg-white
-                        flex
-                        opacity-0
-                        z-[-1]
-                        pointer-events-none
-                        peer-checked/CountryBox:left-12
-                        peer-checked/CountryBox:opacity-100
-                        peer-checked/CountryBox:z-[999]
-                        peer-checked/CountryBox:pointer-events-auto
-                        peer-checked/CountryBox:h-52
-                        peer-checked/CountryBox:shadow-xl
-                        flex-col gap-2
-                        transition-all
-                        duration-[0.3s]
-                      "
-                    >
-                      <span className="w-full h-12
-                          border-b-[1px] border-slate-300 p-3
-                          flex flex-row flex-flex-nowrap items-center gap-3
-                        "
-                      >
-                        <MdSearch className="text-slate-300" />
-                        <input
-                          type="text"
-                          className="border-0 bg-transparent"
-                          onChange={(e) => debounce(250, setSearchCountry, e.target.value)}
-                          placeholder={countrySelected?.searchPlaceholder || 'Pesquise por pais'}
-                        />
-                      </span>
-
-                      <ul className="m-0 flex-1 flex flex-col gap-2 overflow-y-auto px-3 pb-3">
-                        {
-                          COUNTRIES?.map(country => (
-                            <li
-                              title={country.name}
-                              role="button"
-                              onClick={() => handlerSetCountry(country)}
-                              key={country.iso2}
-                              data-hasselected={countrySelected?.iso2 === country.iso2}
-                              className="w-full h-auto p-3 
-                                flex flex-row items-center justify-start gap-3
-                                rounded-xl
-                                data-[hasselected=false]:hover:bg-slate-100
-                                data-[hasselected=true]:bg-slate-100
-                                text-slate-900
-                                cursor-pointer
-                              "
-                            >
-                              <span>
-                                {country.flagEmoji}
-                              </span>
-                              <span className="self-start">
-                                {country.name}
-                              </span>
-                              <span className="flex-1 flex justify-end items-center text-slate-200 ml-4 text-sm">
-                                +{country.dialCode}
-                              </span>
-                            </li>
-                          ))
-                        }
-                      </ul>
-                    </div>
-                  </span>
-
-                  <InputMaskPrime
-                    {...field}
-                    ref={ref}
-                    name={field.name}
-                    id={field.name}
-                    // defaultValue={countryNumber}
-                    className={
-                      classNames({ "p-invalid ": fieldState.error }) +
-                      " w-full disabled:bg-slate-100"
-                    }
-                    // onChange={(event) => onSetDDICode(event.value)}
-                    mask={INPUT_MASK}
-                    autoClear={DONT_CLEAR}
-                    {...props}
-                  />
-                </span>
+                <InputMaskPrime
+                  {...field}
+                  {...props}
+                  ref={ref}
+                  name={field.name}
+                  id={field.name}
+                  className={
+                    classNames({ "p-invalid ": fieldState.error }) +
+                    " w-full disabled:bg-slate-100"
+                  }
+                />
                 {<MessageError fieldState={fieldState} />}
               </>
             );
