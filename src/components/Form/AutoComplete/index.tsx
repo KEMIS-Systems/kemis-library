@@ -24,6 +24,7 @@ interface IProps<T extends FieldValues> {
   itemTemplate?:
     | ReactNode
     | ((suggestion: any, index: number) => React.ReactNode);
+  forceSelection?:boolean;
   handleSearch: (event: { query: string }) => void;
   handleAddButton?: () => void;
 }
@@ -38,6 +39,7 @@ const AutoComplete = <T extends object>({
   form,
   disabled,
   itemTemplate,
+  forceSelection,
   handleSearch,
   handleAddButton,
 }: IProps<T>) => {
@@ -73,7 +75,7 @@ const AutoComplete = <T extends object>({
                     suggestions={suggestions}
                     completeMethod={(e) => handleSearch(e)}
                     autoFocus={autoFocus}
-                    forceSelection
+                    forceSelection={!forceSelection}
                     autoHighlight
                     showEmptyMessage
                     disabled={disabled}
