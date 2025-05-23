@@ -21,6 +21,7 @@ interface IProps<T extends FieldValues> {
   optionGroupLabel?: string;
   optionGroupChildren?: string;
   optionGroupTemplate?: (option: any, index?: number) => React.ReactNode;
+  valueTemplate?:React.ReactNode;
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   autoFocus?: boolean;
@@ -39,6 +40,7 @@ const Dropdown = <T extends object>({
   optionGroupLabel,
   optionGroupChildren,
   optionGroupTemplate,
+  valueTemplate,
   rules,
   autoFocus,
   handleAddButton,
@@ -78,6 +80,7 @@ const Dropdown = <T extends object>({
                 optionGroupLabel={optionGroupLabel}
                 optionGroupChildren={optionGroupChildren}
                 optionGroupTemplate={optionGroupTemplate}
+                valueTemplate={valueTemplate}
                 disabled={disabled}
                 className={
                   classNames({ "p-invalid ": fieldState.error }) +
