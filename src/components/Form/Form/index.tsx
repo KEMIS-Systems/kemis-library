@@ -54,7 +54,7 @@ const Form = <T extends object>({
   const [showLoading, setShowLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (dataEdit && Object.keys(dataEdit).length) {
+    if (dataEdit && dataEdit !== null && Object.keys(dataEdit).length) {
       form.reset(dataEdit);
     }
   }, [dataEdit]);
@@ -106,28 +106,42 @@ const Form = <T extends object>({
             );
           } catch (error: AxiosError | any) {
             setShowLoading(false);
-            console.log(
-              error.response?.data?.errors,
-              Object.keys(error.response?.data?.errors).length
-            );
-            if (Object.keys(error.response?.data?.errors).length > 0) {
-              Object.values(error.response?.data?.errors).forEach(
-                (message: unknown) => {
+
+            // Verificar se o erro tem a estrutura esperada
+            if (error && typeof error === "object") {
+              const errors = error.response?.data?.errors;
+              console.log("Error response data:", error.response?.data);
+              console.log("Errors object:", errors);
+              console.log("Errors type:", typeof errors);
+
+              if (
+                errors &&
+                typeof errors === "object" &&
+                Object.keys(errors).length > 0
+              ) {
+                Object.values(errors).forEach((message: unknown) => {
                   toast?.current?.show({
                     severity: "error",
                     summary: "Error",
                     detail: String(message),
                   });
-                }
-              );
-            } else if (error.response?.data?.message) {
-              toast?.current?.show({
-                severity: "error",
-                summary: "Error",
-                detail: error.response?.data?.message || "Fail to save data",
-              });
+                });
+              } else if (error.response?.data?.message) {
+                toast?.current?.show({
+                  severity: "error",
+                  summary: "Error",
+                  detail: error.response?.data?.message || "Fail to save data",
+                });
+              } else {
+                console.log("Unexpected error structure:", error);
+                toast?.current?.show({
+                  severity: "error",
+                  summary: "Error",
+                  detail: "Fail to save data",
+                });
+              }
             } else {
-              console.log(error);
+              console.log("Error is not an object:", error);
               toast?.current?.show({
                 severity: "error",
                 summary: "Error",
@@ -140,7 +154,18 @@ const Form = <T extends object>({
             "If you want to POST/PUT, you must include the 'api' property in Form component."
           );
       } catch (error: any) {
+        setShowLoading(false);
         console.log("handleSubmitData@error", error);
+        console.log("Error type:", typeof error);
+        console.log("Error response:", error?.response);
+        console.log("Error message:", error?.message);
+
+        // Mostrar erro genérico para o usuário
+        toast?.current?.show({
+          severity: "error",
+          summary: "Error",
+          detail: "Ocorreu um erro inesperado. Tente novamente.",
+        });
       }
     },
     [dataEdit, url, getFormData, handleHide, onRefreshTable]
