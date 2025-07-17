@@ -2,7 +2,7 @@ import { Button as ButtonPrime } from "primereact/button";
 import { MultiSelect as MultiSelectPrime } from "primereact/multiselect";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { classNames } from "primereact/utils";
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Controller,
   FieldPath,
@@ -26,6 +26,7 @@ interface IProps<T extends FieldValues> {
   className?: string;
   optionGroupLabel?: string;
   optionGroupChildren?: string;
+  itemTemplate?: ReactNode | ((option: any) => React.ReactNode);
 }
 
 const MultiSelect = <T extends object>({
@@ -42,6 +43,7 @@ const MultiSelect = <T extends object>({
   className,
   optionGroupLabel,
   optionGroupChildren,
+  itemTemplate
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -87,6 +89,7 @@ const MultiSelect = <T extends object>({
                   onChange={(event) => field.onChange(event.target.value)}
                   optionGroupLabel={optionGroupLabel}
                   optionGroupChildren={optionGroupChildren}
+                  itemTemplate={itemTemplate}
                 />
                 {handleAddButton && (
                   <ButtonPrime
