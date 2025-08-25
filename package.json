@@ -1,6 +1,6 @@
 {
   "name": "kemis-library",
-  "version": "2.10.38",
+  "version": "2.10.39",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "index.js",
@@ -88,6 +88,7 @@
     "babel-loader": "^9.1.2",
     "cep-promise": "^4.4.0",
     "cpf-cnpj-validator": "^1.0.3",
+    "date-fns": "^4.1.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.4.1",
     "jest": "^29.5.0",

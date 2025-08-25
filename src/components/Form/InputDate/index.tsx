@@ -1,3 +1,4 @@
+import { addDays } from "date-fns";
 import { classNames } from "primereact/utils";
 import React, { ChangeEvent, useCallback, useState } from "react";
 import {
@@ -51,8 +52,10 @@ const InputDate = <T extends object>({
   const handlerDateValue = useCallback((element: ChangeEvent<HTMLInputElement>) => {
     if (!element.target || !element.target.valueAsNumber) return;
 
+    const DATE_FIXED = addDays(new Date(element.target.valueAsNumber), 1)
+
     // @ts-ignore
-    form.setValue(name, element.target.valueAsNumber as any)
+    form.setValue(name, DATE_FIXED.getTime())
   }, [setDate, form])
 
   return (
