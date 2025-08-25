@@ -1,12 +1,13 @@
 {
   "name": "kemis-library",
-  "version": "2.10.37",
+  "version": "2.10.38",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
     "components/**",
+    "styles/**/*",
     "hooks/**",
     "models/**",
     "utils/**",
@@ -19,7 +20,7 @@
   ],
   "scripts": {
     "build:ts": "tsc",
-    "build:css": "npx tailwindcss -i ./src/index.css -o ./build/styles/index.css",
+    "build:css": "npx tailwindcss -i ./src/styles/index.css -o ./build/styles/index.css",
     "build": "npm run build:ts",
     "postbuild": "node ./copyFiles.js",
     "test": "jest --watchAll --detectOpenHandles",
