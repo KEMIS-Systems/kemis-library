@@ -2512,10 +2512,10 @@
   "resolved" "https://registry.npmjs.org/camelize/-/camelize-1.0.1.tgz"
   "version" "1.0.1"
 
-"caniuse-lite@^1.0.30001406", "caniuse-lite@^1.0.30001464", "caniuse-lite@^1.0.30001503":
-  "integrity" "sha512-ENcIpYBmwAAOm/V2cXgM7rZUrKKaqisZl4ZAI520FIkqGXUxJjmaIssbRW5HVVR5tyV6ygTLIm15aU8LUmQSaQ=="
-  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001514.tgz"
-  "version" "1.0.30001514"
+"caniuse-lite@^1.0.30001406", "caniuse-lite@^1.0.30001464", "caniuse-lite@^1.0.30001503", "caniuse-lite@^1.0.30001737":
+  "integrity" "sha512-BiloLiXtQNrY5UyF0+1nSJLXUENuhka2pzy2Fx5pGxqavdrxSCW4U6Pn/PoG3Efspi2frRbHpBV2XsrPE6EDlw=="
+  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001737.tgz"
+  "version" "1.0.30001737"
 
 "catenary-curve@^1.0.1":
   "integrity" "sha512-vSHQtYFjItV4wxUH5OkicA3Kmln6thBBWlJLiw2f4apfvkKw4BVe8bTbG6lnbJe60CIr8PyHzjSX27blSJ07Ww=="
