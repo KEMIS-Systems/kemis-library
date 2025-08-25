@@ -16,7 +16,7 @@ module.exports = (env) => {
       globalObject: "this",
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".js"],
+      extensions: [".ts", ".tsx", ".js", ".css"],
     },
     module: {
       rules: [
@@ -32,6 +32,19 @@ module.exports = (env) => {
                   "@babel/preset-react",
                   "@babel/preset-typescript",
                 ],
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/,
+          use: [
+            "style-loader",
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: false,
               },
             },
           ],
