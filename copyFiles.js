@@ -4,6 +4,9 @@ const path = require("path");
 const sourcePathPackagejson = path.join(__dirname, "package.json");
 const destPathPackagejson = path.join(__dirname, "/build", "package.json");
 
+const sourcePathViteConfig = path.join(__dirname, "vite.config.js");
+const destPathViteConfig = path.join(__dirname, "/build", "web/vite.config.js");
+
 const sourceNpm = path.join(__dirname, ".npmignore");
 const destPathNpm = path.join(__dirname, "/build", ".npmignore");
 
