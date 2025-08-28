@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "ElectronicDisplay";
+    src: url("./ttfs/ElectronicArtsDisplay-Regular.ttf");
+}
+
+@font-face {
+    font-family: "ElectronicDisplayText";
+    src: url("./ttfs/ElectronicArtsText-Regular.ttf");
+}

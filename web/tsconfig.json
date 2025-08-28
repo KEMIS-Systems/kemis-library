@@ -13,7 +13,10 @@
 
         "baseUrl": "./src",
         "paths": {
-            "@src/*": ["./*"]
+            "@src/*": ["./*"],
+            "@components/*": ["./components/*"],
+            "@pages/*": ["./pages/*"],
+            "@styles/*": ["./styles/*"]
         },
 
         /* Bundler mode */
@@ -29,10 +32,11 @@
         "noUnusedParameters": true,
         "erasableSyntaxOnly": true,
         "noFallthroughCasesInSwitch": true,
-        "noUncheckedSideEffectImports": true
+        "noUncheckedSideEffectImports": true,        
     },
     "include": [
         "src",
-        "../vite.config.ts"
-, "index.tsx"    ]
+        "../vite.config.ts",
+        "index.tsx"
+    ]
 }
