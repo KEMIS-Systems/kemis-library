@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
+// Layouts
+import { DefaultLayout } from "@src/layouts/default";
+
 // Pages
-import { Form } from "../pages/Form";
+import { Guide } from "@src/pages/guide";
 import { Home } from "../pages/Home/index";
 
 export const Router = createBrowserRouter([
@@ -10,8 +13,14 @@ export const Router = createBrowserRouter([
         Component: Home,
     },
     {
-        path: '/form',
-        Component: Form,
+        path: '/guide',
+        Component: DefaultLayout,
+        children: [
+            {
+                index: true,
+                Component: Guide
+            }
+        ]
     },
 
 ])

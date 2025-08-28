@@ -6,7 +6,8 @@ export type TComponentData = {
         title: string,
         subTitle: string,
         details: string
-    },    
+    },
+    path: string
     icon: IconType,
 }
 
