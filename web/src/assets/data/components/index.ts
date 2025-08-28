@@ -260,5 +260,57 @@ export const Components: TComponents[] = [
                 icon: FaBook,
             }
         ]
+    },
+    {
+        name: 'Hooks',
+        description: {
+            title: 'Hooks',
+            subTitle: 'Gerenciamento de estado',
+            details: 'Componente para gerenciamento de estado com hooks.'
+        },
+        path: 'hooks',
+        icon: FaBook,
+        sub: [
+            {
+                name: 'Hooks',
+                description: {
+                    title: 'Hooks',
+                    subTitle: 'Gerenciamento de estado',
+                    details: 'Componente para gerenciamento de estado com hooks.'
+                },
+                path: 'hooks',
+                icon: FaBook,
+            },
+            {
+                name: 'Hooks',
+                description: {
+                    title: 'Hooks',
+                    subTitle: 'Gerenciamento de estado',
+                    details: 'Componente para gerenciamento de estado com hooks.'
+                },
+                path: 'hooks',
+                icon: FaBook,
+            },
+            {
+                name: 'Hooks',
+                description: {
+                    title: 'Hooks',
+                    subTitle: 'Gerenciamento de estado',
+                    details: 'Componente para gerenciamento de estado com hooks.'
+                },
+                path: 'hooks',
+                icon: FaBook,
+            },
+            {
+                name: 'Hooks',
+                description: {
+                    title: 'Hooks',
+                    subTitle: 'Gerenciamento de estado',
+                    details: 'Componente para gerenciamento de estado com hooks.'
+                },
+                path: 'hooks',
+                icon: FaBook,
+            }
+        ]
     }
 ]
