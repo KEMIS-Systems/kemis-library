@@ -91,7 +91,7 @@ const InputDate = <T extends object>({
                 autoFocus={autoFocus}
                 inputMode="numeric"
                 readOnly={readOnlyInput}
-                value={format(field.value || new Date(), "yyyy-MM-dd")}
+                value={field.value ? format(field.value, "yyyy-MM-dd") : ''}
                 onChange={(e) => handlerDateValue(e)}
               />
               <input

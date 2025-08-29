@@ -313,7 +313,7 @@ export function DefaultLayout() {
                     </span>
                 </nav>
             </aside>
-            <section className="md:flex-1 h-full overflow-y-auto  p-10">
+            <section className="md:flex-1 h-full overflow-y-auto  p-2 md:p-10">
                 <Outlet />
             </section>
         </main>
