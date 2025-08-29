@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import { Router } from "./routers";
 
 // Global Styles
+import "./styles/components.css";
 import "./styles/fonts/index.css";
 import "./styles/global/base.css";
 import "./styles/global/index.css";

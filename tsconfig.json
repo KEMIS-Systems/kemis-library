@@ -7,7 +7,7 @@
       "dom.iterable",
       "ES6"
     ],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "outDir": "./build",
     "sourceMap": true,
     "declaration": true,
@@ -16,13 +16,14 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": false,
+    "noEmitOnError": false,    
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
     "allowSyntheticDefaultImports": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,    
   },
   "include": [
     "src"  ],

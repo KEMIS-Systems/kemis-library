@@ -113,7 +113,7 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
                 type="button"
                 className="bg-kemis text-white px-2 py-2 rounded-full"
                 onClick={handleTakePhoto}
-              >
+              >                
                 <MdCameraAlt size={30} />
               </button>
             </div>

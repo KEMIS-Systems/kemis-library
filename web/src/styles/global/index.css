@@ -572,6 +572,10 @@ video {
   margin-right: 0.5rem;
 }
 
+.-ml-2 {
+  margin-left: -0.5rem;
+}
+
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -654,6 +658,10 @@ video {
 
 .h-14 {
   height: 3.5rem;
+}
+
+.h-2 {
+  height: 0.5rem;
 }
 
 .h-20 {
@@ -891,8 +899,8 @@ video {
   gap: 1.25rem;
 }
 
-.justify-self-end {
-  justify-self: end;
+.self-end {
+  align-self: flex-end;
 }
 
 .overflow-hidden {
@@ -1019,11 +1027,6 @@ video {
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
@@ -1106,6 +1109,11 @@ video {
   padding-bottom: 0px;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1130,6 +1138,10 @@ video {
   padding-left: 0.5rem;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1142,6 +1154,11 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-\[0\.6rem\] {
@@ -1202,6 +1219,11 @@ video {
   color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
+.text-fuchsia-500 {
+  --tw-text-opacity: 1;
+  color: rgb(217 70 239 / var(--tw-text-opacity));
+}
+
 .text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
@@ -1240,6 +1262,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1667,6 +1694,10 @@ video {
     height: 100%;
   }
 
+  .md\:max-h-\[150px\] {
+    max-height: 150px;
+  }
+
   .md\:w-3\/12 {
     width: 25%;
   }
@@ -1707,12 +1738,20 @@ video {
     align-items: center;
   }
 
+  .md\:justify-between {
+    justify-content: space-between;
+  }
+
   .md\:overflow-y-auto {
     overflow-y: auto;
   }
 
   .md\:border-b-\[1px\] {
     border-bottom-width: 1px;
+  }
+
+  .md\:p-10 {
+    padding: 2.5rem;
   }
 
   .md\:py-10 {
@@ -1849,6 +1888,16 @@ video {
 .\[\&_\.p-inputtext\]\:disabled\:bg-slate-100:disabled .p-inputtext {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
+.peer\/ShowCode:checked ~ .peer-checked\/ShowCode\:\[\&_\.show\\_code\]\:bg-\[\#141414\] .show_code {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 20 20 / var(--tw-bg-opacity));
+}
+
+.peer\/ShowPreview:checked ~ .peer-checked\/ShowPreview\:\[\&_\.show\\_preview\]\:bg-\[\#141414\] .show_preview {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 20 20 / var(--tw-bg-opacity));
 }
 
 .\[\&_li\]\:text-sm li {
