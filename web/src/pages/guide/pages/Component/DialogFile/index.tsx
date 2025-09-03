@@ -1,25 +1,23 @@
 import { useLoaderData } from "react-router-dom";
 
 // Types
-import type { IInputDateProps, TPages } from "./types";
+import type { IDialogFileProps, TPages } from "./types";
 
 // Components
 import { PathTrace } from "@src/components/PathTrace";
-import InputDateComponent from "../../../../../../../src/components/Form/InputDate";
+import { api } from "@src/services/api";
+import DialogFileComponent from "../../../../../../../src/components/DialogFile";
 
-// Hooks
-import { useFormIntegration } from "../../../../../../../src/hooks/form";
-
-export function InputDate(_props: IInputDateProps) {
+export function DialogFile(_props: IDialogFileProps) {
     const { pages } = useLoaderData() as TPages
 
-    const form = useFormIntegration({})
+
     return <>
-        <span className="w-full h-full overflow-y-auto flex flex-col justify-between gap-10">
+        <span className="w-full h-full overflow-y-auto flex flex-col justify-between gap-10 relative">
             <span className="w-full flex-1 md:max-h-[150px] pt-10">
                 <hgroup className="">
-                    <h1 className="text-4xl font-semibold">InputDate</h1>
-                    <p className="text-md font-medium">Este componete provê uma forma facil e intuitiva de captar ou receber uma data</p>
+                    <h1 className="text-4xl font-semibold">DialogFile</h1>
+                    <p className="text-md font-medium">Este componete provê uma forma facil e intuitiva de visualizar imagens ou PDF's</p>
                 </hgroup>
             </span>
 
@@ -38,7 +36,15 @@ export function InputDate(_props: IInputDateProps) {
                             py-12
                         "
                     >
-                        <InputDateComponent form={form} name="birth_date" label="Data de Nascimento" />
+                        <DialogFileComponent
+                            header="Teste"
+                            show={true}
+                            filename="teste"
+                            url="https://th.bing.com/th/id/R.3b2a754b37d30f808ae9f1058d350bd3?rik=77M9Dt3uiwykeA&riu=http%3a%2f%2fimg.elo7.com.br%2fproduct%2foriginal%2f8F0159%2fceu-azul-270cm-x-2-0cm-paineis-fotograficos.jpg&ehk=mvxSjUhSzn66UyGEhxYPzqtNlNaZrEX0lcvOvWxLy1o%3d&risl=&pid=ImgRaw&r=0"
+                            forceDownload={false}
+                            api={api}
+                            onHide={() => false}
+                        />
                     </span>
                 </span>
 

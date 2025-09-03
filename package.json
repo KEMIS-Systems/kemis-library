@@ -1,6 +1,6 @@
 {
   "name": "kemis-library",
-  "version": "2.12.42",
+  "version": "2.12.43",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "index.js",
@@ -87,7 +87,7 @@
     "@types/webfontloader": "^1.6.35",
     "@vitejs/plugin-react": "^5.0.1",
     "autoprefixer": "^10.4.21",
-    "axios": "1.4.0",
+    "axios": "^1.4.0",
     "axios-mock-adapter": "^1.21.4",
     "babel-loader": "^9.1.2",
     "cep-promise": "^4.4.0",

@@ -1,22 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Toast } from "primereact/toast";
 import { saveAs } from "file-saver";
+import { Toast } from "primereact/toast";
+import { useEffect, useRef, useState } from "react";
 import { FaDownload } from "react-icons/fa";
 
 import { AxiosInstance } from "axios";
-import Loading from "../Loading";
 import { generateUrlBlob } from "../../utils";
+import Loading from "../Loading";
 
 interface P {
   [key: string]:
-    | string
-    | number
-    | string[]
-    | number[]
-    | Date
-    | Date[]
-    | boolean
-    | undefined;
+  | string
+  | number
+  | string[]
+  | number[]
+  | Date
+  | Date[]
+  | boolean
+  | undefined;
 }
 
 interface IModalProps {
@@ -40,8 +40,8 @@ const ShowFile = ({
 }: IModalProps) => {
   const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(true);
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const [pdfUrl, setPdfUrl] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
   useEffect(() => {
     api
@@ -61,7 +61,17 @@ const ShowFile = ({
           return;
         }
 
-        if (!forceDownload) {
+        if (forceDownload) saveAs(response.data, filename);
+
+        console.log(response.headers["content-type"]?.toString())
+
+        if (response.headers["content-type"]?.toString().includes("pdf")) {
+          setPdfUrl(generateUrlBlob(response));
+        }
+
+        if (
+          response.headers["content-type"]?.toString().includes("image")
+        ) {
           setImageUrl(
             window.URL.createObjectURL(
               new Blob([response.data], {
@@ -69,37 +79,28 @@ const ShowFile = ({
               })
             )
           );
-          if (response.headers["content-type"]?.toString().includes("pdf")) {
-            setPdfUrl(generateUrlBlob(response));
-            return;
-          } else if (
-            response.headers["content-type"]?.toString().includes("image")
-          ) {
-            return;
-          }
         }
 
-        saveAs(response.data, filename);
         onHide?.();
       })
+      .catch(e => console.log(e))
       .finally(() => setShowLoading(false));
   }, [url]);
 
   return (
     <>
-      {filename && imageUrl ? (
-        <div className="flex justify-center">
-          <a
-            href={imageUrl}
-            download={filename}
-            rel="noopener"
-            className="flex flex-row items-center gap-2 text-blue-500 mb-2 font-bold"
-          >
-            <FaDownload />
-            <span>Baixe seu arquivo.</span>
-          </a>
-        </div>
-      ) : null}
+      <div className="flex justify-center">
+        <a
+          // @ts-ignore
+          href={imageUrl || pdfUrl}
+          download={`${filename}.${imageUrl ? 'jpg' : 'pdf'}`}
+          rel="noopener"
+          className="flex cursor-pointer flex-row items-center gap-2 text-blue-500 mb-2 font-bold"
+        >
+          <FaDownload />
+          <span>Baixe seu arquivo.</span>
+        </a>
+      </div>
       {imageUrl && !pdfUrl && (
         <div className="flex items-center justify-center min-w-full max-w-full min-h-full max-h-full">
           <img

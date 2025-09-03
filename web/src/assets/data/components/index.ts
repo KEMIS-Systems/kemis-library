@@ -262,6 +262,28 @@ export const Components: TComponents[] = [
         ]
     },
     {
+        name: 'Component',
+        description: {
+            title: 'Componentes',
+            subTitle: 'Um componente de formulário simples',
+            details: 'Este componente renderiza um formulário com vários campos de entrada.'
+        },
+        path: 'component',
+        icon: FaBook,
+        sub: [
+            {
+                name: 'DialogFile',
+                description: {
+                    title: 'DialogFile',
+                    subTitle: 'Campo de diálogo de arquivo',
+                    details: 'Componente para seleção de arquivos em um diálogo.'
+                },
+                path: 'component/dialog-file',
+                icon: FaBook,
+            },
+        ]
+    },
+    {
         name: 'Hooks',
         description: {
             title: 'Hooks',

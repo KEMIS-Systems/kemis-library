@@ -5,6 +5,7 @@ import { DefaultLayout } from "@src/layouts/default";
 
 // Pages
 import { Guide } from "@src/pages/guide";
+import { Component } from "@src/pages/guide/pages/Component";
 import { Form } from "@src/pages/guide/pages/Form";
 import { Home } from "../pages/Home/index";
 
@@ -182,6 +183,18 @@ export const Router = createBrowserRouter([
                             pages: getPrevNextPage('Form', 'SelectButton')
                         })
                     }
+                ]
+            },
+            {
+                path: 'component',
+                children: [
+                    {
+                        path: 'dialog-file',
+                        Component: Component.DialogFile,
+                        loader: () => ({
+                            pages: getPrevNextPage('Component', 'DialogFile')
+                        })
+                    },
                 ]
             }
         ]
