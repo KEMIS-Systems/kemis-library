@@ -281,6 +281,16 @@ export const Components: TComponents[] = [
                 path: 'component/dialog-file',
                 icon: FaBook,
             },
+            {
+                name: 'Signature',
+                description: {
+                    title: 'Signature',
+                    subTitle: 'Campo de assinatura',
+                    details: 'Componente para captura de assinaturas.'
+                },
+                path: 'component/signature',
+                icon: FaBook,
+            },
         ]
     },
     {

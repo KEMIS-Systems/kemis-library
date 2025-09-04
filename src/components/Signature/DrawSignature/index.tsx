@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 
 import { BiTrash } from "react-icons/bi";
@@ -18,7 +18,7 @@ const DrawSignature = ({ onChange }: IModalProps) => {
   const [signatureUrl, setSignatureUrl] = useState<string>("");
   const [colorDraw, setColorDraw] = useState<string>("");
   const [hasContentDrawed, setHasContentDrawed] = useState(false)
-  const [willResize, setWillResize] = useState(false)  
+  const [willResize, setWillResize] = useState(false)
 
   useEffect(() => {
     setColorDraw("#000000");
@@ -61,10 +61,23 @@ const DrawSignature = ({ onChange }: IModalProps) => {
     setColorDraw(value);
   }, []);
 
+  const handlerNext = useCallback(() => {
+
+    if (!onChange || typeof onChange !== 'function') return;
+
+    const getCanvas = document.getElementById("canvasParent")?.firstChild
+      ?.childNodes[1] as HTMLCanvasElement;
+
+    toBlob(getCanvas).then(blob => {
+      const file = blobToFile(blob, "signature.png");
+      onChange(file);
+    });
+  }, [onChange])
+
   return (
     <div className=" w-full">
       <input type="checkbox" name="show-warning" id="show-warning" className="peer/ShowWarning hidden" />
-      
+
       <div className="border border-gray-300 rounded-t-xl p-2 flex flex-col gap-2">
         <div
           className="w-full flex gap-2 justify-between"
@@ -99,21 +112,21 @@ const DrawSignature = ({ onChange }: IModalProps) => {
 
       {
         !hasContentDrawed && (
-            <span
-              className="text-sm text-gray-700 font-medium flex peer-checked/ShowWarning:hidden"
-            >
-              Desenhe sua assinatura no quadro destacado abaixo:
-            </span>
+          <span
+            className="text-sm text-gray-700 font-medium flex peer-checked/ShowWarning:hidden"
+          >
+            Desenhe sua assinatura no quadro destacado abaixo:
+          </span>
         )
       }
 
       {
         (hasContentDrawed && willResize) && (
-            <span
-              className="text-sm text-gray-700 font-medium"
-            >
-              Caso deseje, selecione apenas o espaço de sua assinatura.
-            </span>
+          <span
+            className="text-sm text-gray-700 font-medium"
+          >
+            Caso deseje, selecione apenas o espaço de sua assinatura.
+          </span>
         )
       }
 
@@ -136,13 +149,14 @@ const DrawSignature = ({ onChange }: IModalProps) => {
               catenaryColor="#0a0302"
               brushColor={colorDraw}
               onChange={(canvas) => {
+                handlerNext();
+
                 const CONTENT = !!(JSON.parse(canvasRef.current?.getSaveData() || '{}')?.lines?.length)
                 setHasContentDrawed(CONTENT)
               }}
 
-              className={`w-full border border-gray-400 rounded mt-3 ${
-                canvasSteps !== 1 ? "hide" : ""
-              }`}
+              className={`w-full border border-gray-400 rounded mt-3 ${canvasSteps !== 1 ? "hide" : ""
+                }`}
             />
           ) : (
             <CropImage image={signatureUrl} onChange={handleImageCopped} />

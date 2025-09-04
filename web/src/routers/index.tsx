@@ -195,6 +195,13 @@ export const Router = createBrowserRouter([
                             pages: getPrevNextPage('Component', 'DialogFile')
                         })
                     },
+                    {
+                        path: 'signature',
+                        Component: Component.DrawSignature,
+                        loader: () => ({
+                            pages: getPrevNextPage('Component', 'Signature')
+                        })
+                    },
                 ]
             }
         ]
