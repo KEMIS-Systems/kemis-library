@@ -1,6 +1,5 @@
-import { addDays, format } from "date-fns";
 import { classNames } from "primereact/utils";
-import React, { ChangeEvent, useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import {
   Controller,
   FieldPath,
@@ -28,6 +27,7 @@ interface IProps<T extends FieldValues> {
 }
 
 // Components
+import { Calendar } from "primereact/calendar";
 import MessageError from "../MessageError";
 
 const InputDate = <T extends object>({
@@ -47,16 +47,13 @@ const InputDate = <T extends object>({
   selectionMode,
   readOnlyInput = false,
 }: IProps<T>) => {
-  const [date, setDate] = useState<Date>(new Date())
+  const [date, setDate] = useState<string>('')
 
-  const handlerDateValue = useCallback((element: ChangeEvent<HTMLInputElement>) => {
-    if (!element.target || !element.target.valueAsNumber) return;
-
-    const DATE_FIXED = addDays(new Date(element.target.valueAsNumber), 1)
-
+  // Função para tratar entrada numérica e converter para timestamp
+  const handleDateInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
-    form.setValue(name, DATE_FIXED.getTime())
-  }, [setDate, form])
+    form.setValue(name, dateObj.toLocaleDateString("pt-BR"));
+  }, [form, name]);
 
   return (
     <div className={className ?? ""}>
@@ -82,26 +79,23 @@ const InputDate = <T extends object>({
         render={({ field: { ...field }, fieldState, formState }) => {
           return (
             <>
-              <input
-                type="date"
-                disabled={disabled}
-                id={`input-date-${name}`}
-                name={`input-date-${name}`}
-                className="appearance-none rounded-[6px] w-full h-[46px] p-[0.75rem] text-[#4b5563] bg-white border-[1px] transition-all duration-[0.2s] border-[#d1d5db] hover:border-[#4f46e5] focus:border-[#4f46e5] focus:shadow-md focus:shadow-[#a5f3fc] outline-none  disabled:bg-slate-100 disabled:hover:border-[#c2c2c2] data-[haserror=true]:border-[1.5px] data-[haserror=true]:border-red-400"
-                autoFocus={autoFocus}
-                inputMode="numeric"
-                readOnly={readOnlyInput}
-                value={field.value ? format(field.value, "yyyy-MM-dd") : ''}
-                onChange={(e) => handlerDateValue(e)}
-              />
-              <input
-                type="text"
-                {...field}
+              <Calendar
                 id={field.name}
                 data-haserror={fieldState.error}
-                className="!hidden"
+                name={`input-date-${name}`}
+                inputClassName="data-[haserror=true]:border-[1.5px] data-[haserror=true]:border-red-400"
+                autoFocus={autoFocus}
+                dateFormat="dd/mm/yy"
+                value={field.value}
                 disabled={disabled}
+                mask="99/99/9999"
+                placeholder="dia / mês / ano"
+                showIcon
+                showButtonBar
+                // @ts-ignore
+                onChange={(e) => form.setValue(name, e.value)}
               />
+
               {<MessageError fieldState={fieldState} />}
             </>
           );
