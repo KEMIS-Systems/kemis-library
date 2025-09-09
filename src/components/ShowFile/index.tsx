@@ -80,8 +80,6 @@ const ShowFile = ({
             )
           );
         }
-
-        onHide?.();
       })
       .catch(e => console.log(e))
       .finally(() => setShowLoading(false));
