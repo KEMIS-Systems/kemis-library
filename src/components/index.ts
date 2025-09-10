@@ -52,6 +52,7 @@ export { default as ShowFile } from "./ShowFile";
 export { default as ColorPalette } from "./Signature/ColorPalette";
 export { default as DialogSignature } from "./Signature/DialogSignature";
 export { default as DrawSignature } from "./Signature/DrawSignature";
+export { default as Signatures } from "./Signature/Signatures";
 export { default as UploadSignature } from "./Signature/UploadSignature";
 export { default as WriteSignature } from "./Signature/WriteSignature";
 

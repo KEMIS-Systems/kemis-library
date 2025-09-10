@@ -83,7 +83,7 @@ const InputDate = <T extends object>({
                 id={field.name}
                 data-haserror={fieldState.error}
                 name={`input-date-${name}`}
-                inputClassName="data-[haserror=true]:border-[1.5px] data-[haserror=true]:border-red-400"
+                inputClassName="kemis-input-data data-[haserror=true]:border-[1.5px] data-[haserror=true]:border-red-400"
                 autoFocus={autoFocus}
                 dateFormat="dd/mm/yy"
                 value={field.value}
@@ -94,6 +94,12 @@ const InputDate = <T extends object>({
                 showButtonBar
                 // @ts-ignore
                 onChange={(e) => form.setValue(name, e.value)}
+                inputRef={el => {
+                  if (el) {
+                    // @ts-ignore
+                    // el.onfocus = e => e.target?.blur && e.target?.blur()
+                  }
+                }}
               />
 
               {<MessageError fieldState={fieldState} />}

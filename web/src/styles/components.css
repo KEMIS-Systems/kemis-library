@@ -1,1 +1,1 @@
-.kemis-input-data{background-color:red}
+body:has(.kemis-input-data:enabled:focus) .p-datepicker{display:none!important;pointer-events:none!important}body:has(span.p-calendar:has(input:enabled:focus)) .p-datepicker{display:none!important;pointer-events:none!important}.kemis-library-in-page-signature{border:1px dashed #f5f5f5;border-radius:16px;height:100%;min-height:100%;padding:16px;width:100%}
