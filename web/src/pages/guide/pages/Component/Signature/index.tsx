@@ -6,8 +6,7 @@ import type { ISignatureProps, TPages } from "./types";
 // Components
 import { PathTrace } from "@src/components/PathTrace";
 import { useState } from "react";
-import DialogComponent from "../../../../../../../src/components/Dialog";
-import DrawSignatureComponent from "../../../../../../../src/components/Signature/DrawSignature";
+import DrawSignatureComponent from "../../../../../../../src/components/Signature/Signatures";
 
 export function Signature(_props: ISignatureProps) {
     const { pages } = useLoaderData() as TPages
@@ -37,13 +36,16 @@ export function Signature(_props: ISignatureProps) {
                             py-12
                         "
                     >
-                        <DialogComponent visible={true} header='' className="" onHide={() => false}>
+                        {/* <DialogComponent visible={true} header='' className="" onHide={() => false}>
                             <DrawSignatureComponent
                                 onChange={e => setSignature(e)}
                             />
 
                             <button onClick={() => console.table(signature)} data-show={signature && true} className="hidden data-[show=true]:flex p-4 bg-blue-500 rounded-md text-center font-semibold text-white">continuar</button>
-                        </DialogComponent>
+                        </DialogComponent> */}
+
+                        <DrawSignatureComponent.Dialog show={true} header='Desenhar' classNameDialog="" onHide={() => false} onSubmitted={() => ({})} />
+                        <DrawSignatureComponent.InPage onSubmitted={() => ({})} />
                     </span>
                 </span>
 

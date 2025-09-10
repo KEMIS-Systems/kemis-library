@@ -107,6 +107,15 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
     onChange({} as File);
   }, [onChange]);
 
+  useEffect(() => {
+    if (!canvasRef.current) return
+
+    toBlob(canvasRef.current).then(d => {
+      const file = blobToFile(d, "signature.png");
+      onChange(file);
+    })
+  }, [])
+
   return (
     <>
       <div className=" w-full">
@@ -114,6 +123,7 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
           <div className="flex gap-2">
             {!showImage ? (
               <button
+                title="Recorta a assinatura"
                 className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
                 onClick={handleShowImage}
               >
@@ -123,6 +133,7 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
               <button
                 className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
                 onClick={handleHideImage}
+                title="Desfazer recorte"
               >
                 <BiTrash size={20} />
               </button>
