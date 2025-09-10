@@ -1,27 +1,29 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { BsCheck2Circle } from "react-icons/bs";
 import { BiTrash } from "react-icons/bi";
-import returnFontsArray from "../../../utils/fontsGoogle";
-import { toBlob } from "../../../utils/files";
+import { BsCheck2Circle } from "react-icons/bs";
 import blobToFile from "../../../utils/blobToFile";
-import ColorPalette from "../ColorPalette";
-import Dropdown from "../../Form/Dropdown";
+import { toBlob } from "../../../utils/files";
+import returnFontsArray from "../../../utils/fontsGoogle";
 import CropImage from "../../CropImage";
+import Dropdown from "../../Form/Dropdown";
+import ColorPalette from "../ColorPalette";
 
 interface IProps {
   onChange(files: File): void;
   text: string;
+  writeSignature?: boolean;
 }
 
 interface IWriteSignature {
   font_type: number;
   font_size: number;
+
 }
 
 const defaultValues: IWriteSignature = {} as IWriteSignature;
 
-const WriteSignature = ({ onChange, text }: IProps) => {
+const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const form = useForm({ defaultValues });
   const [colorDraw, setColorDraw] = useState<string>("#1D64CC");
