@@ -19,8 +19,9 @@ export function Home() {
                         items-center justify-center 
                         gap-3 rounded-md 
                         border-[1px] 
-                        border-[#262626b3] 
-                        bg-[#14141470] backdrop-blur-md
+                        border-[#a8a8a8b3] 
+                        bg-[#f5f5f5bd] 
+                        backdrop-blur-md
                         [&_span]:hover:after:opacity-70
                     "
                     >
@@ -40,7 +41,7 @@ export function Home() {
                             <span className="w-20 h-20 
                                 flex items-center 
                                 justify-center rounded-md 
-                                border-[1px] border-[#262626b3] 
+                                border-[1px] border-[#a8a8a8b3] 
                                 bg-[#14141490] backdrop-blur-3xl                                
                                 z-10                               
                             "
@@ -57,8 +58,8 @@ export function Home() {
                         items-center justify-center 
                         gap-3 rounded-md 
                         border-[1px] 
-                        border-[#262626b3] 
-                        bg-[#14141470] backdrop-blur-md
+                        border-[#a8a8a8b3] 
+                        bg-[#f5f5f5bd]  backdrop-blur-md
                         [&_span]:hover:after:opacity-70
                     "
                     >
@@ -80,7 +81,7 @@ export function Home() {
                             <span className="w-20 h-20 
                                 flex items-center 
                                 justify-center rounded-md 
-                                border-[1px] border-[#262626b3] 
+                                border-[1px] border-[#a8a8a8b3] 
                                 bg-[#14141490] backdrop-blur-3xl                                
                                 z-10                               
                             "
@@ -101,8 +102,8 @@ export function Home() {
                         items-center justify-center 
                         gap-3 rounded-md 
                         border-[1px] 
-                        border-[#262626b3] 
-                        bg-[#14141470] backdrop-blur-md
+                        border-[#a8a8a8b3] 
+                        bg-[#f5f5f5bd]  backdrop-blur-md
                         [&_span]:hover:after:opacity-70
                     "
                     >
@@ -122,7 +123,7 @@ export function Home() {
                             <span className="w-20 h-20 
                                 flex items-center 
                                 justify-center rounded-md 
-                                border-[1px] border-[#262626b3] 
+                                border-[1px] border-[#a8a8a8b3] 
                                 bg-[#14141490] backdrop-blur-3xl                                
                                 z-10                               
                             "
@@ -140,8 +141,8 @@ export function Home() {
                         items-center justify-center 
                         gap-3 rounded-md 
                         border-[1px] 
-                        border-[#262626b3] 
-                        bg-[#14141470] backdrop-blur-md
+                        border-[#a8a8a8b3] 
+                        bg-[#f5f5f5bd]  backdrop-blur-md
                         [&_span]:hover:after:opacity-70
                     "
                     >
@@ -157,7 +158,7 @@ export function Home() {
                             <span className="w-20 h-20 
                                 flex items-center 
                                 justify-center rounded-md 
-                                border-[1px] border-[#262626b3] 
+                                border-[1px] border-[#a8a8a8b3] 
                                 bg-[#14141490] backdrop-blur-3xl                                
                                 z-10                               
                             "
@@ -174,7 +175,7 @@ export function Home() {
             </span>
         </span>
 
-        <span className="w-1/2 flex border-[2px] border-dashed border-[#262626b3] bg-[#14141490] backdrop-blur-3xl ml-[25%] mr-[25%]"></span>
+        <span className="w-1/2 flex border-[2px] border-dashed border-[#a8a8a8b3] bg-[#14141490] backdrop-blur-3xl ml-[25%] mr-[25%]"></span>
 
         <span className="w-full h-auto p-10 md:my-[6rem] flex flex-col items-center justify-center gap-14">
             <hgroup className="items-center justify-center select-none cursor-default">
@@ -209,8 +210,8 @@ export function Home() {
                     w-full h-full
                     border-[1px] 
                     rounded-xl
-                    border-[#262626b3] 
-                    bg-[#14141470] 
+                    border-[#a8a8a8b3] 
+                    bg-[#f5f5f5bd]  
                     backdrop-blur-md
                     z-10
 

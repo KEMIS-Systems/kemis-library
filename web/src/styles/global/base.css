@@ -15,10 +15,10 @@ html, body {
 }
 
 body {
-    background-color: #000;
+    background-color: #f5f5f5;
 
     font-size: 16px;
-    color: white;
+    color: black;
 
     position: relative;
     overflow: hidden;
@@ -53,7 +53,7 @@ body {
     z-index: -1;
     opacity: 0.2;    
     background: url("./images/noise.webp"), 
-        radial-gradient(circle at right center, #563277, #4a378c 30%, #4172c2 55%, #32517380);
+        radial-gradient(circle at right center, red, blue, green, yellow);
     
     mask-image: radial-gradient(ellipse 300% 30% at center center, #000 20%, #00000080 50%, #0000);
     
