@@ -12,7 +12,7 @@ import { IInPageSignatureProps } from "./types";
 export function InPageSignature({
     onSubmitted,
     text,
-    classNameDialog,
+    className,
     uploadSignature,
     writeSignature = true,
 }: IInPageSignatureProps) {
@@ -21,7 +21,7 @@ export function InPageSignature({
     const [fileData, setFileData] = useState<File>({} as File);
 
     return (
-        <div className={`${classNameDialog} kemis-library-in-page-signature`}>
+        <div className={`${className} kemis-library-in-page-signature`}>
             <Base setFileData={setFileData} text={text} uploadSignature={uploadSignature} writeSignature={writeSignature} />
             <div className="flex justify-end gap-3 mt-2">
                 {fileData?.size ? (
