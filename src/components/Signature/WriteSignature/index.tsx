@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiTrash } from "react-icons/bi";
 import { BsCheck2Circle } from "react-icons/bs";
+import { MdOutlineSwipe } from "react-icons/md";
 import blobToFile from "../../../utils/blobToFile";
 import { toBlob } from "../../../utils/files";
 import returnFontsArray from "../../../utils/fontsGoogle";
@@ -31,13 +32,10 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
   const [signatureUrl, setSignatureUrl] = useState<string>("");
   const fonts = returnFontsArray();
   const fontSizes = [
+    { value: 12, label: "12px" },
+    { value: 14, label: "14px" },
+    { value: 16, label: "16px" },
     { value: 20, label: "20px" },
-    { value: 22, label: "22px" },
-    { value: 24, label: "24px" },
-    { value: 26, label: "26px" },
-    { value: 28, label: "28px" },
-    { value: 30, label: "30px" },
-    { value: 34, label: "34px" },
   ];
   const [fontType, setFontType] = useState<string>(
     fonts[1].script.style.fontFamily
@@ -119,6 +117,10 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
   return (
     <>
       <div className=" w-full">
+        <span className="kemis-library-in-page-signature-warning">
+          <MdOutlineSwipe size={16} />
+          Deixe seu celular na horizontal
+        </span>
         <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2 justify-between">
           <div className="flex gap-2">
             {!showImage ? (
@@ -156,6 +158,7 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
                     rules={{ required: "Font type is required." }}
                     form={form}
                     options={fonts}
+                    filter={false}
                   />
                 </div>
                 <div className="w-1/3">
@@ -165,6 +168,7 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
                     rules={{ required: "Font size is required." }}
                     options={fontSizes}
                     form={form}
+                    filter={false}
                   />
                 </div>
               </div>

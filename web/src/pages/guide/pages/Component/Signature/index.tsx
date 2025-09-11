@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 // Types
@@ -5,7 +6,7 @@ import type { ISignatureProps, TPages } from "./types";
 
 // Components
 import { PathTrace } from "@src/components/PathTrace";
-import { useState } from "react";
+// import DrawSignatureComponent from "../../../../../../../src/components/Signature/Signatures";
 
 export function Signature(_props: ISignatureProps) {
     const { pages } = useLoaderData() as TPages
@@ -27,8 +28,9 @@ export function Signature(_props: ISignatureProps) {
                     <label htmlFor="show-preview" className=" font-medium text-x ">Preview</label>
                     <span className="w-full h-full
                             show_preview
-                            border-[1px] border-[#262626b3] 
-                            bg-[#14141470] 
+                            border-[1px] 
+                            border-[#a8a8a8b3] 
+                            bg-[#f5f5f5bd] 
                             backdrop-blur-md
                             rounded-xl
                             p-4
@@ -43,8 +45,8 @@ export function Signature(_props: ISignatureProps) {
                             <button onClick={() => console.table(signature)} data-show={signature && true} className="hidden data-[show=true]:flex p-4 bg-blue-500 rounded-md text-center font-semibold text-white">continuar</button>
                         </DialogComponent> */}
 
-                        {/* <DrawSignatureComponent.Dialog show={true} header='Desenhar' classNameDialog="" onHide={() => false} onSubmitted={() => ({})} />
-                        <DrawSignatureComponent.InPage onSubmitted={() => ({})} /> */}
+                        {/* <DrawSignatureComponent.Dialog show={true} header='Desenhar' classNameDialog="" onHide={() => false} onSubmitted={() => ({})} /> */}
+                        {/* <DrawSignatureComponent.InPage onSubmitted={() => ({})} /> */}
                     </span>
                 </span>
 
@@ -56,8 +58,8 @@ export function Signature(_props: ISignatureProps) {
                     <code data-line-numbers className="w-full h-full
                             show_code
                             overflow-y-auto
-                            border-[1px] border-[#262626b3] 
-                            bg-[#14141470] 
+                            border-[1px] border-[#a8a8a8b3] 
+                            bg-[#f5f5f5bd] 
                             backdrop-blur-md
                             rounded-xl
                             flex flex-col

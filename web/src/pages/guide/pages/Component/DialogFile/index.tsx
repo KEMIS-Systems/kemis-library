@@ -28,8 +28,8 @@ export function DialogFile(_props: IDialogFileProps) {
                     <label htmlFor="show-preview" className=" font-medium text-x ">Preview</label>
                     <span className="w-full h-full
                             show_preview
-                            border-[1px] border-[#262626b3] 
-                            bg-[#14141470] 
+                            border-[1px] border-[#a8a8a8b3] 
+                            bg-[#f5f5f5bd] 
                             backdrop-blur-md
                             rounded-xl
                             p-4
@@ -56,8 +56,8 @@ export function DialogFile(_props: IDialogFileProps) {
                     <code data-line-numbers className="w-full h-full
                             show_code
                             overflow-y-auto
-                            border-[1px] border-[#262626b3] 
-                            bg-[#14141470] 
+                            border-[1px] border-[#a8a8a8b3] 
+                            bg-[#f5f5f5bd] 
                             backdrop-blur-md
                             rounded-xl
                             flex flex-col

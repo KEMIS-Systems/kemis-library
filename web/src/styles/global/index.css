@@ -959,8 +959,12 @@ video {
   border-style: none;
 }
 
-.border-\[\#262626b3\] {
-  border-color: #262626b3;
+.border-\[\#a8a8a8b3\] {
+  border-color: #a8a8a8b3;
+}
+
+.border-\[\#a8a8a8b3\] {
+  border-color: #a8a8a8b3;
 }
 
 .border-gray-300 {
@@ -982,8 +986,8 @@ video {
   border-color: transparent;
 }
 
-.bg-\[\#14141470\] {
-  background-color: #14141470;
+.bg-\[\#f5f5f5bd\] {
+  background-color: #f5f5f5bd;
 }
 
 .bg-\[\#14141490\] {
@@ -992,6 +996,10 @@ video {
 
 .bg-\[\#81818113\] {
   background-color: #81818113;
+}
+
+.bg-\[\#f5f5f5bd\] {
+  background-color: #f5f5f5bd;
 }
 
 .bg-blue-500 {
@@ -1402,8 +1410,8 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.hover\:border-\[\#262626b3\]:hover {
-  border-color: #262626b3;
+.hover\:border-\[\#a8a8a8b3\]:hover {
+  border-color: #a8a8a8b3;
 }
 
 .hover\:border-gray-400:hover {
@@ -1475,12 +1483,12 @@ video {
   display: none;
 }
 
-.peer\/ShowComponents:checked ~ .peer-checked\/ShowComponents\:border-\[\#262626b3\] {
-  border-color: #262626b3;
+.peer\/ShowComponents:checked ~ .peer-checked\/ShowComponents\:border-\[\#a8a8a8b3\] {
+  border-color: #a8a8a8b3;
 }
 
-.peer\/ShowIntroduction:checked ~ .peer-checked\/ShowIntroduction\:border-\[\#262626b3\] {
-  border-color: #262626b3;
+.peer\/ShowIntroduction:checked ~ .peer-checked\/ShowIntroduction\:border-\[\#a8a8a8b3\] {
+  border-color: #a8a8a8b3;
 }
 
 .peer\/ShowComponents:checked ~ .peer-checked\/ShowComponents\:bg-\[\#14141490\] {
@@ -1757,12 +1765,12 @@ video {
   border-style: dashed;
 }
 
-.peer\/ShowComponents:checked ~ .peer-checked\/ShowComponents\:\[\&\+ul\]\:border-\[\#262626b3\]+ul {
-  border-color: #262626b3;
+.peer\/ShowComponents:checked ~ .peer-checked\/ShowComponents\:\[\&\+ul\]\:border-\[\#a8a8a8b3\]+ul {
+  border-color: #a8a8a8b3;
 }
 
-.peer\/ShowIntroduction:checked ~ .peer-checked\/ShowIntroduction\:\[\&\+ul\]\:border-\[\#262626b3\]+ul {
-  border-color: #262626b3;
+.peer\/ShowIntroduction:checked ~ .peer-checked\/ShowIntroduction\:\[\&\+ul\]\:border-\[\#a8a8a8b3\]+ul {
+  border-color: #a8a8a8b3;
 }
 
 .peer\/ShowComponents:checked ~ .peer-checked\/ShowComponents\:\[\&\+ul\]\:py-2+ul {

@@ -64,7 +64,7 @@ const DialogSignature = ({
       header={header}
       visible={show}
       onHide={onHide}
-      className={classNameDialog ?? ""}
+      className={`${classNameDialog} kemis-library-dialog-modal-signature`}
       footer={handleFooterDialog}
     >
       <TabView className="col-span-2">

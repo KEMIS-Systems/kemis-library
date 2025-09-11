@@ -11,13 +11,13 @@ const returnFontsArray = () => {
       value: 1,
       label: "Imperial Script",
       className: "text-xl",
-      family: "Imperial Script",
+      family: "'Imperial Script'",
     },
     {
       value: 2,
       label: "Miss Fajardose",
       className: "text-xl",
-      family: "Miss Fajardose",
+      family: "'Miss Fajardose'",
     },
     {
       value: 3,
@@ -29,13 +29,13 @@ const returnFontsArray = () => {
       value: 4,
       label: "Dancing Script",
       className: "text-xl",
-      family: "Dancing Script",
+      family: "'Dancing Script'",
     },
     {
       value: 5,
       label: "Great Vibes",
       className: "text-xl",
-      family: "Great Vibes",
+      family: "'Great Vibes'",
     },
     {
       value: 6,

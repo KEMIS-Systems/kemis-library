@@ -23,21 +23,6 @@ export function InPageSignature({
     return (
         <div className={`${className} kemis-library-in-page-signature`}>
             <Base setFileData={onSubmitted} text={text} uploadSignature={uploadSignature} writeSignature={writeSignature} />
-            {/* <div className="flex justify-end gap-3 mt-2">
-                {fileData?.size ? (
-                    <div>
-                        <button
-                            type="submit"
-                            className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
-                            onClick={() => onSubmitted(fileData)}
-                        >
-                            {language.input.button_save}
-                        </button>
-                    </div>
-                ) : (
-                    " "
-                )}
-            </div> */}
         </div>
     );
 };

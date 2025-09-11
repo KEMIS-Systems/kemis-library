@@ -19,12 +19,12 @@ export function DefaultLayout() {
                         max-sm:items-center
                         gap-5
                         border-r-[1px]
-                        border-[#262626b3] bg-[#14141490] 
+                        border-[#a8a8a8b3] bg-[#f5f5f5bd] 
                         backdrop-blur-3xl
                         aside-default-layout
                     "
                 >
-                    <span className="w-full h-auto px-5 md:py-5 flex flex-row items-center gap-5 md:mb-5 border-dashed max-sm:border-r-[1px] md:border-b-[1px] border-[#262626b3] ">
+                    <span className="w-full h-auto px-5 md:py-5 flex flex-row items-center gap-5 md:mb-5 border-dashed max-sm:border-r-[1px] md:border-b-[1px] border-[#a8a8a8b3] ">
                         <h1 className="hidden md:flex text-2xl font-semibold items-center gap-2 select-none">
                             Kemis Library
                             <span className="text-[0.6rem] !select-auto font-thin">v2.10.31</span>
@@ -64,15 +64,15 @@ export function DefaultLayout() {
                                 peer-checked/ShowIntroduction:[&+ul]:py-2
                                 peer-checked/ShowIntroduction:[&+ul]:border-dashed
                                 peer-checked/ShowIntroduction:[&+ul]:border-l-[1px]
-                                peer-checked/ShowIntroduction:[&+ul]:border-[#262626b3]
+                                peer-checked/ShowIntroduction:[&+ul]:border-[#a8a8a8b3]
                                 
-                                peer-checked/ShowIntroduction:border-[#262626b3]
+                                peer-checked/ShowIntroduction:border-[#a8a8a8b3]
                                 peer-checked/ShowIntroduction:bg-[#14141490] 
                                 
                                 border-[1px]
 
-                                hover:border-[#262626b3]
-                                hover:bg-[#14141490] 
+                                hover:border-[#a8a8a8b3]
+                                hover:bg-[#a8a8a8b3] 
                                 
                                 hover:active:border-[#1f1f1fb3]
                                 hover:active:bg-[#08080890] 
@@ -107,8 +107,8 @@ export function DefaultLayout() {
                                 border-transparent
                                 border-[1px]
 
-                                hover:border-[#262626b3]
-                                hover:bg-[#14141490] 
+                                hover:border-[#a8a8a8b3]
+                                hover:bg-[#a8a8a8b3] 
                                 
                                 hover:active:border-[#1f1f1fb3]
                                 hover:active:bg-[#08080890] 
@@ -138,8 +138,8 @@ export function DefaultLayout() {
                                 border-transparent
                                 border-[1px]
 
-                                hover:border-[#262626b3]
-                                hover:bg-[#14141490] 
+                                hover:border-[#a8a8a8b3]
+                                hover:bg-[#a8a8a8b3] 
                                 
                                 hover:active:border-[#1f1f1fb3]
                                 hover:active:bg-[#08080890] 
@@ -169,8 +169,8 @@ export function DefaultLayout() {
                                 border-transparent
                                 border-[1px]
 
-                                hover:border-[#262626b3]
-                                hover:bg-[#14141490] 
+                                hover:border-[#a8a8a8b3]
+                                hover:bg-[#a8a8a8b3] 
                                 
                                 hover:active:border-[#1f1f1fb3]
                                 hover:active:bg-[#08080890] 
@@ -223,15 +223,15 @@ export function DefaultLayout() {
                                 peer-checked/ShowComponents:[&+ul]:py-2
                                 peer-checked/ShowComponents:[&+ul]:border-dashed
                                 peer-checked/ShowComponents:[&+ul]:border-l-[1px]
-                                peer-checked/ShowComponents:[&+ul]:border-[#262626b3]
+                                peer-checked/ShowComponents:[&+ul]:border-[#a8a8a8b3]
                                 
-                                peer-checked/ShowComponents:border-[#262626b3]
+                                peer-checked/ShowComponents:border-[#a8a8a8b3]
                                 peer-checked/ShowComponents:bg-[#14141490] 
                                 
                                 border-[1px]
 
-                                hover:border-[#262626b3]
-                                hover:bg-[#14141490] 
+                                hover:border-[#a8a8a8b3]
+                                hover:bg-[#a8a8a8b3] 
                                 
                                 hover:active:border-[#1f1f1fb3]
                                 hover:active:bg-[#08080890] 
@@ -281,8 +281,8 @@ export function DefaultLayout() {
                                                         border-transparent
                                                         border-[1px]
 
-                                                        hover:border-[#262626b3]
-                                                        hover:bg-[#14141490] 
+                                                        hover:border-[#a8a8a8b3]
+                                                        hover:bg-[#a8a8a8b3] 
                                                         
                                                         hover:active:border-[#1f1f1fb3]
                                                         hover:active:bg-[#08080890] 
