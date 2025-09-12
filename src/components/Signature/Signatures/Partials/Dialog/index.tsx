@@ -18,7 +18,7 @@ export function DialogSignature({
     text,
     classNameDialog,
     uploadSignature,
-    writeSignature = true,
+    writeSignature = false,
 }: IDialogSignatureProps) {
     const { language } = useLanguage();
     const [fileData, setFileData] = useState<File>({} as File);

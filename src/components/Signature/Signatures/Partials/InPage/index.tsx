@@ -14,7 +14,7 @@ export function InPageSignature({
     text,
     className,
     uploadSignature,
-    writeSignature = true,
+    writeSignature = false,
 }: IInPageSignatureProps) {
     const { language } = useLanguage();
 
