@@ -150,8 +150,8 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
         <div className="border border-gray-300 rounded-b-xl p-1">
           <div className="flex justify-between gap-2">
             {!showImage ? (
-              <div className="flex w-full gap-2 p-1">
-                <div className="w-2/3">
+              <div className="flex w-full gap-2 p-1 flex-row flex-nowrap items-center">
+                <div className="flex-1 max-w-[48%]">
                   <Dropdown
                     name="font_type"
                     label={""}
@@ -161,7 +161,7 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
                     filter={false}
                   />
                 </div>
-                <div className="w-1/3">
+                <div className="flex-1 max-w-[48%]">
                   <Dropdown
                     name="font_size"
                     label={""}
