@@ -1,0 +1,12 @@
+.kemis-library-signature-write-dropdown-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.kemis-library-signature-write-dropdown-item {
+    flex: 1;
+    max-width: 48%;
+}
