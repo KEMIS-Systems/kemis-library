@@ -9,33 +9,33 @@ const returnFontsArray = () => {
   const fonts = [
     {
       value: 1,
-      label: "Imperial Script",
+      label: "Ms Madi",
       className: "text-xl",
-      family: "'Imperial Script'",
+      family: "'Ms Madi'",
     },
     {
       value: 2,
-      label: "Miss Fajardose",
+      label: "Mrs Saint Delafield",
       className: "text-xl",
-      family: "'Miss Fajardose'",
+      family: "'Mrs Saint Delafield'",
     },
     {
       value: 3,
-      label: "Waterfall",
+      label: "Bilbo",
       className: "text-xl",
-      family: "Waterfall",
+      family: "Bilbo",
     },
     {
       value: 4,
-      label: "Dancing Script",
+      label: "Meow Script",
       className: "text-xl",
-      family: "'Dancing Script'",
+      family: "'Meow Script'",
     },
     {
       value: 5,
-      label: "Great Vibes",
+      label: "Yellowtail",
       className: "text-xl",
-      family: "'Great Vibes'",
+      family: "Yellowtail",
     },
     {
       value: 6,

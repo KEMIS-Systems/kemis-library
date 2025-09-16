@@ -54,7 +54,7 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
       const context = canvas.getContext("2d");
       if (context) {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.font = `${fontSizeSelected}px ${fontType}`;
+        context.font = `${fontSizeSelected}px ${fontType}, sans-serif`;
         context.textBaseline = "middle";
         context.fillStyle = colorDraw;
         const textWidth = context.measureText(text).width;
