@@ -45,16 +45,16 @@ const returnFontsArray = () => {
     },
   ];
 
-  if (typeof window !== "undefined" && WebFont) {
-    WebFont.load({
-      google: {
-        families: fonts.map((font) => font.family),
-      },
-      active: () => {
-        // Font loading completed, you can perform any necessary actions here
-      },
-    });
-  }
+  // if (typeof window !== "undefined" && WebFont) {
+  //   WebFont.load({
+  //     google: {
+  //       families: fonts.map((font) => font.family),
+  //     },
+  //     active: () => {
+  //       // Font loading completed, you can perform any necessary actions here
+  //     },
+  //   });
+  // }
 
   return fonts.map((font) => ({
     ...font,

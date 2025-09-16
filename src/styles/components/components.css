@@ -7,6 +7,12 @@
 @import url("./SignatureDialog/index.css");
 @import url("./WriteSignature/index.css");
 
+/*
+    FAMILIA DE FONTES
+*/
+@import url('https://fonts.googleapis.com/css2?family=Bilbo&family=Meow+Script&family=Mrs+Saint+Delafield&family=Ms+Madi&family=Sacramento&family=Yellowtail&display=swap');
+
+
 .kemis-library-button-cancel {
     background-color: #c9c9c9 !important;
 }
