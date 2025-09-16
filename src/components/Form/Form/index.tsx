@@ -48,7 +48,7 @@ const Form = <T extends object>({
   forwardback,
   form,
   children,
-}: IProps<T>) => {
+}: IProps<T>) => {  
   const { language } = useLanguage();
   const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(false);

@@ -64,6 +64,8 @@ const FormDialog = <T extends object>({
 }: IProps<T>) => {
   const { language } = useLanguage();
 
+  const { isSubmitting } = form.formState
+
   const handleHide = useCallback(() => {
     form.reset();
     onHide();
@@ -75,7 +77,7 @@ const FormDialog = <T extends object>({
         <div>
           <button
             type="button"
-            className="bg-light text-white py-2 px-4 rounded-lg font-bold"
+            className="kemis-library-button-cancel text-white py-2 px-4 rounded-lg font-bold"
             onClick={() => handleHide()}
           >
             {language.input.button_cancel}
@@ -86,15 +88,20 @@ const FormDialog = <T extends object>({
             <button
               type="submit"
               form="kemis-library-form"
-              className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
+              data-submitting={isSubmitting}
+              className="kemis-library-button-submitting text-white py-2 px-4 rounded-lg font-bold"
             >
-              {language.input.button_save}
+              {
+                isSubmitting ? language.input.button_wait : language.input.button_save
+              }
             </button>
           </div>
         )}
       </div>
     );
-  }, []);
+  }, [isSubmitting]);
+
+  // const handleSubmit = useCallback((d: T) => debounce(250, onSubmit, d), [onSubmit])
 
   return (
     <Dialog
@@ -111,6 +118,7 @@ const FormDialog = <T extends object>({
         dataEdit={dataEdit}
         url={url}
         onSubmit={onSubmit}
+        // onSubmit={d => debounce(250, onSubmit, d)}
         getFormData={getFormData}
         onRefreshTable={onRefreshTable}
         form={form}

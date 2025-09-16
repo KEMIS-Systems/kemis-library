@@ -1,4 +1,21 @@
+/*
+    NÃO ALTERE OU EXCLUA ESTE ARQUIVO
+*/
+
 @import url("./InputData/index.css");
 @import url("./SignatureInPage/index.css");
 @import url("./SignatureDialog/index.css");
 @import url("./WriteSignature/index.css");
+
+.kemis-library-button-cancel {
+    background-color: #c9c9c9 !important;
+}
+
+.kemis-library-button-submitting {
+    background-color: #2e90fd !important;
+}
+
+.kemis-library-button-submitting[data-submitting=true] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

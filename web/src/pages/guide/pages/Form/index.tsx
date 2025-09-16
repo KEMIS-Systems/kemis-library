@@ -1,4 +1,6 @@
 // Sub Pages
+import { FormDialog } from "./FormDialog";
+import type { IFormDialogProps } from "./FormDialog/types";
 import { InputDate } from "./InputDate";
 import type { IInputDateProps } from "./InputDate/types";
 
@@ -12,7 +14,7 @@ export const Form = {
     Dropdown: () => <h1>Dropdown</h1>,
     EditorHtml: () => <h1>EditorHtml</h1>,
     Form: () => <h1>Form</h1>,
-    FormDialog: () => <h1>FormDialog</h1>,
+    FormDialog: (args: IFormDialogProps) => <FormDialog {...args} />,
     InputCellPhone: () => <h1>InputCellPhone</h1>,
     InputFile: () => <h1>InputFile</h1>,
     InputImage: () => <h1>InputImage</h1>,

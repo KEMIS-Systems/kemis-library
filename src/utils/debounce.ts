@@ -7,6 +7,8 @@ export function debounce(
 
   if (DEBOUNCE_ID) clearTimeout(DEBOUNCE_ID as unknown as NodeJS.Timeout);
 
+  console.table(callback)
+  
   const DEBOUNCE_CREATED_ID = setTimeout(() => {
     if (callback && typeof callback === 'function') callback(...params);
   }, time);
