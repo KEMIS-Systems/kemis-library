@@ -49,20 +49,30 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
   }, [form]);
 
   const drawText = useCallback(() => {
-
-    const TEXT_TRANSFORM = setCapitalizeText(text)
+    const TEXT_TRANSFORM = setCapitalizeText(text);
 
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
       if (context) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        // Ajuste para alta definição
+        const ratio = window.devicePixelRatio || 1;
+        const width = canvas.offsetWidth;
+        const height = canvas.offsetHeight;
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+        context.scale(ratio, ratio);
+
+        context.clearRect(0, 0, width, height);
         context.font = `${fontSizeSelected}px ${fontType}, sans-serif`;
         context.textBaseline = "middle";
         context.fillStyle = colorDraw;
         const textWidth = context.measureText(TEXT_TRANSFORM).width;
-        const x = (canvas.width - textWidth) / 2;
-        const y = canvas.height / 2;
+        const x = (width - textWidth) / 2;
+        const y = height / 2;
 
         context.fillText(TEXT_TRANSFORM, x, y);
       }

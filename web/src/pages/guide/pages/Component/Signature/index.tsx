@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 // Types
@@ -11,6 +11,43 @@ import { PathTrace } from "@src/components/PathTrace";
 export function Signature(_props: ISignatureProps) {
     const { pages } = useLoaderData() as TPages
     const [signature, setSignature] = useState<File | null>(null)
+
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    const drawText = useCallback(() => {
+        const TEXT_TRANSFORM = "Pedro Guilherme Faria Duarte"
+
+        if (canvasRef.current) {
+            const canvas = canvasRef.current;
+            const context = canvas.getContext("2d");
+            if (context) {
+                // Ajuste para alta definição
+                const ratio = window.devicePixelRatio || 1;
+                const width = canvas.offsetWidth;
+                const height = canvas.offsetHeight;
+                canvas.width = width * ratio;
+                canvas.height = height * ratio;
+                canvas.style.width = `${width}px`;
+                canvas.style.height = `${height}px`;
+                context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+                context.scale(ratio, ratio);
+
+                context.clearRect(0, 0, width, height);
+                context.font = `20px Arial, sans-serif`;
+                context.textBaseline = "middle";
+                context.fillStyle = '#000';
+                const textWidth = context.measureText(TEXT_TRANSFORM).width;
+                const x = (width - textWidth) / 2;
+                const y = height / 2;
+
+                context.fillText(TEXT_TRANSFORM, x, y);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        drawText()
+    }, [])
 
     return <>
         <span className="w-full h-full overflow-y-auto flex flex-col justify-between gap-10 relative">
@@ -37,16 +74,15 @@ export function Signature(_props: ISignatureProps) {
                             py-12
                         "
                     >
-                        {/* <DialogComponent visible={true} header='' className="" onHide={() => false}>
-                            <DrawSignatureComponent
-                                onChange={e => setSignature(e)}
-                            />
-
-                            <button onClick={() => console.table(signature)} data-show={signature && true} className="hidden data-[show=true]:flex p-4 bg-blue-500 rounded-md text-center font-semibold text-white">continuar</button>
-                        </DialogComponent> */}
-
-                        {/* <DrawSignatureComponent.Dialog show={true} header='Desenhar' classNameDialog="" onHide={() => false} onSubmitted={() => ({})} /> */}
-                        {/* <DrawSignatureComponent.InPage onSubmitted={() => ({})} /> */}
+                        <div className="flex flex-column w-full h-20">
+                            <canvas
+                                id="signature"
+                                ref={canvasRef}
+                                className="w-full h-full border border-gray-300 rounded-lg"
+                            >
+                                Your browser does not support the canvas element.
+                            </canvas>
+                        </div>
                     </span>
                 </span>
 
