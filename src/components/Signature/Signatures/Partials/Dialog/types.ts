@@ -4,6 +4,6 @@ export interface IDialogSignatureProps  extends Omit<ISignaturesProps, 'setFileD
     header: string;
     show: boolean;
     onHide: () => void;
-    onSubmitted: (file: File) => void;    
+    onSubmitted: (file: File) => Promise<void>
     classNameDialog?: string;    
 }
