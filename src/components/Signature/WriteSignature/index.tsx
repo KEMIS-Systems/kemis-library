@@ -49,6 +49,9 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
   }, [form]);
 
   const drawText = useCallback(() => {
+
+    const TEXT_TRANSFORM = setCapitalizeText(text)
+
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
@@ -57,11 +60,11 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
         context.font = `${fontSizeSelected}px ${fontType}, sans-serif`;
         context.textBaseline = "middle";
         context.fillStyle = colorDraw;
-        const textWidth = context.measureText(text).width;
+        const textWidth = context.measureText(TEXT_TRANSFORM).width;
         const x = (canvas.width - textWidth) / 2;
         const y = canvas.height / 2;
 
-        context.fillText(text, x, y);
+        context.fillText(TEXT_TRANSFORM, x, y);
       }
     }
   }, [fontSizeSelected, fontType, text, colorDraw]);
@@ -78,6 +81,27 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
       }
     });
   }, [fontTypeSelected, fonts, drawText]);
+
+  function setCapitalizeText(arg: string = "") {
+    try {
+      if (!arg || arg.trim() === '') return arg;
+
+      return arg
+        .trim()
+        .toLowerCase()
+        .split(" ")
+        .reduce(
+          (a, b) =>
+            a.concat(
+              (" " + b.charAt(0))
+                .toUpperCase()
+                .concat(
+                  b.slice(1))),
+          '')
+    } catch (error) {
+      return arg;
+    }
+  }
 
   const handleBringColor = useCallback((value: string) => {
     setColorDraw(value);
