@@ -43,6 +43,9 @@ const ShowFile = ({
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
+   const isSafari = () =>
+    /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   useEffect(() => {
     api
       .get<Blob>(url, {
@@ -108,10 +111,17 @@ const ShowFile = ({
           />
         </div>
       )}
-      {pdfUrl && (
+      {pdfUrl && isSafari() === false && (
         <iframe
           src={pdfUrl}
           title={header}
+          className="w-full min-h-screen max-h-screen"
+        />
+      )}
+      {pdfUrl && isSafari() === true &&(
+        <embed
+          src={String(pdfUrl)}
+          type="application/pdf"
           className="w-full min-h-screen max-h-screen"
         />
       )}
