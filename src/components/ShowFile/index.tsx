@@ -122,7 +122,7 @@ const ShowFile = ({
         <embed
           src={String(pdfUrl)}
           type="application/pdf"
-          className="w-full min-h-screen max-h-screen"
+          className="w-full min-h-screen h-8/10 h-dvw"
         />
       )}
       <Toast ref={toast} />
