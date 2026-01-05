@@ -21,6 +21,7 @@ export function DialogSignature({
     writeSignature = false,
 }: IDialogSignatureProps) {
     const { language } = useLanguage();
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [fileData, setFileData] = useState<File>({} as File);
 
     const handleFooterDialog = useCallback(() => {
@@ -39,10 +40,16 @@ export function DialogSignature({
                     <div>
                         <button
                             type="submit"
-                            className="bg-primary text-white py-2 px-4 rounded-lg font-bold"
-                            onClick={() => onSubmitted(fileData)}
+                            onClick={() => {
+                                setIsSubmitting(true)
+                                onSubmitted(fileData).then(_r => setIsSubmitting(false))
+                            }}
+                            data-submitting={isSubmitting}
+                            className="kemis-library-button-submitting text-white py-2 px-4 rounded-lg font-bold"
                         >
-                            {language.input.button_save}
+                            {
+                                isSubmitting ? language.input.button_wait : language.input.button_save
+                            }
                         </button>
                     </div>
                 ) : (

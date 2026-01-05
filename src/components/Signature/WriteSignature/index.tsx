@@ -36,6 +36,9 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
     { value: 14, label: "14px" },
     { value: 16, label: "16px" },
     { value: 20, label: "20px" },
+    { value: 24, label: "24px" },
+    { value: 28, label: "28px" },
+    { value: 36, label: "36px" },
   ];
   const [fontType, setFontType] = useState<string>(
     fonts[1].script.style.fontFamily
