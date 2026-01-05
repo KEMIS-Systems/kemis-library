@@ -9,3 +9,9 @@
 # production
 /build
 .DS_Store
+
+# Manager
+yarn
+*.lock
+lock.*
+packge-lock.json

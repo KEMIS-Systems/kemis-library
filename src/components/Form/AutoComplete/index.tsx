@@ -1,5 +1,6 @@
 import { AutoComplete as AutoCompletePrime } from "primereact/autocomplete";
 import { Button as ButtonPrime } from "primereact/button";
+import { SelectItemOptionsType } from "primereact/selectitem";
 import { classNames } from "primereact/utils";
 import React, { ReactNode } from "react";
 import {
@@ -10,7 +11,6 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import MessageError from "../MessageError";
-import { SelectItemOptionsType } from "primereact/selectitem";
 
 interface IProps<T extends FieldValues> {
   className?: string;
@@ -22,9 +22,9 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   disabled?: boolean;
   itemTemplate?:
-    | ReactNode
-    | ((suggestion: any, index: number) => React.ReactNode);
-  forceSelection?:boolean;
+  | ReactNode
+  | ((suggestion: any, index: number) => React.ReactNode);
+  forceSelection?: boolean;
   handleSearch: (event: { query: string }) => void;
   handleAddButton?: () => void;
 }
