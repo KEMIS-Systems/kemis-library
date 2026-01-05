@@ -92,6 +92,7 @@ const InputDate = <T extends object>({
                 placeholder="dia / mês / ano"
                 showIcon
                 showButtonBar
+                showTime
                 // @ts-ignore
                 onChange={(e) => form.setValue(name, e.value)}
                 inputRef={el => {
