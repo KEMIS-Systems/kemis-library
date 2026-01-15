@@ -41,11 +41,11 @@ const InputDate = <T extends object>({
   autoFocus,
   className,
   view,
-  showTime,
   timeOnly,
   hourFormat,
   selectionMode,
   readOnlyInput = false,
+  showTime = false,
 }: IProps<T>) => {
   const [date, setDate] = useState<string>('')
 
@@ -92,7 +92,7 @@ const InputDate = <T extends object>({
                 placeholder="dia / mês / ano"
                 showIcon
                 showButtonBar
-                showTime
+                showTime={showTime}
                 // @ts-ignore
                 onChange={(e) => form.setValue(name, e.value)}
                 inputRef={el => {

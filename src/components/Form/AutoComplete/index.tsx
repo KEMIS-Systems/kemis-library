@@ -17,6 +17,7 @@ interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
   label: string;
   suggestions: SelectItemOptionsType;
+  value?: string;
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
