@@ -1,6 +1,6 @@
 {
   "name": "kemis-library",
-  "version": "2.13.74",
+  "version": "2.13.75",
   "description": "Kemis package for creating forms, which mainly uses the 'primereact' library.",
   "homepage": "https://github.com/KEMIS-Systems/components",
   "main": "index.js",
@@ -47,7 +47,7 @@
   "license": "ISC",
   "dependencies": {
     "@hookform/resolvers": "^3.2.0",
-    "caniuse-lite": "^1.0.30001737",
+    "caniuse-lite": "^1.0.30001767",
     "css-loader": "^7.1.2",
     "file-saver": "^2.0.5",
     "next": "^13.4.4",

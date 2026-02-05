@@ -43,7 +43,7 @@ const ShowFile = ({
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
-   const isSafari = () =>
+  const isSafari = () =>
     /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   useEffect(() => {
@@ -53,6 +53,12 @@ const ShowFile = ({
         responseType: "blob",
       })
       .then((response) => {
+        const ORIGINAL_FILE_NAME = (response.headers['Content-Disposition'] as string)
+          ?.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)
+          ?.
+        [1]
+          ?.replace(/['"]/g, '') || 'original_file_name'
+
         if (response.status !== 200 || !window) {
           setShowLoading(false);
           toast?.current?.show({
@@ -70,9 +76,7 @@ const ShowFile = ({
 
         if (response.headers["content-type"]?.toString().includes("pdf")) {
           setPdfUrl(generateUrlBlob(response));
-        }
-
-        if (
+        } else if (
           response.headers["content-type"]?.toString().includes("image")
         ) {
           setImageUrl(
@@ -82,6 +86,9 @@ const ShowFile = ({
               })
             )
           );
+        } else {
+          saveAs(response.data, filename || ORIGINAL_FILE_NAME);
+          onHide && onHide()
         }
       })
       .catch(e => console.log(e))
@@ -118,7 +125,7 @@ const ShowFile = ({
           className="w-full min-h-screen max-h-screen"
         />
       )}
-      {pdfUrl && isSafari() === true &&(
+      {pdfUrl && isSafari() === true && (
         <embed
           src={String(pdfUrl)}
           type="application/pdf"
