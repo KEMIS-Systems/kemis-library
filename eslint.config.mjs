@@ -36,11 +36,11 @@ export default [
       "no-irregular-whitespace": "warn",
     },
   },
-  // Override for setupTests.js: it uses CommonJS + Node globals
+  // Override for setupTests.ts: it uses Node globals for JSDOM setup
   {
-    files: ["src/setupTests.js"],
+    files: ["src/setupTests.ts"],
     languageOptions: {
-      globals: { ...globals.node, ...globals.commonjs, ...globals.browser },
+      globals: { ...globals.node, ...globals.browser },
     },
     rules: {
       "@typescript-eslint/no-require-imports": "off",
