@@ -156,3 +156,11 @@ export default ModalForm;
 ## Author
 
 Nicanor Orlando
+
+## Release
+
+Releases are automated via Changesets + GitHub Actions. To enable publishing:
+
+1. Generate an npm Automation token (`npm token create --automation`).
+2. Add it as `NPM_TOKEN` in the repo's GitHub Actions secrets.
+3. Merge a Changesets "Version Packages" PR to `master` — the workflow publishes automatically.
