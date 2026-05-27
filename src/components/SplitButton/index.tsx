@@ -164,7 +164,6 @@ export function SplitButton(props: ISplitButtonProps) {
             props.buttonLabelClassName
           )}
         >
-          {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
           {props.dropListIcon || <BsThreeDotsVertical size={24} />}
         </label>
 

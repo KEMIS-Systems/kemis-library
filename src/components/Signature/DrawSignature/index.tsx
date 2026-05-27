@@ -91,7 +91,6 @@ const DrawSignature = ({ onChange }: IModalProps) => {
                 className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
                 onClick={handleCanvasNextStep}
               >
-                {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
                 <BsCheck2Circle size={20} />
               </button>
               <button
@@ -99,7 +98,6 @@ const DrawSignature = ({ onChange }: IModalProps) => {
                 className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
                 onClick={handleCanvasPreviewStep}
               >
-                {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
                 <BiTrash size={20} />
               </button>
             </div>

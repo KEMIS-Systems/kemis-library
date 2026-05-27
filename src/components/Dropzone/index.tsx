@@ -51,7 +51,6 @@ const Dropzone = ({
       style={style}
     >
       <input {...getInputProps()} />
-      {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
       <AiOutlineCloudUpload size="40" />
       <p className="cursor-pointer text-center font-semibold text-gray-500 text-xs">
         {language.components.dropzone.message}
