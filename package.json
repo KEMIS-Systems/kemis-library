@@ -51,7 +51,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css,md,json}\"",
     "version": "git add package.json && git commit -m 'Bump version'",
-    "merge": "git pull && git push origin v2:master && git checkout master && git pull && git checkout v2"
+    "merge": "git pull && git push origin v2:master && git checkout master && git pull && git checkout v2",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -112,8 +113,10 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^17.6.0",
     "happy-dom": "^20.9.0",
+    "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "jsdom-global": "^3.0.2",
+    "lint-staged": "^17.0.5",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
@@ -132,5 +135,9 @@
     "typescript-eslint": "^8.60.0",
     "vitest": "^4.1.7",
     "yup": "^0.32.11"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+    "src/**/*.{css,md,json}": ["prettier --write"]
   }
 }
