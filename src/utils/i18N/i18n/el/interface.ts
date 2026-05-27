@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Δεν βρέθηκαν αποτελέσματα",
   oneSearchResult: "Βρέθηκε 1 αποτέλεσμα",
   multipleSearchResults: "Βρέθηκαν ${count} αποτελέσματα",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Νησί της Ανάληψης",
   xk: "Κοσσυφοπέδιο",

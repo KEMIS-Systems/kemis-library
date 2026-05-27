@@ -1,8 +1,5 @@
 import { Button as ButtonPrime } from "primereact/button";
-import {
-  InputNumber as InputNumberPrime,
-  InputNumberProps,
-} from "primereact/inputnumber";
+import { InputNumber as InputNumberPrime, InputNumberProps } from "primereact/inputnumber";
 import { classNames } from "primereact/utils";
 import React, { ReactElement, useState } from "react";
 import {
@@ -28,7 +25,7 @@ interface IProps<T extends FieldValues> extends Partial<InputNumberProps> {
   defaultMoney?: boolean;
   iconAddButton?: string;
   handleAddButton?: () => void;
-  child?: ReactElement
+  child?: ReactElement;
 }
 
 const InputNumber = <T extends object>({
@@ -80,24 +77,21 @@ const InputNumber = <T extends object>({
                   htmlFor={field.name}
                   data-hasdisabled={disabled}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block data-[hasdisabled=true]:text-slate-200"
+                    classNames({ "text-red-400 ": fieldState.error }) +
+                    " block data-[hasdisabled=true]:text-slate-200"
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <InputStyles>
-                  <div 
-                    data-hasbutton={handleAddButton && true} 
+                  <div
+                    data-hasbutton={handleAddButton && true}
                     className={`flex flex-row items-center justify-start gap-2 ${handleAddButton && "p-inputgroup"}`}
                   >
                     {/* @ts-ignore  @ts-nocheck */}
                     <InputNumberPrime
-                     {...field}
+                      {...field}
                       id={field.name}
                       {...(defaultMoney ? moneyInputMode : {})}
                       className={
@@ -111,20 +105,16 @@ const InputNumber = <T extends object>({
                       onBlur={(event) => setValue(Number(event.target.value))}
                       {...rest}
                     />
-                    {
-                      handleAddButton && (
-                        <ButtonPrime
-                          type="button"
-                          icon={`${iconAddButton ? iconAddButton : 'pi pi-plus' }`}
-                          className="p-button-success"
-                          disabled={disabled}
-                          onClick={() => handleAddButton()}
-                        />
-                      )
-                    }
-                    {
-                      child && <>{child}</>
-                    }
+                    {handleAddButton && (
+                      <ButtonPrime
+                        type="button"
+                        icon={`${iconAddButton ? iconAddButton : "pi pi-plus"}`}
+                        className="p-button-success"
+                        disabled={disabled}
+                        onClick={() => handleAddButton()}
+                      />
+                    )}
+                    {child && <>{child}</>}
                   </div>
                   {<MessageError fieldState={fieldState} />}
                 </InputStyles>
@@ -133,7 +123,6 @@ const InputNumber = <T extends object>({
           }}
         />
       )}
-     
     </div>
   );
 };

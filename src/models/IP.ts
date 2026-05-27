@@ -1,5 +1,5 @@
 export default interface IMIP {
-  status: 'OK' | 'ERROR';
+  status: "OK" | "ERROR";
   ip?: string;
   city?: string;
   country?: string;

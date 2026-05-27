@@ -43,7 +43,7 @@ const MultiSelect = <T extends object>({
   className,
   optionGroupLabel,
   optionGroupChildren,
-  itemTemplate
+  itemTemplate,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -59,15 +59,12 @@ const MultiSelect = <T extends object>({
                 htmlFor={field.name}
                 data-hasdisabled={disabled}
                 className={
-                  classNames({ "text-red-400 ": fieldState.error }) + " block data-[hasdisabled=true]:text-slate-200"
+                  classNames({ "text-red-400 ": fieldState.error }) +
+                  " block data-[hasdisabled=true]:text-slate-200"
                 }
               >
                 {label}
-                {rules?.required ? (
-                  <span className="text-slate-300"> *</span>
-                ) : (
-                  ""
-                )}
+                {rules?.required ? <span className="text-slate-300"> *</span> : ""}
               </label>
               <div className={`${handleAddButton && "p-inputgroup"}`}>
                 <MultiSelectPrime
@@ -81,8 +78,7 @@ const MultiSelect = <T extends object>({
                   disabled={disabled}
                   display="chip"
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) +
-                    " w-full disabled:bg-slate-100"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
                   }
                   {...field}
                   ref={ref}

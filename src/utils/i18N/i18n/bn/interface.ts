@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "কোন ফলাফল পাওয়া যায়নি",
   oneSearchResult: "1টি ফলাফল পাওয়া গেছে",
   multipleSearchResults: "${count} ফলাফল পাওয়া গেছে",
-  
+
   // additional countries (not supported by country-list library)
   ac: "অ্যাসেনশন দ্বীপ",
   xk: "কসোভো",

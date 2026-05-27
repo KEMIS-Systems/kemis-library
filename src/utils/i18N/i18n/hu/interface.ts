@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Nincs találat",
   oneSearchResult: "1 találat",
   multipleSearchResults: "${count} találat",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Ascension-sziget",
   xk: "Koszovó",

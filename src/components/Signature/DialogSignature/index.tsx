@@ -77,9 +77,7 @@ const DialogSignature = ({
           <DrawSignature onChange={setFileData} />
         </TabPanel>
         {uploadSignature && (
-          <TabPanel
-            header={language.components.signature.header_uploading.title}
-          >
+          <TabPanel header={language.components.signature.header_uploading.title}>
             <UploadSignature onChange={setFileData} />
           </TabPanel>
         )}

@@ -11,15 +11,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const Dialog = ({
-  header,
-  visible,
-  maximizable,
-  className,
-  footer,
-  onHide,
-  children,
-}: IProps) => {
+const Dialog = ({ header, visible, maximizable, className, footer, onHide, children }: IProps) => {
   return (
     <DialogPrime
       header={header}

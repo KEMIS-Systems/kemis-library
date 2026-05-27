@@ -5,15 +5,7 @@ import { AxiosInstance } from "axios";
 import ShowFile from "../ShowFile";
 
 interface P {
-  [key: string]:
-    | string
-    | number
-    | string[]
-    | number[]
-    | Date
-    | Date[]
-    | boolean
-    | undefined;
+  [key: string]: string | number | string[] | number[] | Date | Date[] | boolean | undefined;
 }
 
 interface IModalProps {

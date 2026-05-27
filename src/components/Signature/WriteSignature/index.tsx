@@ -19,7 +19,6 @@ interface IProps {
 interface IWriteSignature {
   font_type: number;
   font_size: number;
-
 }
 
 const defaultValues: IWriteSignature = {} as IWriteSignature;
@@ -40,9 +39,7 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
     { value: 28, label: "28px" },
     { value: 36, label: "36px" },
   ];
-  const [fontType, setFontType] = useState<string>(
-    fonts[1].script.style.fontFamily
-  );
+  const [fontType, setFontType] = useState<string>(fonts[1].script.style.fontFamily);
   const fontTypeSelected = form.watch("font_type");
   const fontSizeSelected = form.watch("font_size");
 
@@ -97,20 +94,13 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
 
   function setCapitalizeText(arg: string = "") {
     try {
-      if (!arg || arg.trim() === '') return arg;
+      if (!arg || arg.trim() === "") return arg;
 
       return arg
         .trim()
         .toLowerCase()
         .split(" ")
-        .reduce(
-          (a, b) =>
-            a.concat(
-              (" " + b.charAt(0))
-                .toUpperCase()
-                .concat(
-                  b.slice(1))),
-          '')
+        .reduce((a, b) => a.concat((" " + b.charAt(0)).toUpperCase().concat(b.slice(1))), "");
     } catch (error) {
       return arg;
     }
@@ -143,13 +133,13 @@ const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
   }, [onChange]);
 
   useEffect(() => {
-    if (!canvasRef.current) return
+    if (!canvasRef.current) return;
 
-    toBlob(canvasRef.current).then(d => {
+    toBlob(canvasRef.current).then((d) => {
       const file = blobToFile(d, "signature.png");
       onChange(file);
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <>

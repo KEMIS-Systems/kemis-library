@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "ไม่พบผลลัพธ์",
   oneSearchResult: "พบผลลัพธ์ 1 รายการ",
   multipleSearchResults: "พบผลลัพธ์ ${count} รายการ",
-  
+
   // additional countries (not supported by country-list library)
   ac: "เกาะแอสเซนชัน",
   xk: "โคโซโว",

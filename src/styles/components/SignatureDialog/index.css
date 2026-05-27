@@ -1,33 +1,33 @@
 .kemis-library-in-page-signature {
-    width: 100%;
-    min-height: 100%;
-    height: 100%;
-    padding: 16px;
-    border-radius: 16px;
-    border: 1px dashed #f5f5f5;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px dashed #f5f5f5;
 }
 
 .kemis-library-in-page-signature-warning {
-    font-size: 14px;
-    color: #d5d5d5;
-    font-weight: 500;
-    margin-bottom: 10px;
-    
-    display: none;
-    flex-flow: row nowrap;
-    align-items: center;        
-    justify-content: flex-start;
-    gap: 10px;
+  font-size: 14px;
+  color: #d5d5d5;
+  font-weight: 500;
+  margin-bottom: 10px;
+
+  display: none;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 @media screen and (min-width: 340px) and (max-width: 640px) and (orientation: portrait) {
-    .kemis-library-in-page-signature-warning {    
-       display: flex;
-    }
+  .kemis-library-in-page-signature-warning {
+    display: flex;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .kemis-library-in-page-signature-warning {
-       display: none;
-    }
+  .kemis-library-in-page-signature-warning {
+    display: none;
+  }
 }

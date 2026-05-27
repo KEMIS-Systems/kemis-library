@@ -1,7 +1,4 @@
-import {
-  InputMask as InputMaskPrime,
-  InputMaskProps,
-} from "primereact/inputmask";
+import { InputMask as InputMaskPrime, InputMaskProps } from "primereact/inputmask";
 import { classNames } from "primereact/utils";
 import React, { InputHTMLAttributes } from "react";
 import {
@@ -28,14 +25,7 @@ interface IInputMaskProps<T extends FieldValues> extends TInputMask {
   name: string;
 }
 
-function InputMask({
-  rules,
-  form,
-  name,
-  label,
-  className,
-  ...props
-}: IInputMaskProps<any>) {
+function InputMask({ rules, form, name, label, className, ...props }: IInputMaskProps<any>) {
   return (
     <div className={className ?? ""}>
       {form && (
@@ -48,16 +38,10 @@ function InputMask({
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
+                  className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <InputMaskPrime
                   {...field}
@@ -66,8 +50,7 @@ function InputMask({
                   name={field.name}
                   id={field.name}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) +
-                    " w-full disabled:bg-slate-100"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
                   }
                 />
                 {<MessageError fieldState={fieldState} />}

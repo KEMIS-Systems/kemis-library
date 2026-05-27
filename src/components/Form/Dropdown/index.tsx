@@ -21,8 +21,8 @@ interface IProps<T extends FieldValues> {
   optionGroupLabel?: string;
   optionGroupChildren?: string;
   optionGroupTemplate?: (option: any, index?: number) => React.ReactNode;
-  valueTemplate?:React.ReactNode | JSX.Element;
-  itemTemplate?:React.ReactNode | JSX.Element;
+  valueTemplate?: React.ReactNode | JSX.Element;
+  itemTemplate?: React.ReactNode | JSX.Element;
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   autoFocus?: boolean;
@@ -59,16 +59,10 @@ const Dropdown = <T extends object>({
           <>
             <label
               htmlFor={field.name}
-              className={
-                classNames({ "text-red-400 ": fieldState.error }) + " block"
-              }
+              className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
             >
               {label}
-              {rules?.required ? (
-                <span className="text-slate-300"> *</span>
-              ) : (
-                ""
-              )}
+              {rules?.required ? <span className="text-slate-300"> *</span> : ""}
             </label>
             <div className={`${handleAddButton && "p-inputgroup"}`}>
               <DropdownPrime

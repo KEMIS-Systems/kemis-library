@@ -15,12 +15,7 @@ interface IProps<T extends FieldValues> {
   form: UseFormReturn<T>;
 }
 
-const InputImage = <T extends object>({
-  name,
-  handleChange,
-  rules,
-  form,
-}: IProps<T>) => {
+const InputImage = <T extends object>({ name, handleChange, rules, form }: IProps<T>) => {
   const [fileChanged, setFileChanged] = useState<boolean>(false);
 
   const handleFileChange = useCallback(
@@ -43,9 +38,7 @@ const InputImage = <T extends object>({
             rules={rules}
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             render={({ field: { ref, onChange, ...field }, fieldState }) => {
-              return (
-                <input type="file" {...field} ref={ref} className="hidden" />
-              );
+              return <input type="file" {...field} ref={ref} className="hidden" />;
             }}
           />
           <label htmlFor={name}>

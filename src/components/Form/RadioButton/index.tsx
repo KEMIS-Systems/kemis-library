@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  RadioButtonChangeEvent,
-  RadioButton as RadioButtonPrime,
-} from "primereact/radiobutton";
+import { RadioButtonChangeEvent, RadioButton as RadioButtonPrime } from "primereact/radiobutton";
 import {
   Controller,
   RegisterOptions,
@@ -80,11 +77,7 @@ const RadioButton = <T extends object>({
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
               </>
             );

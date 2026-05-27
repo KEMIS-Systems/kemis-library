@@ -88,12 +88,7 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
   }, [imagePreview]);
 
   return (
-    <Dialog
-      visible={show}
-      onHide={handleClose}
-      footer={footerContent}
-      className="w-full sm:w-1/3"
-    >
+    <Dialog visible={show} onHide={handleClose} footer={footerContent} className="w-full sm:w-1/3">
       <div>
         {!imagePreview ? (
           <>
@@ -113,7 +108,7 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
                 type="button"
                 className="bg-kemis text-white px-2 py-2 rounded-full"
                 onClick={handleTakePhoto}
-              >                
+              >
                 <MdCameraAlt size={30} />
               </button>
             </div>

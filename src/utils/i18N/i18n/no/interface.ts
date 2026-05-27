@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Ingen resultater funnet",
   oneSearchResult: "1 resultat funnet",
   multipleSearchResults: "${count} resultater funnet",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Ascension Island",
   xk: "Kosovo",

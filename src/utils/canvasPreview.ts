@@ -1,4 +1,4 @@
-import { PixelCrop } from 'react-image-crop';
+import { PixelCrop } from "react-image-crop";
 
 const TO_RADIANS = Math.PI / 180;
 
@@ -10,10 +10,10 @@ const canvasPreview = (
   rotate = 0
 ): void => {
   const newCanvas = canvas;
-  const ctx = newCanvas.getContext('2d');
+  const ctx = newCanvas.getContext("2d");
 
   if (!ctx) {
-    throw new Error('No 2d context');
+    throw new Error("No 2d context");
   }
 
   const scaleX = image.naturalWidth / image.width;
@@ -24,7 +24,7 @@ const canvasPreview = (
   newCanvas.height = Math.floor(crop.height * scaleY * pixelRatio);
 
   ctx.scale(pixelRatio, pixelRatio);
-  ctx.imageSmoothingQuality = 'high';
+  ctx.imageSmoothingQuality = "high";
 
   const cropX = crop.x * scaleX;
   const cropY = crop.y * scaleY;

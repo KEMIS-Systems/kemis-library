@@ -1,10 +1,9 @@
-
 body:has(.kemis-input-data:enabled:focus) .p-datepicker {
-    display: none !important;
-    pointer-events: none !important;
+  display: none !important;
+  pointer-events: none !important;
 }
 
 body:has(span.p-calendar:has(input:enabled:focus)) .p-datepicker {
-    display: none !important;
-    pointer-events: none !important;
+  display: none !important;
+  pointer-events: none !important;
 }

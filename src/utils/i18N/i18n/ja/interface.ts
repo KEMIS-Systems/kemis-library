@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "結果が見つかりません",
   oneSearchResult: "1 件の結果が見つかりました",
   multipleSearchResults: "${count} 件の結果が見つかりました",
-  
+
   // additional countries (not supported by country-list library)
   ac: "アセンション島",
   xk: "コソボ",

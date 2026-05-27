@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Tidak ada hasil yang ditemukan",
   oneSearchResult: "1 hasil ditemukan",
   multipleSearchResults: "${count} hasil ditemukan",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Pulau Kenaikan",
   xk: "Kosovo",

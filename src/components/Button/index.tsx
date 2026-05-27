@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 interface IButtonProps {
-  type: 'button' | 'submit' | 'reset' | undefined;
+  type: "button" | "submit" | "reset" | undefined;
   text: string;
 }
 

@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Nici un rezultat gasit",
   oneSearchResult: "1 rezultat găsit",
   multipleSearchResults: "${count} rezultate găsite",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Insula Ascensiunii",
   xk: "Kosovo",

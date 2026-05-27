@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance } from "axios";
 
 import IMIP from "../models/IP";
 
@@ -16,13 +16,11 @@ interface IMIPInfo {
 
 const getIP = async (api: AxiosInstance): Promise<IMIP> => {
   try {
-    const response = await api.get<IMIPInfo>(
-      'https://ipinfo.io/json?token=03971df7351540'
-    );
+    const response = await api.get<IMIPInfo>("https://ipinfo.io/json?token=03971df7351540");
     return new Promise<IMIP>((resolve) => {
-      const location = response.data.loc.split(',');
+      const location = response.data.loc.split(",");
       resolve({
-        status: 'OK',
+        status: "OK",
         ip: response.data.ip,
         city: response.data.city,
         country: response.data.country,
@@ -36,7 +34,7 @@ const getIP = async (api: AxiosInstance): Promise<IMIP> => {
       });
     });
   } catch (err) {
-    return { status: 'ERROR' };
+    return { status: "ERROR" };
   }
 };
 

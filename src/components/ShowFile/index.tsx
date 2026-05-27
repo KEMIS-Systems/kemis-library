@@ -8,15 +8,7 @@ import { generateUrlBlob } from "../../utils";
 import Loading from "../Loading";
 
 interface P {
-  [key: string]:
-  | string
-  | number
-  | string[]
-  | number[]
-  | Date
-  | Date[]
-  | boolean
-  | undefined;
+  [key: string]: string | number | string[] | number[] | Date | Date[] | boolean | undefined;
 }
 
 interface IModalProps {
@@ -29,22 +21,13 @@ interface IModalProps {
   onHide?: () => void;
 }
 
-const ShowFile = ({
-  api,
-  url,
-  header,
-  params,
-  filename,
-  forceDownload,
-  onHide,
-}: IModalProps) => {
+const ShowFile = ({ api, url, header, params, filename, forceDownload, onHide }: IModalProps) => {
   const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(true);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
-  const isSafari = () =>
-    /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  const isSafari = () => /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   useEffect(() => {
     api
@@ -53,11 +36,10 @@ const ShowFile = ({
         responseType: "blob",
       })
       .then((response) => {
-        const ORIGINAL_FILE_NAME = (response.headers['Content-Disposition'] as string)
-          ?.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)
-          ?.
-        [1]
-          ?.replace(/['"]/g, '') || 'original_file_name'
+        const ORIGINAL_FILE_NAME =
+          (response.headers["Content-Disposition"] as string)
+            ?.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)?.[1]
+            ?.replace(/['"]/g, "") || "original_file_name";
 
         if (response.status !== 200 || !window) {
           setShowLoading(false);
@@ -72,13 +54,11 @@ const ShowFile = ({
 
         if (forceDownload) saveAs(response.data, filename);
 
-        console.log(response.headers["content-type"]?.toString())
+        console.log(response.headers["content-type"]?.toString());
 
         if (response.headers["content-type"]?.toString().includes("pdf")) {
           setPdfUrl(generateUrlBlob(response));
-        } else if (
-          response.headers["content-type"]?.toString().includes("image")
-        ) {
+        } else if (response.headers["content-type"]?.toString().includes("image")) {
           setImageUrl(
             window.URL.createObjectURL(
               new Blob([response.data], {
@@ -88,10 +68,10 @@ const ShowFile = ({
           );
         } else {
           saveAs(response.data, filename || ORIGINAL_FILE_NAME);
-          onHide && onHide()
+          onHide && onHide();
         }
       })
-      .catch(e => console.log(e))
+      .catch((e) => console.log(e))
       .finally(() => setShowLoading(false));
   }, [url]);
 
@@ -101,7 +81,7 @@ const ShowFile = ({
         <a
           // @ts-ignore
           href={imageUrl || pdfUrl}
-          download={`${filename}.${imageUrl ? 'jpg' : 'pdf'}`}
+          download={`${filename}.${imageUrl ? "jpg" : "pdf"}`}
           rel="noopener"
           className="flex cursor-pointer flex-row items-center gap-2 text-blue-500 mb-2 font-bold"
         >
@@ -111,19 +91,11 @@ const ShowFile = ({
       </div>
       {imageUrl && !pdfUrl && (
         <div className="flex items-center justify-center min-w-full max-w-full min-h-full max-h-full">
-          <img
-            src={imageUrl}
-            alt={header}
-            className="w-full h-full object-scale-down"
-          />
+          <img src={imageUrl} alt={header} className="w-full h-full object-scale-down" />
         </div>
       )}
       {pdfUrl && isSafari() === false && (
-        <iframe
-          src={pdfUrl}
-          title={header}
-          className="w-full min-h-screen max-h-screen"
-        />
+        <iframe src={pdfUrl} title={header} className="w-full min-h-screen max-h-screen" />
       )}
       {pdfUrl && isSafari() === true && (
         <embed

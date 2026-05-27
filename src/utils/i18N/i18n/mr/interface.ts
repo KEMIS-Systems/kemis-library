@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "कोणतेही परिणाम आढळले नाहीत",
   oneSearchResult: "1 परिणाम आढळला",
   multipleSearchResults: "${count} परिणाम आढळले",
-  
+
   // additional countries (not supported by country-list library)
   ac: "असेन्शन बेट",
   xk: "कोसोवो",

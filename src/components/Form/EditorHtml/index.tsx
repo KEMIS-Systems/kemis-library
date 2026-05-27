@@ -31,52 +31,30 @@ const EditorHtml = <T extends object>({
   disabled,
   headerTemplate,
 }: IProps<T>) => {
-
   //AUX Variable
   const DEFAULT_HEADER_TEMPLATE = (
     <div id="toolbar">
       <span className="ql-formats" data-pc-section="formats">
-        <select
-          className="ql-header hidden"
-          data-pc-section="header"
-        >
+        <select className="ql-header hidden" data-pc-section="header">
           <option value="1" data-pc-section="option">
             Heading
           </option>
           <option value="2" data-pc-section="option">
             Subheading
           </option>
-          <option
-            value="0"
-            data-pc-section="option"
-            selected={false}
-          >
+          <option value="0" data-pc-section="option" selected={false}>
             Normal
           </option>
         </select>
-        <select
-          className="ql-font hidden"
-          data-pc-section="font"
-        >
+        <select className="ql-font hidden" data-pc-section="font">
           <option data-pc-section="option"></option>
-          <option
-            value="serif"
-            data-pc-section="option"
-          ></option>
-          <option
-            value="monospace"
-            data-pc-section="option"
-          ></option>
+          <option value="serif" data-pc-section="option"></option>
+          <option value="monospace" data-pc-section="option"></option>
         </select>
       </span>
 
       <span className="ql-formats" data-pc-section="formats">
-        <button
-          type="button"
-          className="ql-bold"
-          aria-label="Bold"
-          data-pc-section="bold"
-        >
+        <button type="button" className="ql-bold" aria-label="Bold" data-pc-section="bold">
           <svg viewBox="0 0 18 18">
             <path
               className="ql-stroke"
@@ -88,34 +66,11 @@ const EditorHtml = <T extends object>({
             ></path>
           </svg>
         </button>
-        <button
-          type="button"
-          className="ql-italic"
-          aria-label="Italic"
-          data-pc-section="italic"
-        >
+        <button type="button" className="ql-italic" aria-label="Italic" data-pc-section="italic">
           <svg viewBox="0 0 18 18">
-            <line
-              className="ql-stroke"
-              x1="7"
-              x2="13"
-              y1="4"
-              y2="4"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="5"
-              x2="11"
-              y1="14"
-              y2="14"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="8"
-              x2="10"
-              y1="14"
-              y2="4"
-            ></line>
+            <line className="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
+            <line className="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
+            <line className="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
           </svg>
         </button>
         <button
@@ -129,24 +84,13 @@ const EditorHtml = <T extends object>({
               className="ql-stroke"
               d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"
             ></path>
-            <rect
-              className="ql-fill"
-              height="1"
-              rx="0.5"
-              ry="0.5"
-              width="12"
-              x="3"
-              y="15"
-            ></rect>
+            <rect className="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect>
           </svg>
         </button>
       </span>
 
       <span className="ql-formats" data-pc-section="formats">
-        <span
-          className="ql-color ql-picker ql-color-picker"
-          data-pc-section="color"
-        >
+        <span className="ql-color ql-picker ql-color-picker" data-pc-section="color">
           <span
             className="ql-picker-options"
             aria-hidden="true"
@@ -164,7 +108,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item ql-primary"
               data-value="#e60000"
               style={{
-                backgroundColor: 'rgb(230, 0, 0)',
+                backgroundColor: "rgb(230, 0, 0)",
               }}
             ></span>
             <span
@@ -173,7 +117,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item ql-primary"
               data-value="#ff9900"
               style={{
-                backgroundColor: 'rgb(255, 153, 0)',
+                backgroundColor: "rgb(255, 153, 0)",
               }}
             ></span>
             <span
@@ -182,7 +126,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item ql-primary"
               data-value="#ffff00"
               style={{
-                backgroundColor: 'rgb(255, 255, 0)',
+                backgroundColor: "rgb(255, 255, 0)",
               }}
             ></span>
             <span
@@ -191,7 +135,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item ql-primary"
               data-value="#008a00"
               style={{
-                backgroundColor: 'rgb(0, 138, 0)',
+                backgroundColor: "rgb(0, 138, 0)",
               }}
             ></span>
             <span
@@ -200,7 +144,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item ql-primary"
               data-value="#0066cc"
               style={{
-                backgroundColor: 'rgb(0, 102, 204)',
+                backgroundColor: "rgb(0, 102, 204)",
               }}
             ></span>
             <span
@@ -209,7 +153,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item ql-primary"
               data-value="#9933ff"
               style={{
-                backgroundColor: 'rgb(153, 51, 255)',
+                backgroundColor: "rgb(153, 51, 255)",
               }}
             ></span>
             <span
@@ -218,7 +162,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#ffffff"
               style={{
-                backgroundColor: 'rgb(255, 255, 255)',
+                backgroundColor: "rgb(255, 255, 255)",
               }}
             ></span>
             <span
@@ -227,7 +171,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#facccc"
               style={{
-                backgroundColor: 'rgb(250, 204, 204)',
+                backgroundColor: "rgb(250, 204, 204)",
               }}
             ></span>
             <span
@@ -236,7 +180,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#ffebcc"
               style={{
-                backgroundColor: 'rgb(255, 235, 204)',
+                backgroundColor: "rgb(255, 235, 204)",
               }}
             ></span>
             <span
@@ -245,7 +189,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#ffffcc"
               style={{
-                backgroundColor: 'rgb(255, 255, 204)',
+                backgroundColor: "rgb(255, 255, 204)",
               }}
             ></span>
             <span
@@ -254,7 +198,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#cce8cc"
               style={{
-                backgroundColor: 'rgb(204, 232, 204)',
+                backgroundColor: "rgb(204, 232, 204)",
               }}
             ></span>
             <span
@@ -263,7 +207,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#cce0f5"
               style={{
-                backgroundColor: 'rgb(204, 224, 245)',
+                backgroundColor: "rgb(204, 224, 245)",
               }}
             ></span>
             <span
@@ -272,7 +216,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#ebd6ff"
               style={{
-                backgroundColor: 'rgb(235, 214, 255)',
+                backgroundColor: "rgb(235, 214, 255)",
               }}
             ></span>
             <span
@@ -281,7 +225,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#bbbbbb"
               style={{
-                backgroundColor: 'rgb(187, 187, 187)',
+                backgroundColor: "rgb(187, 187, 187)",
               }}
             ></span>
             <span
@@ -290,7 +234,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#f06666"
               style={{
-                backgroundColor: 'rgb(240, 102, 102)',
+                backgroundColor: "rgb(240, 102, 102)",
               }}
             ></span>
             <span
@@ -299,7 +243,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#ffc266"
               style={{
-                backgroundColor: 'rgb(255, 194, 102)',
+                backgroundColor: "rgb(255, 194, 102)",
               }}
             ></span>
             <span
@@ -308,7 +252,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#ffff66"
               style={{
-                backgroundColor: 'rgb(255, 255, 102)',
+                backgroundColor: "rgb(255, 255, 102)",
               }}
             ></span>
             <span
@@ -317,7 +261,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#66b966"
               style={{
-                backgroundColor: 'rgb(102, 185, 102)',
+                backgroundColor: "rgb(102, 185, 102)",
               }}
             ></span>
             <span
@@ -326,7 +270,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#66a3e0"
               style={{
-                backgroundColor: 'rgb(102, 163, 224)',
+                backgroundColor: "rgb(102, 163, 224)",
               }}
             ></span>
             <span
@@ -335,7 +279,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#c285ff"
               style={{
-                backgroundColor: 'rgb(194, 133, 255)',
+                backgroundColor: "rgb(194, 133, 255)",
               }}
             ></span>
             <span
@@ -344,7 +288,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#888888"
               style={{
-                backgroundColor: 'rgb(136, 136, 136)',
+                backgroundColor: "rgb(136, 136, 136)",
               }}
             ></span>
             <span
@@ -353,7 +297,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#a10000"
               style={{
-                backgroundColor: 'rgb(161, 0, 0)',
+                backgroundColor: "rgb(161, 0, 0)",
               }}
             ></span>
             <span
@@ -362,7 +306,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#b26b00"
               style={{
-                backgroundColor: 'rgb(178, 107, 0)',
+                backgroundColor: "rgb(178, 107, 0)",
               }}
             ></span>
             <span
@@ -371,7 +315,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#b2b200"
               style={{
-                backgroundColor: 'rgb(178, 178, 0)',
+                backgroundColor: "rgb(178, 178, 0)",
               }}
             ></span>
             <span
@@ -380,7 +324,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#006100"
               style={{
-                backgroundColor: 'rgb(0, 97, 0)',
+                backgroundColor: "rgb(0, 97, 0)",
               }}
             ></span>
             <span
@@ -389,7 +333,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#0047b2"
               style={{
-                backgroundColor: 'rgb(0, 71, 178)',
+                backgroundColor: "rgb(0, 71, 178)",
               }}
             ></span>
             <span
@@ -398,7 +342,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#6b24b2"
               style={{
-                backgroundColor: 'rgb(107, 36, 178)',
+                backgroundColor: "rgb(107, 36, 178)",
               }}
             ></span>
             <span
@@ -407,7 +351,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#444444"
               style={{
-                backgroundColor: 'rgb(68, 68, 68)',
+                backgroundColor: "rgb(68, 68, 68)",
               }}
             ></span>
             <span
@@ -416,7 +360,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#5c0000"
               style={{
-                backgroundColor: 'rgb(92, 0, 0)',
+                backgroundColor: "rgb(92, 0, 0)",
               }}
             ></span>
             <span
@@ -425,7 +369,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#663d00"
               style={{
-                backgroundColor: 'rgb(102, 61, 0)',
+                backgroundColor: "rgb(102, 61, 0)",
               }}
             ></span>
             <span
@@ -434,7 +378,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#666600"
               style={{
-                backgroundColor: 'rgb(102, 102, 0)',
+                backgroundColor: "rgb(102, 102, 0)",
               }}
             ></span>
             <span
@@ -443,7 +387,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#003700"
               style={{
-                backgroundColor: 'rgb(0, 55, 0)',
+                backgroundColor: "rgb(0, 55, 0)",
               }}
             ></span>
             <span
@@ -452,7 +396,7 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#002966"
               style={{
-                backgroundColor: 'rgb(0, 41, 102)',
+                backgroundColor: "rgb(0, 41, 102)",
               }}
             ></span>
             <span
@@ -461,15 +405,12 @@ const EditorHtml = <T extends object>({
               className="ql-picker-item"
               data-value="#3d1466"
               style={{
-                backgroundColor: 'rgb(61, 20, 102)',
+                backgroundColor: "rgb(61, 20, 102)",
               }}
             ></span>
           </span>
         </span>
-        <select
-          className="ql-color hidden"
-          data-pc-section="color"
-        >
+        <select className="ql-color hidden" data-pc-section="color">
           <option selected={true}></option>
           <option value="#e60000"></option>
           <option value="#ff9900"></option>
@@ -506,10 +447,7 @@ const EditorHtml = <T extends object>({
           <option value="#002966"></option>
           <option value="#3d1466"></option>
         </select>
-        <select
-          className="ql-background hidden"
-          data-pc-section="background"
-        >
+        <select className="ql-background hidden" data-pc-section="background">
           <option value="#000000"></option>
           <option value="#e60000"></option>
           <option value="#ff9900"></option>
@@ -558,34 +496,10 @@ const EditorHtml = <T extends object>({
           aria-pressed="false"
         >
           <svg viewBox="0 0 18 18">
-            <line
-              className="ql-stroke"
-              x1="7"
-              x2="15"
-              y1="4"
-              y2="4"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="7"
-              x2="15"
-              y1="9"
-              y2="9"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="7"
-              x2="15"
-              y1="14"
-              y2="14"
-            ></line>
-            <line
-              className="ql-stroke ql-thin"
-              x1="2.5"
-              x2="4.5"
-              y1="5.5"
-              y2="5.5"
-            ></line>
+            <line className="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line>
+            <line className="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line>
+            <line className="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line>
+            <line className="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5"></line>
             <path
               className="ql-fill"
               d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"
@@ -609,68 +523,20 @@ const EditorHtml = <T extends object>({
           aria-pressed="false"
         >
           <svg viewBox="0 0 18 18">
-            <line
-              className="ql-stroke"
-              x1="6"
-              x2="15"
-              y1="4"
-              y2="4"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="6"
-              x2="15"
-              y1="9"
-              y2="9"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="6"
-              x2="15"
-              y1="14"
-              y2="14"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="3"
-              x2="3"
-              y1="4"
-              y2="4"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="3"
-              x2="3"
-              y1="9"
-              y2="9"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="3"
-              x2="3"
-              y1="14"
-              y2="14"
-            ></line>
+            <line className="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line>
+            <line className="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line>
+            <line className="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line>
+            <line className="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line>
+            <line className="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line>
+            <line className="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line>
           </svg>
         </button>
 
-        <select
-          className="ql-align hidden"
-          data-pc-section="select"
-        >
+        <select className="ql-align hidden" data-pc-section="select">
           <option data-pc-section="option"></option>
-          <option
-            value="center"
-            data-pc-section="option"
-          ></option>
-          <option
-            value="right"
-            data-pc-section="option"
-          ></option>
-          <option
-            value="justify"
-            data-pc-section="option"
-          ></option>
+          <option value="center" data-pc-section="option"></option>
+          <option value="right" data-pc-section="option"></option>
+          <option value="justify" data-pc-section="option"></option>
         </select>
       </span>
 
@@ -683,13 +549,7 @@ const EditorHtml = <T extends object>({
           aria-pressed="false"
         >
           <svg viewBox="0 0 18 18">
-            <line
-              className="ql-stroke"
-              x1="7"
-              x2="11"
-              y1="7"
-              y2="11"
-            ></line>
+            <line className="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line>
             <path
               className="ql-even ql-stroke"
               d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"
@@ -708,21 +568,9 @@ const EditorHtml = <T extends object>({
           aria-pressed="false"
         >
           <svg viewBox="0 0 18 18">
-            <polyline
-              className="ql-even ql-stroke"
-              points="5 7 3 9 5 11"
-            ></polyline>
-            <polyline
-              className="ql-even ql-stroke"
-              points="13 7 15 9 13 11"
-            ></polyline>
-            <line
-              className="ql-stroke"
-              x1="10"
-              x2="8"
-              y1="5"
-              y2="13"
-            ></line>
+            <polyline className="ql-even ql-stroke" points="5 7 3 9 5 11"></polyline>
+            <polyline className="ql-even ql-stroke" points="13 7 15 9 13 11"></polyline>
+            <line className="ql-stroke" x1="10" x2="8" y1="5" y2="13"></line>
           </svg>
         </button>
       </span>
@@ -736,48 +584,16 @@ const EditorHtml = <T extends object>({
           aria-pressed="false"
         >
           <svg className="" viewBox="0 0 18 18">
-            <line
-              className="ql-stroke"
-              x1="5"
-              x2="13"
-              y1="3"
-              y2="3"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="6"
-              x2="9.35"
-              y1="12"
-              y2="3"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="11"
-              x2="15"
-              y1="11"
-              y2="15"
-            ></line>
-            <line
-              className="ql-stroke"
-              x1="15"
-              x2="11"
-              y1="11"
-              y2="15"
-            ></line>
-            <rect
-              className="ql-fill"
-              height="1"
-              rx="0.5"
-              ry="0.5"
-              width="7"
-              x="2"
-              y="14"
-            ></rect>
+            <line className="ql-stroke" x1="5" x2="13" y1="3" y2="3"></line>
+            <line className="ql-stroke" x1="6" x2="9.35" y1="12" y2="3"></line>
+            <line className="ql-stroke" x1="11" x2="15" y1="11" y2="15"></line>
+            <line className="ql-stroke" x1="15" x2="11" y1="11" y2="15"></line>
+            <rect className="ql-fill" height="1" rx="0.5" ry="0.5" width="7" x="2" y="14"></rect>
           </svg>
         </button>
       </span>
     </div>
-  )
+  );
 
   return (
     <div className={className ?? ""}>
@@ -792,23 +608,16 @@ const EditorHtml = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
+                  className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <Editor
                   id={field.name}
                   style={{ height: "120px" }}
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) +
-                    " w-full disabled:bg-slate-100"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
                   }
                   autoFocus={autoFocus}
                   disabled={disabled}

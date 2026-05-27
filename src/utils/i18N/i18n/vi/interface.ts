@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Không tìm thấy kết quả nào",
   oneSearchResult: "Đã tìm thấy 1 kết quả",
   multipleSearchResults: "Đã tìm thấy ${count} kết quả",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Đảo Ascension",
   xk: "Kosovo",

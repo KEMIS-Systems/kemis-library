@@ -10,19 +10,24 @@ import { useLanguage } from "../../../../../hooks/Language";
 import { IInPageSignatureProps } from "./types";
 
 export function InPageSignature({
-    onSubmitted,
-    text,
-    className,
-    uploadSignature,
-    writeSignature = false,
+  onSubmitted,
+  text,
+  className,
+  uploadSignature,
+  writeSignature = false,
 }: IInPageSignatureProps) {
-    const { language } = useLanguage();
+  const { language } = useLanguage();
 
-    const [fileData, setFileData] = useState<File>({} as File);
+  const [fileData, setFileData] = useState<File>({} as File);
 
-    return (
-        <div className={`${className} kemis-library-in-page-signature`}>
-            <Base setFileData={onSubmitted} text={text} uploadSignature={uploadSignature} writeSignature={writeSignature} />
-        </div>
-    );
-};
+  return (
+    <div className={`${className} kemis-library-in-page-signature`}>
+      <Base
+        setFileData={onSubmitted}
+        text={text}
+        uploadSignature={uploadSignature}
+        writeSignature={writeSignature}
+      />
+    </div>
+  );
+}

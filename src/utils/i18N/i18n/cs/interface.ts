@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Nebyly nalezeny žádné výsledky",
   oneSearchResult: "1 výsledek nalezen",
   multipleSearchResults: "${count} výsledků nalezeno",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Ascension",
   xk: "Kosovo",

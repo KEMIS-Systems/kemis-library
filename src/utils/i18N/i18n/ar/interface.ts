@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "لم يتم العثور على نتائج",
   oneSearchResult: "تم العثور على نتيجة واحدة",
   multipleSearchResults: "تم العثور على ${count} من النتائج",
-  
+
   // additional countries (not supported by country-list library)
   ac: "جزيرة الصعود",
   xk: "كوسوفو",

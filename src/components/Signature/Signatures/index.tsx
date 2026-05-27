@@ -4,8 +4,8 @@ import { InPageSignature } from "./Partials/InPage";
 import type { IInPageSignatureProps } from "./Partials/InPage/types";
 
 const Signatures = {
-    Dialog: (args: IDialogSignatureProps) => <DialogSignature {...args} />,
-    InPage: (args: IInPageSignatureProps) => <InPageSignature {...args} />
-}
+  Dialog: (args: IDialogSignatureProps) => <DialogSignature {...args} />,
+  InPage: (args: IInPageSignatureProps) => <InPageSignature {...args} />,
+};
 
-export default Signatures
+export default Signatures;

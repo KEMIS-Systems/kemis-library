@@ -23,9 +23,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
       const bynaryData = [];
       bynaryData.push(file);
 
-      const returnImage = window.URL.createObjectURL(
-        new Blob(bynaryData, { type: file.type })
-      );
+      const returnImage = window.URL.createObjectURL(new Blob(bynaryData, { type: file.type }));
 
       setFileDataUrl(returnImage);
     }
@@ -74,14 +72,10 @@ const InputImageBox = ({ handleChange }: IProps) => {
                 bg-transparent  hover:border-gray-400
                 data-[crop=true]:bg-gray-200
               "
-              onClick={() => setCropFile(a => !a)}
+              onClick={() => setCropFile((a) => !a)}
             >
-              {
-                cropFile && <IoCrop size={20} color="blue" />
-              }
-              {
-                !cropFile && <IoCropOutline size={20} color="red" />
-              }
+              {cropFile && <IoCrop size={20} color="blue" />}
+              {!cropFile && <IoCropOutline size={20} color="red" />}
             </button>
             <button
               type="button"
@@ -119,11 +113,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
         {!fileDataUrl ? (
           <>
             {takePhoto && (
-              <DialogPhoto
-                show
-                onChange={handleFileChange}
-                onHide={() => setTakePhoto(false)}
-              />
+              <DialogPhoto show onChange={handleFileChange} onHide={() => setTakePhoto(false)} />
             )}
             <Dropzone
               accept={{
@@ -141,15 +131,11 @@ const InputImageBox = ({ handleChange }: IProps) => {
           </>
         ) : cropFile ? (
           <div>
-            <CropImage
-              image={fileDataUrl}
-              onChange={handleFileSelectedPhotoCrop}
-            />
+            <CropImage image={fileDataUrl} onChange={handleFileSelectedPhotoCrop} />
           </div>
         ) : (
           <img src={fileDataUrl} className="max-w-full h-auto" />
-        )
-        }
+        )}
       </div>
     </div>
   );

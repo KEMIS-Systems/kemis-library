@@ -60,4 +60,3 @@ export { default as WriteSignature } from "./Signature/WriteSignature";
 export { default as UploadPhoto } from "./UploadPhoto";
 
 export { SplitButton } from "./SplitButton";
-

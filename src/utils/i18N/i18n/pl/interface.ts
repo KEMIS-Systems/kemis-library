@@ -9,7 +9,7 @@ const interfaceTranslations: I18n = {
   zeroSearchResults: "Nie znaleziono wyników",
   oneSearchResult: "Znaleziono 1 wynik",
   multipleSearchResults: "Znaleziono ${count} ${count > 1 && count < 5 ? 'wyniki' : 'wyników'}",
-  
+
   // additional countries (not supported by country-list library)
   ac: "Wyspa Wniebowstąpienia",
   xk: "Kosowo",

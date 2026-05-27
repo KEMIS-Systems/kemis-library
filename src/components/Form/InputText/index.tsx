@@ -12,16 +12,12 @@ import {
 // Components
 import MessageError from "../MessageError";
 
-interface IProps<T extends FieldValues>
-  extends Partial<
-    Omit<
-      React.DetailedHTMLProps<
-        React.InputHTMLAttributes<HTMLInputElement>,
-        HTMLInputElement
-      >,
-      "onInput" | "ref" | "value" | "form"
-    >
-  > {
+interface IProps<T extends FieldValues> extends Partial<
+  Omit<
+    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    "onInput" | "ref" | "value" | "form"
+  >
+> {
   className?: string;
   name: FieldPath<T>;
   label: string;
@@ -32,7 +28,7 @@ interface IProps<T extends FieldValues>
   placeholder?: string;
   disabled?: boolean;
   inputStyle?: string | null;
-  child?: ReactElement
+  child?: ReactElement;
 }
 
 const InputText = <T extends object>({
@@ -61,16 +57,10 @@ const InputText = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
-                  >
-                    {label}
-                    {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                    ) : (
-                    ""
-                    )}
+                  className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
+                >
+                  {label}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <div className="flex flex-row items-center justify-start gap-2 [&_.p-inputtext]:disabled:bg-slate-100">
                   <InputTextPrime
@@ -87,16 +77,14 @@ const InputText = <T extends object>({
                     placeholder={placeholder ?? undefined}
                     {...rest}
                   />
-                  {
-                    child && <>{child}</>
-                  }
+                  {child && <>{child}</>}
                 </div>
                 {<MessageError fieldState={fieldState} />}
               </>
             );
           }}
         />
-      )}      
+      )}
     </div>
   );
 };

@@ -8,15 +8,10 @@ const isValid = (value: string | null | undefined): boolean => {
   return cnpjValidator.isValid(onlyNumber(value));
 };
 
-const getData = async (
-  api: AxiosInstance,
-  value: string | null | undefined
-): Promise<IMCnpj> => {
+const getData = async (api: AxiosInstance, value: string | null | undefined): Promise<IMCnpj> => {
   if (!value) return { status: "ERROR" };
   try {
-    const response = await api.get<IMCnpj>(
-      `/queries/cnpj/${onlyNumber(value)}`
-    );
+    const response = await api.get<IMCnpj>(`/queries/cnpj/${onlyNumber(value)}`);
     return new Promise<IMCnpj>((resolve) => {
       resolve(response.data);
     });

@@ -64,7 +64,7 @@ const FormDialog = <T extends object>({
 }: IProps<T>) => {
   const { language } = useLanguage();
 
-  const { isSubmitting } = form.formState
+  const { isSubmitting } = form.formState;
 
   const handleHide = useCallback(() => {
     form.reset();
@@ -91,9 +91,7 @@ const FormDialog = <T extends object>({
               data-submitting={isSubmitting}
               className="kemis-library-button-submitting text-white py-2 px-4 rounded-lg font-bold"
             >
-              {
-                isSubmitting ? language.input.button_wait : language.input.button_save
-              }
+              {isSubmitting ? language.input.button_wait : language.input.button_save}
             </button>
           </div>
         )}

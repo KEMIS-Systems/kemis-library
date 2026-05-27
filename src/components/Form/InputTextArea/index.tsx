@@ -54,11 +54,7 @@ const InputTextArea = <T extends object>({
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <InputTextareaPrime
                   id={field.name}
@@ -66,7 +62,7 @@ const InputTextArea = <T extends object>({
                   disabled={disabled}
                   autoFocus={autoFocus}
                   className={` w-full ${disabled ? "bg-slate-100" : ""}`}
-                  placeholder={!placeholder ? label: ''}
+                  placeholder={!placeholder ? label : ""}
                 />
                 {<MessageError fieldState={fieldState} />}
               </>

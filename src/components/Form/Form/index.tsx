@@ -48,7 +48,7 @@ const Form = <T extends object>({
   forwardback,
   form,
   children,
-}: IProps<T>) => {  
+}: IProps<T>) => {
   const { language } = useLanguage();
   const toast = useRef<Toast>(null);
   const [showLoading, setShowLoading] = useState<boolean>(false);
@@ -70,40 +70,31 @@ const Form = <T extends object>({
         setShowLoading(true);
         if (api) {
           try {
-            const formData: FieldValues | FormData = getFormData
-              ? getFormData(data)
-              : data;
+            const formData: FieldValues | FormData = getFormData ? getFormData(data) : data;
 
             // AUX Variables
-            const REQUEST_METHOD: Method =
-              !dataEdit?.uuid && !dataEdit?.id ? "post" : "put";
+            const REQUEST_METHOD: Method = !dataEdit?.uuid && !dataEdit?.id ? "post" : "put";
             const REQUEST_PATH: string = `${url}${
-              dataEdit?.uuid || dataEdit?.id
-                ? `/${dataEdit.uuid ?? dataEdit.id}`
-                : ""
+              dataEdit?.uuid || dataEdit?.id ? `/${dataEdit.uuid ?? dataEdit.id}` : ""
             }`;
 
-            await api[REQUEST_METHOD](REQUEST_PATH, formData).then(
-              (resolver) => {
-                setShowLoading(false);
-                handleHide?.();
+            await api[REQUEST_METHOD](REQUEST_PATH, formData).then((resolver) => {
+              setShowLoading(false);
+              handleHide?.();
 
-                onRefreshTable?.(true, resolver.data);
+              onRefreshTable?.(true, resolver.data);
 
-                toast?.current?.show({
-                  severity: "success",
-                  summary: "Success",
-                  detail:
-                    language.pages.alerts?.[
-                      dataEdit?.uuid || dataEdit?.id ? "edit" : "add"
-                    ]?.success,
-                });
+              toast?.current?.show({
+                severity: "success",
+                summary: "Success",
+                detail:
+                  language.pages.alerts?.[dataEdit?.uuid || dataEdit?.id ? "edit" : "add"]?.success,
+              });
 
-                if (forwardback && typeof forwardback === "function") {
-                  forwardback(resolver.data);
-                }
+              if (forwardback && typeof forwardback === "function") {
+                forwardback(resolver.data);
               }
-            );
+            });
           } catch (error: AxiosError | any) {
             setShowLoading(false);
 
@@ -114,11 +105,7 @@ const Form = <T extends object>({
               console.log("Errors object:", errors);
               console.log("Errors type:", typeof errors);
 
-              if (
-                errors &&
-                typeof errors === "object" &&
-                Object.keys(errors).length > 0
-              ) {
+              if (errors && typeof errors === "object" && Object.keys(errors).length > 0) {
                 Object.values(errors).forEach((message: unknown) => {
                   toast?.current?.show({
                     severity: "error",

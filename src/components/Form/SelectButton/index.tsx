@@ -37,16 +37,10 @@ const SelectButton = <T extends object>({
           <>
             <label
               htmlFor={field.name}
-              className={
-                classNames({ "text-red-400 ": fieldState.error }) + " block "
-              }
+              className={classNames({ "text-red-400 ": fieldState.error }) + " block "}
             >
               {label}
-              {rules?.required ? (
-                <span className="text-slate-300"> *</span>
-              ) : (
-                ""
-              )}
+              {rules?.required ? <span className="text-slate-300"> *</span> : ""}
             </label>
             <SelectButtonPrime
               id={field.name}

@@ -5,7 +5,7 @@ import {
   FieldPath,
   FieldValues,
   RegisterOptions,
-  UseFormReturn
+  UseFormReturn,
 } from "react-hook-form";
 
 interface IProps<T extends FieldValues> {
@@ -47,13 +47,16 @@ const InputDate = <T extends object>({
   readOnlyInput = false,
   showTime = false,
 }: IProps<T>) => {
-  const [date, setDate] = useState<string>('')
+  const [date, setDate] = useState<string>("");
 
   // Função para tratar entrada numérica e converter para timestamp
-  const handleDateInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    // @ts-ignore
-    form.setValue(name, dateObj.toLocaleDateString("pt-BR"));
-  }, [form, name]);
+  const handleDateInput = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      // @ts-ignore
+      form.setValue(name, dateObj.toLocaleDateString("pt-BR"));
+    },
+    [form, name]
+  );
 
   return (
     <div className={className ?? ""}>
@@ -65,11 +68,7 @@ const InputDate = <T extends object>({
         }
       >
         {label}
-        {rules?.required ? (
-          <span className="text-slate-300"> *</span>
-        ) : (
-          ""
-        )}
+        {rules?.required ? <span className="text-slate-300"> *</span> : ""}
       </label>
 
       <Controller
@@ -95,7 +94,7 @@ const InputDate = <T extends object>({
                 showTime={showTime}
                 // @ts-ignore
                 onChange={(e) => form.setValue(name, e.value)}
-                inputRef={el => {
+                inputRef={(el) => {
                   if (el) {
                     // @ts-ignore
                     // el.onfocus = e => e.target?.blur && e.target?.blur()

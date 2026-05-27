@@ -22,9 +22,7 @@ interface IProps<T extends FieldValues> {
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   disabled?: boolean;
-  itemTemplate?:
-  | ReactNode
-  | ((suggestion: any, index: number) => React.ReactNode);
+  itemTemplate?: ReactNode | ((suggestion: any, index: number) => React.ReactNode);
   forceSelection?: boolean;
   handleSearch: (event: { query: string }) => void;
   handleAddButton?: () => void;
@@ -63,11 +61,7 @@ const AutoComplete = <T extends object>({
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <div className={`${handleAddButton && "p-inputgroup"}`}>
                   <AutoCompletePrime
