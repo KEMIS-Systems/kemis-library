@@ -1,7 +1,8 @@
-import React, { useCallback, useRef } from "react";
-import Cropper from "react-cropper";
+import React, { useCallback, useRef, useState } from "react";
+import ReactCrop, { type Crop, type PixelCrop } from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
+import canvasPreview from "../../utils/canvasPreview";
 import dataUrlToFile from "../../utils/dataUrlToFile";
-import { CropperStyles } from "./styles";
 
 interface ICropImage {
   image: string;
@@ -9,31 +10,39 @@ interface ICropImage {
 }
 
 const CropImage = ({ image, onChange }: ICropImage) => {
-  const cropperRef = useRef<HTMLImageElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [crop, setCrop] = useState<Crop>();
 
-  const onCrop = useCallback(async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const imageElement: any = cropperRef?.current;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const cropper: any = imageElement?.cropper;
-    const file = await dataUrlToFile(
-      cropper.getCroppedCanvas().toDataURL(),
-      `photo-${new Date().getTime()}.jpg`
-    );
-    onChange(file);
-  }, [onChange]);
+  const handleComplete = useCallback(
+    async (pixelCrop: PixelCrop) => {
+      const imgEl = imgRef.current;
+      const canvas = canvasRef.current;
+
+      if (!imgEl || !canvas || !pixelCrop.width || !pixelCrop.height) return;
+
+      canvasPreview(imgEl, canvas, pixelCrop);
+
+      const dataUrl = canvas.toDataURL("image/jpeg");
+      const file = await dataUrlToFile(dataUrl, `photo-${new Date().getTime()}.jpg`);
+      onChange(file);
+    },
+    [onChange]
+  );
 
   return (
-    <CropperStyles>
-      <Cropper
-        src={image}
-        className="w-full h-full"
-        initialAspectRatio={16 / 9}
-        guides={false}
-        crop={onCrop}
-        ref={cropperRef}
-      />
-    </CropperStyles>
+    <div className="w-full h-full">
+      <ReactCrop
+        crop={crop}
+        onChange={(c) => setCrop(c)}
+        onComplete={handleComplete}
+        className="w-full"
+      >
+        <img ref={imgRef} src={image} alt="Crop preview" className="w-full h-full object-contain" />
+      </ReactCrop>
+      {/* Off-screen canvas used to produce the cropped output */}
+      <canvas ref={canvasRef} style={{ display: "none" }} aria-hidden="true" />
+    </div>
   );
 };
 
