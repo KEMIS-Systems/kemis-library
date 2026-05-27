@@ -1,5 +1,7 @@
 ## Kemis Library
 
+> ⚠️ **v3.0.0 in progress** — this branch holds the in-flight migration described in `docs/superpowers/specs/2026-05-27-kemis-library-v3-migration-design.md`. For the current stable line, see branch `v2-legacy`.
+
 Here you may fonund common components, utils, hooks, ..., etc, used by the Company.
 
 ### How to import:
