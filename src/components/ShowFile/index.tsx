@@ -1,10 +1,9 @@
-import { saveAs } from "file-saver";
 import { Toast } from "primereact/toast";
 import { useEffect, useRef, useState } from "react";
 import { FaDownload } from "react-icons/fa";
 
 import { AxiosInstance } from "axios";
-import { generateUrlBlob } from "../../utils";
+import { downloadFile, generateUrlBlob } from "../../utils";
 import Loading from "../Loading";
 
 interface P {
@@ -52,7 +51,7 @@ const ShowFile = ({ api, url, header, params, filename, forceDownload, onHide }:
           return;
         }
 
-        if (forceDownload) saveAs(response.data, filename);
+        if (forceDownload) downloadFile(response.data, filename);
 
         console.log(response.headers["content-type"]?.toString());
 
@@ -67,7 +66,7 @@ const ShowFile = ({ api, url, header, params, filename, forceDownload, onHide }:
             )
           );
         } else {
-          saveAs(response.data, filename || ORIGINAL_FILE_NAME);
+          downloadFile(response.data, filename || ORIGINAL_FILE_NAME);
           onHide && onHide();
         }
       })
