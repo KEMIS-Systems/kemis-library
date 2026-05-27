@@ -9,7 +9,6 @@ import {
   RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
-import styled from "styled-components";
 import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> extends Partial<InputNumberProps> {
@@ -55,13 +54,8 @@ const InputNumber = <T extends object>({
     locale: "pt-BR",
   };
 
-  const InputStyles = styled.div`
-    .p-inputtext,
-    .p-component,
-    .p-inputnumber-input {
-      width: 100%;
-    }
-  `;
+  const inputWrapperClass =
+    "[&_.p-inputtext]:w-full [&_.p-component]:w-full [&_.p-inputnumber-input]:w-full";
 
   return (
     <div className={className ?? ""}>
@@ -84,7 +78,7 @@ const InputNumber = <T extends object>({
                   {label}
                   {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
-                <InputStyles>
+                <div className={inputWrapperClass}>
                   <div
                     data-hasbutton={handleAddButton && true}
                     className={`flex flex-row items-center justify-start gap-2 ${handleAddButton && "p-inputgroup"}`}
@@ -117,7 +111,7 @@ const InputNumber = <T extends object>({
                     {child && <>{child}</>}
                   </div>
                   {<MessageError fieldState={fieldState} />}
-                </InputStyles>
+                </div>
               </>
             );
           }}
