@@ -2,7 +2,6 @@ import React, { useCallback, useRef, useState } from "react";
 import { MdCameraAlt } from "react-icons/md";
 import { Dialog } from "primereact/dialog";
 import Webcam from "react-webcam";
-import Image from "next/image";
 
 import dataUrlToFile from "../../utils/dataUrlToFile";
 import { useLanguage } from "../../hooks/Language";
@@ -115,7 +114,7 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
           </>
         ) : (
           <div className="relative aspect-video">
-            <Image src={imagePreview} alt="Foto" fill />
+            <img src={imagePreview} alt="Foto" className="w-full h-full object-cover" />
           </div>
         )}
       </div>
