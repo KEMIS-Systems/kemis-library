@@ -1,10 +1,11 @@
-let WebFont: typeof import("webfontloader") | undefined;
-if (typeof window !== "undefined") {
-  import("webfontloader").then((module) => {
-    WebFont = module;
-  });
-}
-
+/**
+ * Returns the font metadata used by the WriteSignature font picker.
+ *
+ * Fonts themselves are self-hosted via @font-face in src/styles/fonts/.
+ * Previously this module also tried to dynamically load the same families
+ * from Google Fonts via webfontloader, but that code path was disabled
+ * (commented out) long ago and has now been removed entirely.
+ */
 const returnFontsArray = () => {
   const fonts = [
     {
@@ -44,17 +45,6 @@ const returnFontsArray = () => {
       family: "Sacramento",
     },
   ];
-
-  // if (typeof window !== "undefined" && WebFont) {
-  //   WebFont.load({
-  //     google: {
-  //       families: fonts.map((font) => font.family),
-  //     },
-  //     active: () => {
-  //       // Font loading completed, you can perform any necessary actions here
-  //     },
-  //   });
-  // }
 
   return fonts.map((font) => ({
     ...font,
