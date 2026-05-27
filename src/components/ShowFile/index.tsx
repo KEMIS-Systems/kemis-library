@@ -85,6 +85,7 @@ const ShowFile = ({ api, url, header, params, filename, forceDownload, onHide }:
           rel="noopener"
           className="flex cursor-pointer flex-row items-center gap-2 text-blue-500 mb-2 font-bold"
         >
+          {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
           <FaDownload />
           <span>Baixe seu arquivo.</span>
         </a>

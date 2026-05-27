@@ -74,7 +74,9 @@ const InputImageBox = ({ handleChange }: IProps) => {
               "
               onClick={() => setCropFile((a) => !a)}
             >
+              {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
               {cropFile && <IoCrop size={20} color="blue" />}
+              {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
               {!cropFile && <IoCropOutline size={20} color="red" />}
             </button>
             <button
@@ -87,6 +89,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
                 }, 300);
               }}
             >
+              {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
               <IoImageOutline size={20} />
             </button>
             <button
@@ -96,6 +99,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
                 setTakePhoto(true);
               }}
             >
+              {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
               <MdOutlineAddAPhoto size={20} />
             </button>
           </>
@@ -105,6 +109,7 @@ const InputImageBox = ({ handleChange }: IProps) => {
             className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
             onClick={handleFileDelete}
           >
+            {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
             <BiTrash size={20} />
           </button>
         )}

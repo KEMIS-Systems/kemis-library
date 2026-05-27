@@ -8,7 +8,7 @@
       "ES6"
     ],
     "jsx": "react-jsx",
-    "outDir": "build",
+    "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
     "allowJs": true,
@@ -21,14 +21,15 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,    
   },
   "include": ["src"],
   "exclude": [
     "node_modules",
-    "src/setupTests.js",
+    "dist",
+    "build",
+    "src/setupTests.ts",
     "src/**/__tests__",
     "**/*.test.*",
     "**/*.spec.*"

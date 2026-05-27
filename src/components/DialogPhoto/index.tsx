@@ -109,6 +109,7 @@ const DialogPhoto: React.FC<IParams> = ({ onChange, show, onHide }) => {
                 className="bg-kemis text-white px-2 py-2 rounded-full"
                 onClick={handleTakePhoto}
               >
+                {/* @ts-ignore react-icons@5 ReactNode return type incompatibility with @types/react@18 */}
                 <MdCameraAlt size={30} />
               </button>
             </div>
