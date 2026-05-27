@@ -29,6 +29,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint src",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,md,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,md,json}\"",
     "version": "git add package.json && git commit -m 'Bump version'",
     "merge": "git pull && git push origin v2:master && git checkout master && git pull && git checkout v2",
     "auto_publish": "rm -Rf build && npm run build && cd build && npm publish --access public"
@@ -104,6 +106,7 @@
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
     "postcss-nested": "^7.0.2",
+    "prettier": "3.8.3",
     "react-canvas-draw": "^1.2.1",
     "react-cropper": "^2.3.3",
     "react-dropzone": "^14.2.2",
