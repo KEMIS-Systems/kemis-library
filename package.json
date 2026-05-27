@@ -35,8 +35,6 @@
     "node": ">=20"
   },
   "scripts": {
-    "web:dev": "npx postcss src/styles/components/components.css --dir web/src/styles & npx tailwindcss -i ./web/src/styles/index.css -o ./web/src/styles/global/index.css & vite",
-    "web:build": "vite build",
     "clean": "rm -rf dist",
     "build": "npm run clean && npm run build:js && npm run build:css",
     "build:js": "tsup",

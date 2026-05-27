@@ -36,7 +36,6 @@
     },
     "include": [
         "src",
-        "../vite.config.ts",
         "index.tsx"
     ]
 }
