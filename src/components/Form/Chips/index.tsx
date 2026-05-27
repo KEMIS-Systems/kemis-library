@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import React from "react";
 import { ChipsChangeEvent, Chips as ChipsPrime } from "primereact/chips";
 import {

@@ -51,7 +51,7 @@ const MultiSelect = <T extends object>({
         name={name}
         control={form?.control}
         rules={rules}
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+         
         render={({ field: { ref, ...field }, fieldState }) => {
           return (
             <>
