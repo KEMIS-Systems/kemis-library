@@ -29,3 +29,29 @@ This phase removes dead/redundant dependencies and reclassifies runtime librarie
 **Removed dependencies (no replacement needed):** `next`, `yup`, `styled-components`, `@types/styled-components`, `webfontloader`, `@types/webfontloader`, `file-saver`, `@types/file-saver`, `axios-mock-adapter`, `react-router-dom`, `react-cropper`, `date-fns`.
 
 > `sweetalert2` removal is deferred to Phase 3 where the new `<KemisProvider>` provides a global Toast mount point.
+
+## Phase 3a — `<KemisProvider>` + Tailwind 4
+
+**Breaking changes:**
+
+1. **Consumers must wrap their app with `<KemisProvider>`** to get global Toast/Confirm support:
+   ```tsx
+   import { KemisProvider } from "kemis-library";
+   import "kemis-library/styles";
+
+   <KemisProvider locale="pt-BR">
+     <App />
+   </KemisProvider>
+   ```
+   Calling `Toast.success(...)` without `<KemisProvider />` mounted now logs a warning and drops the message (previously SweetAlert would mount itself ad-hoc).
+
+2. **Tailwind 4** is now the styling engine. If consumers were relying on the library's exported `tailwind.config.js`, they should switch to importing `kemis-library/styles` (CSS) and using v4's CSS-first `@theme {}` for their own customizations. The library no longer ships a `tailwind.config.js`.
+
+3. **`Toast` API** has a new preferred surface:
+   - **New (recommended):** `Toast.success({ title?, message, durationMs? })`, `.info(...)`, `.warning(...)`, `.error(...)`, `.confirm({ title?, message, acceptLabel?, rejectLabel?, onAccept?, onReject? })`.
+   - **Legacy compat:** `Toast.fire({ icon, title, text })` still works (Swal-shaped) — marked `@deprecated`. Will be removed in v4.
+
+**Internal changes (no consumer impact):**
+- `sweetalert2` removed; replaced by PrimeReact `Toast` + `confirmDialog`.
+- Tailwind config moved from `tailwind.config.js` (deleted) to a single `@import "tailwindcss"` in `src/styles/index.css`.
+- PostCSS now uses `@tailwindcss/postcss`.
