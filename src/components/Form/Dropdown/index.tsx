@@ -2,7 +2,7 @@ import { Button as ButtonPrime } from "primereact/button";
 import { Dropdown as DropdownPrime } from "primereact/dropdown";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { classNames } from "primereact/utils";
-import React, { ReactNode } from "react";
+import React, { ReactNode, type ReactElement } from "react";
 import {
   Controller,
   FieldPath,
@@ -21,8 +21,8 @@ interface IProps<T extends FieldValues> {
   optionGroupLabel?: string;
   optionGroupChildren?: string;
   optionGroupTemplate?: (option: any, index?: number) => React.ReactNode;
-  valueTemplate?: React.ReactNode | JSX.Element;
-  itemTemplate?: React.ReactNode | JSX.Element;
+  valueTemplate?: React.ReactNode | ReactElement;
+  itemTemplate?: React.ReactNode | ReactElement;
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   autoFocus?: boolean;

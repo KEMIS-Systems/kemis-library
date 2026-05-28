@@ -8,4 +8,4 @@ import { createRef, type RefObject } from "react";
  * If <KemisProvider /> is not mounted, .current will be null and callers
  * should fall back to a console.warn (handled inside utils/toast.ts).
  */
-export const toastRef: RefObject<PrimeToast> = createRef<PrimeToast>();
+export const toastRef: RefObject<PrimeToast | null> = createRef<PrimeToast>();
