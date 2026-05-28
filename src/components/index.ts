@@ -1,3 +1,7 @@
+// KemisProvider:
+export { KemisProvider } from "./KemisProvider";
+export type { KemisProviderProps } from "./KemisProvider";
+
 // BoxElement:
 export { default as BoxElement } from "./BoxElement";
 

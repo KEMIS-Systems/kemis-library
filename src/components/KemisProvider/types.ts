@@ -1,0 +1,7 @@
+import type { ReactNode } from "react";
+
+export type KemisProviderProps = {
+  children: ReactNode;
+  /** Default locale code (e.g., "pt-BR", "en-US"). Passed through to the i18n provider. */
+  locale?: string;
+};
