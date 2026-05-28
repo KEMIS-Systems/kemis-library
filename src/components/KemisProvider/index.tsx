@@ -1,6 +1,9 @@
 import { PrimeReactProvider } from "primereact/api";
+import { ConfirmDialog } from "primereact/confirmdialog";
+import { Toast } from "primereact/toast";
 import { useMemo } from "react";
 import { KemisContext, type KemisContextValue } from "./context";
+import { toastRef } from "./refs";
 import type { KemisProviderProps } from "./types";
 
 // Note: The Language module only exposes a `useLanguage` hook (reads from
@@ -13,7 +16,11 @@ export function KemisProvider({ children, locale }: KemisProviderProps) {
 
   return (
     <PrimeReactProvider>
-      <KemisContext.Provider value={value}>{children}</KemisContext.Provider>
+      <KemisContext.Provider value={value}>
+        {children}
+        <Toast ref={toastRef} position="top-right" />
+        <ConfirmDialog />
+      </KemisContext.Provider>
     </PrimeReactProvider>
   );
 }
