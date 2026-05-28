@@ -55,3 +55,23 @@ This phase removes dead/redundant dependencies and reclassifies runtime librarie
 - `sweetalert2` removed; replaced by PrimeReact `Toast` + `confirmDialog`.
 - Tailwind config moved from `tailwind.config.js` (deleted) to a single `@import "tailwindcss"` in `src/styles/index.css`.
 - PostCSS now uses `@tailwindcss/postcss`.
+
+## Phase 3b — React 19 + PrimeReact 10 + Tiptap
+
+**Breaking changes:**
+
+1. **React 19 is now the peer dependency.** Consumers on React 18 must upgrade (or stay on `kemis-library@^2`).
+2. **PrimeReact 10 is now bundled.** Public component APIs are preserved where possible. Two internal type fixes were required (the `JSX` namespace removal and `RefObject` nullability tightening); both are transparent to consumers.
+3. **`EditorHtml` is rewritten on Tiptap**, replacing Quill:
+   - **Public props are unchanged** — `name`, `label`, `form`, `rules`, `autoFocus`, `disabled`, `className`. Drop-in replacement for the typical use case.
+   - **Toolbar features ported:** bold, italic, underline, ordered list, bullet list, link, code block, clear formatting.
+   - **Toolbar features NOT ported in v3.0.0 (regressions vs Quill):**
+     - Text color picker (30+ swatches)
+     - Background color picker
+     - Font family selector
+     - Heading selector UI (the engine supports headings via Tiptap's StarterKit; just no toolbar button)
+     - Text alignment buttons
+   - The `headerTemplate` prop is kept (marked `@deprecated`) but silently ignored — Tiptap's toolbar is built into the component.
+   - If you relied on any of the missing features, file an issue and we'll add the matching Tiptap extension(s) in a v3.x patch.
+4. **PrimeReact 10 theme**: the library ships `lara-light-blue` by default (loaded by importing `kemis-library/styles`). The `<KemisProvider theme="...">` prop exists but is informational in v3.0.0 — full runtime theme switching is a v3.x follow-up.
+5. **`quill` is no longer a dependency** — removed alongside the EditorHtml rewrite.
