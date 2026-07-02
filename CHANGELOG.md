@@ -1,5 +1,15 @@
 # kemis-library
 
+## 3.0.0-rc.2
+
+### Patch Changes
+
+- 458bbea: Ship signature fonts in the package. `dist/styles/components.css` references
+  `@font-face` files under `fonts/` but the TTFs were never copied into `dist`,
+  so any bundler (webpack/Turbopack) failed to resolve them (`Module not found:
+Can't resolve 'fonts/.../*.ttf'`). The `build:css` step now copies
+  `src/styles/fonts` into `dist/styles/fonts`.
+
 ## 3.0.0-rc.1
 
 ### Patch Changes

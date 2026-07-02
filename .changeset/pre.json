@@ -6,6 +6,7 @@
   },
   "changesets": [
     "v3-foundation",
-    "v3-phase4-barrel-api"
+    "v3-phase4-barrel-api",
+    "v3-ship-signature-fonts"
   ]
 }

@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-BjG_zV1W.js";import{K as a}from"./index-DZSpNbbq.js";import"./portal.esm-BU1Y9Kmv.js";import"./utils.esm-EFZ4im7q.js";import"./index-BGsE_GxY.js";import"./index-B9nXkq7N.js";import"./overlayservice.esm-Ccfy7LPC.js";import"./ripple.esm-C8ZE5DFS.js";import"./tooltip.esm-CT1wgoBD.js";import"./dialog.esm-Bz5B6irt.js";import"./index.esm-Cl-QCXTu.js";import"./index.esm-BfRPhNW8.js";import"./index.esm-BNG11Ewo.js";const g={title:"Core/KemisProvider",component:a,parameters:{layout:"centered"}},r={render:()=>e.jsx(a,{children:e.jsx("p",{className:"text-gray-700",children:"KemisProvider is active. Toast and ConfirmDialog are mounted."})})};var o,t,i;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  render: () => <KemisProvider>
+      <p className="text-gray-700">KemisProvider is active. Toast and ConfirmDialog are mounted.</p>
+    </KemisProvider>
+}`,...(i=(t=r.parameters)==null?void 0:t.docs)==null?void 0:i.source}}};const j=["Default"];export{r as Default,j as __namedExportsOrder,g as default};

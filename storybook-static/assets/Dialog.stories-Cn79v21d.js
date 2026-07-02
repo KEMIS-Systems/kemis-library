@@ -1,0 +1,11 @@
+import{j as e}from"./jsx-runtime-BjG_zV1W.js";import{r as u}from"./index-BGsE_GxY.js";import{D as g}from"./dialog.esm-Bz5B6irt.js";import{B as x}from"./index-CeT81Lkz.js";import"./portal.esm-BU1Y9Kmv.js";import"./utils.esm-EFZ4im7q.js";import"./index-B9nXkq7N.js";import"./ripple.esm-C8ZE5DFS.js";import"./index.esm-Cl-QCXTu.js";const a=({header:r,visible:t,maximizable:d,className:p,footer:l,onHide:m,children:c})=>e.jsx(g,{header:r,visible:t,maximizable:d,onHide:m,className:p,footer:l,children:c});a.__docgenInfo={description:"",methods:[],displayName:"Dialog",props:{header:{required:!0,tsType:{name:"union",raw:"ReactNode | ((props: DialogProps) => ReactNode)",elements:[{name:"ReactNode"},{name:"unknown"}]},description:""},visible:{required:!0,tsType:{name:"boolean"},description:""},maximizable:{required:!1,tsType:{name:"boolean"},description:""},className:{required:!0,tsType:{name:"string"},description:""},footer:{required:!1,tsType:{name:"union",raw:"ReactNode | ((props: DialogProps) => ReactNode)",elements:[{name:"ReactNode"},{name:"unknown"}]},description:""},onHide:{required:!0,tsType:{name:"signature",type:"function",raw:"() => void",signature:{arguments:[],return:{name:"void"}}},description:""},children:{required:!0,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""}}};const q={title:"Components/Dialog",component:a,parameters:{layout:"centered"}},o={render:()=>{const[r,t]=u.useState(!1);return e.jsxs(e.Fragment,{children:[e.jsx(x,{type:"button",text:"Abrir Dialog",onClick:()=>t(!0)}),e.jsx(a,{header:"Exemplo de Dialog",visible:r,className:"w-[500px]",onHide:()=>t(!1),children:e.jsx("p",{children:"Conteúdo do dialog."})})]})}};var i,n,s;o.parameters={...o.parameters,docs:{...(i=o.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  render: () => {
+    const [visible, setVisible] = useState(false);
+    return <>
+        <Button type="button" text="Abrir Dialog" onClick={() => setVisible(true)} />
+        <Dialog header="Exemplo de Dialog" visible={visible} className="w-[500px]" onHide={() => setVisible(false)}>
+          <p>Conteúdo do dialog.</p>
+        </Dialog>
+      </>;
+  }
+}`,...(s=(n=o.parameters)==null?void 0:n.docs)==null?void 0:s.source}}};const v=["Default"];export{o as Default,v as __namedExportsOrder,q as default};
