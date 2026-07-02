@@ -1,0 +1,350 @@
+{
+  "kemis-library/components/KemisProvider": {
+    "entry": "kemis-library/components",
+    "name": "KemisProviderProps",
+    "wasDefault": false,
+    "isType": true
+  },
+  "kemis-library/components/BoxElement": {
+    "entry": "kemis-library/components",
+    "name": "BoxElement",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Button": {
+    "entry": "kemis-library/components",
+    "name": "Button",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/CropImage": {
+    "entry": "kemis-library/components",
+    "name": "CropImage",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Dialog": {
+    "entry": "kemis-library/components",
+    "name": "Dialog",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/DialogFile": {
+    "entry": "kemis-library/components",
+    "name": "DialogFile",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Dropzone": {
+    "entry": "kemis-library/components",
+    "name": "Dropzone",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/AutoComplete": {
+    "entry": "kemis-library/components",
+    "name": "AutoComplete",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/CheckBox": {
+    "entry": "kemis-library/components",
+    "name": "CheckBox",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/Chips": {
+    "entry": "kemis-library/components",
+    "name": "Chips",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/Dropdown": {
+    "entry": "kemis-library/components",
+    "name": "Dropdown",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/EditorHtml": {
+    "entry": "kemis-library/components",
+    "name": "EditorHtml",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/Form": {
+    "entry": "kemis-library/components",
+    "name": "Form",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/FormDialog": {
+    "entry": "kemis-library/components",
+    "name": "FormDialog",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputCellPhone": {
+    "entry": "kemis-library/components",
+    "name": "InputCellPhone",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputDate": {
+    "entry": "kemis-library/components",
+    "name": "InputDate",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputFile": {
+    "entry": "kemis-library/components",
+    "name": "InputFile",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputImage": {
+    "entry": "kemis-library/components",
+    "name": "InputImage",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputMask": {
+    "entry": "kemis-library/components",
+    "name": "InputMask",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputNumber": {
+    "entry": "kemis-library/components",
+    "name": "InputNumber",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputPassword": {
+    "entry": "kemis-library/components",
+    "name": "InputPassword",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputSwitch": {
+    "entry": "kemis-library/components",
+    "name": "InputSwitch",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputText": {
+    "entry": "kemis-library/components",
+    "name": "InputText",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/InputTextArea": {
+    "entry": "kemis-library/components",
+    "name": "InputTextArea",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/ListBox": {
+    "entry": "kemis-library/components",
+    "name": "ListBox",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/MultiSelect": {
+    "entry": "kemis-library/components",
+    "name": "MultiSelect",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/RadioButton": {
+    "entry": "kemis-library/components",
+    "name": "RadioButton",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Form/SelectButton": {
+    "entry": "kemis-library/components",
+    "name": "SelectButton",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Loading": {
+    "entry": "kemis-library/components",
+    "name": "Loading",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/DialogPhoto": {
+    "entry": "kemis-library/components",
+    "name": "DialogPhoto",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/ShowFile": {
+    "entry": "kemis-library/components",
+    "name": "ShowFile",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Signature/ColorPalette": {
+    "entry": "kemis-library/components",
+    "name": "ColorPalette",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Signature/DialogSignature": {
+    "entry": "kemis-library/components",
+    "name": "DialogSignature",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Signature/DrawSignature": {
+    "entry": "kemis-library/components",
+    "name": "DrawSignature",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Signature/Signatures": {
+    "entry": "kemis-library/components",
+    "name": "Signatures",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Signature/UploadSignature": {
+    "entry": "kemis-library/components",
+    "name": "UploadSignature",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/Signature/WriteSignature": {
+    "entry": "kemis-library/components",
+    "name": "WriteSignature",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/UploadPhoto": {
+    "entry": "kemis-library/components",
+    "name": "UploadPhoto",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/components/SplitButton": {
+    "entry": "kemis-library/components",
+    "name": "SplitButton",
+    "wasDefault": false,
+    "isType": false
+  },
+  "kemis-library/utils/abbreviate": {
+    "entry": "kemis-library/utils",
+    "name": "abbreviate",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/blobToFile": {
+    "entry": "kemis-library/utils",
+    "name": "blobToFile",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/canvasPreview": {
+    "entry": "kemis-library/utils",
+    "name": "canvasPreview",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/cn": {
+    "entry": "kemis-library/utils",
+    "name": "cn",
+    "wasDefault": false,
+    "isType": false
+  },
+  "kemis-library/utils/cnpj": {
+    "entry": "kemis-library/utils",
+    "name": "cnpj",
+    "wasDefault": false,
+    "isType": false
+  },
+  "kemis-library/utils/cpf": {
+    "entry": "kemis-library/utils",
+    "name": "cpf",
+    "wasDefault": false,
+    "isType": false
+  },
+  "kemis-library/utils/dataUrlToFile": {
+    "entry": "kemis-library/utils",
+    "name": "dataUrlToFile",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/downloadFile": {
+    "entry": "kemis-library/utils",
+    "name": "downloadFile",
+    "wasDefault": false,
+    "isType": false
+  },
+  "kemis-library/utils/fontsGoogle": {
+    "entry": "kemis-library/utils",
+    "name": "returnFontsArray",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/format": {
+    "entry": "kemis-library/utils",
+    "name": "format",
+    "wasDefault": false,
+    "isType": false
+  },
+  "kemis-library/utils/formatCurrency": {
+    "entry": "kemis-library/utils",
+    "name": "formatCurrency",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/files": {
+    "entry": "kemis-library/utils",
+    "name": "toBlob",
+    "wasDefault": false,
+    "isType": false
+  },
+  "kemis-library/utils/getAdress": {
+    "entry": "kemis-library/utils",
+    "name": "getAdress",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/getIP": {
+    "entry": "kemis-library/utils",
+    "name": "getIP",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/slug": {
+    "entry": "kemis-library/utils",
+    "name": "slug",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/utils/toast": {
+    "entry": "kemis-library/utils",
+    "name": "Toast",
+    "wasDefault": true,
+    "isType": false
+  },
+  "kemis-library/models/IMCnpj": {
+    "entry": "kemis-library",
+    "name": "IMCnpj",
+    "wasDefault": true,
+    "isType": true
+  },
+  "kemis-library/models/IP": {
+    "entry": "kemis-library",
+    "name": "IMIP",
+    "wasDefault": true,
+    "isType": true
+  },
+  "kemis-library/hooks/form": {
+    "entry": "kemis-library",
+    "name": "useFormIntegration",
+    "wasDefault": false,
+    "isType": false
+  }
+}
