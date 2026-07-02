@@ -1,0 +1,10 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "kemis-library": "2.13.75"
+  },
+  "changesets": [
+    "v3-foundation"
+  ]
+}
