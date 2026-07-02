@@ -17,8 +17,9 @@ dist
 # logs
 *.log
 
-# Manager
+# Manager (v3 uses npm — ignore yarn artifacts, keep package-lock.json tracked)
 yarn
+yarn.*
+yarn-*.*
 *.lock
 lock.*
-packge-lock.json

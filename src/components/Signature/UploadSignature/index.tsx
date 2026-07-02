@@ -23,8 +23,12 @@ const UploadSignature: React.FC<IParams> = ({ onChange }) => {
   );
 
   return (
-    <div className="flex flex-row gap-2">
-      <InputImage name="image" form={form} handleChange={handleChange} />
+    <div className="flex flex-row gap-2">      
+      <InputImage 
+        name="image"
+        form={form}
+        handleChange={handleChange}
+      />
     </div>
   );
 };
