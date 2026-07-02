@@ -75,3 +75,60 @@ This phase removes dead/redundant dependencies and reclassifies runtime librarie
    - If you relied on any of the missing features, file an issue and we'll add the matching Tiptap extension(s) in a v3.x patch.
 4. **PrimeReact 10 theme**: the library ships `lara-light-blue` by default (loaded by importing `kemis-library/styles`). The `<KemisProvider theme="...">` prop exists but is informational in v3.0.0 — full runtime theme switching is a v3.x follow-up.
 5. **`quill` is no longer a dependency** — removed alongside the EditorHtml rewrite.
+
+## Phase 4 — public API surface: barrel imports + compatibility fixes
+
+**The import convention changed.** v2 shipped one built file per source file, so consumers
+could deep-import any internal path (`kemis-library/components/Loading`,
+`kemis-library/utils/cpf`, `kemis-library/models/IP`, …). v3 bundles into a small,
+stable set of entry points. The internal folder layout is **no longer public API** —
+import from the barrels instead.
+
+**Before → after:**
+
+```ts
+// ❌ v2 deep imports (internal paths — removed in v3)
+import Loading from "kemis-library/components/Loading";
+import BoxElement from "kemis-library/components/BoxElement";
+import FormDialog from "kemis-library/components/Form/FormDialog";
+import { cpf } from "kemis-library/utils/cpf";
+import getIP from "kemis-library/utils/getIP";
+import IMIP from "kemis-library/models/IP";
+import { useFormIntegration } from "kemis-library/hooks/form";
+
+// ✅ v3 barrels
+import { Loading, BoxElement } from "kemis-library/components";
+import { FormDialog } from "kemis-library/components";
+import { cpf, getIP } from "kemis-library/utils";
+import { useFormIntegration } from "kemis-library";
+import type { IMIP } from "kemis-library"; // model interfaces are named type exports now
+```
+
+Public entry points in v3:
+
+| Entry | Contents |
+|---|---|
+| `kemis-library` | everything (components + utils + hooks + model types) |
+| `kemis-library/components` | all components |
+| `kemis-library/utils` | all utils |
+| `kemis-library/styles`, `kemis-library/styles/components` | CSS (both with and without the `.css` suffix resolve) |
+
+Note default → named: many v2 deep imports were default exports; the barrels export
+them as **named** members. Convert `import Loading from …` to `import { Loading } from …`.
+
+**Bundle size / tree-shaking:** the barrels are ESM with `sideEffects: ["*.css"]`, so
+modern bundlers tree-shake unused named exports — importing one component does not pull
+the whole library. On Next.js, enable
+`experimental.optimizePackageImports: ["kemis-library"]` (Next ≥ 13.5) to also get the
+per-file compile speed of deep imports automatically; on older Next use `modularizeImports`.
+
+**Compatibility fixes in this phase:**
+
+1. **`react`/`react-dom` peer widened to `^18.2.0 || ^19.0.0`.** v3 no longer hard-requires
+   React 19, so projects can migrate one at a time. (v3 still targets React 19 as the
+   recommended runtime; no React-19-only runtime APIs are used.)
+2. **`cpf` restored** in `kemis-library/utils` (it was accidentally dropped from the barrel).
+3. **Model interfaces** (`IMCnpj`, `IMIP`) are exported as named types from the root:
+   `import type { IMIP } from "kemis-library"`.
+4. **CSS paths accept the `.css` suffix** — both `kemis-library/styles/components` and
+   `kemis-library/styles/components.css` resolve, so existing `_app` CSS imports keep working.
