@@ -23,3 +23,6 @@ yarn.*
 yarn-*.*
 *.lock
 lock.*
+
+# storybook build output
+storybook-static/
