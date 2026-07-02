@@ -5,6 +5,7 @@
     "kemis-library": "2.13.75"
   },
   "changesets": [
-    "v3-foundation"
+    "v3-foundation",
+    "v3-phase4-barrel-api"
   ]
 }
