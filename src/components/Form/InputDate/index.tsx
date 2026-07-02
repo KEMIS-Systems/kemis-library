@@ -1,5 +1,4 @@
 import { classNames } from "primereact/utils";
-import { ChangeEvent, useCallback, useState } from "react";
 import {
   Controller,
   FieldPath,
@@ -7,6 +6,10 @@ import {
   RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
+
+// Components
+import { Calendar } from "primereact/calendar";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -26,10 +29,6 @@ interface IProps<T extends FieldValues> {
   readOnlyInput?: boolean;
 }
 
-// Components
-import { Calendar } from "primereact/calendar";
-import MessageError from "../MessageError";
-
 const InputDate = <T extends object>({
   name,
   label,
@@ -47,24 +46,14 @@ const InputDate = <T extends object>({
   readOnlyInput = false,
   showTime = false,
 }: IProps<T>) => {
-  const [date, setDate] = useState<string>("");
-
-  // Função para tratar entrada numérica e converter para timestamp
-  const handleDateInput = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      // @ts-ignore
-      form.setValue(name, dateObj.toLocaleDateString("pt-BR"));
-    },
-    [form, name]
-  );
-
   return (
     <div className={className ?? ""}>
       <label
         htmlFor={name}
         data-hasdisabled={disabled}
         className={
-          classNames({ "text-red-400 ": false }) + " block data-[hasdisabled=true]:text-slate-200"
+          classNames({ "text-red-400 ": false }) +
+          " block data-[hasdisabled=true]:text-slate-200"
         }
       >
         {label}
@@ -75,7 +64,7 @@ const InputDate = <T extends object>({
         name={name}
         control={form?.control}
         rules={rules}
-        render={({ field: { ...field }, fieldState, formState }) => {
+        render={({ field: { ...field }, fieldState }) => {
           return (
             <>
               <Calendar
@@ -84,22 +73,21 @@ const InputDate = <T extends object>({
                 name={`input-date-${name}`}
                 inputClassName="kemis-input-data data-[haserror=true]:border-[1.5px] data-[haserror=true]:border-red-400"
                 autoFocus={autoFocus}
-                dateFormat="dd/mm/yy"
+                dateFormat={dateFormat ?? "dd/mm/yy"}
+                mask={mask ?? "99/99/9999"}
                 value={field.value}
                 disabled={disabled}
-                mask="99/99/9999"
                 placeholder="dia / mês / ano"
                 showIcon
                 showButtonBar
+                view={view ?? "date"}
                 showTime={showTime}
-                // @ts-ignore
+                timeOnly={timeOnly}
+                hourFormat={hourFormat}
+                selectionMode={selectionMode}
+                readOnlyInput={readOnlyInput}
+                // @ts-expect-error PrimeReact's onChange event value is loosely typed
                 onChange={(e) => form.setValue(name, e.value)}
-                inputRef={(el) => {
-                  if (el) {
-                    // @ts-ignore
-                    // el.onfocus = e => e.target?.blur && e.target?.blur()
-                  }
-                }}
               />
 
               {<MessageError fieldState={fieldState} />}
