@@ -2,7 +2,7 @@ import { Button as ButtonPrime } from "primereact/button";
 import { MultiSelect as MultiSelectPrime } from "primereact/multiselect";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { classNames } from "primereact/utils";
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Controller,
   FieldPath,
@@ -26,6 +26,7 @@ interface IProps<T extends FieldValues> {
   className?: string;
   optionGroupLabel?: string;
   optionGroupChildren?: string;
+  itemTemplate?: ReactNode | ((option: any) => React.ReactNode);
 }
 
 const MultiSelect = <T extends object>({
@@ -42,6 +43,7 @@ const MultiSelect = <T extends object>({
   className,
   optionGroupLabel,
   optionGroupChildren,
+  itemTemplate,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
@@ -49,22 +51,20 @@ const MultiSelect = <T extends object>({
         name={name}
         control={form?.control}
         rules={rules}
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+         
         render={({ field: { ref, ...field }, fieldState }) => {
           return (
             <>
               <label
                 htmlFor={field.name}
+                data-hasdisabled={disabled}
                 className={
-                  classNames({ "text-red-400 ": fieldState.error }) + " block"
+                  classNames({ "text-red-400 ": fieldState.error }) +
+                  " block data-[hasdisabled=true]:text-slate-200"
                 }
               >
                 {label}
-                {rules?.required ? (
-                  <span className="text-slate-300"> *</span>
-                ) : (
-                  ""
-                )}
+                {rules?.required ? <span className="text-slate-300"> *</span> : ""}
               </label>
               <div className={`${handleAddButton && "p-inputgroup"}`}>
                 <MultiSelectPrime
@@ -78,14 +78,14 @@ const MultiSelect = <T extends object>({
                   disabled={disabled}
                   display="chip"
                   className={
-                    classNames({ "p-invalid ": fieldState.error }) +
-                    " w-full disabled:bg-slate-100"
+                    classNames({ "p-invalid ": fieldState.error }) + " w-full disabled:bg-slate-100"
                   }
                   {...field}
                   ref={ref}
                   onChange={(event) => field.onChange(event.target.value)}
                   optionGroupLabel={optionGroupLabel}
                   optionGroupChildren={optionGroupChildren}
+                  itemTemplate={itemTemplate}
                 />
                 {handleAddButton && (
                   <ButtonPrime

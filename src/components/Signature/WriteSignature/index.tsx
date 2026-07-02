@@ -1,17 +1,19 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { BsCheck2Circle } from "react-icons/bs";
 import { BiTrash } from "react-icons/bi";
-import returnFontsArray from "../../../utils/fontsGoogle";
-import { toBlob } from "../../../utils/files";
+import { BsCheck2Circle } from "react-icons/bs";
+import { MdOutlineSwipe } from "react-icons/md";
 import blobToFile from "../../../utils/blobToFile";
-import ColorPalette from "../ColorPalette";
-import Dropdown from "../../Form/Dropdown";
+import { toBlob } from "../../../utils/files";
+import returnFontsArray from "../../../utils/fontsGoogle";
 import CropImage from "../../CropImage";
+import Dropdown from "../../Form/Dropdown";
+import ColorPalette from "../ColorPalette";
 
 interface IProps {
   onChange(files: File): void;
   text: string;
+  writeSignature?: boolean;
 }
 
 interface IWriteSignature {
@@ -21,7 +23,7 @@ interface IWriteSignature {
 
 const defaultValues: IWriteSignature = {} as IWriteSignature;
 
-const WriteSignature = ({ onChange, text }: IProps) => {
+const WriteSignature = ({ onChange, text, writeSignature = true }: IProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const form = useForm({ defaultValues });
   const [colorDraw, setColorDraw] = useState<string>("#1D64CC");
@@ -29,17 +31,15 @@ const WriteSignature = ({ onChange, text }: IProps) => {
   const [signatureUrl, setSignatureUrl] = useState<string>("");
   const fonts = returnFontsArray();
   const fontSizes = [
+    { value: 12, label: "12px" },
+    { value: 14, label: "14px" },
+    { value: 16, label: "16px" },
     { value: 20, label: "20px" },
-    { value: 22, label: "22px" },
     { value: 24, label: "24px" },
-    { value: 26, label: "26px" },
     { value: 28, label: "28px" },
-    { value: 30, label: "30px" },
-    { value: 34, label: "34px" },
+    { value: 36, label: "36px" },
   ];
-  const [fontType, setFontType] = useState<string>(
-    fonts[1].script.style.fontFamily
-  );
+  const [fontType, setFontType] = useState<string>(fonts[1].script.style.fontFamily);
   const fontTypeSelected = form.watch("font_type");
   const fontSizeSelected = form.watch("font_size");
 
@@ -49,19 +49,32 @@ const WriteSignature = ({ onChange, text }: IProps) => {
   }, [form]);
 
   const drawText = useCallback(() => {
+    const TEXT_TRANSFORM = setCapitalizeText(text);
+
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
       if (context) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.font = `${fontSizeSelected}px ${fontType}`;
+        // Ajuste para alta definição
+        const ratio = window.devicePixelRatio || 1;
+        const width = canvas.offsetWidth;
+        const height = canvas.offsetHeight;
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+        context.scale(ratio, ratio);
+
+        context.clearRect(0, 0, width, height);
+        context.font = `${fontSizeSelected}px ${fontType}, sans-serif`;
         context.textBaseline = "middle";
         context.fillStyle = colorDraw;
-        const textWidth = context.measureText(text).width;
-        const x = (canvas.width - textWidth) / 2;
-        const y = canvas.height / 2;
+        const textWidth = context.measureText(TEXT_TRANSFORM).width;
+        const x = (width - textWidth) / 2;
+        const y = height / 2;
 
-        context.fillText(text, x, y);
+        context.fillText(TEXT_TRANSFORM, x, y);
       }
     }
   }, [fontSizeSelected, fontType, text, colorDraw]);
@@ -78,6 +91,20 @@ const WriteSignature = ({ onChange, text }: IProps) => {
       }
     });
   }, [fontTypeSelected, fonts, drawText]);
+
+  function setCapitalizeText(arg: string = "") {
+    try {
+      if (!arg || arg.trim() === "") return arg;
+
+      return arg
+        .trim()
+        .toLowerCase()
+        .split(" ")
+        .reduce((a, b) => a.concat((" " + b.charAt(0)).toUpperCase().concat(b.slice(1))), "");
+    } catch (error) {
+      return arg;
+    }
+  }
 
   const handleBringColor = useCallback((value: string) => {
     setColorDraw(value);
@@ -105,13 +132,27 @@ const WriteSignature = ({ onChange, text }: IProps) => {
     onChange({} as File);
   }, [onChange]);
 
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    toBlob(canvasRef.current).then((d) => {
+      const file = blobToFile(d, "signature.png");
+      onChange(file);
+    });
+  }, []);
+
   return (
     <>
       <div className=" w-full">
+        <span className="kemis-library-in-page-signature-warning">
+          <MdOutlineSwipe size={16} />
+          Deixe seu celular na horizontal
+        </span>
         <div className="border border-gray-300 rounded-t-xl p-2 flex gap-2 justify-between">
           <div className="flex gap-2">
             {!showImage ? (
               <button
+                title="Recorta a assinatura"
                 className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-blue-400 bg-transparent hover:text-blue-600 hover:border-gray-400"
                 onClick={handleShowImage}
               >
@@ -121,6 +162,7 @@ const WriteSignature = ({ onChange, text }: IProps) => {
               <button
                 className="rounded-full h-10 w-10 flex justify-center items-center border border-gray-300 text-red-400 bg-transparent hover:text-red-600 hover:border-gray-400"
                 onClick={handleHideImage}
+                title="Desfazer recorte"
               >
                 <BiTrash size={20} />
               </button>
@@ -135,23 +177,25 @@ const WriteSignature = ({ onChange, text }: IProps) => {
         <div className="border border-gray-300 rounded-b-xl p-1">
           <div className="flex justify-between gap-2">
             {!showImage ? (
-              <div className="flex w-full gap-2 p-1">
-                <div className="w-2/3">
+              <div className="kemis-library-signature-write-dropdown-container ">
+                <div className="kemis-library-signature-write-dropdown-item">
                   <Dropdown
                     name="font_type"
                     label={""}
                     rules={{ required: "Font type is required." }}
                     form={form}
                     options={fonts}
+                    filter={false}
                   />
                 </div>
-                <div className="w-1/3">
+                <div className="kemis-library-signature-write-dropdown-item">
                   <Dropdown
                     name="font_size"
                     label={""}
                     rules={{ required: "Font size is required." }}
                     options={fontSizes}
                     form={form}
+                    filter={false}
                   />
                 </div>
               </div>

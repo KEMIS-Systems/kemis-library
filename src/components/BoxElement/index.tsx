@@ -6,20 +6,10 @@ interface IContainerElementProps {
   classNameChild?: string;
 }
 
-const BoxElement = ({
-  className,
-  classNameChild,
-  children,
-}: IContainerElementProps) => {
+const BoxElement = ({ className, classNameChild, children }: IContainerElementProps) => {
   return (
-    <div
-      className={`bg-white shadow-xl rounded-xl w-full py-5 px-1 sm:px-5 ${className}`}
-    >
-      <div
-        className={`flex flex-col ${classNameChild}`}
-      >
-        {children}
-      </div>
+    <div className={`bg-white shadow-xl rounded-xl w-full py-5 px-1 sm:px-5 ${className}`}>
+      <div className={`flex flex-col ${classNameChild}`}>{children}</div>
     </div>
   );
 };

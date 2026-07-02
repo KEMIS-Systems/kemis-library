@@ -1,0 +1,33 @@
+import { useState } from "react";
+
+// Partials
+import { Base } from "../../base";
+
+// Hooks
+import { useLanguage } from "../../../../../hooks/Language";
+
+// Types
+import { IInPageSignatureProps } from "./types";
+
+export function InPageSignature({
+  onSubmitted,
+  text,
+  className,
+  uploadSignature,
+  writeSignature = false,
+}: IInPageSignatureProps) {
+  const { language } = useLanguage();
+
+  const [fileData, setFileData] = useState<File>({} as File);
+
+  return (
+    <div className={`${className} kemis-library-in-page-signature`}>
+      <Base
+        setFileData={onSubmitted}
+        text={text}
+        uploadSignature={uploadSignature}
+        writeSignature={writeSignature}
+      />
+    </div>
+  );
+}

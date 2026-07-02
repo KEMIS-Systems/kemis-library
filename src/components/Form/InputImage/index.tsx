@@ -1,25 +1,21 @@
 import React, { useCallback, useState } from "react";
 import {
   Controller,
-  FieldPath,
   RegisterOptions,
-  UseFormReturn
+  FieldValues,
+  FieldPath,
+  UseFormReturn,
 } from "react-hook-form";
 import InputImageBox from "./Partials/Box";
 
-interface IProps {
-  name: FieldPath<any>;
+interface IProps<T extends FieldValues> {
+  name: FieldPath<T>;
   handleChange(files: File[]): void;
   rules?: RegisterOptions;
-  form: UseFormReturn<any>;
+  form: UseFormReturn<T>;
 }
 
-const InputImage = ({
-  name,
-  handleChange,
-  rules,
-  form,
-}: IProps) => {
+const InputImage = <T extends object>({ name, handleChange, rules, form }: IProps<T>) => {
   const [fileChanged, setFileChanged] = useState<boolean>(false);
 
   const handleFileChange = useCallback(
@@ -42,9 +38,7 @@ const InputImage = ({
             rules={rules}
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             render={({ field: { ref, onChange, ...field }, fieldState }) => {
-              return (
-                <input type="file" {...field} ref={ref} className="hidden" />
-              );
+              return <input type="file" {...field} ref={ref} className="hidden" />;
             }}
           />
           <label htmlFor={name}>

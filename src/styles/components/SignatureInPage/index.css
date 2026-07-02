@@ -1,0 +1,5 @@
+@media screen and (min-width: 667px) and (max-width: 1366px) and (orientation: landscape) {
+  .kemis-library-dialog-modal-signature {
+    width: 90% !important;
+  }
+}

@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from "react";
 import { TabPanel, TabView } from "primereact/tabview";
+import { useCallback, useState } from "react";
 import { useLanguage } from "../../../hooks/Language";
-import DrawSignature from "../DrawSignature";
-import WriteSignature from "../WriteSignature";
-import UploadSignature from "../UploadSignature";
 import Dialog from "../../Dialog";
+import DrawSignature from "../DrawSignature";
+import UploadSignature from "../UploadSignature";
+import WriteSignature from "../WriteSignature";
 
 interface IModalProps {
   header: string;
@@ -24,8 +24,8 @@ const DialogSignature = ({
   onSubmitted,
   text,
   classNameDialog,
-  writeSignature,
   uploadSignature,
+  writeSignature = true,
 }: IModalProps) => {
   const { language } = useLanguage();
   const [fileData, setFileData] = useState<File>({} as File);
@@ -64,22 +64,20 @@ const DialogSignature = ({
       header={header}
       visible={show}
       onHide={onHide}
-      className={classNameDialog ?? ""}
+      className={`${classNameDialog} kemis-library-dialog-modal-signature`}
       footer={handleFooterDialog}
     >
       <TabView className="col-span-2">
-        <TabPanel header={language.components.signature.header_draw.title}>
-          <DrawSignature onChange={setFileData} />
-        </TabPanel>
         {writeSignature && (
           <TabPanel header={language.components.signature.header_write.title}>
             <WriteSignature onChange={setFileData} text={text} />
           </TabPanel>
         )}
+        <TabPanel header={language.components.signature.header_draw.title}>
+          <DrawSignature onChange={setFileData} />
+        </TabPanel>
         {uploadSignature && (
-          <TabPanel
-            header={language.components.signature.header_uploading.title}
-          >
+          <TabPanel header={language.components.signature.header_uploading.title}>
             <UploadSignature onChange={setFileData} />
           </TabPanel>
         )}

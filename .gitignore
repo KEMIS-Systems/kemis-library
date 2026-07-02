@@ -1,14 +1,28 @@
 # dependencies
 /node_modules
+node_modules
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+coverage
 
 # production
 /build
-package-lock.*
-package-lock.json
+/dist
+dist
+.DS_Store
+
+# logs
+*.log
+
+# Manager (v3 uses npm — ignore yarn artifacts, keep package-lock.json tracked)
+yarn
 yarn.*
 yarn-*.*
+*.lock
+lock.*
+
+# storybook build output
+storybook-static/

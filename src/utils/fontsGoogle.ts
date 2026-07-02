@@ -1,41 +1,42 @@
-let WebFont: typeof import("webfontloader") | undefined;
-if (typeof window !== "undefined") {
-  import("webfontloader").then((module) => {
-    WebFont = module;
-  });
-}
-
+/**
+ * Returns the font metadata used by the WriteSignature font picker.
+ *
+ * Fonts themselves are self-hosted via @font-face in src/styles/fonts/.
+ * Previously this module also tried to dynamically load the same families
+ * from Google Fonts via webfontloader, but that code path was disabled
+ * (commented out) long ago and has now been removed entirely.
+ */
 const returnFontsArray = () => {
   const fonts = [
     {
       value: 1,
-      label: "Imperial Script",
+      label: "Ms Madi",
       className: "text-xl",
-      family: "Imperial Script",
+      family: "'Ms Madi'",
     },
     {
       value: 2,
-      label: "Miss Fajardose",
+      label: "Mrs Saint Delafield",
       className: "text-xl",
-      family: "Miss Fajardose",
+      family: "'Mrs Saint Delafield'",
     },
     {
       value: 3,
-      label: "Waterfall",
+      label: "Bilbo",
       className: "text-xl",
-      family: "Waterfall",
+      family: "Bilbo",
     },
     {
       value: 4,
-      label: "Dancing Script",
+      label: "Meow Script",
       className: "text-xl",
-      family: "Dancing Script",
+      family: "'Meow Script'",
     },
     {
       value: 5,
-      label: "Great Vibes",
+      label: "Yellowtail",
       className: "text-xl",
-      family: "Great Vibes",
+      family: "Yellowtail",
     },
     {
       value: 6,
@@ -44,17 +45,6 @@ const returnFontsArray = () => {
       family: "Sacramento",
     },
   ];
-
-  if (typeof window !== "undefined" && WebFont) {
-    WebFont.load({
-      google: {
-        families: fonts.map((font) => font.family),
-      },
-      active: () => {
-        // Font loading completed, you can perform any necessary actions here
-      },
-    });
-  }
 
   return fonts.map((font) => ({
     ...font,

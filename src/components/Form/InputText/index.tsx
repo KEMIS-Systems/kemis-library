@@ -1,6 +1,6 @@
 import { InputText as InputTextPrime } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
-import React from "react";
+import React, { ReactElement } from "react";
 import {
   Controller,
   FieldPath,
@@ -12,16 +12,12 @@ import {
 // Components
 import MessageError from "../MessageError";
 
-interface IProps<T extends FieldValues>
-  extends Partial<
-    Omit<
-      React.DetailedHTMLProps<
-        React.InputHTMLAttributes<HTMLInputElement>,
-        HTMLInputElement
-      >,
-      "onInput" | "ref" | "value" | "form"
-    >
-  > {
+interface IProps<T extends FieldValues> extends Partial<
+  Omit<
+    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    "onInput" | "ref" | "value" | "form"
+  >
+> {
   className?: string;
   name: FieldPath<T>;
   label: string;
@@ -32,6 +28,7 @@ interface IProps<T extends FieldValues>
   placeholder?: string;
   disabled?: boolean;
   inputStyle?: string | null;
+  child?: ReactElement;
 }
 
 const InputText = <T extends object>({
@@ -42,6 +39,7 @@ const InputText = <T extends object>({
   rules,
   autoFocus,
   form,
+  child,
   placeholder,
   disabled,
   inputStyle,
@@ -59,30 +57,28 @@ const InputText = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
+                  className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
-                <InputTextPrime
-                  {...field}
-                  ref={ref}
-                  id={field.name}
-                  type={type ?? "text"}
-                  autoFocus={autoFocus}
-                  className={`${classNames({
-                    "p-invalid ": fieldState.error,
-                  })} w-full disabled:bg-slate-100 ${inputStyle}`}
-                  disabled={disabled}
-                  placeholder={placeholder ?? undefined}
-                  {...rest}
-                />
+                <div className="flex flex-row items-center justify-start gap-2 [&_.p-inputtext]:disabled:bg-slate-100">
+                  <InputTextPrime
+                    {...field}
+                    ref={ref}
+                    id={field.name}
+                    type={type ?? "text"}
+                    autoFocus={autoFocus}
+                    className={
+                      classNames({ "p-invalid ": fieldState.error }) +
+                      ` w-full ${disabled ? "bg-slate-100" : ""}`
+                    }
+                    disabled={disabled}
+                    placeholder={placeholder ?? undefined}
+                    {...rest}
+                  />
+                  {child && <>{child}</>}
+                </div>
                 {<MessageError fieldState={fieldState} />}
               </>
             );

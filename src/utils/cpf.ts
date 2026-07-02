@@ -8,5 +8,5 @@ const isValid = (value: string | null | undefined): boolean => {
 };
 
 export const cpf = {
-  isValid
+  isValid,
 };

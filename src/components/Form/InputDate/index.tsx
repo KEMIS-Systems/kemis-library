@@ -1,6 +1,4 @@
-import { Calendar as CalendarPrime } from "primereact/calendar";
 import { classNames } from "primereact/utils";
-import React from "react";
 import {
   Controller,
   FieldPath,
@@ -8,6 +6,10 @@ import {
   RegisterOptions,
   UseFormReturn,
 } from "react-hook-form";
+
+// Components
+import { Calendar } from "primereact/calendar";
+import MessageError from "../MessageError";
 
 interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -27,9 +29,6 @@ interface IProps<T extends FieldValues> {
   readOnlyInput?: boolean;
 }
 
-// Components
-import MessageError from "../MessageError";
-
 const InputDate = <T extends object>({
   name,
   label,
@@ -41,14 +40,26 @@ const InputDate = <T extends object>({
   autoFocus,
   className,
   view,
-  showTime,
   timeOnly,
   hourFormat,
   selectionMode,
   readOnlyInput = false,
+  showTime = false,
 }: IProps<T>) => {
   return (
     <div className={className ?? ""}>
+      <label
+        htmlFor={name}
+        data-hasdisabled={disabled}
+        className={
+          classNames({ "text-red-400 ": false }) +
+          " block data-[hasdisabled=true]:text-slate-200"
+        }
+      >
+        {label}
+        {rules?.required ? <span className="text-slate-300"> *</span> : ""}
+      </label>
+
       <Controller
         name={name}
         control={form?.control}
@@ -56,44 +67,29 @@ const InputDate = <T extends object>({
         render={({ field: { ...field }, fieldState }) => {
           return (
             <>
-              <label
-                htmlFor={field.name}
-                className={
-                  classNames({ "text-red-400 ": fieldState.error }) + " block"
-                }
-              >
-                {label}
-                {rules?.required ? (
-                  <span className="text-slate-300"> *</span>
-                ) : (
-                  ""
-                )}
-              </label>
-              <CalendarPrime
-                {...field}
+              <Calendar
                 id={field.name}
-                dateFormat={dateFormat ?? "dd/mm/yy"}
-                // @ts-ignore
+                data-haserror={fieldState.error}
+                name={`input-date-${name}`}
+                inputClassName="kemis-input-data data-[haserror=true]:border-[1.5px] data-[haserror=true]:border-red-400"
                 autoFocus={autoFocus}
+                dateFormat={dateFormat ?? "dd/mm/yy"}
                 mask={mask ?? "99/99/9999"}
+                value={field.value}
+                disabled={disabled}
+                placeholder="dia / mês / ano"
                 showIcon
                 showButtonBar
                 view={view ?? "date"}
                 showTime={showTime}
                 timeOnly={timeOnly}
                 hourFormat={hourFormat}
-                showOnFocus={false}
-                selectionMode={selectionMode ?? "single"}
+                selectionMode={selectionMode}
                 readOnlyInput={readOnlyInput}
-                className={
-                  classNames({ "p-invalid ": fieldState.error }) +
-                  ` w-full ${disabled ? "bg-slate-100" : ""}`
-                }
-                inputClassName={`disabled:bg-slate-100 ${
-                  fieldState.error ? "p-invalid" : ""
-                }`}
-                disabled={disabled}
+                // @ts-expect-error PrimeReact's onChange event value is loosely typed
+                onChange={(e) => form.setValue(name, e.value)}
               />
+
               {<MessageError fieldState={fieldState} />}
             </>
           );

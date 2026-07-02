@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import React from "react";
 import { ChipsChangeEvent, Chips as ChipsPrime } from "primereact/chips";
 import {
@@ -42,16 +42,10 @@ const Chips = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
+                  className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <ChipsPrime
                   id={field.name}
@@ -60,11 +54,7 @@ const Chips = <T extends object>({
                   {...field}
                   disabled={disabled}
                   className={classNames({ "p-invalid": fieldState.error })}
-                  onChange={
-                    field.onChange as unknown as (
-                      event: ChipsChangeEvent
-                    ) => void
-                  }
+                  onChange={field.onChange as unknown as (event: ChipsChangeEvent) => void}
                 />
                 {<MessageError fieldState={fieldState} />}
               </>

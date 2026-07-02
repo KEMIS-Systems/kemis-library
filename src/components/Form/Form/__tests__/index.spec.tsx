@@ -49,8 +49,7 @@ describe("Form component", () => {
     (useForm as jest.Mock).mockReturnValue(mockForm);
 
     // Create a mock instance of Axios
-    const mockedApi: AxiosInstance =
-      axios as unknown as jest.Mocked<AxiosInstance>;
+    const mockedApi: AxiosInstance = axios as unknown as jest.Mocked<AxiosInstance>;
 
     // Mock the post method of the Axios instance
     mockedApi.post = jest.fn().mockResolvedValue({ data: {} });
@@ -69,8 +68,7 @@ describe("Form component", () => {
     );
 
     // Get the handleSubmit function from mockForm
-    const handleSubmitFunction =
-      mockForm.handleSubmit as SubmitHandler<FieldValues>;
+    const handleSubmitFunction = mockForm.handleSubmit as SubmitHandler<FieldValues>;
 
     // Spy on the handleSubmit function
     const handleSubmitSpy = jest.spyOn(mockForm, "handleSubmit");
@@ -85,10 +83,7 @@ describe("Form component", () => {
 
       // Assert that the axios post method has been called
       expect(mockedApi.post).toHaveBeenCalledTimes(1);
-      expect(mockedApi.post).toHaveBeenCalledWith(
-        "/api/formm",
-        expect.any(Object)
-      );
+      expect(mockedApi.post).toHaveBeenCalledWith("/api/formm", expect.any(Object));
     });
   });
 });

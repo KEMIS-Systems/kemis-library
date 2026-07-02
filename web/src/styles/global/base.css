@@ -1,0 +1,80 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: ease-in-out 0.3s;
+
+    font-family: ElectronicDisplayText, consolas;
+    font-size: 1rem;
+}
+
+html, body {
+    width: 100dvw;
+    height: 100dvh;  
+    overflow-x: hidden;  
+}
+
+body {
+    background-color: #f5f5f5;
+
+    font-size: 16px;
+    color: black;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.h1-main-gradiente {
+    --text-color: #404040;
+    background: radial-gradient(circle 300px at 30% -180%, var(--text-color) 0%, #ffffff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 4px rgba(255, 255, 255, .1), 0 0 14px rgba(130, 168, 236, .2);
+}
+
+.code_area {
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+    grid-template-rows: min-content;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#app::after {
+    content: '';
+    position: absolute;
+    inset: -30%;        
+    filter: blur(80px);    
+    z-index: -1;
+    opacity: 0.2;    
+    background: url("./images/noise.webp"), 
+        radial-gradient(circle at right center, red, blue, green, yellow);
+    
+    mask-image: radial-gradient(ellipse 300% 30% at center center, #000 20%, #00000080 50%, #0000);
+    
+    -webkit-mask-image: radial-gradient(ellipse 300% 30% at center center, #000 20%, #00000080 50%, #0000);
+    -safari-mask-image: radial-gradient(ellipse 300% 30% at center center, #000 20%, #00000080 50%, #0000);
+    -moz-mask-image: radial-gradient(ellipse 300% 30% at center center, #000 20%, #00000080 50%, #0000);
+    -o-mask-image: radial-gradient(ellipse 300% 30% at center center, #000 20%, #00000080 50%, #0000);
+}
+
+hgroup {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+h1,h2,h3 {
+    font-family: ElectronicDisplay, consolas; 
+}
+
+@media screen and (min-width: 300px) and (max-width: 640px) {
+    .aside-default-layout:not(:has(input[type='checkbox']:checked)) {
+        overflow-x: auto;
+    }
+}

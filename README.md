@@ -1,5 +1,7 @@
 ## Kemis Library
 
+> ⚠️ **v3.0.0 in progress** — this branch holds the in-flight migration described in `docs/superpowers/specs/2026-05-27-kemis-library-v3-migration-design.md`. For the current stable line, see branch `v2-legacy`.
+
 Here you may fonund common components, utils, hooks, ..., etc, used by the Company.
 
 ### How to import:
@@ -154,3 +156,11 @@ export default ModalForm;
 ## Author
 
 Nicanor Orlando
+
+## Release
+
+Releases are automated via Changesets + GitHub Actions. To enable publishing:
+
+1. Generate an npm Automation token (`npm token create --automation`).
+2. Add it as `NPM_TOKEN` in the repo's GitHub Actions secrets.
+3. Merge a Changesets "Version Packages" PR to `master` — the workflow publishes automatically.

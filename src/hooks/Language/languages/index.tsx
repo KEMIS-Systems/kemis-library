@@ -47,6 +47,7 @@ export interface ILanguage {
     button_accept: string;
     button_cancel: string;
     button_save: string;
+    button_wait: string;
     button_filter: string;
     button_clear: string;
     button_delete: string;

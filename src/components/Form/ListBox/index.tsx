@@ -54,16 +54,10 @@ const ListBox = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
-                  className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
-                  }
+                  className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <ListBoxPrime
                   id={field.name}
@@ -74,9 +68,7 @@ const ListBox = <T extends object>({
                   optionGroupChildren={optionGroupChildren}
                   optionGroupTemplate={optionGroupTemplate}
                   listStyle={listStyle ?? { maxHeight: "200px" }}
-                  className={
-                    classNames({ "p-invalid ": fieldState.error }) + " w-full"
-                  }
+                  className={classNames({ "p-invalid ": fieldState.error }) + " w-full"}
                   disabled={disabled}
                   {...field}
                   ref={ref}

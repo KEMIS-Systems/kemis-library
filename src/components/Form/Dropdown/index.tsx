@@ -2,7 +2,7 @@ import { Button as ButtonPrime } from "primereact/button";
 import { Dropdown as DropdownPrime } from "primereact/dropdown";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { classNames } from "primereact/utils";
-import React from "react";
+import React, { ReactNode, type ReactElement } from "react";
 import {
   Controller,
   FieldPath,
@@ -23,11 +23,14 @@ interface IProps<T extends FieldValues> {
   optionGroupLabel?: string;
   optionGroupChildren?: string;
   optionGroupTemplate?: (option: any, index?: number) => React.ReactNode;
+  valueTemplate?: React.ReactNode | ReactElement;
+  itemTemplate?: React.ReactNode | ReactElement;
   form: UseFormReturn<T>;
   rules?: RegisterOptions;
   autoFocus?: boolean;
   handleAddButton?: () => void;
   disabled?: boolean;
+  filter?: boolean;
 }
 
 const Dropdown = <T extends object>({
@@ -40,32 +43,28 @@ const Dropdown = <T extends object>({
   optionGroupLabel,
   optionGroupChildren,
   optionGroupTemplate,
+  valueTemplate,
+  itemTemplate,
   rules,
   autoFocus,
   handleAddButton,
   disabled,
+  filter = true,
 }: IProps<T>) => {
   return (
     <Controller
       name={name}
       control={form?.control}
       rules={rules}
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       render={({ field: { ref, ...field }, fieldState }) => {
         return (
           <>
             <label
               htmlFor={field.name}
-              className={
-                classNames({ "text-red-400 ": fieldState.error }) + " block"
-              }
+              className={classNames({ "text-red-400 ": fieldState.error }) + " block"}
             >
               {label}
-              {rules?.required ? (
-                <span className="text-slate-300"> *</span>
-              ) : (
-                ""
-              )}
+              {rules?.required ? <span className="text-slate-300"> *</span> : ""}
             </label>
             <div className={`${handleAddButton && "p-inputgroup"}`}>
               <DropdownPrime
@@ -75,14 +74,16 @@ const Dropdown = <T extends object>({
                 optionValue={optionValue ?? "value"}
                 autoFocus={autoFocus}
                 showClear
-                filter
+                filter={filter}
                 optionGroupLabel={optionGroupLabel}
                 optionGroupChildren={optionGroupChildren}
                 optionGroupTemplate={optionGroupTemplate}
+                valueTemplate={valueTemplate}
+                itemTemplate={itemTemplate}
                 disabled={disabled}
                 className={
                   classNames({ "p-invalid ": fieldState.error }) +
-                  " w-full disabled:bg-slate-100 "
+                  ` w-full ${disabled ? "bg-slate-100" : ""}`
                 }
                 {...field}
                 onChange={(event) => field.onChange(event.target.value)}

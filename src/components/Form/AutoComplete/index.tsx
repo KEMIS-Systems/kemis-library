@@ -2,7 +2,7 @@ import { AutoComplete as AutoCompletePrime } from "primereact/autocomplete";
 import { Button as ButtonPrime } from "primereact/button";
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { classNames } from "primereact/utils";
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Controller,
   FieldPath,
@@ -17,10 +17,13 @@ interface IProps<T extends FieldValues> {
   name: FieldPath<T>;
   label: string;
   suggestions: SelectItemOptionsType;
+  value?: string;
   rules?: RegisterOptions;
   autoFocus?: boolean;
   form: UseFormReturn<T>;
   disabled?: boolean;
+  itemTemplate?: ReactNode | ((suggestion: any, index: number) => React.ReactNode);
+  forceSelection?: boolean;
   handleSearch: (event: { query: string }) => void;
   handleAddButton?: () => void;
 }
@@ -34,6 +37,8 @@ const AutoComplete = <T extends object>({
   autoFocus,
   form,
   disabled,
+  itemTemplate,
+  forceSelection,
   handleSearch,
   handleAddButton,
 }: IProps<T>) => {
@@ -49,16 +54,14 @@ const AutoComplete = <T extends object>({
               <>
                 <label
                   htmlFor={field.name}
+                  data-hasdisabled={disabled}
                   className={
-                    classNames({ "text-red-400 ": fieldState.error }) + " block"
+                    classNames({ "text-red-400 ": fieldState.error }) +
+                    " block data-[hasdisabled=true]:text-slate-200"
                   }
                 >
                   {label}
-                  {rules?.required ? (
-                    <span className="text-slate-300"> *</span>
-                  ) : (
-                    ""
-                  )}
+                  {rules?.required ? <span className="text-slate-300"> *</span> : ""}
                 </label>
                 <div className={`${handleAddButton && "p-inputgroup"}`}>
                   <AutoCompletePrime
@@ -67,19 +70,21 @@ const AutoComplete = <T extends object>({
                     suggestions={suggestions}
                     completeMethod={(e) => handleSearch(e)}
                     autoFocus={autoFocus}
-                    dropdown
-                    forceSelection
+                    forceSelection={!forceSelection}
                     autoHighlight
                     showEmptyMessage
                     disabled={disabled}
                     emptyMessage="No results found"
                     className={
                       classNames({ "p-invalid ": fieldState.error }) +
-                      " w-full disabled:bg-slate-100"
+                      ` w-full ${disabled ? "bg-slate-100" : ""}`
                     }
-                    inputClassName="disabled:bg-slate-100"
+                    optionGroupTemplate
+                    inputClassName="disabled:bg-slate-100 w-full"
+                    itemTemplate={itemTemplate}
                     {...field}
                     inputRef={ref}
+                    onChange={(event) => field.onChange(event.target.value)}
                   />
                   {handleAddButton && (
                     <ButtonPrime
